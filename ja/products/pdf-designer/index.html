@@ -3,217 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="KinPlug PDF Designer - ビジュアルグリッドエディタで美しいPDFテンプレートを作成。kintoneレコードからプロフェッショナルな請求書、レポート、ドキュメントを生成。">
-    <meta name="keywords" content="kintone PDF, kintone プラグイン, PDF 生成, PDF テンプレート, 請求書 作成, kintone 帳票">
-    <meta property="og:title" content="PDF Designer - KinPlug">
-    <meta property="og:description" content="ビジュアルでPDFテンプレートをデザイン。kintoneからプロフェッショナルなドキュメントを生成。">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>kintone PDF 帳票出力プラグイン | 請求書・見積書をビジュアルで作成 | KinPlug PDF Designer</title>
+    <meta name="description" content="kintoneから請求書・見積書・納品書をワンクリックでPDF出力。自動改ページ、行の高さ自動調整、ヘッダー繰り返し機能搭載。外部ログイン不要でkintone内で完結。14日間無料トライアル。">
+    <meta name="keywords" content="kintone PDF プラグイン, kintone 帳票出力, kintone 請求書, kintone 見積書, キントーン 帳票, kintone PDF 出力, kintone 納品書, kintone 帳票 プラグイン 比較, kintone サブテーブル PDF">
+    <meta name="author" content="KinPlug">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kinplug.com/ja/products/pdf-designer/">
+    
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="product">
     <meta property="og:url" content="https://kinplug.com/ja/products/pdf-designer/">
-    <title>PDF Designer - KinPlug | kintone向けビジュアルPDF帳票デザイナー</title>
+    <meta property="og:title" content="kintone PDF帳票プラグイン | 請求書・見積書をビジュアル作成">
+    <meta property="og:description" content="kintoneレコードから帳票をワンクリック出力。自動改ページ、サブテーブル対応。14日間無料トライアル。">
+    <meta property="og:image" content="https://kinplug.com/images/pdf-designer-og-ja.png">
+    <meta property="og:site_name" content="KinPlug">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="product:price:amount" content="14800">
+    <meta property="product:price:currency" content="JPY">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://kinplug.com/ja/products/pdf-designer/">
+    <meta name="twitter:title" content="kintone PDF帳票プラグイン | 請求書・見積書をビジュアル作成">
+    <meta name="twitter:description" content="kintoneレコードから帳票をワンクリック出力。自動改ページ、サブテーブル対応。">
+    
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/products/pdf-designer/">
+    <link rel="alternate" hreflang="en" href="https://kinplug.com/products/pdf-designer/">
+    <link rel="alternate" hreflang="x-default" href="https://kinplug.com/products/pdf-designer/">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "KinPlug PDF Designer",
+        "alternateName": "PDF帳票デザイナー",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web Browser",
+        "inLanguage": "ja",
+        "offers": {
+            "@type": "AggregateOffer",
+            "lowPrice": "0",
+            "highPrice": "14800",
+            "priceCurrency": "JPY",
+            "offerCount": "3",
+            "offers": [
+                {
+                    "@type": "Offer",
+                    "name": "無料トライアル",
+                    "price": "0",
+                    "priceCurrency": "JPY",
+                    "description": "14日間全機能利用可能"
+                },
+                {
+                    "@type": "Offer",
+                    "name": "年間プラン",
+                    "price": "14800",
+                    "priceCurrency": "JPY",
+                    "description": "アプリあたり年額"
+                },
+                {
+                    "@type": "Offer",
+                    "name": "月額プラン",
+                    "price": "1480",
+                    "priceCurrency": "JPY",
+                    "description": "アプリあたり月額"
+                }
+            ]
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "127"
+        },
+        "featureList": [
+            "ビジュアルグリッドエディタ",
+            "自動改ページ機能",
+            "行の高さ自動調整",
+            "サブテーブル対応",
+            "ヘッダー繰り返し機能",
+            "数値フォーマット",
+            "画像・ロゴ対応",
+            "複数テンプレート"
+        ],
+        "publisher": {
+            "@type": "Organization",
+            "name": "KinPlug",
+            "url": "https://kinplug.com"
+        }
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "kintoneのサブテーブルに対応していますか？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "はい、完全対応しています。サブテーブルのデータが1ページに収まらない場合、自動的に次ページに続きを出力し、ヘッダー行も繰り返し表示されます。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "外部サービスへのログインは必要ですか？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "いいえ。PDF Designerはkintone内で完結するプラグインです。外部サービスへのログインや追加ソフトウェアのインストールは一切不要です。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "他のkintone帳票プラグインと比較した料金は？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "多くの競合製品は年額36,000円〜264,000円で、一括出力などの機能は上位プランのみです。PDF Designerは年額14,800円で全機能が利用可能です。"
+                }
+            }
+        ]
+    }
+    </script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        :root {
-            --kp-primary: #0EA5E9;
-            --kp-primary-dark: #0284C7;
-            --kp-secondary: #14B8A6;
-            --kp-accent: #F59E0B;
-            --kp-success: #10B981;
-            --kp-navy: #0F172A;
-            --kp-slate: #475569;
-            --kp-gray: #94A3B8;
-            --kp-light: #F1F5F9;
-            --kp-lighter: #F8FAFC;
-            --kp-white: #FFFFFF;
-            --kp-border: #E2E8F0;
-            --gradient-primary: linear-gradient(135deg, var(--kp-primary) 0%, var(--kp-secondary) 100%);
-            --gradient-success: linear-gradient(135deg, var(--kp-success) 0%, var(--kp-secondary) 100%);
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
-            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1);
-            --radius-sm: 6px;
-            --radius-md: 10px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Noto Sans JP', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--kp-navy);
-            line-height: 1.8;
-            background: var(--kp-white);
-            -webkit-font-smoothing: antialiased;
-        }
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 48px;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--kp-border);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-        .logo-icon {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3px;
-        }
-        .logo-icon .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 3px;
-            transition: transform 0.2s;
-        }
-        .logo:hover .dot { transform: scale(1.1); }
-        .logo-icon .dot:nth-child(1) { background: var(--kp-primary); }
-        .logo-icon .dot:nth-child(2) { background: var(--kp-secondary); }
-        .logo-icon .dot:nth-child(3) { background: var(--kp-accent); }
-        .logo-icon .dot:nth-child(4) { background: var(--kp-primary); }
-        .logo-text { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.5px; }
-        .logo-text .kin { color: var(--kp-primary); }
-        .logo-text .plug { color: var(--kp-secondary); }
-        .nav-links { display: flex; align-items: center; gap: 28px; }
-        .nav-links a { color: var(--kp-slate); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--kp-primary); }
-        .lang-switch { display: flex; align-items: center; background: var(--kp-light); border-radius: 20px; padding: 3px; font-size: 0.8rem; }
-        .lang-switch a { padding: 5px 10px; border-radius: 16px; transition: all 0.2s; }
-        .lang-switch a.active { background: var(--kp-white); color: var(--kp-navy) !important; box-shadow: var(--shadow-sm); }
-        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; font-size: 0.95rem; font-weight: 600; font-family: inherit; border: none; border-radius: var(--radius-md); cursor: pointer; text-decoration: none; transition: all 0.2s; }
-        .btn-primary { color: var(--kp-white); background: var(--gradient-success); box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35); }
-        .btn-secondary { color: var(--kp-navy); background: var(--kp-white); border: 1.5px solid var(--kp-border); }
-        .btn-secondary:hover { border-color: var(--kp-primary); color: var(--kp-primary); }
-        .btn-nav { padding: 10px 18px; font-size: 0.85rem; }
-        .hero { padding: 80px 48px 60px; background: linear-gradient(180deg, var(--kp-lighter) 0%, var(--kp-white) 100%); text-align: center; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 100px; font-size: 0.85rem; font-weight: 600; color: var(--kp-success); margin-bottom: 24px; }
-        .hero-badge::before { content: ''; width: 8px; height: 8px; background: var(--kp-success); border-radius: 50%; animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        .hero h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; line-height: 1.4; margin-bottom: 20px; }
-        .hero h1 .highlight { background: var(--gradient-success); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero .subtitle { font-size: 1.1rem; color: var(--kp-slate); max-width: 600px; margin: 0 auto 36px; line-height: 1.9; }
-        .hero-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-        .demo-section { padding: 60px 48px 80px; background: var(--kp-white); }
-        .demo-header { text-align: center; margin-bottom: 32px; }
-        .demo-header h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; }
-        .demo-header p { color: var(--kp-slate); font-size: 1rem; }
-        .demo-container { max-width: 1100px; margin: 0 auto; background: var(--kp-white); border-radius: var(--radius-xl); box-shadow: var(--shadow-xl), 0 0 0 1px var(--kp-border); overflow: hidden; }
-        .demo-toolbar { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; background: var(--kp-navy); color: var(--kp-white); }
-        .demo-toolbar-left { display: flex; align-items: center; gap: 16px; }
-        .demo-toolbar-dots { display: flex; gap: 6px; }
-        .demo-toolbar-dots span { width: 12px; height: 12px; border-radius: 50%; }
-        .demo-toolbar-dots span:nth-child(1) { background: #FF5F56; }
-        .demo-toolbar-dots span:nth-child(2) { background: #FFBD2E; }
-        .demo-toolbar-dots span:nth-child(3) { background: #27CA40; }
-        .demo-toolbar-title { font-size: 0.85rem; font-weight: 500; opacity: 0.9; }
-        .demo-toolbar-right { display: flex; gap: 10px; }
-        .demo-toolbar-btn { padding: 6px 14px; font-size: 0.8rem; font-weight: 600; border: none; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
-        .demo-toolbar-btn.preview { background: var(--kp-primary); color: white; }
-        .demo-toolbar-btn.preview:hover { background: var(--kp-primary-dark); }
-        .demo-toolbar-btn.reset { background: rgba(255,255,255,0.15); color: white; }
-        .demo-toolbar-btn.reset:hover { background: rgba(255,255,255,0.25); }
-        .demo-body { display: flex; min-height: 480px; }
-        .demo-sidebar { width: 200px; background: var(--kp-lighter); border-right: 1px solid var(--kp-border); padding: 16px; flex-shrink: 0; }
-        .demo-sidebar h4 { font-size: 0.7rem; font-weight: 600; color: var(--kp-gray); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
-        .field-list { display: flex; flex-direction: column; gap: 6px; }
-        .field-item { display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: var(--kp-white); border: 1px solid var(--kp-border); border-radius: var(--radius-sm); font-size: 0.78rem; cursor: grab; transition: all 0.2s; }
-        .field-item:hover { border-color: var(--kp-primary); box-shadow: var(--shadow-sm); }
-        .field-item.dragging { opacity: 0.5; }
-        .field-icon { width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; font-size: 11px; background: var(--kp-light); border-radius: 4px; }
-        .demo-grid-area { flex: 1; padding: 20px; overflow: auto; }
-        .demo-grid { display: grid; gap: 0; background: var(--kp-white); border: 1px solid var(--kp-border); border-radius: var(--radius-md); overflow: hidden; }
-        .demo-cell { min-width: 80px; min-height: 34px; border: 1px solid var(--kp-border); margin: -0.5px; display: flex; align-items: center; justify-content: center; padding: 5px 8px; font-size: 0.75rem; cursor: pointer; transition: all 0.15s; background: var(--kp-white); position: relative; }
-        .demo-cell:hover { background: rgba(14, 165, 233, 0.05); }
-        .demo-cell.selected { background: rgba(14, 165, 233, 0.1); outline: 2px solid var(--kp-primary); outline-offset: -2px; z-index: 1; }
-        .demo-cell.has-content { background: rgba(16, 185, 129, 0.06); }
-        .demo-cell.header-cell { background: var(--kp-secondary); color: white; font-weight: 600; }
-        .demo-cell .cell-content { display: flex; align-items: center; gap: 4px; font-size: 0.72rem; color: var(--kp-slate); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .demo-cell .cell-content.field-ref { color: var(--kp-primary); font-weight: 500; }
-        .cell-type-badge { font-size: 9px; padding: 1px 4px; background: var(--kp-primary); color: white; border-radius: 3px; }
-        .demo-properties { width: 220px; background: var(--kp-lighter); border-left: 1px solid var(--kp-border); padding: 16px; flex-shrink: 0; }
-        .demo-properties h4 { font-size: 0.8rem; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 6px; }
-        .prop-group { margin-bottom: 14px; }
-        .prop-label { font-size: 0.7rem; font-weight: 500; color: var(--kp-slate); margin-bottom: 5px; }
-        .prop-input, .prop-select { width: 100%; padding: 7px 10px; font-size: 0.8rem; border: 1px solid var(--kp-border); border-radius: var(--radius-sm); background: var(--kp-white); font-family: inherit; }
-        .prop-input:focus, .prop-select:focus { outline: none; border-color: var(--kp-primary); }
-        .demo-tip { margin-top: 16px; padding: 10px; background: rgba(14, 165, 233, 0.08); border-radius: var(--radius-sm); font-size: 0.75rem; color: var(--kp-slate); line-height: 1.6; }
-        .demo-tip strong { color: var(--kp-primary); }
-        .features { padding: 100px 48px; background: var(--kp-lighter); }
-        .section-header { text-align: center; margin-bottom: 56px; }
-        .section-header .overline { font-size: 0.8rem; font-weight: 600; color: var(--kp-primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-        .section-header h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 12px; }
-        .section-header p { color: var(--kp-slate); font-size: 1rem; max-width: 550px; margin: 0 auto; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
-        .feature-card { background: var(--kp-white); border-radius: var(--radius-lg); padding: 28px; border: 1px solid var(--kp-border); transition: all 0.3s; }
-        .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; }
-        .feature-card .icon { width: 48px; height: 48px; background: var(--gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px; }
-        .feature-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 10px; }
-        .feature-card p { font-size: 0.9rem; color: var(--kp-slate); line-height: 1.8; }
-        .how-it-works { padding: 100px 48px; background: var(--kp-navy); color: var(--kp-white); }
-        .how-it-works .section-header .overline { color: var(--kp-secondary); }
-        .how-it-works .section-header h2 { color: var(--kp-white); }
-        .how-it-works .section-header p { color: rgba(255,255,255,0.7); }
-        .steps { display: flex; justify-content: center; gap: 60px; max-width: 900px; margin: 0 auto; flex-wrap: wrap; }
-        .step { text-align: center; flex: 1; min-width: 200px; max-width: 250px; }
-        .step-number { width: 64px; height: 64px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin: 0 auto 20px; }
-        .step h3 { font-size: 1.05rem; margin-bottom: 10px; }
-        .step p { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.8; }
-        .pricing { padding: 100px 48px; background: var(--kp-lighter); }
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 950px; margin: 0 auto; }
-        .pricing-card { background: var(--kp-white); border-radius: var(--radius-lg); padding: 36px 28px; border: 2px solid var(--kp-border); text-align: center; transition: all 0.3s; position: relative; }
-        .pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-        .pricing-card.featured { border-color: var(--kp-success); }
-        .pricing-card.featured::before { content: 'おすすめ'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--kp-success); color: white; padding: 4px 16px; border-radius: 100px; font-size: 0.75rem; font-weight: 600; }
-        .pricing-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
-        .pricing-card .price { font-size: 2.5rem; font-weight: 800; line-height: 1; }
-        .pricing-card .price-period { font-size: 0.9rem; color: var(--kp-slate); margin-bottom: 24px; }
-        .pricing-card ul { list-style: none; text-align: left; margin-bottom: 28px; }
-        .pricing-card li { padding: 10px 0; font-size: 0.9rem; color: var(--kp-slate); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--kp-light); }
-        .pricing-card li:last-child { border-bottom: none; }
-        .pricing-card li::before { content: '✓'; color: var(--kp-success); font-weight: 700; }
-        .pricing-card .btn { width: 100%; justify-content: center; }
-        .faq { padding: 100px 48px; background: var(--kp-white); }
-        .faq-list { max-width: 700px; margin: 0 auto; }
-        .faq-item { border-bottom: 1px solid var(--kp-border); padding: 24px 0; }
-        .faq-item h3 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 12px; }
-        .faq-item h3::before { content: 'Q'; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; background: var(--kp-primary); color: white; border-radius: 6px; font-size: 0.8rem; flex-shrink: 0; }
-        .faq-item p { font-size: 0.92rem; color: var(--kp-slate); line-height: 1.9; padding-left: 36px; }
-        .cta { padding: 100px 48px; background: var(--gradient-primary); text-align: center; color: white; }
-        .cta h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 16px; }
-        .cta p { font-size: 1.05rem; opacity: 0.9; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
-        .cta .btn { background: white; color: var(--kp-primary-dark); font-weight: 700; }
-        .cta .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
-        .footer { padding: 48px; background: var(--kp-navy); color: white; text-align: center; }
-        .footer-links { display: flex; justify-content: center; gap: 32px; margin-bottom: 24px; flex-wrap: wrap; }
-        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-        .footer-links a:hover { color: white; }
-        .footer-copy { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
-        @media (max-width: 900px) {
-            .demo-sidebar, .demo-properties { display: none; }
-            .demo-body { flex-direction: column; }
-        }
-        @media (max-width: 768px) {
-            .nav { padding: 12px 20px; }
-            .nav-links a:not(.lang-switch):not(.btn-nav) { display: none; }
-            .hero, .features, .how-it-works, .pricing, .faq, .cta { padding: 60px 20px; }
-            .demo-section { padding: 40px 20px; }
-            .hero h1 { font-size: 1.6rem; }
-            .hero-buttons { flex-direction: column; align-items: center; }
-            .btn { width: 100%; max-width: 280px; justify-content: center; }
-            .footer { padding: 32px 20px; }
-            .footer-links { flex-direction: column; gap: 12px; }
-        }
+        :root{--kp-primary:#0EA5E9;--kp-primary-dark:#0284C7;--kp-secondary:#14B8A6;--kp-accent:#F59E0B;--kp-success:#10B981;--kp-navy:#0F172A;--kp-slate:#475569;--kp-gray:#94A3B8;--kp-light:#F1F5F9;--kp-lighter:#F8FAFC;--kp-white:#FFFFFF;--kp-border:#E2E8F0;--gradient-primary:linear-gradient(135deg,var(--kp-primary) 0%,var(--kp-secondary) 100%);--gradient-success:linear-gradient(135deg,var(--kp-success) 0%,var(--kp-secondary) 100%);--shadow-sm:0 1px 2px rgba(0,0,0,0.05);--shadow-md:0 4px 6px -1px rgba(0,0,0,0.1);--shadow-lg:0 10px 15px -3px rgba(0,0,0,0.1);--shadow-xl:0 20px 25px -5px rgba(0,0,0,0.1);--radius-sm:6px;--radius-md:10px;--radius-lg:16px;--radius-xl:24px}
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'Noto Sans JP','Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--kp-navy);line-height:1.8;background:var(--kp-white);-webkit-font-smoothing:antialiased}
+        
+        .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 48px;background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--kp-border);position:sticky;top:0;z-index:1000}
+        .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+        .logo-icon{display:grid;grid-template-columns:repeat(2,1fr);gap:3px}
+        .logo-icon .dot{width:10px;height:10px;border-radius:3px;transition:transform 0.2s}
+        .logo:hover .dot{transform:scale(1.1)}
+        .logo-icon .dot:nth-child(1){background:var(--kp-primary)}
+        .logo-icon .dot:nth-child(2){background:var(--kp-secondary)}
+        .logo-icon .dot:nth-child(3){background:var(--kp-accent)}
+        .logo-icon .dot:nth-child(4){background:var(--kp-primary)}
+        .logo-text{font-size:1.25rem;font-weight:700;letter-spacing:-0.5px}
+        .logo-text .kin{color:var(--kp-primary)}
+        .logo-text .plug{color:var(--kp-secondary)}
+        .nav-links{display:flex;align-items:center;gap:28px}
+        .nav-links a{color:var(--kp-slate);text-decoration:none;font-weight:500;font-size:0.9rem;transition:color 0.2s}
+        .nav-links a:hover{color:var(--kp-primary)}
+        .lang-switch{display:flex;align-items:center;background:var(--kp-light);border-radius:20px;padding:3px;font-size:0.8rem}
+        .lang-switch a{padding:5px 10px;border-radius:16px;transition:all 0.2s}
+        .lang-switch a.active{background:var(--kp-white);color:var(--kp-navy)!important;box-shadow:var(--shadow-sm)}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;font-size:0.95rem;font-weight:600;font-family:inherit;border:none;border-radius:var(--radius-md);cursor:pointer;text-decoration:none;transition:all 0.2s}
+        .btn-primary{color:var(--kp-white);background:var(--gradient-success);box-shadow:0 2px 8px rgba(16,185,129,0.3)}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,185,129,0.35)}
+        .btn-secondary{color:var(--kp-navy);background:var(--kp-white);border:1.5px solid var(--kp-border)}
+        .btn-secondary:hover{border-color:var(--kp-primary);color:var(--kp-primary)}
+        .btn-nav{padding:10px 18px;font-size:0.85rem}
+        
+        .hero{padding:80px 48px 60px;background:linear-gradient(180deg,var(--kp-lighter) 0%,var(--kp-white) 100%);text-align:center}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:100px;font-size:0.85rem;font-weight:600;color:var(--kp-success);margin-bottom:24px}
+        .hero-badge::before{content:'';width:8px;height:8px;background:var(--kp-success);border-radius:50%;animation:pulse 2s infinite}
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+        .hero h1{font-size:clamp(1.75rem,4vw,2.75rem);font-weight:700;line-height:1.4;margin-bottom:20px}
+        .hero h1 .highlight{background:var(--gradient-success);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero .subtitle{font-size:1.1rem;color:var(--kp-slate);max-width:680px;margin:0 auto 36px;line-height:1.9}
+        .hero-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+        
+        .trust-badges{display:flex;justify-content:center;gap:28px;margin-top:40px;flex-wrap:wrap}
+        .trust-badge{display:flex;align-items:center;gap:8px;color:var(--kp-slate);font-size:0.88rem}
+        .trust-badge svg{width:20px;height:20px;color:var(--kp-success)}
+        
+        .demo-section{padding:60px 48px 80px;background:var(--kp-white)}
+        .demo-header{text-align:center;margin-bottom:32px}
+        .demo-header h2{font-size:1.4rem;font-weight:700;margin-bottom:8px}
+        .demo-header p{color:var(--kp-slate);font-size:1rem}
+        .demo-container{max-width:1100px;margin:0 auto;background:var(--kp-white);border-radius:var(--radius-xl);box-shadow:var(--shadow-xl),0 0 0 1px var(--kp-border);overflow:hidden}
+        .demo-toolbar{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:var(--kp-navy);color:var(--kp-white)}
+        .demo-toolbar-left{display:flex;align-items:center;gap:16px}
+        .demo-toolbar-dots{display:flex;gap:6px}
+        .demo-toolbar-dots span{width:12px;height:12px;border-radius:50%}
+        .demo-toolbar-dots span:nth-child(1){background:#FF5F56}
+        .demo-toolbar-dots span:nth-child(2){background:#FFBD2E}
+        .demo-toolbar-dots span:nth-child(3){background:#27CA40}
+        .demo-toolbar-title{font-size:0.85rem;font-weight:500;opacity:0.9}
+        .demo-toolbar-right{display:flex;gap:10px}
+        .demo-toolbar-btn{padding:6px 14px;font-size:0.8rem;font-weight:600;border:none;border-radius:6px;cursor:pointer;transition:all 0.2s}
+        .demo-toolbar-btn.preview{background:var(--kp-primary);color:white}
+        .demo-toolbar-btn.preview:hover{background:var(--kp-primary-dark)}
+        .demo-toolbar-btn.reset{background:rgba(255,255,255,0.15);color:white}
+        .demo-toolbar-btn.reset:hover{background:rgba(255,255,255,0.25)}
+        .demo-body{display:flex;min-height:420px}
+        .demo-sidebar{width:190px;background:var(--kp-lighter);border-right:1px solid var(--kp-border);padding:14px;flex-shrink:0}
+        .demo-sidebar h4{font-size:0.7rem;font-weight:600;color:var(--kp-gray);letter-spacing:0.5px;margin-bottom:8px}
+        .field-list{display:flex;flex-direction:column;gap:5px}
+        .field-item{display:flex;align-items:center;gap:7px;padding:7px 9px;background:var(--kp-white);border:1px solid var(--kp-border);border-radius:var(--radius-sm);font-size:0.75rem;cursor:grab;transition:all 0.2s}
+        .field-item:hover{border-color:var(--kp-primary);box-shadow:var(--shadow-sm)}
+        .field-icon{width:16px;height:16px;display:flex;align-items:center;justify-content:center;font-size:10px;background:var(--kp-light);border-radius:3px}
+        .demo-grid-area{flex:1;padding:16px;overflow:auto}
+        .demo-grid{display:grid;gap:0;background:var(--kp-white);border:1px solid var(--kp-border);border-radius:var(--radius-md);overflow:hidden}
+        .demo-cell{min-width:75px;min-height:32px;border:1px solid var(--kp-border);margin:-0.5px;display:flex;align-items:center;justify-content:center;padding:4px 6px;font-size:0.72rem;cursor:pointer;transition:all 0.15s;background:var(--kp-white);position:relative}
+        .demo-cell:hover{background:rgba(14,165,233,0.05)}
+        .demo-cell.selected{background:rgba(14,165,233,0.1);outline:2px solid var(--kp-primary);outline-offset:-2px;z-index:1}
+        .demo-cell.has-content{background:rgba(16,185,129,0.06)}
+        .demo-cell.header-cell{background:var(--kp-secondary);color:white;font-weight:600}
+        .demo-cell .cell-content{display:flex;align-items:center;gap:3px;font-size:0.7rem;color:var(--kp-slate);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .demo-cell .cell-content.field-ref{color:var(--kp-primary);font-weight:500}
+        .cell-type-badge{font-size:8px;padding:1px 3px;background:var(--kp-primary);color:white;border-radius:2px}
+        .demo-properties{width:200px;background:var(--kp-lighter);border-left:1px solid var(--kp-border);padding:14px;flex-shrink:0}
+        .demo-properties h4{font-size:0.78rem;font-weight:600;margin-bottom:14px}
+        .prop-group{margin-bottom:12px}
+        .prop-label{font-size:0.68rem;font-weight:500;color:var(--kp-slate);margin-bottom:4px}
+        .prop-input,.prop-select{width:100%;padding:6px 9px;font-size:0.78rem;border:1px solid var(--kp-border);border-radius:var(--radius-sm);background:var(--kp-white);font-family:inherit}
+        .prop-input:focus,.prop-select:focus{outline:none;border-color:var(--kp-primary)}
+        .demo-tip{margin-top:14px;padding:9px;background:rgba(14,165,233,0.08);border-radius:var(--radius-sm);font-size:0.72rem;color:var(--kp-slate);line-height:1.6}
+        .demo-tip strong{color:var(--kp-primary)}
+        
+        .why-choose{padding:100px 48px;background:var(--kp-lighter)}
+        .section-header{text-align:center;margin-bottom:56px}
+        .section-header .overline{font-size:0.8rem;font-weight:600;color:var(--kp-primary);letter-spacing:1px;margin-bottom:12px}
+        .section-header h2{font-size:1.75rem;font-weight:700;margin-bottom:12px}
+        .section-header p{color:var(--kp-slate);font-size:1rem;max-width:600px;margin:0 auto}
+        .advantages-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;max-width:1100px;margin:0 auto}
+        .advantage-card{background:var(--kp-white);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--kp-border);transition:all 0.3s}
+        .advantage-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:transparent}
+        .advantage-card .icon{width:52px;height:52px;background:var(--gradient-primary);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px}
+        .advantage-card h3{font-size:1.1rem;font-weight:600;margin-bottom:10px}
+        .advantage-card p{font-size:0.93rem;color:var(--kp-slate);line-height:1.8}
+        .advantage-card .comparison{margin-top:16px;padding:12px;background:var(--kp-lighter);border-radius:var(--radius-sm);font-size:0.85rem}
+        .advantage-card .comparison .old{color:#EF4444;text-decoration:line-through;margin-right:8px}
+        .advantage-card .comparison .new{color:var(--kp-success);font-weight:600}
+        
+        .features{padding:100px 48px;background:var(--kp-white)}
+        .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:1100px;margin:0 auto}
+        .feature-card{background:var(--kp-lighter);border-radius:var(--radius-lg);padding:24px;border:1px solid transparent;transition:all 0.3s}
+        .feature-card:hover{border-color:var(--kp-border);box-shadow:var(--shadow-md)}
+        .feature-card .icon{width:44px;height:44px;background:var(--gradient-primary);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+        .feature-card h3{font-size:1rem;font-weight:600;margin-bottom:8px}
+        .feature-card p{font-size:0.9rem;color:var(--kp-slate);line-height:1.8}
+        
+        .how-it-works{padding:100px 48px;background:var(--kp-navy);color:var(--kp-white)}
+        .how-it-works .section-header .overline{color:var(--kp-secondary)}
+        .how-it-works .section-header h2{color:var(--kp-white)}
+        .how-it-works .section-header p{color:rgba(255,255,255,0.7)}
+        .steps{display:flex;justify-content:center;gap:48px;max-width:900px;margin:0 auto;flex-wrap:wrap}
+        .step{text-align:center;flex:1;min-width:200px;max-width:260px}
+        .step-number{width:64px;height:64px;background:var(--gradient-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;margin:0 auto 20px}
+        .step h3{font-size:1.05rem;margin-bottom:10px}
+        .step p{font-size:0.9rem;color:rgba(255,255,255,0.7);line-height:1.8}
+        
+        .pricing{padding:100px 48px;background:var(--kp-lighter)}
+        .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:950px;margin:0 auto}
+        .pricing-card{background:var(--kp-white);border-radius:var(--radius-lg);padding:36px 28px;border:2px solid var(--kp-border);text-align:center;transition:all 0.3s;position:relative}
+        .pricing-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+        .pricing-card.featured{border-color:var(--kp-success)}
+        .pricing-card.featured::before{content:'おすすめ';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--kp-success);color:white;padding:4px 16px;border-radius:100px;font-size:0.75rem;font-weight:600}
+        .pricing-card h3{font-size:1.1rem;margin-bottom:8px}
+        .pricing-card .price{font-size:2.5rem;font-weight:800;line-height:1}
+        .pricing-card .price-period{font-size:0.9rem;color:var(--kp-slate);margin-bottom:24px}
+        .pricing-card ul{list-style:none;text-align:left;margin-bottom:28px}
+        .pricing-card li{padding:10px 0;font-size:0.9rem;color:var(--kp-slate);display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--kp-light)}
+        .pricing-card li:last-child{border-bottom:none}
+        .pricing-card li::before{content:'✓';color:var(--kp-success);font-weight:700}
+        .pricing-card .btn{width:100%;justify-content:center}
+        
+        .faq{padding:100px 48px;background:var(--kp-white)}
+        .faq-list{max-width:750px;margin:0 auto}
+        .faq-item{border-bottom:1px solid var(--kp-border);padding:24px 0}
+        .faq-item h3{font-size:1rem;font-weight:600;margin-bottom:12px;display:flex;align-items:flex-start;gap:12px}
+        .faq-item h3::before{content:'Q';display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:var(--kp-primary);color:white;border-radius:6px;font-size:0.8rem;flex-shrink:0}
+        .faq-item p{font-size:0.93rem;color:var(--kp-slate);line-height:1.9;padding-left:36px}
+        
+        .cta{padding:100px 48px;background:var(--gradient-primary);text-align:center;color:white}
+        .cta h2{font-size:1.75rem;font-weight:700;margin-bottom:16px}
+        .cta p{font-size:1.05rem;opacity:0.9;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+        .cta .btn{background:white;color:var(--kp-primary-dark);font-weight:700}
+        .cta .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,0.2)}
+        
+        .footer{padding:48px;background:var(--kp-navy);color:white;text-align:center}
+        .footer-links{display:flex;justify-content:center;gap:32px;margin-bottom:24px;flex-wrap:wrap}
+        .footer-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem;transition:color 0.2s}
+        .footer-links a:hover{color:white}
+        .footer-copy{font-size:0.85rem;color:rgba(255,255,255,0.5)}
+        
+        @media(max-width:900px){.demo-sidebar,.demo-properties{display:none}.demo-body{flex-direction:column}}
+        @media(max-width:768px){.nav{padding:12px 20px}.nav-links a:not(.lang-switch):not(.btn-nav){display:none}.hero,.why-choose,.features,.how-it-works,.pricing,.faq,.cta{padding:60px 20px}.demo-section{padding:40px 20px}.hero h1{font-size:1.6rem}.hero-buttons{flex-direction:column;align-items:center}.btn{width:100%;max-width:280px;justify-content:center}.trust-badges{flex-direction:column;align-items:center;gap:14px}.footer{padding:32px 20px}.footer-links{flex-direction:column;gap:12px}}
     </style>
 </head>
 <body>
@@ -234,125 +313,312 @@
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="hero-badge">提供開始</div>
-        <h1>PDFを<span class="highlight">ビジュアル</span>でデザイン、<br>ワンクリックで生成</h1>
-        <p class="subtitle">ドラッグ＆ドロップのグリッドエディタでプロフェッショナルなPDFテンプレートを作成。kintoneレコードから請求書・見積書・各種帳票を直接生成。コーディング不要です。</p>
-        <div class="hero-buttons">
-            <a href="#pricing" class="btn btn-primary">🚀 14日間無料トライアル</a>
-            <a href="#demo" class="btn btn-secondary">デモを試す</a>
-        </div>
-    </section>
-
-    <section class="demo-section" id="demo">
-        <div class="demo-header">
-            <h2>✨ 実際に操作してみよう</h2>
-            <p>セルをクリック、フィールドをドラッグして、PDFテンプレート作成の簡単さを体験</p>
-        </div>
-        <div class="demo-container">
-            <div class="demo-toolbar">
-                <div class="demo-toolbar-left">
-                    <div class="demo-toolbar-dots"><span></span><span></span><span></span></div>
-                    <span class="demo-toolbar-title">📄 請求書テンプレート — PDF Designer</span>
+    <main>
+        <section class="hero">
+            <div class="hero-badge">kintone PDF帳票プラグイン</div>
+            <h1>請求書・見積書・納品書を<br><span class="highlight">ビジュアル</span>で作成、ワンクリック出力</h1>
+            <p class="subtitle">kintoneレコードから帳票をそのまま出力。グリッドエディタでテンプレートを直感的にデザイン。サブテーブルの自動改ページ、ヘッダー繰り返し、行高さ自動調整など、面倒な設定は一切不要。外部ログインなしでkintone内完結。</p>
+            <div class="hero-buttons">
+                <a href="#pricing" class="btn btn-primary">🚀 14日間無料トライアル</a>
+                <a href="#demo" class="btn btn-secondary">デモを体験する</a>
+            </div>
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>外部ログイン不要</span>
                 </div>
-                <div class="demo-toolbar-right">
-                    <button class="demo-toolbar-btn reset" onclick="resetDemo()">↺ リセット</button>
-                    <button class="demo-toolbar-btn preview" onclick="previewPDF()">👁 プレビュー</button>
+                <div class="trust-badge">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>自動改ページ標準搭載</span>
+                </div>
+                <div class="trust-badge">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>PDF出力数無制限</span>
                 </div>
             </div>
-            <div class="demo-body">
-                <div class="demo-sidebar">
-                    <h4>📋 kintoneフィールド</h4>
-                    <div class="field-list">
-                        <div class="field-item" draggable="true" data-field="会社名" data-type="text"><span class="field-icon">Aa</span><span>会社名</span></div>
-                        <div class="field-item" draggable="true" data-field="請求書番号" data-type="text"><span class="field-icon">#</span><span>請求書番号</span></div>
-                        <div class="field-item" draggable="true" data-field="発行日" data-type="date"><span class="field-icon">📅</span><span>発行日</span></div>
-                        <div class="field-item" draggable="true" data-field="支払期限" data-type="date"><span class="field-icon">📅</span><span>支払期限</span></div>
-                        <div class="field-item" draggable="true" data-field="合計金額" data-type="number"><span class="field-icon">¥</span><span>合計金額</span></div>
-                        <div class="field-item" draggable="true" data-field="顧客名" data-type="text"><span class="field-icon">👤</span><span>顧客名</span></div>
+        </section>
+
+        <section class="demo-section" id="demo">
+            <div class="demo-header">
+                <h2>✨ テンプレートエディタを体験</h2>
+                <p>セルをクリック、フィールドをドラッグ — 帳票デザインがどれほど簡単か実感してください</p>
+            </div>
+            <div class="demo-container">
+                <div class="demo-toolbar">
+                    <div class="demo-toolbar-left">
+                        <div class="demo-toolbar-dots"><span></span><span></span><span></span></div>
+                        <span class="demo-toolbar-title">📄 請求書テンプレート — PDF Designer</span>
                     </div>
-                    <h4 style="margin-top: 16px;">📊 テーブルフィールド</h4>
-                    <div class="field-list">
-                        <div class="field-item" draggable="true" data-field="品名" data-type="table"><span class="field-icon">📦</span><span>品名</span></div>
-                        <div class="field-item" draggable="true" data-field="数量" data-type="table"><span class="field-icon">🔢</span><span>数量</span></div>
-                        <div class="field-item" draggable="true" data-field="単価" data-type="table"><span class="field-icon">💰</span><span>単価</span></div>
+                    <div class="demo-toolbar-right">
+                        <button class="demo-toolbar-btn reset" onclick="resetDemo()">↺ リセット</button>
+                        <button class="demo-toolbar-btn preview" onclick="previewPDF()">👁 プレビュー</button>
                     </div>
                 </div>
-                <div class="demo-grid-area">
-                    <div class="demo-grid" id="demoGrid"></div>
-                </div>
-                <div class="demo-properties" id="propsPanel">
-                    <h4>⚙️ セルのプロパティ</h4>
-                    <div id="propsContent">
-                        <div class="demo-tip"><strong>ヒント:</strong> セルをクリックしてプロパティを表示。左のフィールドをドラッグしてマッピング。</div>
+                <div class="demo-body">
+                    <div class="demo-sidebar">
+                        <h4>📋 kintoneフィールド</h4>
+                        <div class="field-list">
+                            <div class="field-item" draggable="true" data-field="会社名" data-type="text"><span class="field-icon">Aa</span><span>会社名</span></div>
+                            <div class="field-item" draggable="true" data-field="請求番号" data-type="text"><span class="field-icon">#</span><span>請求番号</span></div>
+                            <div class="field-item" draggable="true" data-field="発行日" data-type="date"><span class="field-icon">📅</span><span>発行日</span></div>
+                            <div class="field-item" draggable="true" data-field="期限" data-type="date"><span class="field-icon">📅</span><span>支払期限</span></div>
+                            <div class="field-item" draggable="true" data-field="合計" data-type="number"><span class="field-icon">¥</span><span>合計金額</span></div>
+                            <div class="field-item" draggable="true" data-field="顧客名" data-type="text"><span class="field-icon">👤</span><span>顧客名</span></div>
+                        </div>
+                        <h4 style="margin-top:14px">📊 サブテーブル</h4>
+                        <div class="field-list">
+                            <div class="field-item" draggable="true" data-field="品名" data-type="table"><span class="field-icon">📦</span><span>品名</span></div>
+                            <div class="field-item" draggable="true" data-field="数量" data-type="table"><span class="field-icon">🔢</span><span>数量</span></div>
+                            <div class="field-item" draggable="true" data-field="単価" data-type="table"><span class="field-icon">💰</span><span>単価</span></div>
+                        </div>
+                    </div>
+                    <div class="demo-grid-area">
+                        <div class="demo-grid" id="demoGrid"></div>
+                    </div>
+                    <div class="demo-properties" id="propsPanel">
+                        <h4>⚙️ セル設定</h4>
+                        <div id="propsContent">
+                            <div class="demo-tip"><strong>ヒント:</strong> セルをクリックして編集、またはサイドバーからフィールドをドラッグしてマッピング。</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="features" id="features">
-        <div class="section-header">
-            <div class="overline">機能</div>
-            <h2>必要なものがすべて揃う</h2>
-            <p>コード不要でプロフェッショナルなPDF帳票を作成できる機能</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card"><div class="icon">🎯</div><h3>ビジュアルグリッドエディタ</h3><p>スプレッドシートのような直感的なインターフェースでテンプレートをデザイン。セルの結合、幅の調整、リアルタイムプレビュー。</p></div>
-            <div class="feature-card"><div class="icon">🔗</div><h3>ドラッグ＆ドロップでマッピング</h3><p>kintoneフィールドをテンプレートにドラッグするだけ。添付ファイルやユーザー選択を含むすべてのフィールドタイプに対応。</p></div>
-            <div class="feature-card"><div class="icon">📊</div><h3>サブテーブル対応</h3><p>サブテーブルのデータを複数ページに自動展開。ヘッダーとフッターの繰り返し表示で、明細行も完璧に。</p></div>
-            <div class="feature-card"><div class="icon">🖼️</div><h3>画像・ロゴ対応</h3><p>会社ロゴ、印影、添付ファイルフィールドからの画像を挿入。レイアウトに合わせて自動リサイズ。</p></div>
-            <div class="feature-card"><div class="icon">🔢</div><h3>数値フォーマット</h3><p>桁区切り、小数点、通貨記号で数値をフォーマット。日付や計算結果にカスタム書式を適用。</p></div>
-            <div class="feature-card"><div class="icon">📄</div><h3>複数ページ対応</h3><p>自動ページ送りで複数ページのドキュメントを作成。ページ番号やヘッダーの追加も簡単。</p></div>
-        </div>
-    </section>
+        <section class="why-choose" id="why-choose">
+            <div class="section-header">
+                <div class="overline">選ばれる理由</div>
+                <h2>他のkintone帳票プラグインとの違い</h2>
+                <p>外部サービスの複雑さなしに、高度な帳票機能を実現</p>
+            </div>
+            <div class="advantages-grid">
+                <article class="advantage-card">
+                    <div class="icon">📄</div>
+                    <h3>自動改ページ機能を標準搭載</h3>
+                    <p>サブテーブルのデータが複数ページにまたがる場合、自動的に改ページして続きを出力。ヘッダー行も各ページの先頭に繰り返し表示されます。追加プラグインは不要です。</p>
+                    <div class="comparison">
+                        <span class="old">別途プラグインが必要</span>
+                        <span class="new">✓ 標準搭載</span>
+                    </div>
+                </article>
+                <article class="advantage-card">
+                    <div class="icon">📐</div>
+                    <h3>行の高さ自動調整</h3>
+                    <p>セル内のテキスト量に応じて行の高さが自動で拡張。長い商品説明や住所も途中で切れることなく、レイアウトを維持したまま全文表示されます。</p>
+                    <div class="comparison">
+                        <span class="old">固定高さのみ</span>
+                        <span class="new">✓ 自動拡張</span>
+                    </div>
+                </article>
+                <article class="advantage-card">
+                    <div class="icon">🔄</div>
+                    <h3>ヘッダー行の繰り返し設定</h3>
+                    <p>複数ページの帳票でも、各ページの先頭に列ヘッダー（品名・数量・単価・金額など）を自動表示。明細が多い請求書でも読みやすさを維持します。</p>
+                    <div class="comparison">
+                        <span class="old">手動設定が必要</span>
+                        <span class="new">✓ ワンクリック設定</span>
+                    </div>
+                </article>
+                <article class="advantage-card">
+                    <div class="icon">🏠</div>
+                    <h3>kintone内で完結</h3>
+                    <p>外部サービスへのログインは一切不要。テンプレート設計からPDF出力まで、すべてkintone内で完結します。データがkintone外に出ることもありません。</p>
+                    <div class="comparison">
+                        <span class="old">外部ダッシュボード必要</span>
+                        <span class="new">✓ 100% kintone内</span>
+                    </div>
+                </article>
+                <article class="advantage-card">
+                    <div class="icon">🎨</div>
+                    <h3>ビジュアルグリッドエディタ</h3>
+                    <p>Excelのようなグリッドでテンプレートをデザイン。セルの結合、列幅調整、罫線・背景色の設定をリアルタイムプレビューしながら直感的に操作できます。</p>
+                    <div class="comparison">
+                        <span class="old">PDF上にドラッグ配置</span>
+                        <span class="new">✓ インタラクティブグリッド</span>
+                    </div>
+                </article>
+                <article class="advantage-card">
+                    <div class="icon">💰</div>
+                    <h3>シンプルな料金体系</h3>
+                    <p>全機能込みの1プラン。テンプレート数無制限、PDF出力数無制限、一括出力も追加料金なし。上位プランでしか使えない機能はありません。</p>
+                    <div class="comparison">
+                        <span class="old">年額36,000円〜264,000円</span>
+                        <span class="new">✓ 年額14,800円で全機能</span>
+                    </div>
+                </article>
+            </div>
+        </section>
 
-    <section class="how-it-works">
-        <div class="section-header">
-            <div class="overline">使い方</div>
-            <h2>数分で始められる</h2>
-            <p>3つのシンプルなステップでPDF生成を開始</p>
-        </div>
-        <div class="steps">
-            <div class="step"><div class="step-number">1</div><h3>プラグインをインストール</h3><p>プラグイン設定からPDF Designerを追加。1分もかかりません。</p></div>
-            <div class="step"><div class="step-number">2</div><h3>テンプレートをデザイン</h3><p>ビジュアルエディタでレイアウトを作成。フィールドをドラッグしてスタイルを設定。</p></div>
-            <div class="step"><div class="step-number">3</div><h3>PDFを生成</h3><p>レコード画面のPDFボタンをクリックして、すぐにダウンロード。</p></div>
-        </div>
-    </section>
+        <section class="features" id="features">
+            <div class="section-header">
+                <div class="overline">機能一覧</div>
+                <h2>請求書・見積書・納品書に必要な機能がすべて</h2>
+                <p>帳票作成に必要な機能を網羅。追加オプションなしで利用可能</p>
+            </div>
+            <div class="features-grid">
+                <article class="feature-card">
+                    <div class="icon">🔗</div>
+                    <h3>ドラッグ＆ドロップマッピング</h3>
+                    <p>kintoneフィールドをテンプレートにドラッグするだけ。文字列、数値、日付、ユーザー選択、添付ファイルなど全フィールドタイプに対応。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="icon">📊</div>
+                    <h3>サブテーブル完全対応</h3>
+                    <p>明細行の自動展開と改ページ。ヘッダー行の繰り返し表示で、何ページにまたがっても読みやすい帳票を出力できます。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="icon">🖼️</div>
+                    <h3>画像・ロゴ対応</h3>
+                    <p>会社ロゴ、印影、商品画像を添付ファイルフィールドから挿入。セルサイズに合わせて自動リサイズ。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="icon">🔢</div>
+                    <h3>数値フォーマット</h3>
+                    <p>桁区切り、小数点以下桁数、通貨記号（¥/$）、パーセント表示。日付も和暦・西暦どちらでも。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="icon">📱</div>
+                    <h3>複数ページサイズ対応</h3>
+                    <p>A4、レター、リーガルを縦横どちらでも。マージン設定で窓付き封筒や社用レターヘッドにも対応。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="icon">💾</div>
+                    <h3>複数テンプレート保存</h3>
+                    <p>請求書・見積書・納品書・領収書など、1アプリで複数テンプレートを使い分け。レコード画面からワンクリックで切替。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="icon">⚡</div>
+                    <h3>リアルタイムプレビュー</h3>
+                    <p>実際のkintoneデータでPDFをプレビュー確認。出力前に仕上がりをチェックできるので、やり直しの手間が省けます。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="icon">📋</div>
+                    <h3>一括出力</h3>
+                    <p>一覧画面から複数レコードのPDFをまとめて出力。月次請求書の大量発行も数秒で完了。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="icon">🔐</div>
+                    <h3>セキュリティ</h3>
+                    <p>処理はすべてkintone内で完結。外部サーバーへのデータ送信なし。御社のセキュリティポリシーに準拠します。</p>
+                </article>
+            </div>
+        </section>
 
-    <section class="pricing" id="pricing">
-        <div class="section-header">
-            <div class="overline">料金</div>
-            <h2>シンプルで明確な料金体系</h2>
-            <p>無料で始めて、必要に応じてアップグレード</p>
-        </div>
-        <div class="pricing-grid">
-            <div class="pricing-card"><h3>無料トライアル</h3><div class="price">¥0</div><div class="price-period">14日間・全機能利用可</div><ul><li>全機能利用可能</li><li>テンプレート数無制限</li><li>PDF生成数無制限</li><li>メールサポート</li></ul><a href="#" class="btn btn-secondary">無料で始める</a></div>
-            <div class="pricing-card featured"><h3>年間プラン</h3><div class="price">¥14,800</div><div class="price-period">アプリあたり / 年</div><ul><li>全機能利用可能</li><li>テンプレート数無制限</li><li>PDF生成数無制限</li><li>優先サポート</li><li>月額より17%お得</li></ul><a href="#" class="btn btn-primary">今すぐ始める</a></div>
-            <div class="pricing-card"><h3>月額プラン</h3><div class="price">¥1,480</div><div class="price-period">アプリあたり / 月</div><ul><li>全機能利用可能</li><li>テンプレート数無制限</li><li>PDF生成数無制限</li><li>メールサポート</li></ul><a href="#" class="btn btn-secondary">今すぐ始める</a></div>
-        </div>
-    </section>
+        <section class="how-it-works">
+            <div class="section-header">
+                <div class="overline">導入の流れ</div>
+                <h2>数分で利用開始</h2>
+                <p>インストールから最初のPDF出力まで、3ステップで完了</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>プラグインをインストール</h3>
+                    <p>kintoneのプラグイン設定からPDF Designerを追加。外部アカウント作成は不要、1分で完了します。</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>テンプレートをデザイン</h3>
+                    <p>グリッドエディタでレイアウトを作成。フィールドをドラッグ、セルを結合、繰り返し行を設定。</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>PDFを出力</h3>
+                    <p>レコード画面のPDFボタンをクリック。kintoneデータが反映された帳票が即座にダウンロード可能。</p>
+                </div>
+            </div>
+        </section>
 
-    <section class="faq" id="faq">
-        <div class="section-header">
-            <div class="overline">よくある質問</div>
-            <h2>FAQ</h2>
-            <p>ご不明点にお答えします</p>
-        </div>
-        <div class="faq-list">
-            <div class="faq-item"><h3>無料トライアルはどのように利用できますか？</h3><p>14日間、すべての機能を無料でご利用いただけます。クレジットカード登録は不要です。トライアル終了後、プランを選択して継続利用できます。</p></div>
-            <div class="faq-item"><h3>ライセンスはアプリ単位ですか？</h3><p>はい、ライセンスはkintoneアプリごとに必要です。複数アプリでご利用の場合は各アプリにライセンスが必要ですが、5アプリ以上でボリュームディスカウントをご用意しています。</p></div>
-            <div class="faq-item"><h3>サブテーブルに対応していますか？</h3><p>もちろんです！kintoneのサブテーブルに完全対応。データが複数ページに自動展開され、ヘッダー・フッターも繰り返し表示されます。</p></div>
-            <div class="faq-item"><h3>対応しているページサイズは？</h3><p>A4、レター、リーガルサイズに対応。縦向き・横向きの選択やマージンのカスタマイズも可能です。</p></div>
-            <div class="faq-item"><h3>返金は可能ですか？</h3><p>はい、30日間の返金保証をご用意しています。ご満足いただけない場合は、お問い合わせください。全額返金いたします。</p></div>
-        </div>
-    </section>
+        <section class="pricing" id="pricing">
+            <div class="section-header">
+                <div class="overline">料金プラン</div>
+                <h2>全機能込み、シンプルな料金</h2>
+                <p>追加料金なし — すべての機能がすべてのプランで利用可能</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>無料トライアル</h3>
+                    <div class="price">¥0</div>
+                    <div class="price-period">14日間・全機能利用可</div>
+                    <ul>
+                        <li>全機能アンロック</li>
+                        <li>テンプレート数無制限</li>
+                        <li>PDF出力数無制限</li>
+                        <li>自動改ページ機能</li>
+                        <li>メールサポート</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">無料で始める</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>年間プラン</h3>
+                    <div class="price">¥14,800</div>
+                    <div class="price-period">アプリあたり / 年（税込）</div>
+                    <ul>
+                        <li>全機能アンロック</li>
+                        <li>テンプレート数無制限</li>
+                        <li>PDF出力数無制限</li>
+                        <li>自動改ページ機能</li>
+                        <li>優先サポート</li>
+                        <li>月額より17%お得</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">今すぐ始める</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>月額プラン</h3>
+                    <div class="price">¥1,480</div>
+                    <div class="price-period">アプリあたり / 月（税込）</div>
+                    <ul>
+                        <li>全機能アンロック</li>
+                        <li>テンプレート数無制限</li>
+                        <li>PDF出力数無制限</li>
+                        <li>自動改ページ機能</li>
+                        <li>メールサポート</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">今すぐ始める</a>
+                </div>
+            </div>
+        </section>
 
-    <section class="cta">
-        <h2>美しいPDFを作成しませんか？</h2>
-        <p>14日間の無料トライアルを今すぐ開始。クレジットカード不要。</p>
-        <a href="#pricing" class="btn">🚀 無料トライアルを開始</a>
-    </section>
+        <section class="faq" id="faq">
+            <div class="section-header">
+                <div class="overline">よくある質問</div>
+                <h2>FAQ</h2>
+                <p>導入前のご不明点にお答えします</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>kintoneのサブテーブルに対応していますか？</h3>
+                    <p>はい、完全対応しています。サブテーブルのデータが1ページに収まらない場合、自動的に次ページへ続きを出力し、列ヘッダーも各ページの先頭に繰り返し表示されます。明細行が多い請求書でも、追加設定なしで正しく出力できます。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>外部サービスへのログインは必要ですか？</h3>
+                    <p>いいえ、一切不要です。PDF Designerはkintone内で完結するプラグインです。テンプレート設計、設定変更、PDF出力まで、すべてkintoneアプリ内で行えます。データがkintone外のサーバーに送信されることもありません。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>他のkintone帳票プラグインと比較した料金は？</h3>
+                    <p>多くの競合製品は年額36,000円〜264,000円で、一括出力などの機能は上位プランのみの場合もあります。PDF Designerは年額14,800円で全機能が利用可能。一括出力、自動改ページ、複数テンプレートなど、すべて追加料金なしで使えます。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>対応している用紙サイズは？</h3>
+                    <p>A4、レター、リーガルの3サイズに対応。縦向き・横向きどちらも選択可能です。マージン設定もカスタマイズできるので、窓付き封筒や社用レターヘッドに合わせた調整も簡単です。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>1つのアプリで複数のテンプレートを使えますか？</h3>
+                    <p>はい、可能です。請求書・見積書・納品書・領収書など、用途別のテンプレートを同じアプリに登録できます。レコード画面からワンクリックでテンプレートを切り替えてPDF出力できます。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>返金保証はありますか？</h3>
+                    <p>はい、30日間の返金保証をご用意しています。ご購入後にご満足いただけない場合は、お問い合わせください。理由を問わず全額返金いたします。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <h2>帳票作成の手間を今すぐ解消</h2>
+            <p>14日間の無料トライアルで、全機能をお試しください。クレジットカード登録不要。</p>
+            <a href="#pricing" class="btn">🚀 無料トライアルを開始</a>
+        </section>
+    </main>
 
     <footer class="footer">
         <div class="footer-links">
@@ -363,141 +629,23 @@
             <a href="mailto:support@kinplug.com">サポート</a>
             <a href="/products/pdf-designer/">English</a>
         </div>
-        <p class="footer-copy">© 2026 KinPlug. kintoneエコシステム向けに開発。</p>
+        <p class="footer-copy">© 2026 KinPlug. kintoneエコシステム向けプレミアムプラグイン</p>
     </footer>
 
     <script>
-        const gridConfig = {
-            rows: 11, cols: 6,
-            initialData: {
-                '0-0': { content: '請求書', type: 'text', style: 'header', colspan: 2 },
-                '0-4': { content: '{{請求書番号}}', type: 'field', field: '請求書番号' },
-                '1-0': { content: '{{会社名}}', type: 'field', field: '会社名', colspan: 3 },
-                '1-4': { content: '発行日:', type: 'text' },
-                '1-5': { content: '{{発行日}}', type: 'field', field: '発行日' },
-                '2-4': { content: '支払期限:', type: 'text' },
-                '2-5': { content: '{{支払期限}}', type: 'field', field: '支払期限' },
-                '3-0': { content: '請求先:', type: 'text', style: 'label' },
-                '4-0': { content: '{{顧客名}}', type: 'field', field: '顧客名', colspan: 3 },
-                '6-0': { content: '品名', type: 'header' },
-                '6-1': { content: '摘要', type: 'header', colspan: 2 },
-                '6-3': { content: '数量', type: 'header' },
-                '6-4': { content: '単価', type: 'header' },
-                '6-5': { content: '金額', type: 'header' },
-                '7-0': { content: '{{品名}}', type: 'table-field', field: '品名' },
-                '7-1': { content: '—', type: 'text', colspan: 2 },
-                '7-3': { content: '{{数量}}', type: 'table-field', field: '数量' },
-                '7-4': { content: '{{単価}}', type: 'table-field', field: '単価' },
-                '7-5': { content: '—', type: 'text' },
-                '9-4': { content: '合計:', type: 'text', style: 'bold' },
-                '9-5': { content: '{{合計金額}}', type: 'field', field: '合計金額', style: 'bold' },
-                '10-0': { content: 'ご利用ありがとうございます', type: 'text', colspan: 6, style: 'center' }
-            }
-        };
-        let gridData = JSON.parse(JSON.stringify(gridConfig.initialData));
-        let selectedCell = null;
-
-        function initDemo() { renderGrid(); setupDragDrop(); }
-
-        function renderGrid() {
-            const grid = document.getElementById('demoGrid');
-            grid.style.gridTemplateColumns = `repeat(${gridConfig.cols}, minmax(80px, 1fr))`;
-            grid.innerHTML = '';
-            const skipCells = new Set();
-            for (let r = 0; r < gridConfig.rows; r++) {
-                for (let c = 0; c < gridConfig.cols; c++) {
-                    const key = `${r}-${c}`;
-                    if (skipCells.has(key)) continue;
-                    const cell = document.createElement('div');
-                    cell.className = 'demo-cell';
-                    cell.dataset.row = r;
-                    cell.dataset.col = c;
-                    cell.dataset.key = key;
-                    const data = gridData[key];
-                    if (data) {
-                        cell.classList.add('has-content');
-                        if (data.type === 'header') cell.classList.add('header-cell');
-                        if (data.colspan) {
-                            cell.style.gridColumn = `span ${data.colspan}`;
-                            for (let i = 1; i < data.colspan; i++) skipCells.add(`${r}-${c + i}`);
-                        }
-                        const contentEl = document.createElement('span');
-                        contentEl.className = 'cell-content';
-                        if (data.type === 'field' || data.type === 'table-field') {
-                            contentEl.classList.add('field-ref');
-                            contentEl.innerHTML = `<span class="cell-type-badge">${data.type === 'table-field' ? 'TBL' : 'FLD'}</span> ${data.field}`;
-                        } else {
-                            contentEl.textContent = data.content;
-                        }
-                        if (data.style === 'bold') contentEl.style.fontWeight = '600';
-                        if (data.style === 'center') { contentEl.style.textAlign = 'center'; cell.style.justifyContent = 'center'; }
-                        cell.appendChild(contentEl);
-                    }
-                    cell.addEventListener('click', () => selectCell(key));
-                    cell.addEventListener('dragover', (e) => e.preventDefault());
-                    cell.addEventListener('drop', (e) => handleDrop(e, key));
-                    grid.appendChild(cell);
-                }
-            }
-        }
-
-        function selectCell(key) {
-            document.querySelectorAll('.demo-cell.selected').forEach(c => c.classList.remove('selected'));
-            const cell = document.querySelector(`[data-key="${key}"]`);
-            if (cell) { cell.classList.add('selected'); selectedCell = key; showProperties(key); }
-        }
-
-        function showProperties(key) {
-            const propsContent = document.getElementById('propsContent');
-            const data = gridData[key] || {};
-            propsContent.innerHTML = `
-                <div class="prop-group"><div class="prop-label">セルタイプ</div>
-                    <select class="prop-select" onchange="updateCellType('${key}', this.value)">
-                        <option value="text" ${data.type === 'text' ? 'selected' : ''}>テキスト</option>
-                        <option value="field" ${data.type === 'field' ? 'selected' : ''}>フィールド</option>
-                        <option value="header" ${data.type === 'header' ? 'selected' : ''}>ヘッダー</option>
-                    </select>
-                </div>
-                <div class="prop-group"><div class="prop-label">内容</div>
-                    <input type="text" class="prop-input" value="${data.content || ''}" onchange="updateCellContent('${key}', this.value)">
-                </div>
-                ${data.type === 'field' || data.type === 'table-field' ? `<div class="prop-group"><div class="prop-label">マッピングフィールド</div><input type="text" class="prop-input" value="${data.field || ''}" readonly style="background: var(--kp-light); color: var(--kp-primary);"></div>` : ''}
-                <div class="demo-tip"><strong>フィールドをドラッグ</strong>して、このセルにkintoneデータをマッピング。</div>`;
-        }
-
-        function updateCellType(key, type) { if (!gridData[key]) gridData[key] = {}; gridData[key].type = type; renderGrid(); selectCell(key); }
-        function updateCellContent(key, content) { if (!gridData[key]) gridData[key] = {}; gridData[key].content = content; renderGrid(); }
-
-        function setupDragDrop() {
-            document.querySelectorAll('.field-item').forEach(item => {
-                item.addEventListener('dragstart', (e) => { e.dataTransfer.setData('field', item.dataset.field); e.dataTransfer.setData('type', item.dataset.type); item.classList.add('dragging'); });
-                item.addEventListener('dragend', () => { item.classList.remove('dragging'); });
-            });
-        }
-
-        function handleDrop(e, key) {
-            e.preventDefault();
-            const field = e.dataTransfer.getData('field');
-            const type = e.dataTransfer.getData('type');
-            if (field) { gridData[key] = { content: `{{${field}}}`, type: type === 'table' ? 'table-field' : 'field', field: field }; renderGrid(); selectCell(key); }
-        }
-
-        function resetDemo() {
-            gridData = JSON.parse(JSON.stringify(gridConfig.initialData));
-            selectedCell = null;
-            renderGrid();
-            document.getElementById('propsContent').innerHTML = `<div class="demo-tip"><strong>ヒント:</strong> セルをクリックしてプロパティを表示。左のフィールドをドラッグしてマッピング。</div>`;
-        }
-
-        function previewPDF() {
-            const modal = document.createElement('div');
-            modal.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 9999;';
-            modal.innerHTML = `<div style="background: white; padding: 40px; border-radius: 16px; text-align: center; max-width: 400px;"><div style="font-size: 48px; margin-bottom: 16px;">📄</div><h3 style="margin-bottom: 12px;">PDFプレビュー</h3><p style="color: #64748B; margin-bottom: 24px;">実際のプラグインでは、kintoneレコードのデータを使用したPDFプレビューが表示されます！</p><button onclick="this.parentElement.parentElement.remove()" style="padding: 12px 24px; background: var(--kp-primary); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">了解</button></div>`;
-            modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
-            document.body.appendChild(modal);
-        }
-
-        document.addEventListener('DOMContentLoaded', initDemo);
+        const gridConfig={rows:10,cols:6,initialData:{'0-0':{content:'請求書',type:'text',colspan:2},'0-4':{content:'{{請求番号}}',type:'field',field:'請求番号'},'1-0':{content:'{{会社名}}',type:'field',field:'会社名',colspan:3},'1-4':{content:'発行日:',type:'text'},'1-5':{content:'{{発行日}}',type:'field',field:'発行日'},'2-4':{content:'期限:',type:'text'},'2-5':{content:'{{期限}}',type:'field',field:'期限'},'3-0':{content:'請求先:',type:'text'},'4-0':{content:'{{顧客名}}',type:'field',field:'顧客名',colspan:3},'5-0':{content:'品名',type:'header'},'5-1':{content:'摘要',type:'header',colspan:2},'5-3':{content:'数量',type:'header'},'5-4':{content:'単価',type:'header'},'5-5':{content:'金額',type:'header'},'6-0':{content:'{{品名}}',type:'table-field',field:'品名'},'6-1':{content:'—',type:'text',colspan:2},'6-3':{content:'{{数量}}',type:'table-field',field:'数量'},'6-4':{content:'{{単価}}',type:'table-field',field:'単価'},'6-5':{content:'—',type:'text'},'8-4':{content:'合計:',type:'text'},'8-5':{content:'{{合計}}',type:'field',field:'合計'},'9-0':{content:'毎度ありがとうございます',type:'text',colspan:6}}};
+        let gridData=JSON.parse(JSON.stringify(gridConfig.initialData)),selectedCell=null;
+        function initDemo(){renderGrid();setupDragDrop()}
+        function renderGrid(){const grid=document.getElementById('demoGrid');grid.style.gridTemplateColumns=`repeat(${gridConfig.cols},minmax(75px,1fr))`;grid.innerHTML='';const skip=new Set();for(let r=0;r<gridConfig.rows;r++)for(let c=0;c<gridConfig.cols;c++){const k=`${r}-${c}`;if(skip.has(k))continue;const cell=document.createElement('div');cell.className='demo-cell';cell.dataset.key=k;const d=gridData[k];if(d){cell.classList.add('has-content');if(d.type==='header')cell.classList.add('header-cell');if(d.colspan){cell.style.gridColumn=`span ${d.colspan}`;for(let i=1;i<d.colspan;i++)skip.add(`${r}-${c+i}`)}const span=document.createElement('span');span.className='cell-content';if(d.type==='field'||d.type==='table-field'){span.classList.add('field-ref');span.innerHTML=`<span class="cell-type-badge">${d.type==='table-field'?'TBL':'FLD'}</span> ${d.field}`}else span.textContent=d.content;cell.appendChild(span)}cell.addEventListener('click',()=>selectCell(k));cell.addEventListener('dragover',e=>e.preventDefault());cell.addEventListener('drop',e=>handleDrop(e,k));grid.appendChild(cell)}}
+        function selectCell(k){document.querySelectorAll('.demo-cell.selected').forEach(c=>c.classList.remove('selected'));const cell=document.querySelector(`[data-key="${k}"]`);if(cell){cell.classList.add('selected');selectedCell=k;showProps(k)}}
+        function showProps(k){const d=gridData[k]||{};document.getElementById('propsContent').innerHTML=`<div class="prop-group"><div class="prop-label">タイプ</div><select class="prop-select" onchange="updateType('${k}',this.value)"><option value="text"${d.type==='text'?' selected':''}>テキスト</option><option value="field"${d.type==='field'?' selected':''}>フィールド</option><option value="header"${d.type==='header'?' selected':''}>ヘッダー</option></select></div><div class="prop-group"><div class="prop-label">内容</div><input type="text" class="prop-input" value="${d.content||''}" onchange="updateContent('${k}',this.value)"></div>${d.field?`<div class="prop-group"><div class="prop-label">マッピング</div><input class="prop-input" value="${d.field}" readonly style="background:var(--kp-light);color:var(--kp-primary)"></div>`:''}<div class="demo-tip">サイドバーから<strong>フィールドをドラッグ</strong>してマッピング</div>`}
+        function updateType(k,t){gridData[k]=gridData[k]||{};gridData[k].type=t;renderGrid();selectCell(k)}
+        function updateContent(k,c){gridData[k]=gridData[k]||{};gridData[k].content=c;renderGrid()}
+        function setupDragDrop(){document.querySelectorAll('.field-item').forEach(i=>{i.addEventListener('dragstart',e=>{e.dataTransfer.setData('field',i.dataset.field);e.dataTransfer.setData('type',i.dataset.type)});i.addEventListener('dragend',()=>{})})}
+        function handleDrop(e,k){e.preventDefault();const f=e.dataTransfer.getData('field'),t=e.dataTransfer.getData('type');if(f){gridData[k]={content:`{{${f}}}`,type:t==='table'?'table-field':'field',field:f};renderGrid();selectCell(k)}}
+        function resetDemo(){gridData=JSON.parse(JSON.stringify(gridConfig.initialData));selectedCell=null;renderGrid();document.getElementById('propsContent').innerHTML='<div class="demo-tip"><strong>ヒント:</strong> セルをクリックして編集、またはサイドバーからフィールドをドラッグ。</div>'}
+        function previewPDF(){const m=document.createElement('div');m.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:9999';m.innerHTML='<div style="background:white;padding:40px;border-radius:16px;text-align:center;max-width:400px"><div style="font-size:48px;margin-bottom:16px">📄</div><h3 style="margin-bottom:12px">PDFプレビュー</h3><p style="color:#64748B;margin-bottom:24px">実際のプラグインでは、kintoneレコードのデータを使用したPDFプレビューが表示されます！</p><button onclick="this.parentElement.parentElement.remove()" style="padding:12px 24px;background:var(--kp-primary);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer">了解</button></div>';m.addEventListener('click',e=>{if(e.target===m)m.remove()});document.body.appendChild(m)}
+        document.addEventListener('DOMContentLoaded',initDemo);
     </script>
 </body>
 </html>

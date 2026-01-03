@@ -3,624 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="KinPlug - Premium kintone plugins for dashboards, PDF generation, workflow automation, and API integrations. Plug in. Power up.">
-    <meta name="keywords" content="kintone, plugins, kintone plugin, キントーン, プラグイン, kintone customization, PDF designer">
-    <meta property="og:title" content="KinPlug - Premium kintone Plugins">
-    <meta property="og:description" content="Plug in. Power up. Premium plugins for kintone.">
+    <title>KinPlug | Premium kintone Plugins - PDF Generator, Dashboard Builder & More</title>
+    <meta name="description" content="Premium plugins for kintone. PDF Designer for invoices and reports, Dashboard Builder for analytics, Workflow Automation. Built by developers, for developers. Start your free trial.">
+    <meta name="keywords" content="kintone plugins, kintone PDF, kintone dashboard, kintone customization, kintone invoice, kintone report, cybozu kintone">
+    <meta name="author" content="KinPlug">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kinplug.com/">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://kinplug.com">
-    <title>KinPlug - Premium kintone Plugins</title>
+    <meta property="og:url" content="https://kinplug.com/">
+    <meta property="og:title" content="KinPlug | Premium kintone Plugins">
+    <meta property="og:description" content="Premium plugins for kintone — PDF Designer, Dashboard Builder, Workflow Automation. Start free trial.">
+    <meta property="og:site_name" content="KinPlug">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="alternate" hreflang="en" href="https://kinplug.com/">
+    <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/">
+    <link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Organization","name":"KinPlug","url":"https://kinplug.com","description":"Premium plugins for kintone","sameAs":[],"offers":{"@type":"AggregateOffer","offerCount":"3","lowPrice":"0","highPrice":"99","priceCurrency":"USD"}}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --kp-blue: #0EA5E9;
-            --kp-blue-dark: #0369A1;
-            --kp-teal: #14B8A6;
-            --kp-gold: #F59E0B;
-            --kp-navy: #0F172A;
-            --kp-slate: #475569;
-            --kp-light: #F0F9FF;
-            --kp-white: #FFFFFF;
-            --kp-green: #10B981;
-            --gradient-primary: linear-gradient(135deg, var(--kp-blue) 0%, var(--kp-teal) 100%);
-            --gradient-hero: linear-gradient(180deg, var(--kp-light) 0%, var(--kp-white) 100%);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Outfit', 'Noto Sans JP', sans-serif;
-            color: var(--kp-navy);
-            line-height: 1.6;
-            background: var(--kp-white);
-            overflow-x: hidden;
-        }
-
-        .hero {
-            min-height: 100vh;
-            background: var(--gradient-hero);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 80%;
-            height: 150%;
-            background: radial-gradient(ellipse at center, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -20%;
-            width: 60%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, rgba(20, 184, 166, 0.06) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .floating-blocks {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .block {
-            position: absolute;
-            border-radius: 8px;
-            opacity: 0.6;
-            animation: float 20s ease-in-out infinite;
-        }
-
-        .block:nth-child(1) { width: 60px; height: 60px; background: var(--kp-blue); top: 15%; left: 10%; animation-delay: 0s; }
-        .block:nth-child(2) { width: 40px; height: 40px; background: var(--kp-teal); top: 25%; right: 15%; animation-delay: -5s; }
-        .block:nth-child(3) { width: 50px; height: 50px; background: var(--kp-gold); bottom: 30%; left: 8%; animation-delay: -10s; }
-        .block:nth-child(4) { width: 35px; height: 35px; background: var(--kp-blue); bottom: 20%; right: 10%; animation-delay: -15s; }
-        .block:nth-child(5) { width: 45px; height: 45px; background: var(--kp-teal); top: 60%; left: 20%; animation-delay: -7s; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-20px) rotate(5deg); }
-            50% { transform: translateY(-10px) rotate(-3deg); }
-            75% { transform: translateY(-25px) rotate(3deg); }
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 48px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 4px;
-        }
-
-        .logo-icon .dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 4px;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover .dot { transform: scale(1.1); }
-
-        .logo-icon .dot:nth-child(1) { background: var(--kp-blue); }
-        .logo-icon .dot:nth-child(2) { background: var(--kp-teal); }
-        .logo-icon .dot:nth-child(3) { background: var(--kp-gold); }
-        .logo-icon .dot:nth-child(4) { background: var(--kp-blue); }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .logo-text .kin { color: var(--kp-blue); }
-        .logo-text .plug { color: var(--kp-teal); }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .nav-links a {
-            color: var(--kp-slate);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover { color: var(--kp-blue); }
-
-        .lang-switch {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            padding: 6px 12px;
-            background: rgba(14, 165, 233, 0.1);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .lang-switch a {
-            padding: 4px 8px;
-            border-radius: 12px;
-            transition: all 0.2s ease;
-        }
-
-        .lang-switch a.active {
-            background: var(--kp-blue);
-            color: var(--kp-white) !important;
-        }
-
-        .nav-links .cta-btn {
-            padding: 10px 20px;
-            background: var(--gradient-primary);
-            color: var(--kp-white) !important;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-        }
-
-        .nav-links .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
-        }
-
-        .hero-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 24px;
-            position: relative;
-            z-index: 5;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--kp-green);
-            margin-bottom: 24px;
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        .badge::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--kp-green);
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.2); }
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 16px;
-            letter-spacing: -1px;
-            animation: fadeInUp 0.6s ease-out 0.1s both;
-        }
-
-        .hero-title .gradient-text {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-tagline {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--kp-slate);
-            margin-bottom: 8px;
-            animation: fadeInUp 0.6s ease-out 0.2s both;
-        }
-
-        .hero-tagline-jp {
-            font-size: 1rem;
-            color: var(--kp-slate);
-            opacity: 0.8;
-            margin-bottom: 32px;
-            animation: fadeInUp 0.6s ease-out 0.25s both;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            color: var(--kp-slate);
-            max-width: 540px;
-            margin-bottom: 40px;
-            animation: fadeInUp 0.6s ease-out 0.3s both;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
-            animation: fadeInUp 0.6s ease-out 0.4s both;
-        }
-
-        .btn {
-            padding: 16px 32px;
-            font-size: 1rem;
-            font-weight: 600;
-            font-family: inherit;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-primary {
-            color: var(--kp-white);
-            background: var(--gradient-primary);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(14, 165, 233, 0.3);
-        }
-
-        .btn-secondary {
-            color: var(--kp-navy);
-            background: var(--kp-white);
-            border: 2px solid #E2E8F0;
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--kp-blue);
-            color: var(--kp-blue);
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .features-preview {
-            padding: 80px 48px;
-            background: var(--kp-white);
-            position: relative;
-        }
-
-        .features-preview h2 {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--kp-navy);
-        }
-
-        .features-preview .subtitle {
-            text-align: center;
-            color: var(--kp-slate);
-            margin-bottom: 48px;
-            font-size: 1.1rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            padding: 32px;
-            background: var(--kp-light);
-            border-radius: 16px;
-            border: 1px solid rgba(14, 165, 233, 0.1);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(14, 165, 233, 0.1);
-            border-color: rgba(14, 165, 233, 0.2);
-        }
-
-        .feature-card.available {
-            border-color: rgba(16, 185, 129, 0.3);
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, var(--kp-light) 100%);
-        }
-
-        .feature-card.available:hover {
-            border-color: var(--kp-green);
-            box-shadow: 0 12px 32px rgba(16, 185, 129, 0.15);
-        }
-
-        .feature-icon {
-            width: 56px;
-            height: 56px;
-            background: var(--gradient-primary);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            font-size: 28px;
-        }
-
-        .feature-card.available .feature-icon {
-            background: linear-gradient(135deg, var(--kp-green) 0%, var(--kp-teal) 100%);
-        }
-
-        .feature-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--kp-navy);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .feature-card p {
-            font-size: 0.95rem;
-            color: var(--kp-slate);
-            margin-bottom: 16px;
-            line-height: 1.6;
-        }
-
-        .feature-badge {
-            display: inline-block;
-            padding: 6px 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            border-radius: 6px;
-        }
-
-        .feature-badge.coming-soon {
-            background: rgba(245, 158, 11, 0.15);
-            color: #D97706;
-        }
-
-        .feature-badge.available-now {
-            background: rgba(16, 185, 129, 0.15);
-            color: var(--kp-green);
-        }
-
-        .feature-card .learn-more {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--kp-blue);
-            font-weight: 500;
-            font-size: 0.9rem;
-            margin-top: 8px;
-        }
-
-        .feature-card:hover .learn-more {
-            gap: 10px;
-        }
-
-        .footer {
-            padding: 48px;
-            background: var(--kp-navy);
-            color: var(--kp-white);
-            text-align: center;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-
-        .footer-logo .logo-icon .dot { width: 12px; height: 12px; }
-        .footer-logo .logo-text { font-size: 1.25rem; }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s ease;
-        }
-
-        .footer-links a:hover { color: var(--kp-white); }
-
-        .footer-copy {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .footer-copy a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-        }
-
-        @media (max-width: 768px) {
-            .nav { padding: 16px 24px; }
-            .nav-links { gap: 12px; }
-            .nav-links a:not(.lang-switch):not(.cta-btn) { display: none; }
-            .hero-content { padding: 0 16px; }
-            .hero-buttons { flex-direction: column; width: 100%; max-width: 300px; }
-            .btn { width: 100%; justify-content: center; }
-            .features-preview { padding: 60px 24px; }
-            .footer { padding: 32px 24px; }
-            .footer-links { flex-direction: column; gap: 16px; }
-        }
+        :root{--kp-primary:#0EA5E9;--kp-secondary:#14B8A6;--kp-accent:#F59E0B;--kp-success:#10B981;--kp-navy:#0F172A;--kp-slate:#475569;--kp-light:#F1F5F9;--kp-lighter:#F8FAFC;--kp-white:#FFFFFF;--kp-border:#E2E8F0;--gradient-primary:linear-gradient(135deg,var(--kp-primary) 0%,var(--kp-secondary) 100%)}
+        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+        body{font-family:'Inter',-apple-system,sans-serif;color:var(--kp-navy);line-height:1.6;background:var(--kp-white)}
+        .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 48px;background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--kp-border);position:sticky;top:0;z-index:1000}
+        .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+        .logo-icon{display:grid;grid-template-columns:repeat(2,1fr);gap:3px}
+        .logo-icon .dot{width:12px;height:12px;border-radius:3px}
+        .logo-icon .dot:nth-child(1){background:var(--kp-primary)}.logo-icon .dot:nth-child(2){background:var(--kp-secondary)}.logo-icon .dot:nth-child(3){background:var(--kp-accent)}.logo-icon .dot:nth-child(4){background:var(--kp-primary)}
+        .logo-text{font-size:1.35rem;font-weight:700}.logo-text .kin{color:var(--kp-primary)}.logo-text .plug{color:var(--kp-secondary)}
+        .nav-links{display:flex;align-items:center;gap:24px}
+        .nav-links a{color:var(--kp-slate);text-decoration:none;font-weight:500;font-size:0.9rem;transition:color 0.2s}.nav-links a:hover{color:var(--kp-primary)}
+        .lang-switch{display:flex;background:var(--kp-light);border-radius:20px;padding:3px;font-size:0.8rem}
+        .lang-switch a{padding:5px 10px;border-radius:16px}.lang-switch a.active{background:var(--kp-white);color:var(--kp-navy)!important;box-shadow:0 1px 2px rgba(0,0,0,0.05)}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;font-size:0.95rem;font-weight:600;border:none;border-radius:10px;cursor:pointer;text-decoration:none;transition:all 0.2s}
+        .btn-primary{color:var(--kp-white);background:var(--gradient-primary);box-shadow:0 2px 8px rgba(14,165,233,0.3)}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(14,165,233,0.35)}
+        .btn-secondary{color:var(--kp-navy);background:var(--kp-white);border:1.5px solid var(--kp-border)}
+        .btn-secondary:hover{border-color:var(--kp-primary);color:var(--kp-primary)}
+        .hero{min-height:90vh;background:linear-gradient(180deg,var(--kp-lighter) 0%,var(--kp-white) 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 24px;position:relative;overflow:hidden}
+        .hero::before{content:'';position:absolute;top:-50%;right:-20%;width:80%;height:150%;background:radial-gradient(ellipse,rgba(14,165,233,0.08) 0%,transparent 70%);pointer-events:none}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:100px;font-size:0.85rem;font-weight:600;color:var(--kp-success);margin-bottom:24px}
+        .hero-badge::before{content:'';width:8px;height:8px;background:var(--kp-success);border-radius:50%;animation:pulse 2s infinite}
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+        .hero h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:800;line-height:1.1;margin-bottom:20px;letter-spacing:-1px}
+        .hero h1 .gradient{background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .hero .tagline{font-size:1.25rem;font-weight:600;color:var(--kp-slate);margin-bottom:8px}
+        .hero .tagline-jp{font-size:1rem;color:var(--kp-slate);opacity:0.8;margin-bottom:32px}
+        .hero .subtitle{font-size:1.1rem;color:var(--kp-slate);max-width:560px;margin-bottom:40px}
+        .hero-buttons{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+        .plugins{padding:100px 48px;background:var(--kp-white)}
+        .section-header{text-align:center;margin-bottom:56px}
+        .section-header .overline{font-size:0.8rem;font-weight:600;color:var(--kp-primary);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+        .section-header h2{font-size:2rem;font-weight:700;margin-bottom:12px}
+        .section-header p{color:var(--kp-slate);font-size:1.05rem;max-width:550px;margin:0 auto}
+        .plugins-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;max-width:1100px;margin:0 auto}
+        .plugin-card{background:var(--kp-lighter);border-radius:16px;padding:32px;border:1px solid var(--kp-border);transition:all 0.3s;text-decoration:none;color:inherit;display:block}
+        .plugin-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(14,165,233,0.1);border-color:transparent}
+        .plugin-card.available{border-color:rgba(16,185,129,0.3);background:linear-gradient(135deg,rgba(16,185,129,0.05) 0%,var(--kp-lighter) 100%)}
+        .plugin-card.available:hover{border-color:var(--kp-success);box-shadow:0 12px 32px rgba(16,185,129,0.15)}
+        .plugin-card .icon{width:56px;height:56px;background:var(--gradient-primary);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:20px}
+        .plugin-card.available .icon{background:linear-gradient(135deg,var(--kp-success) 0%,var(--kp-secondary) 100%)}
+        .plugin-card h3{font-size:1.25rem;font-weight:600;margin-bottom:12px}
+        .plugin-card p{font-size:0.95rem;color:var(--kp-slate);line-height:1.6;margin-bottom:16px}
+        .plugin-badge{display:inline-block;padding:6px 12px;font-size:0.75rem;font-weight:600;border-radius:6px}
+        .plugin-badge.available{background:rgba(16,185,129,0.15);color:var(--kp-success)}
+        .plugin-badge.coming{background:rgba(245,158,11,0.15);color:#D97706}
+        .plugin-card .learn-more{display:inline-flex;align-items:center;gap:6px;color:var(--kp-primary);font-weight:500;font-size:0.9rem;margin-top:8px}
+        .plugin-card:hover .learn-more{gap:10px}
+        .footer{padding:48px;background:var(--kp-navy);color:white;text-align:center}
+        .footer-links{display:flex;justify-content:center;gap:32px;margin-bottom:24px;flex-wrap:wrap}
+        .footer-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem}.footer-links a:hover{color:white}
+        .footer-copy{font-size:0.85rem;color:rgba(255,255,255,0.5)}
+        @media(max-width:768px){.nav{padding:12px 20px}.nav-links a:not(.lang-switch):not(.btn){display:none}.hero{padding:60px 20px;min-height:auto}.hero h1{font-size:2rem}.hero-buttons{flex-direction:column;align-items:center}.btn{width:100%;max-width:280px;justify-content:center}.plugins{padding:60px 20px}.footer{padding:32px 20px}.footer-links{flex-direction:column;gap:12px}}
     </style>
 </head>
 <body>
-    <section class="hero">
-        <div class="floating-blocks">
-            <div class="block"></div>
-            <div class="block"></div>
-            <div class="block"></div>
-            <div class="block"></div>
-            <div class="block"></div>
+    <nav class="nav">
+        <a href="/" class="logo">
+            <div class="logo-icon"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <span class="logo-text"><span class="kin">Kin</span><span class="plug">Plug</span></span>
+        </a>
+        <div class="nav-links">
+            <a href="#plugins">Plugins</a>
+            <a href="/products/pdf-designer/">PDF Designer</a>
+            <div class="lang-switch"><a href="/" class="active">EN</a><a href="/ja/">JP</a></div>
+            <a href="/products/pdf-designer/" class="btn btn-primary">Get Started</a>
         </div>
+    </nav>
 
-        <nav class="nav">
-            <a href="/" class="logo">
-                <div class="logo-icon">
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                </div>
-                <span class="logo-text">
-                    <span class="kin">Kin</span><span class="plug">Plug</span>
-                </span>
-            </a>
-            <div class="nav-links">
-                <a href="#plugins">Plugins</a>
-                <a href="/products/pdf-designer/">PDF Designer</a>
-                <div class="lang-switch">
-                    <a href="/" class="active">EN</a>
-                    <a href="/ja/">日本語</a>
-                </div>
-                <a href="/products/pdf-designer/" class="cta-btn">Get Started</a>
-            </div>
-        </nav>
-
-        <div class="hero-content">
-            <div class="badge">
-                <span>PDF Designer Now Available!</span>
-            </div>
-            <h1 class="hero-title">
-                Premium Plugins for<br>
-                <span class="gradient-text">kintone</span>
-            </h1>
-            <p class="hero-tagline">Plug in. Power up.</p>
-            <p class="hero-tagline-jp">つなげる。広がる。</p>
-            <p class="hero-description">
-                High-quality plugins for dashboards, PDF generation, workflow automation, and more. Built by developers, for developers.
-            </p>
-
+    <main>
+        <section class="hero">
+            <div class="hero-badge">PDF Designer Now Available!</div>
+            <h1>Premium Plugins for<br><span class="gradient">kintone</span></h1>
+            <p class="tagline">Plug in. Power up.</p>
+            <p class="tagline-jp">つなげる。広がる。</p>
+            <p class="subtitle">High-quality plugins for PDF generation, dashboards, and workflow automation. Built by kintone developers, for kintone developers.</p>
             <div class="hero-buttons">
-                <a href="/products/pdf-designer/" class="btn btn-primary">
-                    <span>📄</span> Try PDF Designer
-                </a>
-                <a href="#plugins" class="btn btn-secondary">
-                    View All Plugins
-                </a>
+                <a href="/products/pdf-designer/" class="btn btn-primary">📄 Try PDF Designer</a>
+                <a href="#plugins" class="btn btn-secondary">View All Plugins</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="features-preview" id="plugins">
-        <h2>Our Plugins</h2>
-        <p class="subtitle">Extend kintone with powerful, easy-to-use plugins</p>
-        <div class="features-grid">
-            <a href="/products/pdf-designer/" class="feature-card available">
-                <div class="feature-icon">📄</div>
-                <h3>PDF Designer</h3>
-                <p>Design beautiful PDF templates with a visual grid editor. Generate professional invoices, reports, and documents directly from your kintone records.</p>
-                <span class="feature-badge available-now">✓ Available Now</span>
-                <div class="learn-more">Learn more <span>→</span></div>
-            </a>
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>Dashboard Builder</h3>
-                <p>Beautiful charts and KPIs for your kintone apps. Real-time updates, customizable widgets, and interactive visualizations.</p>
-                <span class="feature-badge coming-soon">Coming Soon</span>
+        <section class="plugins" id="plugins">
+            <div class="section-header">
+                <div class="overline">Our Plugins</div>
+                <h2>Extend kintone with Powerful Plugins</h2>
+                <p>Professional tools designed to solve real business problems</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Workflow Automation</h3>
-                <p>Automate repetitive tasks with powerful triggers and actions. Connect apps, send notifications, and streamline processes.</p>
-                <span class="feature-badge coming-soon">Coming Soon</span>
+            <div class="plugins-grid">
+                <a href="/products/pdf-designer/" class="plugin-card available">
+                    <div class="icon">📄</div>
+                    <h3>PDF Designer</h3>
+                    <p>Design beautiful PDF templates with a visual grid editor. Generate invoices, quotes, reports, and any business document directly from kintone records. Auto-pagination, subtable support, repeating headers included.</p>
+                    <span class="plugin-badge available">✓ Available Now</span>
+                    <div class="learn-more">Learn more <span>→</span></div>
+                </a>
+                <div class="plugin-card">
+                    <div class="icon">📊</div>
+                    <h3>Dashboard Builder</h3>
+                    <p>Beautiful charts, KPIs, and analytics for your kintone apps. Real-time updates, customizable widgets, and interactive visualizations to make data-driven decisions.</p>
+                    <span class="plugin-badge coming">Coming Soon</span>
+                </div>
+                <div class="plugin-card">
+                    <div class="icon">⚡</div>
+                    <h3>Workflow Automation</h3>
+                    <p>Automate repetitive tasks with powerful triggers and actions. Connect apps, send notifications, update records, and streamline business processes without code.</p>
+                    <span class="plugin-badge coming">Coming Soon</span>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer class="footer">
-        <div class="footer-logo">
-            <div class="logo-icon">
-                <div class="dot" style="background: var(--kp-blue);"></div>
-                <div class="dot" style="background: var(--kp-teal);"></div>
-                <div class="dot" style="background: var(--kp-gold);"></div>
-                <div class="dot" style="background: var(--kp-blue);"></div>
-            </div>
-            <span class="logo-text">
-                <span class="kin" style="color: var(--kp-blue);">Kin</span><span class="plug" style="color: var(--kp-teal);">Plug</span>
-            </span>
-        </div>
         <div class="footer-links">
             <a href="#plugins">Plugins</a>
             <a href="/products/pdf-designer/">PDF Designer</a>
             <a href="mailto:support@kinplug.com">Contact</a>
             <a href="/ja/">日本語</a>
         </div>
-        <p class="footer-copy">
-            © 2026 KinPlug. Built for the <a href="https://kintone.com" target="_blank">kintone</a> ecosystem.
-        </p>
+        <p class="footer-copy">© 2026 KinPlug. Premium plugins for the kintone ecosystem.</p>
     </footer>
-
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
