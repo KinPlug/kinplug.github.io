@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="KinPlug - Premium kintone plugins for dashboards, PDF generation, workflow automation, and API integrations. Plug in. Power up.">
-    <meta name="keywords" content="kintone, plugins, kintone plugin, キントーン, プラグイン, kintone customization, PDF designer">
-    <meta property="og:title" content="KinPlug - Premium kintone Plugins">
-    <meta property="og:description" content="Plug in. Power up. Premium plugins for kintone.">
+    <meta name="description" content="KinPlug - kintone向けプレミアムプラグイン。ダッシュボード、PDF生成、ワークフロー自動化など。つなげる。広がる。">
+    <meta name="keywords" content="kintone, plugins, kintone plugin, キントーン, プラグイン, kintone カスタマイズ, PDF デザイナー">
+    <meta property="og:title" content="KinPlug - kintone向けプレミアムプラグイン">
+    <meta property="og:description" content="つなげる。広がる。kintone向けプレミアムプラグイン。">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://kinplug.com">
-    <title>KinPlug - Premium kintone Plugins</title>
+    <meta property="og:url" content="https://kinplug.com/ja/">
+    <title>KinPlug - kintone向けプレミアムプラグイン</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -31,9 +31,9 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Outfit', 'Noto Sans JP', sans-serif;
+            font-family: 'Noto Sans JP', 'Outfit', sans-serif;
             color: var(--kp-navy);
-            line-height: 1.6;
+            line-height: 1.8;
             background: var(--kp-white);
             overflow-x: hidden;
         }
@@ -237,11 +237,10 @@
         }
 
         .hero-title {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 800;
-            line-height: 1.1;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.3;
             margin-bottom: 16px;
-            letter-spacing: -1px;
             animation: fadeInUp 0.6s ease-out 0.1s both;
         }
 
@@ -253,19 +252,20 @@
         }
 
         .hero-tagline {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             font-weight: 600;
-            color: var(--kp-slate);
+            color: var(--kp-navy);
             margin-bottom: 8px;
             animation: fadeInUp 0.6s ease-out 0.2s both;
         }
 
-        .hero-tagline-jp {
+        .hero-tagline-en {
             font-size: 1rem;
             color: var(--kp-slate);
             opacity: 0.8;
             margin-bottom: 32px;
             animation: fadeInUp 0.6s ease-out 0.25s both;
+            font-family: 'Outfit', sans-serif;
         }
 
         .hero-description {
@@ -402,16 +402,13 @@
             font-weight: 600;
             margin-bottom: 12px;
             color: var(--kp-navy);
-            display: flex;
-            align-items: center;
-            gap: 12px;
         }
 
         .feature-card p {
             font-size: 0.95rem;
             color: var(--kp-slate);
             margin-bottom: 16px;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         .feature-badge {
@@ -515,7 +512,7 @@
         </div>
 
         <nav class="nav">
-            <a href="/" class="logo">
+            <a href="/ja/" class="logo">
                 <div class="logo-icon">
                     <div class="dot"></div>
                     <div class="dot"></div>
@@ -527,63 +524,63 @@
                 </span>
             </a>
             <div class="nav-links">
-                <a href="#plugins">Plugins</a>
-                <a href="/products/pdf-designer/">PDF Designer</a>
+                <a href="#plugins">プラグイン</a>
+                <a href="/ja/products/pdf-designer/">PDF Designer</a>
                 <div class="lang-switch">
-                    <a href="/" class="active">EN</a>
-                    <a href="/ja/">日本語</a>
+                    <a href="/">EN</a>
+                    <a href="/ja/" class="active">日本語</a>
                 </div>
-                <a href="/products/pdf-designer/" class="cta-btn">Get Started</a>
+                <a href="/ja/products/pdf-designer/" class="cta-btn">今すぐ始める</a>
             </div>
         </nav>
 
         <div class="hero-content">
             <div class="badge">
-                <span>PDF Designer Now Available!</span>
+                <span>PDF Designer 提供開始！</span>
             </div>
             <h1 class="hero-title">
-                Premium Plugins for<br>
-                <span class="gradient-text">kintone</span>
+                <span class="gradient-text">kintone</span>向け<br>
+                プレミアムプラグイン
             </h1>
-            <p class="hero-tagline">Plug in. Power up.</p>
-            <p class="hero-tagline-jp">つなげる。広がる。</p>
+            <p class="hero-tagline">つなげる。広がる。</p>
+            <p class="hero-tagline-en">Plug in. Power up.</p>
             <p class="hero-description">
-                High-quality plugins for dashboards, PDF generation, workflow automation, and more. Built by developers, for developers.
+                ダッシュボード、PDF生成、ワークフロー自動化など、高品質なプラグインを提供。開発者による、開発者のためのツール。
             </p>
 
             <div class="hero-buttons">
-                <a href="/products/pdf-designer/" class="btn btn-primary">
-                    <span>📄</span> Try PDF Designer
+                <a href="/ja/products/pdf-designer/" class="btn btn-primary">
+                    <span>📄</span> PDF Designerを試す
                 </a>
                 <a href="#plugins" class="btn btn-secondary">
-                    View All Plugins
+                    すべてのプラグイン
                 </a>
             </div>
         </div>
     </section>
 
     <section class="features-preview" id="plugins">
-        <h2>Our Plugins</h2>
-        <p class="subtitle">Extend kintone with powerful, easy-to-use plugins</p>
+        <h2>プラグイン一覧</h2>
+        <p class="subtitle">パワフルで使いやすいプラグインでkintoneを拡張</p>
         <div class="features-grid">
-            <a href="/products/pdf-designer/" class="feature-card available">
+            <a href="/ja/products/pdf-designer/" class="feature-card available">
                 <div class="feature-icon">📄</div>
                 <h3>PDF Designer</h3>
-                <p>Design beautiful PDF templates with a visual grid editor. Generate professional invoices, reports, and documents directly from your kintone records.</p>
-                <span class="feature-badge available-now">✓ Available Now</span>
-                <div class="learn-more">Learn more <span>→</span></div>
+                <p>ビジュアルグリッドエディタで美しいPDFテンプレートをデザイン。請求書、レポート、各種ドキュメントをkintoneレコードから直接生成できます。</p>
+                <span class="feature-badge available-now">✓ 提供中</span>
+                <div class="learn-more">詳しく見る <span>→</span></div>
             </a>
             <div class="feature-card">
                 <div class="feature-icon">📊</div>
                 <h3>Dashboard Builder</h3>
-                <p>Beautiful charts and KPIs for your kintone apps. Real-time updates, customizable widgets, and interactive visualizations.</p>
-                <span class="feature-badge coming-soon">Coming Soon</span>
+                <p>kintoneアプリ向けの美しいチャートとKPI。リアルタイム更新、カスタマイズ可能なウィジェット、インタラクティブな可視化機能。</p>
+                <span class="feature-badge coming-soon">近日公開</span>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">⚡</div>
                 <h3>Workflow Automation</h3>
-                <p>Automate repetitive tasks with powerful triggers and actions. Connect apps, send notifications, and streamline processes.</p>
-                <span class="feature-badge coming-soon">Coming Soon</span>
+                <p>強力なトリガーとアクションで繰り返し作業を自動化。アプリの連携、通知の送信、プロセスの効率化を実現。</p>
+                <span class="feature-badge coming-soon">近日公開</span>
             </div>
         </div>
     </section>
@@ -601,13 +598,13 @@
             </span>
         </div>
         <div class="footer-links">
-            <a href="#plugins">Plugins</a>
-            <a href="/products/pdf-designer/">PDF Designer</a>
-            <a href="mailto:support@kinplug.com">Contact</a>
-            <a href="/ja/">日本語</a>
+            <a href="#plugins">プラグイン</a>
+            <a href="/ja/products/pdf-designer/">PDF Designer</a>
+            <a href="mailto:support@kinplug.com">お問い合わせ</a>
+            <a href="/">English</a>
         </div>
         <p class="footer-copy">
-            © 2026 KinPlug. Built for the <a href="https://kintone.com" target="_blank">kintone</a> ecosystem.
+            © 2026 KinPlug. <a href="https://kintone.com" target="_blank">kintone</a>エコシステム向けに開発。
         </p>
     </footer>
 
