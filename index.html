@@ -18,6 +18,11 @@
     <link rel="alternate" hreflang="en" href="https://kinplug.com/">
     <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/">
     <link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"Organization","name":"KinPlug","url":"https://kinplug.com","description":"Premium plugins for kintone","sameAs":[],"offers":{"@type":"AggregateOffer","offerCount":"3","lowPrice":"0","highPrice":"99","priceCurrency":"USD"}}
     </script>
@@ -25,85 +30,631 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root{--kp-primary:#0EA5E9;--kp-secondary:#14B8A6;--kp-accent:#F59E0B;--kp-success:#10B981;--kp-navy:#0F172A;--kp-slate:#475569;--kp-light:#F1F5F9;--kp-lighter:#F8FAFC;--kp-white:#FFFFFF;--kp-border:#E2E8F0;--gradient-primary:linear-gradient(135deg,var(--kp-primary) 0%,var(--kp-secondary) 100%)}
-        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-        body{font-family:'Inter',-apple-system,sans-serif;color:var(--kp-navy);line-height:1.6;background:var(--kp-white)}
-        .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 48px;background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--kp-border);position:sticky;top:0;z-index:1000}
-        .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-        .logo-icon{display:grid;grid-template-columns:repeat(2,1fr);gap:3px}
-        .logo-icon .dot{width:12px;height:12px;border-radius:3px}
-        .logo-icon .dot:nth-child(1){background:var(--kp-primary)}.logo-icon .dot:nth-child(2){background:var(--kp-secondary)}.logo-icon .dot:nth-child(3){background:var(--kp-accent)}.logo-icon .dot:nth-child(4){background:var(--kp-primary)}
-        .logo-text{font-size:1.35rem;font-weight:700}.logo-text .kin{color:var(--kp-primary)}.logo-text .plug{color:var(--kp-secondary)}
-        .nav-links{display:flex;align-items:center;gap:24px}
-        .nav-links a{color:var(--kp-slate);text-decoration:none;font-weight:500;font-size:0.9rem;transition:color 0.2s}.nav-links a:hover{color:var(--kp-primary)}
-        .lang-switch{display:flex;background:var(--kp-light);border-radius:20px;padding:3px;font-size:0.8rem}
-        .lang-switch a{padding:5px 10px;border-radius:16px}.lang-switch a.active{background:var(--kp-white);color:var(--kp-navy)!important;box-shadow:0 1px 2px rgba(0,0,0,0.05)}
-        .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;font-size:0.95rem;font-weight:600;border:none;border-radius:10px;cursor:pointer;text-decoration:none;transition:all 0.2s}
-        .btn-primary{color:var(--kp-white);background:var(--gradient-primary);box-shadow:0 2px 8px rgba(14,165,233,0.3)}
-        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(14,165,233,0.35)}
-        .btn-secondary{color:var(--kp-navy);background:var(--kp-white);border:1.5px solid var(--kp-border)}
-        .btn-secondary:hover{border-color:var(--kp-primary);color:var(--kp-primary)}
-        .hero{min-height:90vh;background:linear-gradient(180deg,var(--kp-lighter) 0%,var(--kp-white) 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 24px;position:relative;overflow:hidden}
-        .hero::before{content:'';position:absolute;top:-50%;right:-20%;width:80%;height:150%;background:radial-gradient(ellipse,rgba(14,165,233,0.08) 0%,transparent 70%);pointer-events:none}
-        .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);border-radius:100px;font-size:0.85rem;font-weight:600;color:var(--kp-success);margin-bottom:24px}
-        .hero-badge::before{content:'';width:8px;height:8px;background:var(--kp-success);border-radius:50%;animation:pulse 2s infinite}
-        @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
-        .hero h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:800;line-height:1.1;margin-bottom:20px;letter-spacing:-1px}
-        .hero h1 .gradient{background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .hero .tagline{font-size:1.25rem;font-weight:600;color:var(--kp-slate);margin-bottom:8px}
-        .hero .tagline-jp{font-size:1rem;color:var(--kp-slate);opacity:0.8;margin-bottom:32px}
-        .hero .subtitle{font-size:1.1rem;color:var(--kp-slate);max-width:560px;margin-bottom:40px}
-        .hero-buttons{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
-        .plugins{padding:100px 48px;background:var(--kp-white)}
-        .section-header{text-align:center;margin-bottom:56px}
-        .section-header .overline{font-size:0.8rem;font-weight:600;color:var(--kp-primary);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
-        .section-header h2{font-size:2rem;font-weight:700;margin-bottom:12px}
-        .section-header p{color:var(--kp-slate);font-size:1.05rem;max-width:550px;margin:0 auto}
-        .plugins-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;max-width:1100px;margin:0 auto}
-        .plugin-card{background:var(--kp-lighter);border-radius:16px;padding:32px;border:1px solid var(--kp-border);transition:all 0.3s;text-decoration:none;color:inherit;display:block}
-        .plugin-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(14,165,233,0.1);border-color:transparent}
-        .plugin-card.available{border-color:rgba(16,185,129,0.3);background:linear-gradient(135deg,rgba(16,185,129,0.05) 0%,var(--kp-lighter) 100%)}
-        .plugin-card.available:hover{border-color:var(--kp-success);box-shadow:0 12px 32px rgba(16,185,129,0.15)}
-        .plugin-card .icon{width:56px;height:56px;background:var(--gradient-primary);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:20px}
-        .plugin-card.available .icon{background:linear-gradient(135deg,var(--kp-success) 0%,var(--kp-secondary) 100%)}
-        .plugin-card h3{font-size:1.25rem;font-weight:600;margin-bottom:12px}
-        .plugin-card p{font-size:0.95rem;color:var(--kp-slate);line-height:1.6;margin-bottom:16px}
-        .plugin-badge{display:inline-block;padding:6px 12px;font-size:0.75rem;font-weight:600;border-radius:6px}
-        .plugin-badge.available{background:rgba(16,185,129,0.15);color:var(--kp-success)}
-        .plugin-badge.coming{background:rgba(245,158,11,0.15);color:#D97706}
-        .plugin-card .learn-more{display:inline-flex;align-items:center;gap:6px;color:var(--kp-primary);font-weight:500;font-size:0.9rem;margin-top:8px}
-        .plugin-card:hover .learn-more{gap:10px}
-        .footer{padding:48px;background:var(--kp-navy);color:white;text-align:center}
-        .footer-links{display:flex;justify-content:center;gap:32px;margin-bottom:24px;flex-wrap:wrap}
-        .footer-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.9rem}.footer-links a:hover{color:white}
-        .footer-copy{font-size:0.85rem;color:rgba(255,255,255,0.5)}
-        @media(max-width:768px){.nav{padding:12px 20px}.nav-links a:not(.lang-switch):not(.btn){display:none}.hero{padding:60px 20px;min-height:auto}.hero h1{font-size:2rem}.hero-buttons{flex-direction:column;align-items:center}.btn{width:100%;max-width:280px;justify-content:center}.plugins{padding:60px 20px}.footer{padding:32px 20px}.footer-links{flex-direction:column;gap:12px}}
+        :root {
+            /* Refined Color Palette - Cleaner, more professional */
+            --kp-primary: #2563EB;
+            --kp-primary-light: #3B82F6;
+            --kp-primary-dark: #1D4ED8;
+            --kp-secondary: #0EA5E9;
+            --kp-success: #10B981;
+            --kp-success-light: #34D399;
+            --kp-navy: #0F172A;
+            --kp-slate: #475569;
+            --kp-gray: #64748B;
+            --kp-light: #F1F5F9;
+            --kp-lighter: #F8FAFC;
+            --kp-white: #FFFFFF;
+            --kp-border: #E2E8F0;
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, var(--kp-primary) 0%, var(--kp-secondary) 100%);
+            --gradient-dark: linear-gradient(135deg, var(--kp-navy) 0%, #1E293B 100%);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--kp-navy);
+            line-height: 1.6;
+            background: var(--kp-white);
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 48px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--kp-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        /* New Logo Design */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            position: relative;
+        }
+        
+        .logo-mark svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-text .kin {
+            color: var(--kp-primary);
+        }
+        
+        .logo-text .plug {
+            color: var(--kp-navy);
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        .nav-links a {
+            color: var(--kp-slate);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--kp-primary);
+        }
+        
+        .lang-switch {
+            display: flex;
+            background: var(--kp-light);
+            border-radius: 20px;
+            padding: 4px;
+            font-size: 0.85rem;
+        }
+        
+        .lang-switch a {
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-weight: 500;
+        }
+        
+        .lang-switch a.active {
+            background: var(--kp-white);
+            color: var(--kp-navy) !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        
+        .btn-primary {
+            color: var(--kp-white);
+            background: var(--kp-primary);
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+        }
+        
+        .btn-primary:hover {
+            background: var(--kp-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+        
+        .btn-secondary {
+            color: var(--kp-navy);
+            background: var(--kp-white);
+            border: 2px solid var(--kp-border);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--kp-primary);
+            color: var(--kp-primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 24px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, var(--kp-lighter) 0%, var(--kp-white) 100%);
+        }
+        
+        /* Animated background elements */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -15%;
+            width: 60%;
+            height: 120%;
+            background: radial-gradient(ellipse, rgba(37, 99, 235, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            animation: float 15s ease-in-out infinite;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(ellipse, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            animation: float 18s ease-in-out infinite reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(20px, -20px) rotate(2deg); }
+            66% { transform: translate(-10px, 10px) rotate(-1deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--kp-success);
+            margin-bottom: 32px;
+            animation: fadeInUp 0.6s ease;
+        }
+        
+        .hero-badge .pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--kp-success);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.75rem, 6vw, 4.25rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+            animation: fadeInUp 0.6s ease 0.1s both;
+        }
+        
+        .hero h1 .gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero .tagline {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--kp-navy);
+            margin-bottom: 8px;
+            animation: fadeInUp 0.6s ease 0.2s both;
+        }
+        
+        .hero .tagline-jp {
+            font-size: 1.1rem;
+            color: var(--kp-gray);
+            margin-bottom: 28px;
+            animation: fadeInUp 0.6s ease 0.25s both;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.15rem;
+            color: var(--kp-slate);
+            max-width: 580px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+            animation: fadeInUp 0.6s ease 0.3s both;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 0.6s ease 0.4s both;
+        }
+        
+        /* Plugins Section */
+        .plugins {
+            padding: 120px 48px;
+            background: var(--kp-white);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        
+        .section-header .overline {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--kp-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            padding: 8px 16px;
+            background: rgba(37, 99, 235, 0.08);
+            border-radius: 20px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        
+        .section-header p {
+            color: var(--kp-slate);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .plugins-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 28px;
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+        
+        .plugin-card {
+            background: var(--kp-white);
+            border-radius: 20px;
+            padding: 36px;
+            border: 1px solid var(--kp-border);
+            transition: all 0.35s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .plugin-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--kp-border);
+            transition: background 0.35s ease;
+        }
+        
+        .plugin-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
+            border-color: transparent;
+        }
+        
+        .plugin-card.available::before {
+            background: var(--gradient-primary);
+        }
+        
+        .plugin-card.available {
+            border-color: rgba(37, 99, 235, 0.15);
+        }
+        
+        .plugin-card.available:hover {
+            box-shadow: 0 20px 50px rgba(37, 99, 235, 0.15);
+        }
+        
+        .plugin-card .icon {
+            width: 64px;
+            height: 64px;
+            background: var(--kp-light);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            transition: all 0.35s ease;
+        }
+        
+        .plugin-card .icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--kp-slate);
+            stroke-width: 1.5;
+            fill: none;
+            transition: stroke 0.35s ease;
+        }
+        
+        .plugin-card.available .icon {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%);
+        }
+        
+        .plugin-card.available .icon svg {
+            stroke: var(--kp-primary);
+        }
+        
+        .plugin-card:hover .icon {
+            transform: scale(1.05);
+        }
+        
+        .plugin-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            letter-spacing: -0.3px;
+        }
+        
+        .plugin-card p {
+            font-size: 0.95rem;
+            color: var(--kp-slate);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .plugin-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+        
+        .plugin-badge.available {
+            background: rgba(16, 185, 129, 0.12);
+            color: var(--kp-success);
+        }
+        
+        .plugin-badge.coming {
+            background: rgba(100, 116, 139, 0.1);
+            color: var(--kp-gray);
+        }
+        
+        .plugin-card .learn-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--kp-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 16px;
+            transition: gap 0.25s ease;
+        }
+        
+        .plugin-card:hover .learn-more {
+            gap: 10px;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 60px 48px;
+            background: var(--kp-navy);
+            color: white;
+        }
+        
+        .footer-content {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .footer-logo svg {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .footer-logo span {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 36px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-copy {
+            width: 100%;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 14px 20px;
+            }
+            
+            .nav-links a:not(.lang-switch):not(.btn) {
+                display: none;
+            }
+            
+            .hero {
+                padding: 60px 24px;
+                min-height: auto;
+            }
+            
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .plugins {
+                padding: 80px 20px;
+            }
+            
+            .plugins-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer {
+                padding: 48px 24px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
     <nav class="nav">
         <a href="/" class="logo">
-            <div class="logo-icon"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <!-- New Logo: Stylized plug/connection mark -->
+            <div class="logo-mark">
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Plug prongs -->
+                    <rect x="10" y="4" width="6" height="14" rx="2" fill="#2563EB"/>
+                    <rect x="24" y="4" width="6" height="14" rx="2" fill="#2563EB"/>
+                    <!-- Plug body -->
+                    <rect x="6" y="16" width="28" height="12" rx="4" fill="#2563EB"/>
+                    <!-- Connection cable -->
+                    <rect x="16" y="28" width="8" height="8" rx="2" fill="#10B981"/>
+                    <!-- Power indicator dot -->
+                    <circle cx="20" cy="22" r="3" fill="white"/>
+                </svg>
+            </div>
             <span class="logo-text"><span class="kin">Kin</span><span class="plug">Plug</span></span>
         </a>
         <div class="nav-links">
             <a href="#plugins">Plugins</a>
             <a href="/products/pdf-designer/">PDF Designer</a>
-            <div class="lang-switch"><a href="/" class="active">EN</a><a href="/ja/">JP</a></div>
+            <div class="lang-switch">
+                <a href="/" class="active">EN</a>
+                <a href="/ja/">JP</a>
+            </div>
             <a href="/products/pdf-designer/" class="btn btn-primary">Get Started</a>
         </div>
     </nav>
 
     <main>
         <section class="hero">
-            <div class="hero-badge">PDF Designer Now Available!</div>
-            <h1>Premium Plugins for<br><span class="gradient">kintone</span></h1>
-            <p class="tagline">Plug in. Power up.</p>
-            <p class="tagline-jp">つなげる。広がる。</p>
-            <p class="subtitle">High-quality plugins for PDF generation, dashboards, and workflow automation. Built by kintone developers, for kintone developers.</p>
-            <div class="hero-buttons">
-                <a href="/products/pdf-designer/" class="btn btn-primary">📄 Try PDF Designer</a>
-                <a href="#plugins" class="btn btn-secondary">View All Plugins</a>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="pulse"></span>
+                    PDF Designer Now Available
+                </div>
+                <h1>Premium Plugins for<br><span class="gradient">kintone</span></h1>
+                <p class="tagline">Plug in. Power up.</p>
+                <p class="tagline-jp">差し込む。パワーアップ。</p>
+                <p class="subtitle">High-quality plugins for PDF generation, dashboards, and workflow automation. Built by kintone developers, for kintone developers.</p>
+                <div class="hero-buttons">
+                    <a href="/products/pdf-designer/" class="btn btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                        Try PDF Designer
+                    </a>
+                    <a href="#plugins" class="btn btn-secondary">View All Plugins</a>
+                </div>
             </div>
         </section>
 
@@ -115,20 +666,46 @@
             </div>
             <div class="plugins-grid">
                 <a href="/products/pdf-designer/" class="plugin-card available">
-                    <div class="icon">📄</div>
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
                     <h3>PDF Designer</h3>
                     <p>Design beautiful PDF templates with a visual grid editor. Generate invoices, quotes, reports, and any business document directly from kintone records. Auto-pagination, subtable support, repeating headers included.</p>
-                    <span class="plugin-badge available">✓ Available Now</span>
+                    <span class="plugin-badge available">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        Available Now
+                    </span>
                     <div class="learn-more">Learn more <span>→</span></div>
                 </a>
+                
                 <div class="plugin-card">
-                    <div class="icon">📊</div>
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <line x1="18" y1="20" x2="18" y2="10"/>
+                            <line x1="12" y1="20" x2="12" y2="4"/>
+                            <line x1="6" y1="20" x2="6" y2="14"/>
+                            <line x1="3" y1="20" x2="21" y2="20"/>
+                        </svg>
+                    </div>
                     <h3>Dashboard Builder</h3>
                     <p>Beautiful charts, KPIs, and analytics for your kintone apps. Real-time updates, customizable widgets, and interactive visualizations to make data-driven decisions.</p>
                     <span class="plugin-badge coming">Coming Soon</span>
                 </div>
+                
                 <div class="plugin-card">
-                    <div class="icon">⚡</div>
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
                     <h3>Workflow Automation</h3>
                     <p>Automate repetitive tasks with powerful triggers and actions. Connect apps, send notifications, update records, and streamline business processes without code.</p>
                     <span class="plugin-badge coming">Coming Soon</span>
@@ -138,13 +715,25 @@
     </main>
 
     <footer class="footer">
-        <div class="footer-links">
-            <a href="#plugins">Plugins</a>
-            <a href="/products/pdf-designer/">PDF Designer</a>
-            <a href="mailto:support@kinplug.com">Contact</a>
-            <a href="/ja/">日本語</a>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="4" width="6" height="14" rx="2" fill="white"/>
+                    <rect x="24" y="4" width="6" height="14" rx="2" fill="white"/>
+                    <rect x="6" y="16" width="28" height="12" rx="4" fill="white"/>
+                    <rect x="16" y="28" width="8" height="8" rx="2" fill="#10B981"/>
+                    <circle cx="20" cy="22" r="3" fill="#0F172A"/>
+                </svg>
+                <span>KinPlug</span>
+            </div>
+            <div class="footer-links">
+                <a href="#plugins">Plugins</a>
+                <a href="/products/pdf-designer/">PDF Designer</a>
+                <a href="mailto:support@kinplug.com">Contact</a>
+                <a href="/ja/">日本語</a>
+            </div>
+            <p class="footer-copy">© 2026 KinPlug. Premium plugins for the kintone ecosystem.</p>
         </div>
-        <p class="footer-copy">© 2026 KinPlug. Premium plugins for the kintone ecosystem.</p>
     </footer>
 </body>
 </html>
