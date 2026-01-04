@@ -3,18 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KinPlug | Premium kintone Plugins - PDF Generator, Dashboard Builder & More</title>
-    <meta name="description" content="Premium plugins for kintone. PDF Designer for invoices and reports, Dashboard Builder for analytics, Workflow Automation. Built by developers, for developers. Start your free trial.">
-    <meta name="keywords" content="kintone plugins, kintone PDF, kintone dashboard, kintone customization, kintone invoice, kintone report, cybozu kintone">
+    <title>KinPlug | kintone Plugins for PDF Generation, Dashboards & Automation</title>
+    <meta name="description" content="Extend kintone with premium plugins. Generate PDF invoices and reports, build dashboards, automate workflows. No coding required. Free 30-day trial available.">
+    <meta name="keywords" content="kintone plugins, kintone PDF generator, kintone invoice plugin, kintone dashboard, kintone automation, kintone customization, cybozu kintone plugins, kintone reporting">
     <meta name="author" content="KinPlug">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://kinplug.com/">
+    
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://kinplug.com/">
-    <meta property="og:title" content="KinPlug | Premium kintone Plugins">
-    <meta property="og:description" content="Premium plugins for kintone — PDF Designer, Dashboard Builder, Workflow Automation. Start free trial.">
+    <meta property="og:title" content="KinPlug | kintone Plugins for PDF, Dashboards & Automation">
+    <meta property="og:description" content="Premium kintone plugins for PDF generation, dashboards, and workflow automation. Start your free 30-day trial today.">
     <meta property="og:site_name" content="KinPlug">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KinPlug | Premium kintone Plugins">
+    <meta name="twitter:description" content="Generate PDFs, build dashboards, automate workflows in kintone. Free trial available.">
+    
+    <!-- Language Alternates -->
     <link rel="alternate" hreflang="en" href="https://kinplug.com/">
     <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/">
     <link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
@@ -23,15 +32,35 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     
+    <!-- Structured Data -->
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Organization","name":"KinPlug","url":"https://kinplug.com","description":"Premium plugins for kintone","sameAs":[],"offers":{"@type":"AggregateOffer","offerCount":"3","lowPrice":"0","highPrice":"99","priceCurrency":"USD"}}
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "KinPlug",
+        "url": "https://kinplug.com",
+        "logo": "https://kinplug.com/favicon.svg",
+        "description": "Premium plugins for kintone - PDF generation, dashboards, and workflow automation",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "support@kinplug.com",
+            "contactType": "customer support"
+        },
+        "offers": {
+            "@type": "AggregateOffer",
+            "offerCount": "3",
+            "lowPrice": "0",
+            "highPrice": "99",
+            "priceCurrency": "USD"
+        }
+    }
     </script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Refined Color Palette - Cleaner, more professional */
             --kp-primary: #2563EB;
             --kp-primary-light: #3B82F6;
             --kp-primary-dark: #1D4ED8;
@@ -45,10 +74,7 @@
             --kp-lighter: #F8FAFC;
             --kp-white: #FFFFFF;
             --kp-border: #E2E8F0;
-            
-            /* Gradients */
             --gradient-primary: linear-gradient(135deg, var(--kp-primary) 0%, var(--kp-secondary) 100%);
-            --gradient-dark: linear-gradient(135deg, var(--kp-navy) 0%, #1E293B 100%);
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -62,7 +88,6 @@
             -webkit-font-smoothing: antialiased;
         }
         
-        /* Navigation */
         .nav {
             display: flex;
             justify-content: space-between;
@@ -76,7 +101,6 @@
             z-index: 1000;
         }
         
-        /* New Logo Design */
         .logo {
             display: flex;
             align-items: center;
@@ -84,16 +108,8 @@
             text-decoration: none;
         }
         
-        .logo-mark {
-            width: 40px;
-            height: 40px;
-            position: relative;
-        }
-        
-        .logo-mark svg {
-            width: 100%;
-            height: 100%;
-        }
+        .logo-mark { width: 40px; height: 40px; }
+        .logo-mark svg { width: 100%; height: 100%; }
         
         .logo-text {
             font-size: 1.4rem;
@@ -101,13 +117,8 @@
             letter-spacing: -0.5px;
         }
         
-        .logo-text .kin {
-            color: var(--kp-primary);
-        }
-        
-        .logo-text .plug {
-            color: var(--kp-navy);
-        }
+        .logo-text .kin { color: var(--kp-primary); }
+        .logo-text .plug { color: var(--kp-navy); }
         
         .nav-links {
             display: flex;
@@ -123,9 +134,7 @@
             transition: color 0.2s;
         }
         
-        .nav-links a:hover {
-            color: var(--kp-primary);
-        }
+        .nav-links a:hover { color: var(--kp-primary); }
         
         .lang-switch {
             display: flex;
@@ -147,7 +156,6 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.08);
         }
         
-        /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -186,7 +194,6 @@
             color: var(--kp-primary);
         }
         
-        /* Hero Section */
         .hero {
             min-height: 92vh;
             display: flex;
@@ -200,7 +207,6 @@
             background: linear-gradient(180deg, var(--kp-lighter) 0%, var(--kp-white) 100%);
         }
         
-        /* Animated background elements */
         .hero::before {
             content: '';
             position: absolute;
@@ -290,15 +296,8 @@
             font-size: 1.35rem;
             font-weight: 700;
             color: var(--kp-navy);
-            margin-bottom: 8px;
+            margin-bottom: 24px;
             animation: fadeInUp 0.6s ease 0.2s both;
-        }
-        
-        .hero .tagline-jp {
-            font-size: 1.1rem;
-            color: var(--kp-gray);
-            margin-bottom: 28px;
-            animation: fadeInUp 0.6s ease 0.25s both;
         }
         
         .hero .subtitle {
@@ -318,7 +317,6 @@
             animation: fadeInUp 0.6s ease 0.4s both;
         }
         
-        /* Plugins Section */
         .plugins {
             padding: 120px 48px;
             background: var(--kp-white);
@@ -488,7 +486,6 @@
             gap: 10px;
         }
         
-        /* Footer */
         .footer {
             padding: 60px 48px;
             background: var(--kp-navy);
@@ -511,15 +508,8 @@
             gap: 12px;
         }
         
-        .footer-logo svg {
-            width: 32px;
-            height: 32px;
-        }
-        
-        .footer-logo span {
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
+        .footer-logo svg { width: 32px; height: 32px; }
+        .footer-logo span { font-size: 1.2rem; font-weight: 700; }
         
         .footer-links {
             display: flex;
@@ -534,9 +524,7 @@
             transition: color 0.2s;
         }
         
-        .footer-links a:hover {
-            color: white;
-        }
+        .footer-links a:hover { color: white; }
         
         .footer-copy {
             width: 100%;
@@ -548,73 +536,30 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
         
-        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .nav {
-                padding: 14px 20px;
-            }
-            
-            .nav-links a:not(.lang-switch):not(.btn) {
-                display: none;
-            }
-            
-            .hero {
-                padding: 60px 24px;
-                min-height: auto;
-            }
-            
-            .hero h1 {
-                font-size: 2.25rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .plugins {
-                padding: 80px 20px;
-            }
-            
-            .plugins-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer {
-                padding: 48px 24px;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .footer-links {
-                justify-content: center;
-            }
+            .nav { padding: 14px 20px; }
+            .nav-links a:not(.lang-switch):not(.btn) { display: none; }
+            .hero { padding: 60px 24px; min-height: auto; }
+            .hero h1 { font-size: 2.25rem; }
+            .hero-buttons { flex-direction: column; align-items: center; width: 100%; }
+            .btn { width: 100%; max-width: 300px; }
+            .plugins { padding: 80px 20px; }
+            .plugins-grid { grid-template-columns: 1fr; }
+            .footer { padding: 48px 24px; }
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
         }
     </style>
 </head>
 <body>
-    <nav class="nav">
-        <a href="/" class="logo">
-            <!-- New Logo: Stylized plug/connection mark -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <a href="/" class="logo" aria-label="KinPlug Home">
             <div class="logo-mark">
-                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Plug prongs -->
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <rect x="10" y="4" width="6" height="14" rx="2" fill="#2563EB"/>
                     <rect x="24" y="4" width="6" height="14" rx="2" fill="#2563EB"/>
-                    <!-- Plug body -->
                     <rect x="6" y="16" width="28" height="12" rx="4" fill="#2563EB"/>
-                    <!-- Connection cable -->
                     <rect x="16" y="28" width="8" height="8" rx="2" fill="#10B981"/>
-                    <!-- Power indicator dot -->
                     <circle cx="20" cy="22" r="3" fill="white"/>
                 </svg>
             </div>
@@ -623,51 +568,50 @@
         <div class="nav-links">
             <a href="#plugins">Plugins</a>
             <a href="/products/pdf-designer/">PDF Designer</a>
-            <div class="lang-switch">
-                <a href="/" class="active">EN</a>
+            <div class="lang-switch" role="group" aria-label="Language selection">
+                <a href="/" class="active" aria-current="page">EN</a>
                 <a href="/ja/">JP</a>
             </div>
-            <a href="/products/pdf-designer/" class="btn btn-primary">Get Started</a>
+            <a href="/products/pdf-designer/" class="btn btn-primary">Start Free Trial</a>
         </div>
     </nav>
 
     <main>
-        <section class="hero">
+        <section class="hero" aria-labelledby="hero-heading">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="pulse"></span>
-                    PDF Designer Now Available
+                <div class="hero-badge" role="status">
+                    <span class="pulse" aria-hidden="true"></span>
+                    New: PDF Designer Now Available
                 </div>
-                <h1>Premium Plugins for<br><span class="gradient">kintone</span></h1>
+                <h1 id="hero-heading">Powerful Plugins for<br><span class="gradient">kintone</span></h1>
                 <p class="tagline">Plug in. Power up.</p>
-                <p class="tagline-jp">差し込む。パワーアップ。</p>
-                <p class="subtitle">High-quality plugins for PDF generation, dashboards, and workflow automation. Built by kintone developers, for kintone developers.</p>
+                <p class="subtitle">Generate PDF invoices, build real-time dashboards, and automate workflows — all without writing code. Built by kintone developers who understand your needs.</p>
                 <div class="hero-buttons">
                     <a href="/products/pdf-designer/" class="btn btn-primary">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                             <polyline points="14 2 14 8 20 8"/>
                             <line x1="16" y1="13" x2="8" y2="13"/>
                             <line x1="16" y1="17" x2="8" y2="17"/>
                             <polyline points="10 9 9 9 8 9"/>
                         </svg>
-                        Try PDF Designer
+                        Try PDF Designer Free
                     </a>
-                    <a href="#plugins" class="btn btn-secondary">View All Plugins</a>
+                    <a href="#plugins" class="btn btn-secondary">Explore All Plugins</a>
                 </div>
             </div>
         </section>
 
-        <section class="plugins" id="plugins">
-            <div class="section-header">
-                <div class="overline">Our Plugins</div>
-                <h2>Extend kintone with Powerful Plugins</h2>
-                <p>Professional tools designed to solve real business problems</p>
-            </div>
+        <section class="plugins" id="plugins" aria-labelledby="plugins-heading">
+            <header class="section-header">
+                <div class="overline">kintone Plugins</div>
+                <h2 id="plugins-heading">Extend kintone with Professional Plugins</h2>
+                <p>Tools that solve real business problems, built for performance and ease of use</p>
+            </header>
             <div class="plugins-grid">
-                <a href="/products/pdf-designer/" class="plugin-card available">
+                <a href="/products/pdf-designer/" class="plugin-card available" aria-label="Learn more about PDF Designer plugin">
                     <div class="icon">
-                        <svg viewBox="0 0 24 24">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                             <polyline points="14 2 14 8 20 8"/>
                             <line x1="16" y1="13" x2="8" y2="13"/>
@@ -676,19 +620,19 @@
                         </svg>
                     </div>
                     <h3>PDF Designer</h3>
-                    <p>Design beautiful PDF templates with a visual grid editor. Generate invoices, quotes, reports, and any business document directly from kintone records. Auto-pagination, subtable support, repeating headers included.</p>
+                    <p>Create professional invoices, quotes, and reports with our visual template editor. Drag-and-drop field placement, auto-pagination for long tables, and subtable support included. No coding required.</p>
                     <span class="plugin-badge available">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <polyline points="20 6 9 17 4 12"/>
                         </svg>
                         Available Now
                     </span>
-                    <div class="learn-more">Learn more <span>→</span></div>
+                    <div class="learn-more">Start free trial <span aria-hidden="true">→</span></div>
                 </a>
                 
-                <div class="plugin-card">
+                <article class="plugin-card">
                     <div class="icon">
-                        <svg viewBox="0 0 24 24">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
                             <line x1="18" y1="20" x2="18" y2="10"/>
                             <line x1="12" y1="20" x2="12" y2="4"/>
                             <line x1="6" y1="20" x2="6" y2="14"/>
@@ -696,28 +640,28 @@
                         </svg>
                     </div>
                     <h3>Dashboard Builder</h3>
-                    <p>Beautiful charts, KPIs, and analytics for your kintone apps. Real-time updates, customizable widgets, and interactive visualizations to make data-driven decisions.</p>
+                    <p>Visualize your kintone data with interactive charts, KPI widgets, and real-time analytics. Create executive dashboards that update automatically as your data changes.</p>
                     <span class="plugin-badge coming">Coming Soon</span>
-                </div>
+                </article>
                 
-                <div class="plugin-card">
+                <article class="plugin-card">
                     <div class="icon">
-                        <svg viewBox="0 0 24 24">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
                             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
                         </svg>
                     </div>
                     <h3>Workflow Automation</h3>
-                    <p>Automate repetitive tasks with powerful triggers and actions. Connect apps, send notifications, update records, and streamline business processes without code.</p>
+                    <p>Automate repetitive tasks with triggers and actions. Send notifications, sync data between apps, and streamline approvals — all without writing a single line of code.</p>
                     <span class="plugin-badge coming">Coming Soon</span>
-                </div>
+                </article>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="footer-content">
             <div class="footer-logo">
-                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <rect x="10" y="4" width="6" height="14" rx="2" fill="white"/>
                     <rect x="24" y="4" width="6" height="14" rx="2" fill="white"/>
                     <rect x="6" y="16" width="28" height="12" rx="4" fill="white"/>
@@ -726,12 +670,12 @@
                 </svg>
                 <span>KinPlug</span>
             </div>
-            <div class="footer-links">
+            <nav class="footer-links" aria-label="Footer navigation">
                 <a href="#plugins">Plugins</a>
                 <a href="/products/pdf-designer/">PDF Designer</a>
                 <a href="mailto:support@kinplug.com">Contact</a>
                 <a href="/ja/">日本語</a>
-            </div>
+            </nav>
             <p class="footer-copy">© 2026 KinPlug. Premium plugins for the kintone ecosystem.</p>
         </div>
     </footer>
