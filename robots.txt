@@ -1,0 +1,6 @@
+# KinPlug robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://kinplug.com/sitemap.xml
