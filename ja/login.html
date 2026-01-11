@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ログイン | KinPlug</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/ja/" class="logo">Kin<span>Plug</span></a>
+      <div class="nav-links">
+        <a href="/ja/plugins/">プラグイン</a>
+        <a href="/ja/pricing.html">料金</a>
+        <a href="/ja/docs/">ドキュメント</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher"><a href="/login.html">EN</a> | <a href="/ja/login.html" class="active">日本語</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <section style="min-height: calc(100vh - 200px); display: flex; align-items: center; justify-content: center; padding: 40px 20px;">
+    <div style="max-width: 400px; width: 100%; text-align: center;">
+      <h1 style="margin-bottom: 16px;">ログイン</h1>
+      <p style="color: var(--text-secondary); margin-bottom: 32px;">KinPlugアカウントにログインして、ライセンスを管理しましょう。</p>
+      
+      <div id="clerk-auth" style="min-height: 300px; display: flex; align-items: center; justify-content: center;">
+        <div class="loading"><div class="spinner"></div></div>
+      </div>
+
+      <p style="margin-top: 24px; color: var(--text-muted); font-size: 0.9rem;">
+        アカウントをお持ちでない場合は、<a href="#" onclick="KinPlug.signUp(); return false;">新規登録</a>してください。
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 KinPlug by Edamame Inc.</div>
+        <div><a href="/login.html">English</a> | <a href="/ja/login.html">日本語</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/app.js"></script>
+  <script>
+    // Mount Clerk sign-in component
+    document.addEventListener('DOMContentLoaded', function() {
+      const checkClerk = setInterval(function() {
+        if (window.Clerk && window.Clerk.loaded) {
+          clearInterval(checkClerk);
+          
+          // If already signed in, redirect to dashboard
+          if (window.Clerk.user) {
+            window.location.href = '/ja/dashboard.html';
+            return;
+          }
+          
+          // Mount sign-in
+          const container = document.getElementById('clerk-auth');
+          container.innerHTML = '';
+          window.Clerk.mountSignIn(container, {
+            afterSignInUrl: '/ja/dashboard.html',
+            afterSignUpUrl: '/ja/dashboard.html',
+            signUpUrl: '/ja/login.html'
+          });
+        }
+      }, 100);
+      
+      // Timeout after 5 seconds
+      setTimeout(function() {
+        clearInterval(checkClerk);
+        const container = document.getElementById('clerk-auth');
+        if (container.querySelector('.spinner')) {
+          container.innerHTML = '<div style="padding: 20px;"><p>読み込みに時間がかかっています。</p><button class="btn btn-primary" onclick="location.reload()">再読み込み</button></div>';
+        }
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
