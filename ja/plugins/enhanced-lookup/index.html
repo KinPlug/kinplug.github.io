@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>kintone高機能ルックアッププラグイン | インスタント検索・複数フィールドマッピング | KinPlug</title>
-  <meta name="description" content="kintoneのルックアップを強化。入力中にリアルタイム検索、複数フィールドを一括マッピング、サブテーブル対応。14日間無料トライアル。">
-  <meta name="keywords" content="kintone ルックアップ, kintone 検索, kintone ルックアッププラグイン, kintone フィールドマッピング, kintone サブテーブル">
+  <title>Enhanced Lookup - kintoneルックアップの「惜しい」を解消 | KinPlug</title>
+  <meta name="description" content="kintone標準ルックアップを大幅強化。インクリメンタル検索、複数フィールド同時コピー、サブテーブル内でも動作。現場の声から生まれたプラグイン。">
   <link rel="canonical" href="https://kinplug.com/ja/plugins/enhanced-lookup/">
   <link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/enhanced-lookup/">
   <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/enhanced-lookup/">
@@ -18,161 +17,127 @@
     <div class="container">
       <a href="/ja/" class="logo">Kin<span>Plug</span></a>
       <div class="nav-links">
-        <a href="/ja/plugins/">プラグイン</a>
+        <a href="/ja/plugins/" class="active">プラグイン</a>
         <a href="/ja/pricing.html">料金</a>
         <a href="/ja/docs/">ドキュメント</a>
       </div>
       <div class="nav-right">
-        <div class="lang-switcher"><a href="/plugins/enhanced-lookup/">EN</a> | <a href="/ja/plugins/enhanced-lookup/" class="active">日本語</a></div>
+        <div class="lang-switcher">
+          <a href="/plugins/enhanced-lookup/">EN</a> | <a href="/ja/plugins/enhanced-lookup/" class="active">日本語</a>
+        </div>
         <div class="nav-auth">
           <div id="auth-nav">
-            <button class="btn btn-secondary btn-sm" onclick="KinPlug.signIn()">ログイン</button>
+            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">ログイン</button>
             <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">無料で始める</button>
           </div>
           <div id="user-nav" class="hidden">
-            <a href="/dashboard.html" class="btn btn-secondary btn-sm">ダッシュボード</a>
-            <div class="user-info" onclick="KinPlug.openProfile()">
-              <div id="user-avatar" class="user-avatar">?</div>
-              <span id="user-name">User</span>
-            </div>
+            <a href="/ja/dashboard.html" class="btn btn-secondary btn-sm">ダッシュボード</a>
           </div>
         </div>
       </div>
     </div>
   </nav>
 
-  <section class="plugin-hero">
+  <section class="hero" style="padding: 60px 0 80px;">
     <div class="container">
-      <div class="plugin-hero-content">
-        <div class="plugin-hero-text">
-          <div class="breadcrumb"><a href="/ja/">ホーム</a> → <a href="/ja/plugins/">プラグイン</a> → Enhanced Lookup</div>
-          <h1>kintoneルックアップを<br>劇的に強化</h1>
-          <p class="hero-subtitle">入力中にリアルタイム検索、複数フィールドを一括マッピング、サブテーブル内でも使用可能。ルックアップの不便さを解消します。</p>
-          <div class="hero-stats">
-            <div class="hero-stat"><div class="hero-stat-number">14日間</div><div class="hero-stat-label">無料トライアル</div></div>
-            <div class="hero-stat"><div class="hero-stat-number">5分</div><div class="hero-stat-label">導入時間</div></div>
-            <div class="hero-stat"><div class="hero-stat-number">ノーコード</div><div class="hero-stat-label">プログラミング不要</div></div>
-          </div>
-          <div class="hero-buttons">
-            <button class="btn btn-primary btn-lg" onclick="KinPlug.startTrial('enhanced-lookup')">無料トライアル</button>
-            <a href="#features" class="btn btn-outline btn-lg">機能を見る</a>
-          </div>
-          <p class="hero-note">クレジットカード不要・全機能利用可能・いつでもキャンセル</p>
+      <div style="text-align: center; max-width: 800px; margin: 0 auto 48px;">
+        <nav style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 24px;">
+          <a href="/ja/">ホーム</a> / <a href="/ja/plugins/">プラグイン</a> / Enhanced Lookup
+        </nav>
+        <span class="badge badge-success" style="margin-bottom: 16px;">🔍 NEW</span>
+        <h1>「このルックアップ、もうちょっと何とかならない？」<br><span class="text-gradient">なります。</span></h1>
+        <p class="hero-description" style="max-width: 640px; margin: 24px auto;">
+          文字を入力するたびにリアルタイム検索。<br>
+          複数フィールドを一括コピー。<br>
+          サブテーブルの中でもちゃんと動く。<br>
+          標準ルックアップの「惜しい」、全部解消しました。
+        </p>
+        <div class="hero-actions" style="justify-content: center;">
+          <button class="btn btn-primary btn-lg" onclick="KinPlug.startTrial('enhanced-lookup')">14日間無料で試す</button>
+          <a href="#features" class="btn btn-secondary btn-lg">できることを見る</a>
         </div>
-        <div class="plugin-hero-visual">
-          <div class="hero-card">
-            <div class="hero-card-header"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span> Enhanced Lookup</div>
-            <div class="hero-card-body">
-              <div style="background:#f5f5f5;padding:16px;border-radius:8px;">
-                <div style="font-size:0.85rem;color:#666;margin-bottom:8px;">取引先</div>
-                <div style="background:white;border:1px solid #ddd;padding:12px;border-radius:4px;display:flex;align-items:center;gap:8px;">
-                  <span>🔍</span>
-                  <span style="color:#999;">検索...</span>
-                </div>
-                <div style="background:white;border:1px solid var(--primary);border-radius:4px;margin-top:4px;box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-                  <div style="padding:12px;border-bottom:1px solid #eee;">株式会社ABC</div>
-                  <div style="padding:12px;border-bottom:1px solid #eee;background:var(--primary-light);">株式会社ABCホールディングス</div>
-                  <div style="padding:12px;">ABCテクノロジー株式会社</div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <p class="hero-note" style="margin-top: 16px;">クレジットカード不要 • 自動課金なし</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 80px 0; background: var(--bg-subtle);">
+    <div class="container">
+      <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <p style="font-size: 1.375rem; color: var(--text); line-height: 1.9;">
+          「ルックアップ、毎回取得ボタン押すの面倒…」<br>
+          「検索遅いし、候補多すぎて探せない」<br>
+          「サブテーブルの中で使えないの、なんで？」
+        </p>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: 24px;">
+          私たちも毎日そう思ってました。<br>
+          だから<strong>「こうだったらいいのに」を全部実装しました。</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="problems">
+    <div class="container">
+      <div class="section-header"><h2>標準ルックアップの「あるある」</h2></div>
+      <div class="problems-grid">
+        <div class="problem-card">
+          <div class="problem-icon">🐢</div>
+          <h3>検索が遅い・面倒</h3>
+          <p>取得ボタンを押して、一覧から探して、選択して…。1件入力するのに何クリック必要なの。</p>
+          <div class="problem-solution">→ 文字入力でリアルタイム検索</div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">📋</div>
+          <h3>コピーできるフィールドが限られる</h3>
+          <p>顧客名だけじゃなく、住所も電話番号も一緒にコピーしたい。なのに1個ずつ設定…。</p>
+          <div class="problem-solution">→ 複数フィールド一括マッピング</div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">📊</div>
+          <h3>サブテーブルで使えない</h3>
+          <p>明細行で商品マスタを参照したいのに、標準ルックアップはサブテーブル非対応。詰んだ。</p>
+          <div class="problem-solution">→ サブテーブル完全対応</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="plugin-problem">
+  <section class="features" id="features">
     <div class="container">
-      <h2>kintone標準ルックアップの制限</h2>
-      <div class="problem-comparison">
-        <div class="problem-before">
-          <h3>❌ 標準ルックアップ</h3>
-          <ul>
-            <li>ボタンをクリックして検索が必要</li>
-            <li>一度に1つのフィールドしかマッピングできない</li>
-            <li>サブテーブル内では使用不可</li>
-            <li>大量データで遅くなる</li>
-            <li>あいまい検索に非対応</li>
-          </ul>
-        </div>
-        <div class="problem-after">
-          <h3>✅ Enhanced Lookup</h3>
-          <ul>
-            <li>入力中にリアルタイム検索</li>
-            <li>複数フィールドを一括マッピング</li>
-            <li>サブテーブル内でも完璧に動作</li>
-            <li>10万件以上でも高速動作</li>
-            <li>あいまい検索で入力ミスもカバー</li>
-          </ul>
-        </div>
+      <div class="section-header">
+        <h2>Enhanced Lookupでできること</h2>
+        <p>標準ルックアップに欲しかった機能を追加。</p>
       </div>
-    </div>
-  </section>
-
-  <section class="plugin-features" id="features">
-    <div class="container">
-      <h2>機能</h2>
       <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h3>インスタント検索</h3>
-          <p>入力中に結果が表示されます。ボタンクリックやポップアップ待ちは不要です。</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔗</div>
-          <h3>複数フィールドマッピング</h3>
-          <p>顧客を選択すると、住所、電話番号、メールなどを一度に自動入力。</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📊</div>
-          <h3>サブテーブル対応</h3>
-          <p>サブテーブル内でルックアップを使用可能。注文明細行に最適。</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🎯</div>
-          <h3>スマートマッチング</h3>
-          <p>あいまい検索で、タイプミスや部分一致でも結果を表示。</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🚀</div>
-          <h3>高速パフォーマンス</h3>
-          <p>大量データでもスムーズに動作。10万件以上のレコードに対応。</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔧</div>
-          <h3>簡単設定</h3>
-          <p>ビジュアル設定画面でコーディング不要。数分で設定完了。</p>
-        </div>
+        <div class="feature-card"><div class="feature-icon">⚡</div><h3>インクリメンタル検索</h3><p>文字を入力するたびにリアルタイムで候補を絞り込み。ボタンを押す必要なし。</p></div>
+        <div class="feature-card"><div class="feature-icon">📋</div><h3>複数フィールド一括コピー</h3><p>参照元の複数フィールドを一度にコピー。顧客名と一緒に住所も電話番号も。</p></div>
+        <div class="feature-card"><div class="feature-icon">📊</div><h3>サブテーブル対応</h3><p>明細行の中でも完璧に動作。商品マスタ参照、価格自動入力ができます。</p></div>
+        <div class="feature-card"><div class="feature-icon">🎨</div><h3>表示形式カスタマイズ</h3><p>候補リストの表示形式を自由に設定。「商品名 (¥価格)」のような表示も可能。</p></div>
+        <div class="feature-card"><div class="feature-icon">🔒</div><h3>自動フィールドロック</h3><p>コピーされたフィールドを自動で編集不可に。うっかり変更を防止。</p></div>
+        <div class="feature-card"><div class="feature-icon">🚀</div><h3>軽量・高速</h3><p>大量のレコードがあっても快適に検索。ストレスなく使えます。</p></div>
       </div>
     </div>
   </section>
 
-  <section class="plugin-pricing">
+  <section class="pricing">
     <div class="container">
-      <h2>料金</h2>
+      <div class="section-header"><h2>わかりやすい料金</h2></div>
       <div class="pricing-grid">
         <div class="pricing-card">
-          <h3>無料トライアル</h3>
-          <div class="price">¥0</div>
-          <div class="period">14日間</div>
-          <ul><li>✓ 全機能利用可能</li><li>✓ クレジットカード不要</li></ul>
-          <button class="btn btn-outline" onclick="KinPlug.startTrial('enhanced-lookup')">無料で試す</button>
+          <h3>まずは無料で</h3><div class="pricing-price">¥0</div><div class="pricing-period">14日間</div>
+          <ul class="pricing-features"><li>全機能使える</li><li>クレジットカード不要</li><li>メールサポート付き</li></ul>
+          <button class="btn btn-secondary btn-lg" onclick="KinPlug.startTrial('enhanced-lookup')">無料で試す</button>
         </div>
         <div class="pricing-card featured">
-          <div class="pricing-badge">おすすめ</div>
-          <h3>年額プラン</h3>
-          <div class="price">¥29,800<span>/年</span></div>
-          <div class="period">28%お得</div>
-          <ul><li>✓ 全機能利用可能</li><li>✓ 優先サポート</li></ul>
-          <a href="/ja/pricing.html" class="btn btn-primary">申し込む</a>
+          <span class="pricing-badge">年払いがお得</span><h3>年額プラン</h3><div class="pricing-price">¥29,800<span>/年</span></div><div class="pricing-period">月あたり¥2,483</div>
+          <ul class="pricing-features"><li>全機能使える</li><li>優先サポート</li><li>30日間返金保証</li></ul>
+          <a href="mailto:support@kinplug.com?subject=Enhanced Lookup 年額プラン" class="btn btn-primary btn-lg">お問い合わせ</a>
         </div>
         <div class="pricing-card">
-          <h3>月額プラン</h3>
-          <div class="price">¥3,480<span>/月</span></div>
-          <div class="period">いつでも解約可</div>
-          <ul><li>✓ 全機能利用可能</li><li>✓ メールサポート</li></ul>
-          <a href="/ja/pricing.html" class="btn btn-outline">申し込む</a>
+          <h3>月額プラン</h3><div class="pricing-price">¥3,480<span>/月</span></div><div class="pricing-period">いつでも解約OK</div>
+          <ul class="pricing-features"><li>全機能使える</li><li>メールサポート</li><li>アップデート無料</li></ul>
+          <a href="mailto:support@kinplug.com?subject=Enhanced Lookup 月額プラン" class="btn btn-secondary btn-lg">お問い合わせ</a>
         </div>
       </div>
     </div>
@@ -180,48 +145,25 @@
 
   <section class="cta">
     <div class="container">
-      <h2>ルックアップのストレスを解消</h2>
-      <p>14日間無料でお試しください</p>
-      <button class="btn btn-white btn-lg" onclick="KinPlug.startTrial('enhanced-lookup')">無料トライアルを始める →</button>
+      <h2>ルックアップのストレス、<br>解消しませんか？</h2>
+      <p>14日間、全機能を無料で試せます。</p>
+      <div class="cta-actions">
+        <button class="btn btn-white btn-lg" onclick="KinPlug.startTrial('enhanced-lookup')">無料で試してみる</button>
+      </div>
     </div>
   </section>
 
   <footer class="footer">
     <div class="container">
-      <div class="footer-bottom">
-        <div>© 2026 KinPlug by Edamame Inc.</div>
-        <div><a href="/plugins/enhanced-lookup/">English</a> | <a href="/ja/plugins/enhanced-lookup/">日本語</a></div>
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="/ja/" class="logo">Kin<span>Plug</span></a><p style="margin-top: 12px;">kintoneを毎日使うから、わかる。</p></div>
+        <div><h4>プラグイン</h4><ul><li><a href="/ja/plugins/pdf-designer/">PDF Designer</a></li><li><a href="/ja/plugins/enhanced-lookup/">Enhanced Lookup</a></li><li><a href="/ja/plugins/template-builder/">Template Builder</a></li></ul></div>
+        <div><h4>サポート</h4><ul><li><a href="/ja/docs/">使い方ガイド</a></li><li><a href="mailto:support@kinplug.com">お問い合わせ</a></li></ul></div>
+        <div><h4>会社情報</h4><ul><li><a href="/ja/legal/privacy.html">プライバシーポリシー</a></li><li><a href="/ja/legal/terms.html">利用規約</a></li></ul></div>
       </div>
+      <div class="footer-bottom"><div>© 2026 KinPlug by Edamame Inc.</div></div>
     </div>
   </footer>
-
   <script src="/assets/js/app.js"></script>
-  <style>
-    .plugin-hero { padding: 60px 0; background: var(--bg-light); }
-    .plugin-hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .breadcrumb { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 16px; }
-    .breadcrumb a { color: var(--text-muted); }
-    .hero-stats { display: flex; gap: 40px; margin: 32px 0; }
-    .hero-stat-number { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
-    .hero-stat-label { font-size: 0.875rem; color: var(--text-secondary); }
-    .plugin-problem { padding: 80px 0; }
-    .problem-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
-    .problem-before, .problem-after { padding: 32px; border-radius: 12px; }
-    .problem-before { background: #fee; border: 2px solid #fcc; }
-    .problem-after { background: #efe; border: 2px solid #cfc; }
-    .problem-before h3, .problem-after h3 { margin-bottom: 16px; text-align: left; }
-    .problem-before ul, .problem-after ul { list-style: none; }
-    .problem-before li, .problem-after li { padding: 8px 0; }
-    .plugin-features { padding: 80px 0; background: var(--bg-light); }
-    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
-    .feature-card { background: white; padding: 32px; border-radius: 12px; }
-    .feature-icon { font-size: 2rem; margin-bottom: 16px; }
-    .plugin-pricing { padding: 80px 0; background: var(--bg-light); }
-    @media (max-width: 768px) {
-      .plugin-hero-content { grid-template-columns: 1fr; }
-      .problem-comparison { grid-template-columns: 1fr; }
-      .features-grid { grid-template-columns: 1fr; }
-    }
-  </style>
 </body>
 </html>
