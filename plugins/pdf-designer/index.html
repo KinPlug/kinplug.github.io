@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Designer - Stop Copy-Pasting to Excel | KinPlug</title>
+  <meta name="description" content="Generate invoices, quotes, and reports from Kintone with one click. Built by developers who got tired of the Excel copy-paste routine. 14-day free trial.">
+  <link rel="canonical" href="https://kinplug.com/plugins/pdf-designer/">
+  <link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/pdf-designer/">
+  <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/pdf-designer/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="logo">Kin<span>Plug</span></a>
+      <div class="nav-links">
+        <a href="/plugins/" class="active">Plugins</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/docs/">Docs</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <a href="/plugins/pdf-designer/" class="active">EN</a> | <a href="/ja/plugins/pdf-designer/">日本語</a>
+        </div>
+        <div class="nav-auth">
+          <div id="auth-nav">
+            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">Sign In</button>
+            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">Start Free</button>
+          </div>
+          <div id="user-nav" class="hidden">
+            <a href="/dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding: 60px 0 80px;">
+    <div class="container">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto 48px;">
+        <nav style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 24px;">
+          <a href="/">Home</a> / <a href="/plugins/">Plugins</a> / PDF Designer
+        </nav>
+        <span class="badge badge-primary" style="margin-bottom: 16px;">📄 Most Popular Plugin</span>
+        <h1>"Another day, another Excel copy-paste..."<br><span class="text-gradient">Not anymore.</span></h1>
+        <p class="hero-description" style="max-width: 640px; margin: 24px auto;">
+          We did the same thing every day for years.<br>
+          Kintone → Excel → format → save as PDF → attach to email...<br>
+          So we built something better. One click. Done.
+        </p>
+        <div class="hero-actions" style="justify-content: center;">
+          <button class="btn btn-primary btn-lg" onclick="KinPlug.startTrial('pdf-designer')">Start 14-Day Free Trial</button>
+          <a href="#demo" class="btn btn-secondary btn-lg">See How It Works</a>
+        </div>
+        <p class="hero-note" style="margin-top: 16px;">No credit card required • No auto-billing</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 80px 0; background: var(--bg-subtle);">
+    <div class="container">
+      <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <p style="font-size: 1.375rem; color: var(--text); line-height: 1.9;">
+          "Why is Kintone's print feature so... bad?"<br>
+          "I can't send this to clients. It looks terrible."<br>
+          "The Excel export routine is killing me."
+        </p>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: 24px;">
+          We know. We thought the same thing for years.<br>
+          So we <strong>built what we actually needed.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="problems" id="demo">
+    <div class="container">
+      <div class="section-header"><h2>What changes?</h2></div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 900px; margin: 0 auto;">
+        <div style="background: #fef2f2; border: 2px solid #fecaca; border-radius: 16px; padding: 32px;">
+          <h3 style="color: #dc2626; margin-bottom: 20px;">😫 The Old Way</h3>
+          <ul style="list-style: none; color: var(--text-secondary);">
+            <li style="padding: 8px 0;">❌ Copy data from Kintone to Excel</li>
+            <li style="padding: 8px 0;">❌ Format everything manually</li>
+            <li style="padding: 8px 0;">❌ Export as PDF</li>
+            <li style="padding: 8px 0;">❌ 10-15 minutes per document</li>
+          </ul>
+          <div style="margin-top: 20px; padding: 16px; background: white; border-radius: 8px; text-align: center;">
+            <div style="font-size: 2rem; font-weight: 800; color: #dc2626;">20+ hours/month</div>
+            <div style="font-size: 0.875rem; color: var(--text-muted);">wasted</div>
+          </div>
+        </div>
+        <div style="background: #f0fdf4; border: 2px solid #86efac; border-radius: 16px; padding: 32px;">
+          <h3 style="color: #16a34a; margin-bottom: 20px;">✨ With PDF Designer</h3>
+          <ul style="list-style: none; color: var(--text-secondary);">
+            <li style="padding: 8px 0;">✅ Generate PDF directly from Kintone</li>
+            <li style="padding: 8px 0;">✅ Design template once, reuse forever</li>
+            <li style="padding: 8px 0;">✅ One button click</li>
+            <li style="padding: 8px 0;">✅ 3 seconds per document</li>
+          </ul>
+          <div style="margin-top: 20px; padding: 16px; background: white; border-radius: 8px; text-align: center;">
+            <div style="font-size: 2rem; font-weight: 800; color: #16a34a;">30 min/month</div>
+            <div style="font-size: 0.875rem; color: var(--text-muted);">that's it</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Only what you actually need</h2>
+        <p>No bloat. No fluff. Just the features that matter every day.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon">🎨</div><h3>Visual editor</h3><p>Drag and drop with live preview. "That's misaligned" → fixed in 2 seconds.</p></div>
+        <div class="feature-card"><div class="feature-icon">📊</div><h3>Subtables work</h3><p>Line items loop automatically. Pages break smart. Headers repeat.</p></div>
+        <div class="feature-card"><div class="feature-icon">🔢</div><h3>Auto-numbering</h3><p>Sequential invoice numbers, year reset. "Did I use that number?" — never again.</p></div>
+        <div class="feature-card"><div class="feature-icon">📐</div><h3>Pixel-perfect</h3><p>Match your existing Excel templates exactly. Your format, reproduced perfectly.</p></div>
+        <div class="feature-card"><div class="feature-icon">🖼️</div><h3>Logos & stamps</h3><p>Company logo, signature, stamps. Transparent PNG supported.</p></div>
+        <div class="feature-card"><div class="feature-icon">📑</div><h3>Multiple templates</h3><p>Invoice, quote, receipt — same app, switch with one click.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <div class="container">
+      <div class="section-header"><h2>Simple pricing</h2><p>All features included. No gotchas.</p></div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Free Trial</h3><div class="pricing-price">$0</div><div class="pricing-period">14 days</div>
+          <ul class="pricing-features"><li>All features</li><li>No credit card</li><li>Email support</li></ul>
+          <button class="btn btn-secondary btn-lg" onclick="KinPlug.startTrial('pdf-designer')">Start Free</button>
+        </div>
+        <div class="pricing-card featured">
+          <span class="pricing-badge">Best Value</span><h3>Annual</h3><div class="pricing-price">$249<span>/year</span></div><div class="pricing-period">$20.75/mo</div>
+          <ul class="pricing-features"><li>All features</li><li>Priority support</li><li>30-day guarantee</li></ul>
+          <a href="mailto:support@kinplug.com?subject=PDF Designer Annual" class="btn btn-primary btn-lg">Contact Us</a>
+        </div>
+        <div class="pricing-card">
+          <h3>Monthly</h3><div class="pricing-price">$29<span>/mo</span></div><div class="pricing-period">Cancel anytime</div>
+          <ul class="pricing-features"><li>All features</li><li>Email support</li><li>Free updates</li></ul>
+          <a href="mailto:support@kinplug.com?subject=PDF Designer Monthly" class="btn btn-secondary btn-lg">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to ditch the<br>Excel copy-paste routine?</h2>
+      <p>14 days free. All features. No credit card.</p>
+      <div class="cta-actions">
+        <button class="btn btn-white btn-lg" onclick="KinPlug.startTrial('pdf-designer')">Try It Free</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="/" class="logo">Kin<span>Plug</span></a><p style="margin-top: 12px;">We use Kintone every day. We built what we needed.</p></div>
+        <div><h4>Plugins</h4><ul><li><a href="/plugins/pdf-designer/">PDF Designer</a></li><li><a href="/plugins/enhanced-lookup/">Enhanced Lookup</a></li><li><a href="/plugins/template-builder/">Template Builder</a></li></ul></div>
+        <div><h4>Support</h4><ul><li><a href="/docs/">Documentation</a></li><li><a href="mailto:support@kinplug.com">Contact</a></li></ul></div>
+        <div><h4>Company</h4><ul><li><a href="/legal/privacy.html">Privacy</a></li><li><a href="/legal/terms.html">Terms</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><div>© 2026 KinPlug by Edamame Inc.</div></div>
+    </div>
+  </footer>
+  <script src="/assets/js/app.js"></script>
+</body>
+</html>
