@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kintoneテンプレートビルダープラグイン | WYSIWYGドキュメントエディタ | KinPlug</title>
+  <meta name="description" content="kintoneでWord感覚のドキュメントテンプレートを作成。フィールドプレースホルダー、条件付きセクション、PDF/Word出力。14日間無料トライアル。">
+  <meta name="keywords" content="kintone テンプレート, kintone ドキュメント, kintone Word, kintone WYSIWYG, kintone 文書作成">
+  <link rel="canonical" href="https://kinplug.com/ja/plugins/template-builder/">
+  <link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/template-builder/">
+  <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/template-builder/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/ja/" class="logo">Kin<span>Plug</span></a>
+      <div class="nav-links">
+        <a href="/ja/plugins/">プラグイン</a>
+        <a href="/ja/pricing.html">料金</a>
+        <a href="/ja/docs/">ドキュメント</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher"><a href="/plugins/template-builder/">EN</a> | <a href="/ja/plugins/template-builder/" class="active">日本語</a></div>
+        <div class="nav-auth">
+          <div id="auth-nav">
+            <button class="btn btn-secondary btn-sm" onclick="KinPlug.signIn()">ログイン</button>
+            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">無料で始める</button>
+          </div>
+          <div id="user-nav" class="hidden">
+            <a href="/dashboard.html" class="btn btn-secondary btn-sm">ダッシュボード</a>
+            <div class="user-info" onclick="KinPlug.openProfile()">
+              <div id="user-avatar" class="user-avatar">?</div>
+              <span id="user-name">User</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="plugin-hero">
+    <div class="container">
+      <div class="plugin-hero-content">
+        <div class="plugin-hero-text">
+          <div class="breadcrumb"><a href="/ja/">ホーム</a> → <a href="/ja/plugins/">プラグイン</a> → Template Builder</div>
+          <h1>kintoneでWord感覚の<br>テンプレート作成</h1>
+          <p class="hero-subtitle">WYSIWYGエディタでリッチなドキュメントテンプレートを作成。フィールドプレースホルダー、条件付きセクション、PDF/Word出力に対応。</p>
+          <div class="hero-stats">
+            <div class="hero-stat"><div class="hero-stat-number">14日間</div><div class="hero-stat-label">無料トライアル</div></div>
+            <div class="hero-stat"><div class="hero-stat-number">5分</div><div class="hero-stat-label">導入時間</div></div>
+            <div class="hero-stat"><div class="hero-stat-number">ノーコード</div><div class="hero-stat-label">プログラミング不要</div></div>
+          </div>
+          <div class="hero-buttons">
+            <button class="btn btn-primary btn-lg" onclick="KinPlug.startTrial('template-builder')">無料トライアル</button>
+            <a href="#features" class="btn btn-outline btn-lg">機能を見る</a>
+          </div>
+          <p class="hero-note">クレジットカード不要・全機能利用可能・いつでもキャンセル</p>
+        </div>
+        <div class="plugin-hero-visual">
+          <div class="hero-card">
+            <div class="hero-card-header"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span> Template Builder</div>
+            <div class="hero-card-body">
+              <div style="background:white;border:1px solid #ddd;padding:20px;border-radius:8px;font-family:serif;">
+                <div style="text-align:center;font-size:1.2rem;font-weight:bold;margin-bottom:16px;">業務委託契約書</div>
+                <p style="margin-bottom:12px;">本契約は <span style="background:#e3f2fd;padding:2px 6px;border-radius:4px;">{{会社名}}</span> と <span style="background:#e3f2fd;padding:2px 6px;border-radius:4px;">{{日付}}</span> に締結する。</p>
+                <p style="margin-bottom:12px;">住所: <span style="background:#e3f2fd;padding:2px 6px;border-radius:4px;">{{住所}}</span></p>
+                <div style="border-top:1px solid #ddd;padding-top:12px;margin-top:12px;">
+                  <span style="background:#fff3e0;padding:2px 6px;border-radius:4px;font-size:0.85rem;">IF 優良顧客:</span>
+                  <p style="font-style:italic;">特別条項が適用されます...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="plugin-features" id="features">
+    <div class="container">
+      <h2>機能</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">✍️</div>
+          <h3>WYSIWYGエディタ</h3>
+          <p>使い慣れたWord風のインターフェース。太字、斜体、表、画像、見出しなど必要な書式をすべてサポート。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏷️</div>
+          <h3>フィールドプレースホルダー</h3>
+          <p>kintoneフィールドのプレースホルダーをクリックで挿入。ドキュメント生成時に自動入力。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔀</div>
+          <h3>条件付きセクション</h3>
+          <p>フィールド値に基づいてセクションの表示/非表示を制御。シナリオごとに異なるコンテンツ。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>テーブル・サブテーブル</h3>
+          <p>kintoneサブテーブルから自動的に生成されるテーブルを作成。明細行に最適。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📤</div>
+          <h3>出力オプション</h3>
+          <p>PDFまたはWord（.docx）形式でドキュメントを生成。ダウンロードまたはレコードに添付。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📝</div>
+          <h3>複数テンプレート</h3>
+          <p>1つのアプリに複数のテンプレートを作成可能。用途別に異なるドキュメント。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="plugin-pricing">
+    <div class="container">
+      <h2>料金</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>無料トライアル</h3>
+          <div class="price">¥0</div>
+          <div class="period">14日間</div>
+          <ul><li>✓ 全機能利用可能</li><li>✓ クレジットカード不要</li></ul>
+          <button class="btn btn-outline" onclick="KinPlug.startTrial('template-builder')">無料で試す</button>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-badge">おすすめ</div>
+          <h3>年額プラン</h3>
+          <div class="price">¥29,800<span>/年</span></div>
+          <div class="period">28%お得</div>
+          <ul><li>✓ 全機能利用可能</li><li>✓ 優先サポート</li></ul>
+          <a href="/ja/pricing.html" class="btn btn-primary">申し込む</a>
+        </div>
+        <div class="pricing-card">
+          <h3>月額プラン</h3>
+          <div class="price">¥3,480<span>/月</span></div>
+          <div class="period">いつでも解約可</div>
+          <ul><li>✓ 全機能利用可能</li><li>✓ メールサポート</li></ul>
+          <a href="/ja/pricing.html" class="btn btn-outline">申し込む</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>テンプレート作成を始めよう</h2>
+      <p>14日間無料でお試しください</p>
+      <button class="btn btn-white btn-lg" onclick="KinPlug.startTrial('template-builder')">無料トライアルを始める →</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 KinPlug by Edamame Inc.</div>
+        <div><a href="/plugins/template-builder/">English</a> | <a href="/ja/plugins/template-builder/">日本語</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/app.js"></script>
+  <style>
+    .plugin-hero { padding: 60px 0; background: var(--bg-light); }
+    .plugin-hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .breadcrumb { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 16px; }
+    .breadcrumb a { color: var(--text-muted); }
+    .hero-stats { display: flex; gap: 40px; margin: 32px 0; }
+    .hero-stat-number { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
+    .hero-stat-label { font-size: 0.875rem; color: var(--text-secondary); }
+    .plugin-features { padding: 80px 0; background: var(--bg-light); }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+    .feature-card { background: white; padding: 32px; border-radius: 12px; }
+    .feature-icon { font-size: 2rem; margin-bottom: 16px; }
+    .plugin-pricing { padding: 80px 0; background: var(--bg-light); }
+    @media (max-width: 768px) {
+      .plugin-hero-content { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</body>
+</html>
