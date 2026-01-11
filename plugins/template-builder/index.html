@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kintone Template Builder Plugin | WYSIWYG Document Editor | KinPlug</title>
+  <meta name="description" content="Create Word-like document templates in Kintone with WYSIWYG editor. Field placeholders, conditional sections, export to PDF/Word. Free 14-day trial.">
+  <meta name="keywords" content="kintone template, kintone document, kintone word template, kintone wysiwyg, kintone document generator">
+  <link rel="canonical" href="https://kinplug.com/plugins/template-builder/">
+  <link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/template-builder/">
+  <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/template-builder/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="logo">Kin<span>Plug</span></a>
+      <div class="nav-links">
+        <a href="/plugins/">Plugins</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/docs/">Docs</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher"><a href="/plugins/template-builder/" class="active">EN</a> | <a href="/ja/plugins/template-builder/">日本語</a></div>
+        <div class="nav-auth">
+          <div id="auth-nav">
+            <button class="btn btn-secondary btn-sm" onclick="KinPlug.signIn()">Sign In</button>
+            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">Get Started</button>
+          </div>
+          <div id="user-nav" class="hidden">
+            <a href="/dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
+            <div class="user-info" onclick="KinPlug.openProfile()">
+              <div id="user-avatar" class="user-avatar">?</div>
+              <span id="user-name">User</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="plugin-hero">
+    <div class="container">
+      <div class="plugin-hero-content">
+        <div class="plugin-hero-text">
+          <div class="breadcrumb"><a href="/">Home</a> → <a href="/plugins/">Plugins</a> → Template Builder</div>
+          <h1>Word-Like Document Templates for Kintone</h1>
+          <p class="hero-subtitle">WYSIWYG editor to create rich document templates. Insert field placeholders, add conditional sections, and export to PDF or Word format.</p>
+          <div class="hero-stats">
+            <div class="hero-stat"><div class="hero-stat-number">14 Days</div><div class="hero-stat-label">Free Trial</div></div>
+            <div class="hero-stat"><div class="hero-stat-number">5 Min</div><div class="hero-stat-label">Setup</div></div>
+            <div class="hero-stat"><div class="hero-stat-number">No Code</div><div class="hero-stat-label">Required</div></div>
+          </div>
+          <div class="hero-buttons">
+            <button class="btn btn-primary btn-lg" onclick="KinPlug.startTrial('template-builder')">Start Free Trial</button>
+            <a href="#features" class="btn btn-outline btn-lg">See Features</a>
+          </div>
+          <p class="hero-note">No credit card required • Full features • Cancel anytime</p>
+        </div>
+        <div class="plugin-hero-visual">
+          <div class="hero-card">
+            <div class="hero-card-header"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span> Template Builder</div>
+            <div class="hero-card-body">
+              <div style="background:white;border:1px solid #ddd;padding:20px;border-radius:8px;font-family:serif;">
+                <div style="text-align:center;font-size:1.2rem;font-weight:bold;margin-bottom:16px;">SERVICE AGREEMENT</div>
+                <p style="margin-bottom:12px;">This agreement is entered into by <span style="background:#e3f2fd;padding:2px 6px;border-radius:4px;">{{Customer Name}}</span> on <span style="background:#e3f2fd;padding:2px 6px;border-radius:4px;">{{Date}}</span>.</p>
+                <p style="margin-bottom:12px;">Address: <span style="background:#e3f2fd;padding:2px 6px;border-radius:4px;">{{Address}}</span></p>
+                <div style="border-top:1px solid #ddd;padding-top:12px;margin-top:12px;">
+                  <span style="background:#fff3e0;padding:2px 6px;border-radius:4px;font-size:0.85rem;">IF Premium Customer:</span>
+                  <p style="font-style:italic;">Special terms apply...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="plugin-features" id="features">
+    <div class="container">
+      <h2>Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">✍️</div>
+          <h3>WYSIWYG Editor</h3>
+          <p>Familiar Word-like interface. Bold, italic, tables, images, headers - all the formatting you need.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏷️</div>
+          <h3>Field Placeholders</h3>
+          <p>Insert Kintone field placeholders with a click. They auto-fill when generating documents.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔀</div>
+          <h3>Conditional Sections</h3>
+          <p>Show or hide sections based on field values. Different content for different scenarios.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Tables & Subtables</h3>
+          <p>Create tables that auto-populate from Kintone subtables. Perfect for line items.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📤</div>
+          <h3>Export Options</h3>
+          <p>Generate PDF or Word (.docx) documents. Download or attach to record.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📝</div>
+          <h3>Multiple Templates</h3>
+          <p>Create multiple templates per app. Different documents for different purposes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="plugin-usecases">
+    <div class="container">
+      <h2>Use Cases</h2>
+      <div class="usecases-grid">
+        <div class="usecase-card">
+          <h3>📄 Contracts</h3>
+          <p>Generate contracts with customer details pre-filled. Conditional clauses based on contract type.</p>
+        </div>
+        <div class="usecase-card">
+          <h3>📧 Letters</h3>
+          <p>Create form letters, notifications, and correspondence with personalized content.</p>
+        </div>
+        <div class="usecase-card">
+          <h3>📋 Reports</h3>
+          <p>Generate formatted reports with data from your Kintone apps. Charts and summaries included.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="plugin-pricing">
+    <div class="container">
+      <h2>Pricing</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Free Trial</h3>
+          <div class="price">$0</div>
+          <div class="period">14 days</div>
+          <ul><li>✓ All features</li><li>✓ No credit card</li></ul>
+          <button class="btn btn-outline" onclick="KinPlug.startTrial('template-builder')">Start Free</button>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Best Value</div>
+          <h3>Annual</h3>
+          <div class="price">$249<span>/year</span></div>
+          <div class="period">Save 28%</div>
+          <ul><li>✓ All features</li><li>✓ Priority support</li></ul>
+          <a href="/pricing.html" class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="pricing-card">
+          <h3>Monthly</h3>
+          <div class="price">$29<span>/month</span></div>
+          <div class="period">Flexible</div>
+          <ul><li>✓ All features</li><li>✓ Email support</li></ul>
+          <a href="/pricing.html" class="btn btn-outline">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Build Templates?</h2>
+      <p>Start your free 14-day trial today</p>
+      <button class="btn btn-white btn-lg" onclick="KinPlug.startTrial('template-builder')">Start Free Trial →</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 KinPlug by Edamame Inc.</div>
+        <div><a href="/plugins/template-builder/">English</a> | <a href="/ja/plugins/template-builder/">日本語</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/app.js"></script>
+  <style>
+    .plugin-hero { padding: 60px 0; background: var(--bg-light); }
+    .plugin-hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .breadcrumb { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 16px; }
+    .breadcrumb a { color: var(--text-muted); }
+    .hero-stats { display: flex; gap: 40px; margin: 32px 0; }
+    .hero-stat-number { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
+    .hero-stat-label { font-size: 0.875rem; color: var(--text-secondary); }
+    .plugin-features { padding: 80px 0; background: var(--bg-light); }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+    .feature-card { background: white; padding: 32px; border-radius: 12px; }
+    .feature-icon { font-size: 2rem; margin-bottom: 16px; }
+    .plugin-usecases { padding: 80px 0; }
+    .usecases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+    .usecase-card { background: var(--bg-light); padding: 24px; border-radius: 12px; }
+    .plugin-pricing { padding: 80px 0; background: var(--bg-light); }
+    @media (max-width: 768px) {
+      .plugin-hero-content { grid-template-columns: 1fr; }
+      .features-grid, .usecases-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</body>
+</html>
