@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ドキュメント | KinPlug - kintoneプラグイン</title>
+  <meta name="description" content="KinPlugドキュメント。kintoneプラグインのインストール、設定、使用方法をご案内します。">
+  <link rel="canonical" href="https://kinplug.com/ja/docs/">
+  <link rel="alternate" hreflang="en" href="https://kinplug.com/docs/">
+  <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/docs/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/ja/" class="logo">Kin<span>Plug</span></a>
+      <div class="nav-links">
+        <a href="/ja/plugins/">プラグイン</a>
+        <a href="/ja/pricing.html">料金</a>
+        <a href="/ja/docs/" class="active">ドキュメント</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher"><a href="/docs/">EN</a> | <a href="/ja/docs/" class="active">日本語</a></div>
+        <div class="nav-auth">
+          <div id="auth-nav">
+            <button class="btn btn-secondary btn-sm" onclick="KinPlug.signIn()">ログイン</button>
+            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">無料で始める</button>
+          </div>
+          <div id="user-nav" class="hidden">
+            <a href="/dashboard.html" class="btn btn-secondary btn-sm">ダッシュボード</a>
+            <div class="user-info" onclick="KinPlug.openProfile()">
+              <div id="user-avatar" class="user-avatar">?</div>
+              <span id="user-name">User</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="docs-header">
+    <div class="container">
+      <h1>ドキュメント</h1>
+      <p class="section-subtitle">KinPlugプラグインの導入から活用までをご案内します。</p>
+    </div>
+  </section>
+
+  <section class="docs-content">
+    <div class="container">
+      <div class="docs-grid">
+        <div class="docs-card">
+          <div class="docs-icon">🚀</div>
+          <h3>はじめに</h3>
+          <ul>
+            <li><a href="#install">プラグインのインストール方法</a></li>
+            <li><a href="#license">ライセンスの有効化</a></li>
+            <li><a href="#trial">無料トライアルの開始</a></li>
+          </ul>
+        </div>
+        
+        <div class="docs-card">
+          <div class="docs-icon">📄</div>
+          <h3>PDF Designer</h3>
+          <ul>
+            <li><a href="/ja/plugins/pdf-designer/#setup">セットアップガイド</a></li>
+            <li><a href="/ja/plugins/pdf-designer/#templates">テンプレート作成</a></li>
+            <li><a href="/ja/plugins/pdf-designer/#faq">よくある質問</a></li>
+          </ul>
+        </div>
+        
+        <div class="docs-card">
+          <div class="docs-icon">🔍</div>
+          <h3>Enhanced Lookup</h3>
+          <ul>
+            <li><a href="/ja/plugins/enhanced-lookup/#setup">セットアップガイド</a></li>
+            <li><a href="/ja/plugins/enhanced-lookup/#mapping">フィールドマッピング</a></li>
+            <li><a href="/ja/plugins/enhanced-lookup/#faq">よくある質問</a></li>
+          </ul>
+        </div>
+        
+        <div class="docs-card">
+          <div class="docs-icon">📝</div>
+          <h3>Template Builder</h3>
+          <ul>
+            <li><a href="/ja/plugins/template-builder/#setup">セットアップガイド</a></li>
+            <li><a href="/ja/plugins/template-builder/#editor">エディタの使い方</a></li>
+            <li><a href="/ja/plugins/template-builder/#faq">よくある質問</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="docs-section" id="install">
+        <h2>プラグインのインストール方法</h2>
+        <ol class="docs-steps">
+          <li><strong>プラグインファイルをダウンロード</strong> - トライアル開始後または購入後、ダッシュボードから.zipファイルをダウンロードします。</li>
+          <li><strong>kintone管理画面を開く</strong> - 歯車アイコン → kintoneシステム管理 → プラグイン。</li>
+          <li><strong>プラグインをアップロード</strong> - 「プラグインの追加」をクリックし、.zipファイルをアップロードします。</li>
+          <li><strong>アプリに追加</strong> - アプリの設定 → プラグイン → プラグインを追加。</li>
+          <li><strong>設定</strong> - プラグインの設定を開き、ライセンスキーを入力します。</li>
+          <li><strong>適用</strong> - 「アプリを更新」をクリックしてプラグインを有効化します。</li>
+        </ol>
+      </div>
+
+      <div class="docs-section" id="license">
+        <h2>ライセンスの有効化</h2>
+        <ol class="docs-steps">
+          <li>ダッシュボードまたはウェルカムメールからライセンスキーをコピーします。</li>
+          <li>kintoneアプリを開く → 設定 → プラグイン。</li>
+          <li>KinPlugプラグインの歯車アイコンをクリック。</li>
+          <li>「ライセンスキー」フィールドにライセンスキーを貼り付けます。</li>
+          <li>「保存」をクリックしてアプリを適用します。</li>
+        </ol>
+        <p class="docs-note">💡 1つのライセンスで、同じkintoneサブドメイン内のすべてのアプリで使用できます。</p>
+      </div>
+
+      <div class="docs-section" id="trial">
+        <h2>無料トライアルの開始</h2>
+        <ol class="docs-steps">
+          <li><a href="/login.html">kinplug.com/login</a>でアカウントを作成します。</li>
+          <li><a href="/dashboard.html">ダッシュボード</a>を開きます。</li>
+          <li>試したいプラグインの「トライアル開始」をクリックします。</li>
+          <li>kintoneサブドメインを入力します（例：mycompany.kintone.comの場合は「mycompany」）</li>
+          <li>トライアルライセンスキーをコピーしてkintoneで使用します。</li>
+        </ol>
+        <p class="docs-note">💡 トライアルは14日間、全機能利用可能。クレジットカード不要です。</p>
+      </div>
+
+      <div class="docs-section">
+        <h2>お困りですか？</h2>
+        <p>お探しの情報が見つからない場合は、お気軽にお問い合わせください：</p>
+        <ul>
+          <li>📧 メール: <a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
+          <li>💬 返信時間: 24時間以内（営業日）</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 KinPlug by Edamame Inc.</div>
+        <div><a href="/docs/">English</a> | <a href="/ja/docs/">日本語</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/app.js"></script>
+  <style>
+    .docs-header { padding: 60px 0 40px; background: var(--bg-light); text-align: center; }
+    .docs-content { padding: 60px 0; }
+    .docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-bottom: 60px; }
+    .docs-card { background: var(--bg-light); padding: 24px; border-radius: var(--radius-lg); }
+    .docs-icon { font-size: 2rem; margin-bottom: 12px; }
+    .docs-card h3 { margin-bottom: 16px; }
+    .docs-card ul { list-style: none; }
+    .docs-card li { padding: 8px 0; border-bottom: 1px solid var(--border); }
+    .docs-card li:last-child { border-bottom: none; }
+    .docs-section { margin-bottom: 48px; padding-top: 24px; }
+    .docs-section h2 { margin-bottom: 24px; text-align: left; }
+    .docs-steps { margin-left: 24px; }
+    .docs-steps li { margin-bottom: 16px; line-height: 1.7; }
+    .docs-note { background: var(--primary-light); padding: 16px; border-radius: var(--radius); margin-top: 16px; }
+    .nav-links a.active { color: var(--primary); font-weight: 600; }
+  </style>
+</body>
+</html>
