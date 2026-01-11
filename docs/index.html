@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation | KinPlug - Kintone Plugins</title>
+  <meta name="description" content="KinPlug documentation. Learn how to install, configure, and use KinPlug plugins for Kintone.">
+  <link rel="canonical" href="https://kinplug.com/docs/">
+  <link rel="alternate" hreflang="en" href="https://kinplug.com/docs/">
+  <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/docs/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="logo">Kin<span>Plug</span></a>
+      <div class="nav-links">
+        <a href="/plugins/">Plugins</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/docs/" class="active">Docs</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher"><a href="/docs/" class="active">EN</a> | <a href="/ja/docs/">日本語</a></div>
+        <div class="nav-auth">
+          <div id="auth-nav">
+            <button class="btn btn-secondary btn-sm" onclick="KinPlug.signIn()">Sign In</button>
+            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">Get Started</button>
+          </div>
+          <div id="user-nav" class="hidden">
+            <a href="/dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
+            <div class="user-info" onclick="KinPlug.openProfile()">
+              <div id="user-avatar" class="user-avatar">?</div>
+              <span id="user-name">User</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="docs-header">
+    <div class="container">
+      <h1>Documentation</h1>
+      <p class="section-subtitle">Everything you need to get started with KinPlug plugins.</p>
+    </div>
+  </section>
+
+  <section class="docs-content">
+    <div class="container">
+      <div class="docs-grid">
+        <div class="docs-card">
+          <div class="docs-icon">🚀</div>
+          <h3>Getting Started</h3>
+          <ul>
+            <li><a href="#install">How to Install Plugins</a></li>
+            <li><a href="#license">Activating Your License</a></li>
+            <li><a href="#trial">Starting a Free Trial</a></li>
+          </ul>
+        </div>
+        
+        <div class="docs-card">
+          <div class="docs-icon">📄</div>
+          <h3>PDF Designer</h3>
+          <ul>
+            <li><a href="/plugins/pdf-designer/#setup">Setup Guide</a></li>
+            <li><a href="/plugins/pdf-designer/#templates">Creating Templates</a></li>
+            <li><a href="/plugins/pdf-designer/#faq">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <div class="docs-card">
+          <div class="docs-icon">🔍</div>
+          <h3>Enhanced Lookup</h3>
+          <ul>
+            <li><a href="/plugins/enhanced-lookup/#setup">Setup Guide</a></li>
+            <li><a href="/plugins/enhanced-lookup/#mapping">Field Mapping</a></li>
+            <li><a href="/plugins/enhanced-lookup/#faq">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <div class="docs-card">
+          <div class="docs-icon">📝</div>
+          <h3>Template Builder</h3>
+          <ul>
+            <li><a href="/plugins/template-builder/#setup">Setup Guide</a></li>
+            <li><a href="/plugins/template-builder/#editor">Using the Editor</a></li>
+            <li><a href="/plugins/template-builder/#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="docs-section" id="install">
+        <h2>How to Install Plugins</h2>
+        <ol class="docs-steps">
+          <li><strong>Download the plugin file</strong> - After starting a trial or purchasing, download the .zip file from your dashboard.</li>
+          <li><strong>Go to Kintone Administration</strong> - Click the gear icon → Kintone System Administration → Plugins.</li>
+          <li><strong>Upload the plugin</strong> - Click "Add Plugin" and upload the .zip file.</li>
+          <li><strong>Add to your app</strong> - Open your app settings → Plugins → Add the plugin.</li>
+          <li><strong>Configure</strong> - Open plugin settings and enter your license key.</li>
+          <li><strong>Deploy</strong> - Click "Update App" to activate the plugin.</li>
+        </ol>
+      </div>
+
+      <div class="docs-section" id="license">
+        <h2>Activating Your License</h2>
+        <ol class="docs-steps">
+          <li>Copy your license key from the dashboard or welcome email.</li>
+          <li>Open your Kintone app → Settings → Plugins.</li>
+          <li>Click the gear icon on the KinPlug plugin.</li>
+          <li>Paste your license key in the "License Key" field.</li>
+          <li>Click "Save" and deploy your app.</li>
+        </ol>
+        <p class="docs-note">💡 One license works for all apps in your Kintone subdomain.</p>
+      </div>
+
+      <div class="docs-section" id="trial">
+        <h2>Starting a Free Trial</h2>
+        <ol class="docs-steps">
+          <li>Create an account at <a href="/login.html">kinplug.com/login</a></li>
+          <li>Go to your <a href="/dashboard.html">Dashboard</a></li>
+          <li>Click "Start Trial" on the plugin you want to try.</li>
+          <li>Enter your Kintone subdomain (e.g., "mycompany" from mycompany.kintone.com)</li>
+          <li>Copy your trial license key and use it in Kintone.</li>
+        </ol>
+        <p class="docs-note">💡 Trial is 14 days with full features. No credit card required.</p>
+      </div>
+
+      <div class="docs-section">
+        <h2>Need Help?</h2>
+        <p>Can't find what you're looking for? Contact us:</p>
+        <ul>
+          <li>📧 Email: <a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
+          <li>💬 Response time: Within 24 hours (business days)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 KinPlug by Edamame Inc.</div>
+        <div><a href="/docs/">English</a> | <a href="/ja/docs/">日本語</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/app.js"></script>
+  <style>
+    .docs-header { padding: 60px 0 40px; background: var(--bg-light); text-align: center; }
+    .docs-content { padding: 60px 0; }
+    .docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-bottom: 60px; }
+    .docs-card { background: var(--bg-light); padding: 24px; border-radius: var(--radius-lg); }
+    .docs-icon { font-size: 2rem; margin-bottom: 12px; }
+    .docs-card h3 { margin-bottom: 16px; }
+    .docs-card ul { list-style: none; }
+    .docs-card li { padding: 8px 0; border-bottom: 1px solid var(--border); }
+    .docs-card li:last-child { border-bottom: none; }
+    .docs-section { margin-bottom: 48px; padding-top: 24px; }
+    .docs-section h2 { margin-bottom: 24px; text-align: left; }
+    .docs-steps { margin-left: 24px; }
+    .docs-steps li { margin-bottom: 16px; line-height: 1.7; }
+    .docs-note { background: var(--primary-light); padding: 16px; border-radius: var(--radius); margin-top: 16px; }
+    .nav-links a.active { color: var(--primary); font-weight: 600; }
+  </style>
+</body>
+</html>
