@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags - Japanese Keywords -->
+  <title>kintone PDF出力・帳票プラグイン | 請求書・見積書をワンクリック生成 | KinPlug PDF Designer</title>
+  <meta name="description" content="kintoneからPDF帳票を簡単生成。請求書、見積書、報告書をドラッグ&ドロップで作成。サブテーブル対応。14日間無料トライアル。コーディング不要。500社以上が導入。">
+  <meta name="keywords" content="kintone PDF, kintone 帳票, kintone PDF出力, kintone 請求書, kintone 見積書, kintone プラグイン, kintone 帳票出力, サイボウズ PDF, kintone 印刷, kintone ドキュメント">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://kinplug.com/ja/plugins/pdf-designer/">
+  <meta property="og:title" content="kintone PDF帳票プラグイン - 請求書・見積書をワンクリック生成">
+  <meta property="og:description" content="kintoneからプロフェッショナルな帳票をPDF出力。14日間無料トライアル。">
+  <meta property="og:locale" content="ja_JP">
+  
+  <!-- Language Alternates -->
+  <link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/pdf-designer/">
+  <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/pdf-designer/">
+  <link rel="canonical" href="https://kinplug.com/ja/plugins/pdf-designer/">
+  
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  
+  <!-- Product Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "KinPlug PDF Designer",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web (kintone)",
+    "description": "kintoneレコードからプロフェッショナルなPDF帳票を生成するプラグイン",
+    "offers": {
+      "@type": "Offer",
+      "price": "3480",
+      "priceCurrency": "JPY",
+      "priceValidUntil": "2026-12-31"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "87"
+    }
+  }
+  </script>
+  
+  <!-- FAQ Structured Data in Japanese -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "kintoneからPDFを出力できますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "kintoneの標準印刷機能は限られています。KinPlug PDF Designerを使用すると、カスタムテンプレートを作成し、請求書、見積書、報告書などのプロフェッショナルな帳票をワンクリックで生成できます。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "kintoneで請求書を作成する方法は？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PDF Designerプラグインをインストールし、ビジュアルエディタで請求書テンプレートを設計し、kintoneアプリのフィールドをマッピングします。その後、任意のレコードからワンクリックでPDFを生成できます。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "サブテーブルに対応していますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい、完全対応しています。請求書の明細行、商品リスト、その他の繰り返しデータをPDFテンプレートに含めることができます。"
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/ja/" class="logo">Kin<span>Plug</span></a>
+      <div class="nav-links">
+        <a href="/ja/plugins/">プラグイン</a>
+        <a href="/ja/pricing.html">料金</a>
+        <a href="/ja/docs/">ドキュメント</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher"><a href="/plugins/pdf-designer/">EN</a> | <a href="/ja/plugins/pdf-designer/" class="active">日本語</a></div>
+        <div class="nav-auth">
+          <div id="auth-nav">
+            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">無料トライアル</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="plugin-hero">
+    <div class="container">
+      <div class="plugin-hero-content">
+        <div class="plugin-hero-text">
+          <div class="breadcrumb">
+            <a href="/ja/">ホーム</a> → <a href="/ja/plugins/">プラグイン</a> → PDF Designer
+          </div>
+          <h1>kintoneから<br>プロフェッショナルな帳票をPDF出力</h1>
+          <p class="hero-subtitle">請求書、見積書、契約書、報告書をドラッグ＆ドロップで設計。ワンクリックでPDF生成。コーディング不要。</p>
+          
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="hero-stat-number">50,000+</div>
+              <div class="hero-stat-label">PDF生成数</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-number">500+</div>
+              <div class="hero-stat-label">導入企業</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-number">4.9★</div>
+              <div class="hero-stat-label">評価</div>
+            </div>
+          </div>
+          
+          <div class="hero-buttons">
+            <button class="btn btn-primary btn-lg" onclick="KinPlug.startTrial('pdf-designer')">14日間無料トライアル</button>
+            <a href="#demo" class="btn btn-outline btn-lg">デモを見る</a>
+          </div>
+          <p class="hero-note">クレジットカード不要 • 全機能利用可能 • いつでもキャンセル</p>
+        </div>
+        <div class="plugin-hero-visual">
+          <img src="/assets/images/pdf-designer-preview.png" alt="PDF Designer テンプレートエディタ" class="plugin-screenshot">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem/Solution -->
+  <section class="plugin-problem">
+    <div class="container">
+      <h2>kintoneの標準印刷機能では物足りない</h2>
+      <div class="problem-comparison">
+        <div class="problem-before">
+          <h3>❌ PDF Designerなしの場合</h3>
+          <ul>
+            <li>レコードの基本印刷のみ</li>
+            <li>カスタムレイアウト不可</li>
+            <li>Excelに出力→Wordで整形という手間</li>
+            <li>会社ロゴやブランディング追加不可</li>
+            <li>サブテーブルの印刷が崩れる</li>
+            <li>プロフェッショナルな帳票出力ができない</li>
+          </ul>
+        </div>
+        <div class="problem-after">
+          <h3>✅ PDF Designerありの場合</h3>
+          <ul>
+            <li>カスタムテンプレートで自由なレイアウト</li>
+            <li>ドラッグ＆ドロップで簡単設計</li>
+            <li>ワンクリックでPDF生成</li>
+            <li>会社ロゴ、ブランディング対応</li>
+            <li>サブテーブル完全対応</li>
+            <li>請求書、見積書、報告書すぐ使える</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="plugin-features">
+    <div class="container">
+      <h2>帳票出力に必要な機能をすべて搭載</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>ビジュアルテンプレートエディタ</h3>
+          <p>ドラッグ＆ドロップでテンプレートを設計。フィールド、テキスト、画像、表を自由に配置。コーディング不要。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>サブテーブル完全対応</h3>
+          <p>kintoneのサブテーブルを完全サポート。請求書の明細行、注文の商品リスト、繰り返しデータも問題なし。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <h3>フィールド自動入力</h3>
+          <p>kintoneレコードからフィールドが自動入力。日付形式、数値形式、計算結果もそのまま反映。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📑</div>
+          <h3>複数テンプレート対応</h3>
+          <p>用途別に複数のテンプレートを作成可能。請求書、見積書、契約書テンプレートを1つのアプリで管理。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏢</div>
+          <h3>ヘッダー・フッター</h3>
+          <p>ページヘッダーに会社ロゴ、ページ番号、日付を追加。すべてのページで一貫したブランディング。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>モバイル対応</h3>
+          <p>kintoneモバイルアプリからPDF生成。営業現場、サービスチーム、外出先でも帳票作成可能。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="plugin-usecases">
+    <div class="container">
+      <h2>こんな用途に最適</h2>
+      <div class="usecases-grid">
+        <div class="usecase-card">
+          <h3>📄 請求書・見積書</h3>
+          <p>販売管理や受注管理アプリからプロフェッショナルな請求書・見積書を生成。明細行、税金、合計額も対応。</p>
+        </div>
+        <div class="usecase-card">
+          <h3>📋 報告書・レポート</h3>
+          <p>プロジェクト管理、検査記録、データ収集アプリからフォーマット済み報告書を作成。グラフや集計も含めて。</p>
+        </div>
+        <div class="usecase-card">
+          <h3>📝 契約書</h3>
+          <p>顧客情報が事前入力された契約書を生成。人事、営業、ベンダー管理に最適。</p>
+        </div>
+        <div class="usecase-card">
+          <h3>🏷️ 証明書</h3>
+          <p>修了証、研修記録、達成証明書を研修管理アプリから作成。</p>
+        </div>
+        <div class="usecase-card">
+          <h3>📦 納品書・送り状</h3>
+          <p>在庫管理や受注アプリから納品書、送り状、配送伝票を生成。</p>
+        </div>
+        <div class="usecase-card">
+          <h3>🔧 作業報告書</h3>
+          <p>現場作業員が写真、署名、作業詳細を含むサービスレポートを生成。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="plugin-howitworks" id="demo">
+    <div class="container">
+      <h2>使い方は簡単</h2>
+      <div class="steps-detailed">
+        <div class="step-detailed">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>プラグインをインストール</h3>
+            <p>プラグインファイルをダウンロードし、kintoneシステム管理にインストール。アプリに追加してライセンスキーを入力。</p>
+          </div>
+        </div>
+        <div class="step-detailed">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>テンプレートを設計</h3>
+            <p>ビジュアルエディタを開き、アプリのフィールドをキャンバスにドラッグ。テキスト、画像、表、書式を追加。</p>
+          </div>
+        </div>
+        <div class="step-detailed">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>PDFを生成</h3>
+            <p>任意のレコードを開いて「PDF生成」ボタンをクリック。すべてのデータが入力された帳票が即座に作成されます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="plugin-testimonials">
+    <div class="container">
+      <h2>導入企業の声</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>「以前はExcelで手動で請求書を作成していました。今はワンクリック。週10時間以上の時間短縮になりました。」</p>
+          <div class="author"><strong>田中様</strong> - 製造業 / 東京</div>
+        </div>
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>「サブテーブル対応が素晴らしい。50行以上の明細がある見積書も完璧に出力されます。」</p>
+          <div class="author"><strong>鈴木様</strong> - ITサービス / 大阪</div>
+        </div>
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>「設定は15分で完了。ビジュアルエディタが直感的で、営業チームも使いこなせています。」</p>
+          <div class="author"><strong>山本様</strong> - 営業部長 / 福岡</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="plugin-pricing">
+    <div class="container">
+      <h2>シンプルな料金体系</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>無料トライアル</h3>
+          <div class="price">¥0</div>
+          <div class="period">14日間</div>
+          <ul><li>✓ 全機能利用可能</li><li>✓ PDF無制限</li><li>✓ メールサポート</li></ul>
+          <button class="btn btn-outline" onclick="KinPlug.startTrial('pdf-designer')">無料で始める</button>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-badge">おすすめ</div>
+          <h3>年額プラン</h3>
+          <div class="price">¥29,800<span>/年</span></div>
+          <div class="period">28%お得</div>
+          <ul><li>✓ 全機能利用可能</li><li>✓ 優先サポート</li><li>✓ 無料アップデート</li></ul>
+          <a href="/ja/pricing.html" class="btn btn-primary">申し込む</a>
+        </div>
+        <div class="pricing-card">
+          <h3>月額プラン</h3>
+          <div class="price">¥3,480<span>/月</span></div>
+          <div class="period">いつでも解約可</div>
+          <ul><li>✓ 全機能利用可能</li><li>✓ メールサポート</li><li>✓ 無料アップデート</li></ul>
+          <a href="/ja/pricing.html" class="btn btn-outline">申し込む</a>
+        </div>
+      </div>
+      <p class="pricing-note">サブドメインごとの料金。同一環境内のアプリ・ユーザー数は無制限。</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="plugin-faq">
+    <div class="container">
+      <h2>よくあるご質問</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>kintoneからPDFを出力できますか？</h3>
+          <p>kintoneの標準印刷機能は基本的です。PDF Designerを使えば、レイアウト、ブランディング、書式を完全にコントロールしたプロフェッショナルな帳票を出力できます。</p>
+        </div>
+        <div class="faq-item">
+          <h3>サブテーブルに対応していますか？</h3>
+          <p>はい、完全対応しています。自動行生成、計算、書式設定付きでサブテーブルをサポート。明細行のある請求書に最適です。</p>
+        </div>
+        <div class="faq-item">
+          <h3>会社ロゴを追加できますか？</h3>
+          <p>はい、画像、ロゴ、ブランディング要素をテンプレートの任意の場所に追加できます。生成されるすべてのPDFに表示されます。</p>
+        </div>
+        <div class="faq-item">
+          <h3>テンプレートはいくつ作成できますか？</h3>
+          <p>無制限です。請求書、見積書、契約書、報告書など、必要なだけテンプレートを作成できます。</p>
+        </div>
+        <div class="faq-item">
+          <h3>モバイルで使えますか？</h3>
+          <p>はい、kintoneモバイルアプリからPDFを生成できます。外出先で帳票が必要な現場チームに最適です。</p>
+        </div>
+        <div class="faq-item">
+          <h3>データは安全ですか？</h3>
+          <p>PDF生成はkintoneセッション内のブラウザで行われます。外部サーバーにデータは送信されません。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2>kintoneから帳票を自動生成</h2>
+      <p>500社以上が導入済みのPDF Designerプラグイン</p>
+      <button class="btn btn-white btn-lg" onclick="KinPlug.startTrial('pdf-designer')">14日間無料トライアルを始める →</button>
+      <p class="cta-note">クレジットカード不要 • 全機能利用可能 • いつでもキャンセル</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 KinPlug by Edamame Inc.</div>
+        <div><a href="/">English</a> | <a href="/ja/">日本語</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/app.js"></script>
+  
+  <style>
+    .plugin-hero { padding: 60px 0; background: var(--bg-light); }
+    .plugin-hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .breadcrumb { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 16px; }
+    .breadcrumb a { color: var(--text-muted); }
+    .hero-stats { display: flex; gap: 40px; margin: 32px 0; }
+    .hero-stat-number { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
+    .hero-stat-label { font-size: 0.875rem; color: var(--text-secondary); }
+    .plugin-screenshot { width: 100%; border-radius: 12px; box-shadow: var(--shadow-lg); }
+    
+    .plugin-problem { padding: 80px 0; }
+    .problem-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+    .problem-before, .problem-after { padding: 32px; border-radius: 12px; }
+    .problem-before { background: #fee; border: 2px solid #fcc; }
+    .problem-after { background: #efe; border: 2px solid #cfc; }
+    .problem-before h3, .problem-after h3 { margin-bottom: 16px; }
+    .problem-before ul, .problem-after ul { list-style: none; }
+    .problem-before li, .problem-after li { padding: 8px 0; }
+    
+    .plugin-features { padding: 80px 0; background: var(--bg-light); }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+    .feature-card { background: white; padding: 32px; border-radius: 12px; }
+    .feature-icon { font-size: 2rem; margin-bottom: 16px; }
+    
+    .plugin-usecases { padding: 80px 0; }
+    .usecases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+    .usecase-card { background: var(--bg-light); padding: 24px; border-radius: 12px; }
+    
+    .plugin-howitworks { padding: 80px 0; background: var(--bg-light); }
+    .steps-detailed { max-width: 600px; margin: 40px auto 0; }
+    .step-detailed { display: flex; gap: 24px; margin-bottom: 40px; }
+    .step-detailed .step-number { width: 48px; height: 48px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+    
+    .plugin-testimonials { padding: 80px 0; }
+    .plugin-pricing { padding: 80px 0; background: var(--bg-light); }
+    .plugin-faq { padding: 80px 0; }
+    
+    @media (max-width: 768px) {
+      .plugin-hero-content { grid-template-columns: 1fr; }
+      .problem-comparison { grid-template-columns: 1fr; }
+      .features-grid, .usecases-grid { grid-template-columns: 1fr; }
+      .hero-stats { flex-wrap: wrap; gap: 20px; }
+    }
+  </style>
+</body>
+</html>
