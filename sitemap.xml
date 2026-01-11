@@ -5,6 +5,7 @@
     <loc>https://kinplug.com/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/"/>
+    <lastmod>2026-01-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,6 +13,7 @@
     <loc>https://kinplug.com/ja/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/"/>
+    <lastmod>2026-01-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -21,6 +23,7 @@
     <loc>https://kinplug.com/plugins/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/"/>
+    <lastmod>2026-01-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -28,6 +31,7 @@
     <loc>https://kinplug.com/ja/plugins/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/"/>
+    <lastmod>2026-01-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -37,6 +41,7 @@
     <loc>https://kinplug.com/plugins/pdf-designer/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/pdf-designer/"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/pdf-designer/"/>
+    <lastmod>2026-01-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -44,8 +49,45 @@
     <loc>https://kinplug.com/ja/plugins/pdf-designer/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/pdf-designer/"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/pdf-designer/"/>
+    <lastmod>2026-01-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  
+  <!-- Enhanced Lookup -->
+  <url>
+    <loc>https://kinplug.com/plugins/enhanced-lookup/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/enhanced-lookup/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/enhanced-lookup/"/>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kinplug.com/ja/plugins/enhanced-lookup/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/enhanced-lookup/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/enhanced-lookup/"/>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Template Builder -->
+  <url>
+    <loc>https://kinplug.com/plugins/template-builder/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/template-builder/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/template-builder/"/>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kinplug.com/ja/plugins/template-builder/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/template-builder/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/template-builder/"/>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   
   <!-- Pricing -->
@@ -53,6 +95,7 @@
     <loc>https://kinplug.com/pricing.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/pricing.html"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/pricing.html"/>
+    <lastmod>2026-01-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -60,8 +103,45 @@
     <loc>https://kinplug.com/ja/pricing.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/pricing.html"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/pricing.html"/>
+    <lastmod>2026-01-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  
+  <!-- Documentation -->
+  <url>
+    <loc>https://kinplug.com/docs/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/docs/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/docs/"/>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kinplug.com/ja/docs/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/docs/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/docs/"/>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Blog -->
+  <url>
+    <loc>https://kinplug.com/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/"/>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kinplug.com/ja/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/"/>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   
   <!-- Legal - Privacy -->
@@ -69,6 +149,7 @@
     <loc>https://kinplug.com/legal/privacy.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/legal/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/legal/privacy.html"/>
+    <lastmod>2026-01-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -76,6 +157,7 @@
     <loc>https://kinplug.com/ja/legal/privacy.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/legal/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/legal/privacy.html"/>
+    <lastmod>2026-01-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -85,6 +167,7 @@
     <loc>https://kinplug.com/legal/terms.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/legal/terms.html"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/legal/terms.html"/>
+    <lastmod>2026-01-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -92,18 +175,7 @@
     <loc>https://kinplug.com/ja/legal/terms.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/legal/terms.html"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/legal/terms.html"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <!-- Dashboard & Login -->
-  <url>
-    <loc>https://kinplug.com/dashboard.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://kinplug.com/login.html</loc>
+    <lastmod>2026-01-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
