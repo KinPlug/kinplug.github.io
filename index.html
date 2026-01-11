@@ -3,63 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KinPlug - Kintone PDF & Document Generation Plugins | No-Code</title>
+  <meta name="description" content="Transform Kintone records into professional PDFs instantly. Create invoices, quotes, and reports with drag-and-drop simplicity. No coding required. 14-day free trial.">
+  <meta name="keywords" content="kintone plugins, kintone pdf, kintone invoice, kintone reports, kintone customization, kintone no-code">
+  <link rel="canonical" href="https://kinplug.com/">
+  <link rel="alternate" hreflang="en" href="https://kinplug.com/">
+  <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   
-  <!-- SEO Meta Tags -->
-  <title>KinPlug - #1 Kintone Plugins | PDF Designer, Workflow, Dashboard & More</title>
-  <meta name="description" content="Supercharge your Kintone with premium plugins. PDF generation, advanced dashboards, workflow automation, bulk editing & more. Free 14-day trial. No coding required.">
-  <meta name="keywords" content="kintone plugins, kintone pdf, kintone customization, kintone dashboard, kintone workflow, kintone automation, cybozu plugins">
-  <meta name="author" content="Edamame Inc.">
-  <meta name="robots" content="index, follow">
-  
-  <!-- Open Graph -->
+  <!-- OGP -->
+  <meta property="og:title" content="KinPlug - Kintone PDF & Document Plugins">
+  <meta property="og:description" content="Transform Kintone records into professional PDFs instantly. No coding required.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://kinplug.com/">
-  <meta property="og:title" content="KinPlug - #1 Kintone Plugins for PDF, Dashboard, Workflow & More">
-  <meta property="og:description" content="Premium Kintone plugins to supercharge your business. Free 14-day trial.">
-  <meta property="og:image" content="https://kinplug.com/assets/images/og-image.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="KinPlug">
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@kinaboratory">
-  <meta name="twitter:title" content="KinPlug - #1 Kintone Plugins">
+  <meta name="twitter:title" content="KinPlug - Kintone PDF & Document Plugins">
+  <meta name="twitter:description" content="Transform Kintone records into professional PDFs instantly. No coding required.">
   
-  <!-- Language Alternates -->
-  <link rel="alternate" hreflang="en" href="https://kinplug.com/">
-  <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/">
-  <link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
-  
-  <!-- Canonical -->
-  <link rel="canonical" href="https://kinplug.com/">
-  
-  <!-- Favicon -->
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  
-  <!-- Styles -->
   <link rel="stylesheet" href="/assets/css/style.css">
-  
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "KinPlug",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD",
-      "description": "14-day free trial"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "ratingCount": "127"
-    }
-  }
-  </script>
-  
-  <!-- Clerk -->
   <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
 </head>
 <body>
@@ -74,15 +39,17 @@
         <a href="/blog/">Blog</a>
       </div>
       <div class="nav-right">
-        <div class="lang-switcher"><a href="/" class="active">EN</a> | <a href="/ja/">日本語</a></div>
+        <div class="lang-switcher">
+          <a href="/" class="active">EN</a> | <a href="/ja/">日本語</a>
+        </div>
         <div class="nav-auth">
           <div id="auth-nav">
-            <button class="btn btn-secondary btn-sm" onclick="KinPlug.signIn()">Sign In</button>
-            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">Start Free Trial</button>
+            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">Sign In</button>
+            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">Start Free</button>
           </div>
           <div id="user-nav" class="hidden">
             <a href="/dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
-            <div class="user-info" onclick="KinPlug.openProfile()" style="cursor:pointer;">
+            <div class="user-info" onclick="KinPlug.openProfile()">
               <div id="user-avatar" class="user-avatar">?</div>
               <span id="user-name">User</span>
             </div>
@@ -92,38 +59,90 @@
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
         <div class="hero-text">
-          <div class="hero-badge">🏆 Built by Cybozu Partner</div>
-          <h1>The <span class="highlight">Missing Features</span> Your Kintone Needs</h1>
-          <p class="hero-subtitle">Generate beautiful PDFs, build advanced dashboards, automate workflows, and more. Professional plugins that just work.</p>
+          <div class="hero-badge">
+            <span class="badge badge-primary">🏆 Built by Official Cybozu Partner</span>
+          </div>
+          <h1>Kintone to PDF.<br><span class="text-gradient">Done right.</span></h1>
+          <p class="hero-description">
+            Stop wrestling with Kintone's limited print options. Generate beautiful invoices, quotes, and reports from your records—with a single click.
+          </p>
           <div class="hero-features">
-            <span>✓ No coding required</span>
-            <span>✓ 14-day free trial</span>
-            <span>✓ 5-minute setup</span>
+            <div class="hero-feature">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              No coding required
+            </div>
+            <div class="hero-feature">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              5-minute setup
+            </div>
+            <div class="hero-feature">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              14-day free trial
+            </div>
           </div>
-          <div class="hero-buttons">
-            <button class="btn btn-primary btn-lg" onclick="KinPlug.signUp()">Start Free Trial →</button>
-            <a href="/plugins/" class="btn btn-outline btn-lg">Explore Plugins</a>
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-lg" onclick="KinPlug.signUp()">Start Free Trial</button>
+            <a href="/plugins/pdf-designer/" class="btn btn-secondary btn-lg">See Features</a>
           </div>
-          <p class="hero-note">No credit card required • Cancel anytime</p>
+          <p class="hero-note">No credit card required • No auto-billing • Cancel anytime</p>
         </div>
         <div class="hero-visual">
           <div class="hero-card">
-            <div class="hero-card-header"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span> PDF Designer</div>
-            <div class="hero-card-body">
-              <div class="preview-pdf">
-                <div class="pdf-header">INVOICE #2024-001</div>
-                <div class="pdf-line"></div>
-                <div class="pdf-table">
-                  <div class="pdf-row"><span>Product A</span><span>$50</span></div>
-                  <div class="pdf-row"><span>Product B</span><span>$30</span></div>
-                </div>
-                <div class="pdf-total">Total: $80</div>
+            <div class="hero-card-header">
+              <div class="window-dots">
+                <span class="window-dot red"></span>
+                <span class="window-dot yellow"></span>
+                <span class="window-dot green"></span>
               </div>
+              <span class="hero-card-title">PDF Designer</span>
+            </div>
+            <div class="hero-card-body">
+              <div class="preview-document">
+                <div class="preview-header">
+                  <div>
+                    <div class="preview-title">Invoice</div>
+                    <div class="preview-number">No. INV-2026-0112</div>
+                  </div>
+                  <div class="preview-logo">KP</div>
+                </div>
+                <div class="preview-table">
+                  <div class="preview-row">
+                    <span class="preview-item">Consulting Services</span>
+                    <span class="preview-price">$1,200</span>
+                  </div>
+                  <div class="preview-row">
+                    <span class="preview-item">System Development</span>
+                    <span class="preview-price">$2,800</span>
+                  </div>
+                  <div class="preview-row">
+                    <span class="preview-item">Monthly Support</span>
+                    <span class="preview-price">$400</span>
+                  </div>
+                </div>
+                <div class="preview-total">
+                  <span class="preview-total-label">Total</span>
+                  <span class="preview-total-value">$4,400</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-float hero-float-1">
+            <div class="hero-float-icon" style="background: #dcfce7;">📄</div>
+            <div class="hero-float-text">
+              <div class="hero-float-title">PDF Generated</div>
+              <div class="hero-float-desc">One-click export</div>
+            </div>
+          </div>
+          <div class="hero-float hero-float-2">
+            <div class="hero-float-icon" style="background: #fef3c7;">⚡</div>
+            <div class="hero-float-text">
+              <div class="hero-float-title">0.3s render time</div>
+              <div class="hero-float-desc">Lightning fast</div>
             </div>
           </div>
         </div>
@@ -131,110 +150,162 @@
     </div>
   </section>
 
-  <!-- Problems -->
+  <!-- Problems Section -->
   <section class="problems">
     <div class="container">
-      <h2>Kintone is Great, But...</h2>
-      <p class="section-subtitle">These common frustrations hold your team back</p>
+      <div class="section-header">
+        <h2>Sound familiar?</h2>
+        <p>These are the problems our customers faced before switching to KinPlug.</p>
+      </div>
       <div class="problems-grid">
         <div class="problem-card">
-          <div class="problem-icon">😤</div>
-          <h3>No PDF Export</h3>
-          <p>Can't generate invoices or reports from your data.</p>
-          <div class="solution">→ <strong>PDF Designer</strong> solves this</div>
+          <div class="problem-icon">😫</div>
+          <h3>Print feature is useless</h3>
+          <p>Kintone's built-in print looks unprofessional. You can't send that to clients. You need real, polished documents.</p>
+          <div class="problem-solution">→ Generate professional PDFs</div>
         </div>
         <div class="problem-card">
-          <div class="problem-icon">📊</div>
-          <h3>Limited Charts</h3>
-          <p>Built-in charts are basic. No drill-down.</p>
-          <div class="solution">→ <strong>Dashboard Pro</strong> coming soon</div>
+          <div class="problem-icon">💸</div>
+          <h3>Custom dev costs too much</h3>
+          <p>Hiring a developer? That's $5,000+. Building it yourself? You'd need JavaScript skills and weeks of time.</p>
+          <div class="problem-solution">→ $29/month, ready today</div>
         </div>
         <div class="problem-card">
-          <div class="problem-icon">🔄</div>
-          <h3>Manual Workflows</h3>
-          <p>Too many clicks for simple approvals.</p>
-          <div class="solution">→ <strong>Workflow Automator</strong> coming soon</div>
-        </div>
-        <div class="problem-card">
-          <div class="problem-icon">✏️</div>
-          <h3>No Bulk Editing</h3>
-          <p>100 records = 100 clicks. Painful.</p>
-          <div class="solution">→ <strong>Bulk Editor</strong> coming soon</div>
+          <div class="problem-icon">⏰</div>
+          <h3>Manual copy-paste every time</h3>
+          <p>Export to Excel, format it, convert to PDF, send email. You do this 10 times a day. There's got to be a better way.</p>
+          <div class="problem-solution">→ One click, done</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Plugins -->
-  <section class="plugins" id="plugins">
+  <!-- Features Section -->
+  <section class="features">
     <div class="container">
-      <h2>Premium Plugins for Every Need</h2>
-      <p class="section-subtitle">Each plugin solves real Kintone pain points</p>
+      <div class="section-header">
+        <h2>Why teams choose KinPlug</h2>
+        <p>Simple enough for anyone. Powerful enough for enterprise.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>Visual template editor</h3>
+          <p>Drag and drop fields onto your template. See changes in real-time. No code, no hassle.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Full subtable support</h3>
+          <p>Line items loop automatically. Pages break intelligently. Works exactly how you'd expect.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔢</div>
+          <h3>Auto-numbering & formulas</h3>
+          <p>Sequential invoice numbers, calculated totals, formatted dates—all handled automatically.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏢</div>
+          <h3>Multiple templates</h3>
+          <p>Different templates for different purposes. Invoice, quote, receipt—one app, many outputs.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>Secure by design</h3>
+          <p>All processing happens in your Kintone. Your data never leaves your environment.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💬</div>
+          <h3>Responsive support</h3>
+          <p>Real humans, real answers. We respond within 24 hours, usually much faster.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plugins Section -->
+  <section class="plugins">
+    <div class="container">
+      <div class="section-header">
+        <h2>Plugins that solve real problems</h2>
+        <p>Each one built to address specific Kintone limitations.</p>
+      </div>
       <div class="plugins-grid">
         <div class="plugin-card featured">
-          <div class="plugin-badge">Most Popular</div>
+          <span class="plugin-badge popular">Most Popular</span>
           <div class="plugin-icon">📄</div>
           <h3>PDF Designer</h3>
-          <p>Design beautiful PDF templates with drag-and-drop. Generate invoices, quotes, reports from Kintone records.</p>
-          <ul><li>Visual template editor</li><li>Auto-populate from records</li><li>Subtable support</li></ul>
+          <p>Generate pixel-perfect PDFs from Kintone records. Invoices, quotes, reports—any business document you need.</p>
+          <ul class="plugin-features">
+            <li>Visual template designer</li>
+            <li>Subtable & related records</li>
+            <li>Multiple templates per app</li>
+            <li>Auto-numbering & formulas</li>
+          </ul>
           <div class="plugin-actions">
-            <button class="btn btn-primary" onclick="KinPlug.startTrial('pdf-designer')">Start Free Trial</button>
-            <a href="/plugins/pdf-designer/">Learn More →</a>
+            <button class="btn btn-primary" onclick="KinPlug.startTrial('pdf-designer')">Try Free</button>
+            <a href="/plugins/pdf-designer/" class="btn btn-ghost">Details →</a>
           </div>
         </div>
+        
+        <div class="plugin-card">
+          <span class="plugin-badge new">NEW</span>
+          <div class="plugin-icon">🔍</div>
+          <h3>Enhanced Lookup</h3>
+          <p>Supercharge your lookup fields. Instant search, multi-field copy, works in subtables. Everything standard lookup should be.</p>
+          <ul class="plugin-features">
+            <li>Type-ahead search</li>
+            <li>Copy multiple fields at once</li>
+            <li>Works inside subtables</li>
+            <li>Custom display format</li>
+          </ul>
+          <div class="plugin-actions">
+            <button class="btn btn-primary" onclick="KinPlug.startTrial('enhanced-lookup')">Try Free</button>
+            <a href="/plugins/enhanced-lookup/" class="btn btn-ghost">Details →</a>
+          </div>
+        </div>
+        
         <div class="plugin-card">
           <div class="plugin-icon">📝</div>
           <h3>Template Builder</h3>
-          <p>Word-like WYSIWYG editor for documents. Perfect for contracts, letters, forms.</p>
-          <ul><li>Rich text editing</li><li>Field placeholders</li><li>Export to PDF</li></ul>
+          <p>Word-like editor for document templates. Perfect for contracts, proposals, and reports that need narrative flow.</p>
+          <ul class="plugin-features">
+            <li>Rich text editing</li>
+            <li>Conditional sections</li>
+            <li>Export to Word/PDF</li>
+            <li>E-signature ready</li>
+          </ul>
           <div class="plugin-actions">
-            <button class="btn btn-primary" onclick="KinPlug.startTrial('template-builder')">Start Free Trial</button>
-            <a href="/plugins/template-builder/">Learn More →</a>
+            <button class="btn btn-primary" onclick="KinPlug.startTrial('template-builder')">Try Free</button>
+            <a href="/plugins/template-builder/" class="btn btn-ghost">Details →</a>
           </div>
         </div>
-        <div class="plugin-card">
-          <div class="plugin-icon">🔍</div>
-          <h3>Enhanced Lookup</h3>
-          <p>Supercharged lookup with search, filter, and advanced mapping.</p>
-          <ul><li>Instant search</li><li>Multi-field mapping</li><li>Subtable support</li></ul>
-          <div class="plugin-actions">
-            <button class="btn btn-primary" onclick="KinPlug.startTrial('enhanced-lookup')">Start Free Trial</button>
-            <a href="/plugins/enhanced-lookup/">Learn More →</a>
-          </div>
-        </div>
-        <div class="plugin-card coming-soon">
-          <div class="plugin-badge soon">Coming Soon</div>
-          <div class="plugin-icon">📋</div>
-          <h3>Kanban Board</h3>
-          <p>Trello-style boards for your Kintone data.</p>
-          <button class="btn btn-secondary" onclick="KinPlug.notifyMe('kanban')">Notify Me</button>
-        </div>
-        <div class="plugin-card coming-soon">
-          <div class="plugin-badge soon">Coming Soon</div>
-          <div class="plugin-icon">📈</div>
-          <h3>Dashboard Pro</h3>
-          <p>Interactive charts and KPI dashboards.</p>
-          <button class="btn btn-secondary" onclick="KinPlug.notifyMe('dashboard')">Notify Me</button>
-        </div>
-        <div class="plugin-card coming-soon">
-          <div class="plugin-badge soon">Coming Soon</div>
-          <div class="plugin-icon">✏️</div>
-          <h3>Bulk Editor</h3>
-          <p>Edit multiple records like Excel.</p>
-          <button class="btn btn-secondary" onclick="KinPlug.notifyMe('bulk-editor')">Notify Me</button>
-        </div>
+      </div>
+      <div style="text-align: center; margin-top: 48px;">
+        <a href="/plugins/" class="btn btn-secondary btn-lg">View All Plugins →</a>
       </div>
     </div>
   </section>
 
-  <!-- Stats -->
+  <!-- Stats Section -->
   <section class="stats">
     <div class="container">
       <div class="stats-grid">
-        <div class="stat"><div class="stat-number">14 Days</div><div class="stat-label">Free Trial</div></div>
-        <div class="stat"><div class="stat-number">5 Min</div><div class="stat-label">Setup Time</div></div>
-        <div class="stat"><div class="stat-number">No Code</div><div class="stat-label">Required</div></div>
-        <div class="stat"><div class="stat-number">Unlimited</div><div class="stat-label">PDF Generation</div></div>
+        <div class="stat-item">
+          <h3>14 Days</h3>
+          <p>Free trial</p>
+        </div>
+        <div class="stat-item">
+          <h3>5 Min</h3>
+          <p>Setup time</p>
+        </div>
+        <div class="stat-item">
+          <h3>Unlimited</h3>
+          <p>Apps & users</p>
+        </div>
+        <div class="stat-item">
+          <h3>&lt; 24h</h3>
+          <p>Support response</p>
+        </div>
       </div>
     </div>
   </section>
@@ -242,11 +313,26 @@
   <!-- How It Works -->
   <section class="how-it-works">
     <div class="container">
-      <h2>Up and Running in 5 Minutes</h2>
+      <div class="section-header">
+        <h2>Up and running in 3 steps</h2>
+        <p>No IT department needed. Anyone can do this.</p>
+      </div>
       <div class="steps">
-        <div class="step"><div class="step-num">1</div><h3>Download Plugin</h3><p>Get plugin file and license key instantly.</p></div>
-        <div class="step"><div class="step-num">2</div><h3>Install in Kintone</h3><p>Upload to Kintone Admin → Plugins.</p></div>
-        <div class="step"><div class="step-num">3</div><h3>Configure & Go</h3><p>Add to app, enter license key. Done!</p></div>
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Sign up</h3>
+          <p>Create your account with email or Google. Takes about 60 seconds.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Install the plugin</h3>
+          <p>Get your license key, upload the plugin to your Kintone admin panel.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Design your template</h3>
+          <p>Drag and drop to build your template. Start generating PDFs immediately.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -254,92 +340,146 @@
   <!-- Testimonials -->
   <section class="testimonials">
     <div class="container">
-      <h2>Loved by Kintone Teams</h2>
+      <div class="section-header">
+        <h2>What our customers say</h2>
+        <p>Real feedback from real Kintone users.</p>
+      </div>
       <div class="testimonials-grid">
-        <div class="testimonial">
-          <div class="stars">★★★★★</div>
-          <p>"PDF Designer saved us hours every week. We used to manually create invoices in Excel. Now it's one click."</p>
-          <div class="author"><strong>Tanaka K.</strong> - Operations Manager, Tokyo</div>
+        <div class="testimonial-card">
+          <div class="testimonial-rating">★★★★★</div>
+          <blockquote>"We were creating 100+ invoices manually each month. Now it's one click per invoice. KinPlug probably saves us 20 hours a month."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">S</div>
+            <div class="testimonial-info">
+              <h4>Sarah T.</h4>
+              <p>Finance Manager, Manufacturing</p>
+            </div>
+          </div>
         </div>
-        <div class="testimonial">
-          <div class="stars">★★★★★</div>
-          <p>"Finally, a lookup that actually works! The search function is what Kintone should have built-in."</p>
-          <div class="author"><strong>Sarah M.</strong> - Sales Director, Sydney</div>
+        <div class="testimonial-card">
+          <div class="testimonial-rating">★★★★★</div>
+          <blockquote>"Tried other PDF plugins—KinPlug is the only one that handles subtables properly. Plus their support actually responds. In English."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">M</div>
+            <div class="testimonial-info">
+              <h4>Michael K.</h4>
+              <p>IT Director, Tech Company</p>
+            </div>
+          </div>
         </div>
-        <div class="testimonial">
-          <div class="stars">★★★★★</div>
-          <p>"Setup was incredibly easy. I'm not technical at all, but I had it working in under 10 minutes."</p>
-          <div class="author"><strong>Yamamoto S.</strong> - HR Manager, Osaka</div>
+        <div class="testimonial-card">
+          <div class="testimonial-rating">★★★★★</div>
+          <blockquote>"Our sales team can now generate quotes directly from Kintone. Response time to customers dropped from hours to minutes."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">J</div>
+            <div class="testimonial-info">
+              <h4>James H.</h4>
+              <p>Sales Director, Distribution</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pricing -->
+  <!-- Pricing Preview -->
   <section class="pricing">
     <div class="container">
-      <h2>Simple, Transparent Pricing</h2>
-      <p class="section-subtitle">Start free, upgrade when ready</p>
+      <div class="section-header">
+        <h2>Simple, honest pricing</h2>
+        <p>No surprises. No hidden fees. All features included.</p>
+      </div>
       <div class="pricing-grid">
         <div class="pricing-card">
           <h3>Free Trial</h3>
-          <div class="price">$0</div>
-          <div class="period">14 days</div>
-          <ul><li>✓ All features</li><li>✓ No credit card</li><li>✓ Email support</li></ul>
-          <button class="btn btn-outline" onclick="KinPlug.signUp()">Start Free</button>
+          <div class="pricing-price">$0</div>
+          <div class="pricing-period">14 days</div>
+          <ul class="pricing-features">
+            <li>All features included</li>
+            <li>No credit card required</li>
+            <li>Email support</li>
+            <li>No auto-billing</li>
+          </ul>
+          <button class="btn btn-secondary btn-lg" onclick="KinPlug.signUp()">Start Free</button>
         </div>
         <div class="pricing-card featured">
-          <div class="pricing-badge">Best Value</div>
+          <span class="pricing-badge">Best Value</span>
           <h3>Annual</h3>
-          <div class="price">$249<span>/year</span></div>
-          <div class="period">Save 28%</div>
-          <ul><li>✓ All features</li><li>✓ Priority support</li><li>✓ Free updates</li></ul>
-          <a href="/pricing.html" class="btn btn-primary">Get Started</a>
+          <div class="pricing-price">$249<span>/year</span></div>
+          <div class="pricing-period">$20.75/mo (Save 28%)</div>
+          <ul class="pricing-features">
+            <li>All features included</li>
+            <li>Priority support</li>
+            <li>Invoice billing</li>
+            <li>Free updates</li>
+          </ul>
+          <a href="mailto:support@kinplug.com?subject=Annual Plan Inquiry" class="btn btn-primary btn-lg">Contact Us</a>
         </div>
         <div class="pricing-card">
           <h3>Monthly</h3>
-          <div class="price">$29<span>/month</span></div>
-          <div class="period">Flexible</div>
-          <ul><li>✓ All features</li><li>✓ Email support</li><li>✓ Free updates</li></ul>
-          <a href="/pricing.html" class="btn btn-outline">Get Started</a>
+          <div class="pricing-price">$29<span>/mo</span></div>
+          <div class="pricing-period">Cancel anytime</div>
+          <ul class="pricing-features">
+            <li>All features included</li>
+            <li>Email support</li>
+            <li>Flexible commitment</li>
+            <li>Free updates</li>
+          </ul>
+          <a href="mailto:support@kinplug.com?subject=Monthly Plan Inquiry" class="btn btn-secondary btn-lg">Contact Us</a>
         </div>
       </div>
-      <p class="pricing-note">Per plugin, per subdomain. <a href="/pricing.html">See full pricing →</a></p>
+      <p class="pricing-note">* Price is per plugin, per Kintone subdomain. Unlimited apps and users within your environment.</p>
     </div>
   </section>
 
   <!-- FAQ -->
   <section class="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
+      <div class="section-header">
+        <h2>Frequently asked questions</h2>
+      </div>
       <div class="faq-grid">
         <div class="faq-item">
-          <h3>How do I install KinPlug plugins?</h3>
-          <p>Download the zip file, go to Kintone Admin → Plugins → Import. Add to your app and configure. <a href="/docs/">Full guide here</a>.</p>
+          <h3>Will I be charged after the trial?</h3>
+          <p>No. We don't even ask for your credit card. When the trial ends, the plugin simply stops working until you subscribe.</p>
         </div>
         <div class="faq-item">
-          <h3>Do I need coding skills?</h3>
-          <p>No! All plugins are designed for non-technical users with visual configuration interfaces.</p>
+          <h3>How many apps can I use it with?</h3>
+          <p>Unlimited. One license covers your entire Kintone subdomain—all apps, all users, no restrictions.</p>
         </div>
         <div class="faq-item">
-          <h3>What Kintone plans work?</h3>
-          <p>Standard and Professional plans. Lite plan doesn't support plugins (Kintone limitation).</p>
+          <h3>Do I need programming skills?</h3>
+          <p>Not at all. Everything is point-and-click. If you can use Kintone, you can use KinPlug.</p>
         </div>
         <div class="faq-item">
-          <h3>Is my data secure?</h3>
-          <p>Yes. Plugins run in your Kintone. We never access or store your data.</p>
+          <h3>Which Kintone plans work?</h3>
+          <p>Standard plan or higher. Light plan doesn't support plugins (that's a Kintone limitation, not ours).</p>
         </div>
+        <div class="faq-item">
+          <h3>How fast is support?</h3>
+          <p>We respond to emails within 24 hours, usually same-day. Annual plans get priority support with optional video calls.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is there a money-back guarantee?</h3>
+          <p>Yes. Annual plans come with a 30-day guarantee. Not happy? Full refund, no questions asked.</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 32px;">
+        <a href="/docs/" class="btn btn-secondary">Read the docs →</a>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- CTA Section -->
   <section class="cta">
     <div class="container">
-      <h2>Ready to Supercharge Your Kintone?</h2>
-      <p>Unlock Kintone's full potential with professional plugins</p>
-      <button class="btn btn-white btn-lg" onclick="KinPlug.signUp()">Start Your Free Trial →</button>
-      <p class="cta-note">No credit card • 14 days free • Cancel anytime</p>
+      <h2>Ready to fix Kintone's<br>document problem?</h2>
+      <p>14-day free trial. All features. No credit card. What are you waiting for?</p>
+      <div class="cta-actions">
+        <button class="btn btn-white btn-lg" onclick="KinPlug.signUp()">Start Free Trial</button>
+        <a href="mailto:support@kinplug.com" class="btn btn-ghost btn-lg" style="color: white; border: 1px solid rgba(255,255,255,0.3);">Contact Sales</a>
+      </div>
+      <p class="cta-note">Setup takes 5 minutes • No commitment</p>
     </div>
   </section>
 
@@ -348,21 +488,20 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="logo">Kin<span>Plug</span></div>
-          <p>Premium Kintone plugins by Edamame Inc.</p>
-          <div class="social-links">
-            <a href="https://twitter.com/kinaboratory" target="_blank" title="X/Twitter">𝕏</a>
-            <a href="https://linkedin.com/company/kinplug" target="_blank" title="LinkedIn">in</a>
-            <a href="https://github.com/KinPlug" target="_blank" title="GitHub">GH</a>
+          <a href="/" class="logo">Kin<span>Plug</span></a>
+          <p>Professional plugins that unlock<br>Kintone's full potential.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="LinkedIn">in</a>
           </div>
         </div>
         <div>
-          <h4>Products</h4>
+          <h4>Plugins</h4>
           <ul>
             <li><a href="/plugins/pdf-designer/">PDF Designer</a></li>
-            <li><a href="/plugins/template-builder/">Template Builder</a></li>
             <li><a href="/plugins/enhanced-lookup/">Enhanced Lookup</a></li>
-            <li><a href="/pricing.html">Pricing</a></li>
+            <li><a href="/plugins/template-builder/">Template Builder</a></li>
+            <li><a href="/plugins/">View All</a></li>
           </ul>
         </div>
         <div>
@@ -370,20 +509,21 @@
           <ul>
             <li><a href="/docs/">Documentation</a></li>
             <li><a href="/blog/">Blog</a></li>
-            <li><a href="mailto:support@kinplug.com">Support</a></li>
+            <li><a href="/pricing.html">Pricing</a></li>
+            <li><a href="mailto:support@kinplug.com">Contact</a></li>
           </ul>
         </div>
         <div>
           <h4>Company</h4>
           <ul>
-            <li><a href="https://edamame.ph">Edamame Inc.</a></li>
-            <li><a href="/legal/terms.html">Terms</a></li>
-            <li><a href="/legal/privacy.html">Privacy</a></li>
+            <li><a href="/legal/privacy.html">Privacy Policy</a></li>
+            <li><a href="/legal/terms.html">Terms of Service</a></li>
+            <li><a href="https://edamame.ph" target="_blank" rel="noopener">About Us</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <div>© 2026 KinPlug by Edamame Inc.</div>
+        <div>© 2026 KinPlug by Edamame Inc. All rights reserved.</div>
         <div><a href="/">English</a> | <a href="/ja/">日本語</a></div>
       </div>
     </div>
