@@ -149,28 +149,37 @@ h3 { font-size: 1.25rem; margin-bottom: 12px; }
 .lang-switcher a { color: var(--text-muted); text-decoration: none; }
 .lang-switcher a.active { color: var(--primary); font-weight: 600; }
 
-/* AUTH FLASH FIX - Hide auth until Clerk loads */
+/* AUTH FLASH FIX - Completely hide until Clerk loads */
 .nav-auth {
-  display: flex;
-  gap: 12px;
+  display: none;  /* Hidden by default */
+  gap: 16px;
   align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  min-width: 200px;
+  min-width: 180px;
   justify-content: flex-end;
 }
 .nav-auth.ready {
-  opacity: 1;
+  display: flex;  /* Show only after Clerk loads */
+}
+
+/* User nav layout fix - prevent overlap */
+#user-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+#user-nav.hidden {
+  display: none;
 }
 
 .user-info { 
   display: flex; 
   align-items: center; 
-  gap: 8px;
+  gap: 10px;
   cursor: pointer;
-  padding: 4px 8px;
+  padding: 6px 10px;
   border-radius: var(--radius);
   transition: background 0.2s;
+  white-space: nowrap;
 }
 .user-info:hover {
   background: var(--bg-light);
@@ -179,18 +188,22 @@ h3 { font-size: 1.25rem; margin-bottom: 12px; }
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--primary-light);
-  color: var(--primary);
+  background: var(--primary);
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
   font-size: 0.875rem;
   overflow: hidden;
+  flex-shrink: 0;
 }
 #user-name {
   font-weight: 500;
   color: var(--text);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Hero */
