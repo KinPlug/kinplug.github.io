@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kintone Enhanced Lookup Plugin | Instant Search & Multi-Field Mapping | KinPlug</title>
-  <meta name="description" content="Supercharge Kintone lookup fields with instant search, multi-field mapping, and subtable support. Free 14-day trial. No coding required.">
-  <meta name="keywords" content="kintone lookup, kintone search, kintone lookup plugin, kintone field mapping, kintone subtable lookup">
+  <title>Enhanced Lookup - Kintone Lookup, But Actually Good | KinPlug</title>
+  <meta name="description" content="Instant search, multi-field copy, works in subtables. Everything standard Kintone lookup should be. Built by developers who got frustrated. 14-day free trial.">
   <link rel="canonical" href="https://kinplug.com/plugins/enhanced-lookup/">
   <link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/enhanced-lookup/">
   <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/enhanced-lookup/">
@@ -17,234 +16,106 @@
   <nav class="navbar">
     <div class="container">
       <a href="/" class="logo">Kin<span>Plug</span></a>
-      <div class="nav-links">
-        <a href="/plugins/">Plugins</a>
-        <a href="/pricing.html">Pricing</a>
-        <a href="/docs/">Docs</a>
-      </div>
+      <div class="nav-links"><a href="/plugins/" class="active">Plugins</a><a href="/pricing.html">Pricing</a><a href="/docs/">Docs</a></div>
       <div class="nav-right">
         <div class="lang-switcher"><a href="/plugins/enhanced-lookup/" class="active">EN</a> | <a href="/ja/plugins/enhanced-lookup/">日本語</a></div>
-        <div class="nav-auth">
-          <div id="auth-nav">
-            <button class="btn btn-secondary btn-sm" onclick="KinPlug.signIn()">Sign In</button>
-            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">Get Started</button>
-          </div>
-          <div id="user-nav" class="hidden">
-            <a href="/dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
-            <div class="user-info" onclick="KinPlug.openProfile()">
-              <div id="user-avatar" class="user-avatar">?</div>
-              <span id="user-name">User</span>
-            </div>
-          </div>
-        </div>
+        <div class="nav-auth"><div id="auth-nav"><button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">Sign In</button><button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">Start Free</button></div><div id="user-nav" class="hidden"><a href="/dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a></div></div>
       </div>
     </div>
   </nav>
 
-  <section class="plugin-hero">
+  <section class="hero" style="padding: 60px 0 80px;">
     <div class="container">
-      <div class="plugin-hero-content">
-        <div class="plugin-hero-text">
-          <div class="breadcrumb"><a href="/">Home</a> → <a href="/plugins/">Plugins</a> → Enhanced Lookup</div>
-          <h1>Supercharged Lookup Fields for Kintone</h1>
-          <p class="hero-subtitle">Instant search as you type, map multiple fields at once, and use lookups inside subtables. Finally, lookup fields that work the way you need them to.</p>
-          <div class="hero-stats">
-            <div class="hero-stat"><div class="hero-stat-number">14 Days</div><div class="hero-stat-label">Free Trial</div></div>
-            <div class="hero-stat"><div class="hero-stat-number">5 Min</div><div class="hero-stat-label">Setup</div></div>
-            <div class="hero-stat"><div class="hero-stat-number">No Code</div><div class="hero-stat-label">Required</div></div>
-          </div>
-          <div class="hero-buttons">
-            <button class="btn btn-primary btn-lg" onclick="KinPlug.startTrial('enhanced-lookup')">Start Free Trial</button>
-            <a href="#features" class="btn btn-outline btn-lg">See Features</a>
-          </div>
-          <p class="hero-note">No credit card required • Full features • Cancel anytime</p>
+      <div style="text-align: center; max-width: 800px; margin: 0 auto 48px;">
+        <nav style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 24px;"><a href="/">Home</a> / <a href="/plugins/">Plugins</a> / Enhanced Lookup</nav>
+        <span class="badge badge-success" style="margin-bottom: 16px;">🔍 NEW</span>
+        <h1>"Why can't lookup just... work better?"<br><span class="text-gradient">It can now.</span></h1>
+        <p class="hero-description" style="max-width: 640px; margin: 24px auto;">
+          Type to search. Instant results.<br>
+          Copy multiple fields at once.<br>
+          Works inside subtables.<br>
+          Everything standard lookup should have been.
+        </p>
+        <div class="hero-actions" style="justify-content: center;">
+          <button class="btn btn-primary btn-lg" onclick="KinPlug.startTrial('enhanced-lookup')">Start 14-Day Free Trial</button>
+          <a href="#features" class="btn btn-secondary btn-lg">See Features</a>
         </div>
-        <div class="plugin-hero-visual">
-          <div class="hero-card">
-            <div class="hero-card-header"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span> Enhanced Lookup</div>
-            <div class="hero-card-body">
-              <div style="background:#f5f5f5;padding:16px;border-radius:8px;">
-                <div style="font-size:0.85rem;color:#666;margin-bottom:8px;">Customer</div>
-                <div style="background:white;border:1px solid #ddd;padding:12px;border-radius:4px;display:flex;align-items:center;gap:8px;">
-                  <span>🔍</span>
-                  <span style="color:#999;">Type to search...</span>
-                </div>
-                <div style="background:white;border:1px solid var(--primary);border-radius:4px;margin-top:4px;box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-                  <div style="padding:12px;border-bottom:1px solid #eee;cursor:pointer;">Acme Corporation</div>
-                  <div style="padding:12px;border-bottom:1px solid #eee;background:var(--primary-light);cursor:pointer;">Acme Industries</div>
-                  <div style="padding:12px;cursor:pointer;">Acme Solutions</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p class="hero-note" style="margin-top: 16px;">No credit card • No auto-billing</p>
       </div>
     </div>
   </section>
 
-  <section class="plugin-problem">
+  <section style="padding: 80px 0; background: var(--bg-subtle);">
     <div class="container">
-      <h2>Kintone's Built-in Lookup is Limited</h2>
-      <div class="problem-comparison">
-        <div class="problem-before">
-          <h3>❌ Standard Lookup</h3>
-          <ul>
-            <li>Must click button to search</li>
-            <li>Can only map one field at a time</li>
-            <li>Doesn't work in subtables</li>
-            <li>Slow with large datasets</li>
-            <li>No fuzzy search</li>
-          </ul>
-        </div>
-        <div class="problem-after">
-          <h3>✅ Enhanced Lookup</h3>
-          <ul>
-            <li>Instant search as you type</li>
-            <li>Map multiple fields at once</li>
-            <li>Works perfectly in subtables</li>
-            <li>Fast even with 100K+ records</li>
-            <li>Smart fuzzy matching</li>
-          </ul>
-        </div>
+      <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <p style="font-size: 1.375rem; color: var(--text); line-height: 1.9;">
+          "Why do I have to click 'Get' every single time?"<br>
+          "Search is slow and shows too many results."<br>
+          "Why doesn't it work in subtables?!"
+        </p>
+        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: 24px;">
+          Same. Every day. For years.<br>
+          So we <strong>built what lookup should have been all along.</strong>
+        </p>
       </div>
     </div>
   </section>
 
-  <section class="plugin-features" id="features">
+  <section class="problems">
     <div class="container">
-      <h2>Features</h2>
+      <div class="section-header"><h2>Standard lookup problems</h2></div>
+      <div class="problems-grid">
+        <div class="problem-card"><div class="problem-icon">🐢</div><h3>Slow and clunky</h3><p>Click button, wait, scroll through list, select. How many clicks for one field?</p><div class="problem-solution">→ Type to search, instant results</div></div>
+        <div class="problem-card"><div class="problem-icon">📋</div><h3>Limited field copy</h3><p>Want to copy customer name AND address AND phone? Set up each one separately...</p><div class="problem-solution">→ Multi-field mapping</div></div>
+        <div class="problem-card"><div class="problem-icon">📊</div><h3>No subtable support</h3><p>Need product master lookup in line items? Standard lookup says no. Dead end.</p><div class="problem-solution">→ Full subtable support</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header"><h2>What Enhanced Lookup does</h2><p>Everything you wished standard lookup could do.</p></div>
       <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h3>Instant Search</h3>
-          <p>Results appear as you type. No more clicking buttons and waiting for popups.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔗</div>
-          <h3>Multi-Field Mapping</h3>
-          <p>Select a customer and auto-fill address, phone, email, and more - all at once.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📊</div>
-          <h3>Subtable Support</h3>
-          <p>Use enhanced lookup inside subtables. Perfect for order line items.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🎯</div>
-          <h3>Smart Matching</h3>
-          <p>Fuzzy search finds results even with typos or partial matches.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🚀</div>
-          <h3>Fast Performance</h3>
-          <p>Handles large datasets smoothly. Works with 100,000+ records.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔧</div>
-          <h3>Easy Configuration</h3>
-          <p>Visual setup - no coding required. Configure in minutes.</p>
-        </div>
+        <div class="feature-card"><div class="feature-icon">⚡</div><h3>Instant search</h3><p>Results appear as you type. No button clicking. No waiting.</p></div>
+        <div class="feature-card"><div class="feature-icon">📋</div><h3>Multi-field copy</h3><p>Copy multiple fields from source record at once. Customer + address + phone in one go.</p></div>
+        <div class="feature-card"><div class="feature-icon">📊</div><h3>Subtable support</h3><p>Works perfectly inside subtables. Product master in line items? Done.</p></div>
+        <div class="feature-card"><div class="feature-icon">🎨</div><h3>Custom display</h3><p>Show results as "Product Name ($Price)" or any format you want.</p></div>
+        <div class="feature-card"><div class="feature-icon">🔒</div><h3>Auto-lock fields</h3><p>Copied fields become read-only. No accidental edits.</p></div>
+        <div class="feature-card"><div class="feature-icon">🚀</div><h3>Fast & light</h3><p>Works smoothly even with thousands of records.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="plugin-usecases">
+  <section class="pricing">
     <div class="container">
-      <h2>Use Cases</h2>
-      <div class="usecases-grid">
-        <div class="usecase-card">
-          <h3>🛒 Order Management</h3>
-          <p>Quickly find products in line items. Auto-fill price, SKU, and stock info.</p>
-        </div>
-        <div class="usecase-card">
-          <h3>👥 CRM</h3>
-          <p>Search customers instantly. Pull in contact details, history, and preferences.</p>
-        </div>
-        <div class="usecase-card">
-          <h3>📦 Inventory</h3>
-          <p>Find items by name, code, or description. Auto-fill location and quantity.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="plugin-pricing">
-    <div class="container">
-      <h2>Pricing</h2>
+      <div class="section-header"><h2>Simple pricing</h2></div>
       <div class="pricing-grid">
-        <div class="pricing-card">
-          <h3>Free Trial</h3>
-          <div class="price">$0</div>
-          <div class="period">14 days</div>
-          <ul><li>✓ All features</li><li>✓ No credit card</li></ul>
-          <button class="btn btn-outline" onclick="KinPlug.startTrial('enhanced-lookup')">Start Free</button>
-        </div>
-        <div class="pricing-card featured">
-          <div class="pricing-badge">Best Value</div>
-          <h3>Annual</h3>
-          <div class="price">$249<span>/year</span></div>
-          <div class="period">Save 28%</div>
-          <ul><li>✓ All features</li><li>✓ Priority support</li></ul>
-          <a href="/pricing.html" class="btn btn-primary">Get Started</a>
-        </div>
-        <div class="pricing-card">
-          <h3>Monthly</h3>
-          <div class="price">$29<span>/month</span></div>
-          <div class="period">Flexible</div>
-          <ul><li>✓ All features</li><li>✓ Email support</li></ul>
-          <a href="/pricing.html" class="btn btn-outline">Get Started</a>
-        </div>
+        <div class="pricing-card"><h3>Free Trial</h3><div class="pricing-price">$0</div><div class="pricing-period">14 days</div><ul class="pricing-features"><li>All features</li><li>No credit card</li><li>Email support</li></ul><button class="btn btn-secondary btn-lg" onclick="KinPlug.startTrial('enhanced-lookup')">Start Free</button></div>
+        <div class="pricing-card featured"><span class="pricing-badge">Best Value</span><h3>Annual</h3><div class="pricing-price">$249<span>/year</span></div><div class="pricing-period">$20.75/mo</div><ul class="pricing-features"><li>All features</li><li>Priority support</li><li>30-day guarantee</li></ul><a href="mailto:support@kinplug.com?subject=Enhanced Lookup Annual" class="btn btn-primary btn-lg">Contact Us</a></div>
+        <div class="pricing-card"><h3>Monthly</h3><div class="pricing-price">$29<span>/mo</span></div><div class="pricing-period">Cancel anytime</div><ul class="pricing-features"><li>All features</li><li>Email support</li><li>Free updates</li></ul><a href="mailto:support@kinplug.com?subject=Enhanced Lookup Monthly" class="btn btn-secondary btn-lg">Contact Us</a></div>
       </div>
     </div>
   </section>
 
   <section class="cta">
     <div class="container">
-      <h2>Ready for Better Lookups?</h2>
-      <p>Start your free 14-day trial today</p>
-      <button class="btn btn-white btn-lg" onclick="KinPlug.startTrial('enhanced-lookup')">Start Free Trial →</button>
+      <h2>Ready for lookup that<br>actually works?</h2>
+      <p>14 days free. All features.</p>
+      <div class="cta-actions"><button class="btn btn-white btn-lg" onclick="KinPlug.startTrial('enhanced-lookup')">Try It Free</button></div>
     </div>
   </section>
 
   <footer class="footer">
     <div class="container">
-      <div class="footer-bottom">
-        <div>© 2026 KinPlug by Edamame Inc.</div>
-        <div><a href="/plugins/enhanced-lookup/">English</a> | <a href="/ja/plugins/enhanced-lookup/">日本語</a></div>
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="/" class="logo">Kin<span>Plug</span></a><p style="margin-top: 12px;">We use Kintone every day. We built what we needed.</p></div>
+        <div><h4>Plugins</h4><ul><li><a href="/plugins/pdf-designer/">PDF Designer</a></li><li><a href="/plugins/enhanced-lookup/">Enhanced Lookup</a></li><li><a href="/plugins/template-builder/">Template Builder</a></li></ul></div>
+        <div><h4>Support</h4><ul><li><a href="/docs/">Documentation</a></li><li><a href="mailto:support@kinplug.com">Contact</a></li></ul></div>
+        <div><h4>Company</h4><ul><li><a href="/legal/privacy.html">Privacy</a></li><li><a href="/legal/terms.html">Terms</a></li></ul></div>
       </div>
+      <div class="footer-bottom"><div>© 2026 KinPlug by Edamame Inc.</div></div>
     </div>
   </footer>
-
   <script src="/assets/js/app.js"></script>
-  <style>
-    .plugin-hero { padding: 60px 0; background: var(--bg-light); }
-    .plugin-hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .breadcrumb { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 16px; }
-    .breadcrumb a { color: var(--text-muted); }
-    .hero-stats { display: flex; gap: 40px; margin: 32px 0; }
-    .hero-stat-number { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
-    .hero-stat-label { font-size: 0.875rem; color: var(--text-secondary); }
-    .plugin-problem { padding: 80px 0; }
-    .problem-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
-    .problem-before, .problem-after { padding: 32px; border-radius: 12px; }
-    .problem-before { background: #fee; border: 2px solid #fcc; }
-    .problem-after { background: #efe; border: 2px solid #cfc; }
-    .problem-before h3, .problem-after h3 { margin-bottom: 16px; text-align: left; }
-    .problem-before ul, .problem-after ul { list-style: none; }
-    .problem-before li, .problem-after li { padding: 8px 0; }
-    .plugin-features { padding: 80px 0; background: var(--bg-light); }
-    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
-    .feature-card { background: white; padding: 32px; border-radius: 12px; }
-    .feature-icon { font-size: 2rem; margin-bottom: 16px; }
-    .plugin-usecases { padding: 80px 0; }
-    .usecases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
-    .usecase-card { background: var(--bg-light); padding: 24px; border-radius: 12px; }
-    .plugin-pricing { padding: 80px 0; background: var(--bg-light); }
-    @media (max-width: 768px) {
-      .plugin-hero-content { grid-template-columns: 1fr; }
-      .problem-comparison { grid-template-columns: 1fr; }
-      .features-grid, .usecases-grid { grid-template-columns: 1fr; }
-    }
-  </style>
 </body>
 </html>
