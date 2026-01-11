@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing - KinPlug</title>
+  <meta name="description" content="Simple, transparent pricing for KinPlug plugins. Start with a free trial.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <!-- Clerk - Replace pk_test_dW5jb21tb24tdHVuYS0xMi5jbGVyay5hY2NvdW50cy5kZXYk with your actual key -->
+  <script 
+    async 
+    crossorigin="anonymous" 
+    data-clerk-publishable-key="pk_test_dW5jb21tb24tdHVuYS0xMi5jbGVyay5hY2NvdW50cy5kZXYk"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+    onload="window.Clerk && window.Clerk.load()"
+  ></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="logo">Kin<span>Plug</span></a>
+      
+      <div class="nav-links">
+        <a href="/plugins/">Plugins</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/docs/">Documentation</a>
+      </div>
+      
+      <div class="nav-auth">
+        <div id="auth-nav">
+          <button class="btn btn-secondary btn-sm" onclick="KinPlug.signIn()">Sign In</button>
+          <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">Get Started</button>
+        </div>
+        <div id="user-nav" class="hidden">
+          <a href="/dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
+          <div class="user-info" onclick="KinPlug.openProfile()" style="cursor:pointer;">
+            <div id="user-avatar" class="user-avatar">?</div>
+            <span id="user-name">User</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Pricing Header -->
+  <section style="padding: 60px 0; background: linear-gradient(135deg, var(--primary-light) 0%, var(--white) 100%); text-align: center;">
+    <div class="container">
+      <h1 style="font-size: 42px; margin-bottom: 15px;">Simple, Transparent Pricing</h1>
+      <p style="font-size: 18px; color: var(--gray);">Start with a free trial. No credit card required.</p>
+    </div>
+  </section>
+
+  <!-- Pricing Cards -->
+  <section class="pricing">
+    <div class="container">
+      <div class="pricing-grid">
+        <!-- Free Trial -->
+        <div class="pricing-card">
+          <h3>Free Trial</h3>
+          <div class="price">$0</div>
+          <div class="period">14 days, full access</div>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> All plugin features</li>
+            <li><span class="check">✓</span> Unlimited PDF generation</li>
+            <li><span class="check">✓</span> All templates</li>
+            <li><span class="check">✓</span> Email support</li>
+            <li><span class="check">✓</span> No credit card required</li>
+          </ul>
+          <button class="btn btn-outline" onclick="KinPlug.signUp()">Start Free Trial</button>
+        </div>
+        
+        <!-- Annual - Featured -->
+        <div class="pricing-card featured">
+          <span class="badge">Best Value - Save 58%</span>
+          <h3>Annual</h3>
+          <div class="price">$99 <span>/year</span></div>
+          <div class="period">Per plugin, billed annually</div>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> All plugin features</li>
+            <li><span class="check">✓</span> Unlimited PDF generation</li>
+            <li><span class="check">✓</span> All templates</li>
+            <li><span class="check">✓</span> Priority email support</li>
+            <li><span class="check">✓</span> Free updates for 1 year</li>
+            <li><span class="check">✓</span> Cancel anytime</li>
+          </ul>
+          <button class="btn btn-success btn-lg" onclick="purchaseAnnual()">Get Annual Plan</button>
+        </div>
+        
+        <!-- Monthly -->
+        <div class="pricing-card">
+          <h3>Monthly</h3>
+          <div class="price">$20 <span>/month</span></div>
+          <div class="period">Per plugin, billed monthly</div>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> All plugin features</li>
+            <li><span class="check">✓</span> Unlimited PDF generation</li>
+            <li><span class="check">✓</span> All templates</li>
+            <li><span class="check">✓</span> Email support</li>
+            <li><span class="check">✓</span> Free updates</li>
+            <li><span class="check">✓</span> Cancel anytime</li>
+          </ul>
+          <button class="btn btn-secondary" onclick="purchaseMonthly()">Get Monthly Plan</button>
+        </div>
+      </div>
+      
+      <!-- FAQ -->
+      <div class="mt-40" style="max-width: 800px; margin: 60px auto 0;">
+        <h2 style="text-align: center; margin-bottom: 40px;">Frequently Asked Questions</h2>
+        
+        <div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+          <details style="border-bottom: 1px solid var(--border);">
+            <summary style="padding: 20px; cursor: pointer; font-weight: 600; background: var(--bg-light);">
+              How does the free trial work?
+            </summary>
+            <div style="padding: 20px;">
+              <p>Your 14-day trial starts when you install the plugin and enter your trial license key. You get full access to all features during the trial period. No credit card required.</p>
+            </div>
+          </details>
+          
+          <details style="border-bottom: 1px solid var(--border);">
+            <summary style="padding: 20px; cursor: pointer; font-weight: 600; background: var(--bg-light);">
+              Is the license per user or per app?
+            </summary>
+            <div style="padding: 20px;">
+              <p>Licenses are per Kintone subdomain (environment). You can use the plugin in multiple apps within the same Kintone environment with a single license.</p>
+            </div>
+          </details>
+          
+          <details style="border-bottom: 1px solid var(--border);">
+            <summary style="padding: 20px; cursor: pointer; font-weight: 600; background: var(--bg-light);">
+              Can I switch between monthly and annual?
+            </summary>
+            <div style="padding: 20px;">
+              <p>Yes! You can upgrade from monthly to annual at any time. When you upgrade, you'll receive credit for any unused time on your monthly plan.</p>
+            </div>
+          </details>
+          
+          <details style="border-bottom: 1px solid var(--border);">
+            <summary style="padding: 20px; cursor: pointer; font-weight: 600; background: var(--bg-light);">
+              What payment methods do you accept?
+            </summary>
+            <div style="padding: 20px;">
+              <p>We accept all major credit cards (Visa, MasterCard, American Express) and PayPal through our secure payment processor.</p>
+            </div>
+          </details>
+          
+          <details>
+            <summary style="padding: 20px; cursor: pointer; font-weight: 600; background: var(--bg-light);">
+              What happens when my subscription expires?
+            </summary>
+            <div style="padding: 20px;">
+              <p>The plugin will continue to work in read-only mode. You'll be able to view existing PDFs but won't be able to generate new ones until you renew your subscription.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+      
+      <!-- Contact -->
+      <div class="text-center mt-40">
+        <p style="color: var(--gray);">Need a custom plan or have questions?</p>
+        <a href="/cdn-cgi/l/email-protection#eb989e9b9b84999fab8e8f8a868a868ec59b83" class="btn btn-outline mt-20">Contact Sales</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="color: white;">Kin<span style="color: #999;">Plug</span></div>
+          <p>Premium plugins for Kintone by Edamame Inc.</p>
+        </div>
+        
+        <div>
+          <h4>Products</h4>
+          <ul>
+            <li><a href="/plugins/pdf-designer/">PDF Designer</a></li>
+            <li><a href="/plugins/template-builder/">Template Builder</a></li>
+            <li><a href="/pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/docs/faq.html">FAQ</a></li>
+            <li><a href="/cdn-cgi/l/email-protection#5d2e282d2d322f291d38393c303c3038732d35">Support</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="https://edamame.ph">Edamame Inc.</a></li>
+            <li><a href="/legal/terms.html">Terms of Service</a></li>
+            <li><a href="/legal/privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div>© 2026 KinPlug by Edamame Inc. All rights reserved.</div>
+        <div>Built with ❤️ in the Philippines</div>
+      </div>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/app.js"></script>
+  <script>
+    function purchaseMonthly() {
+      const subject = encodeURIComponent('KinPlug Monthly License Request');
+      const body = encodeURIComponent(`Hi KinPlug Team,
+
+I'd like to purchase a Monthly license ($20/month).
+
+Plugin: PDF Designer
+Kintone Subdomain: [YOUR_SUBDOMAIN].kintone.com
+Email: [YOUR_EMAIL]
+
+Please send me an invoice.
+
+Thanks!`);
+      window.location.href = `mailto:billing@kinplug.com?subject=${subject}&body=${body}`;
+    }
+    
+    function purchaseAnnual() {
+      const subject = encodeURIComponent('KinPlug Annual License Request');
+      const body = encodeURIComponent(`Hi KinPlug Team,
+
+I'd like to purchase an Annual license ($99/year - Best Value!).
+
+Plugin: PDF Designer
+Kintone Subdomain: [YOUR_SUBDOMAIN].kintone
