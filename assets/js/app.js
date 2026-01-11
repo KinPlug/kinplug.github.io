@@ -8,7 +8,7 @@
 // ============================================================
 const CONFIG = {
   // Clerk - Get from https://dashboard.clerk.com → API Keys
-  CLERK_PUBLISHABLE_KEY: 'pk_test_dW5jb21tb24tdHVuYS0xMi5jbGVyay5hY2NvdW50cy5kZXYk',
+  CLERK_PUBLISHABLE_KEY: 'pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk',
   
   // API
   API_URL: 'https://kinplug-api-production.up.railway.app',
