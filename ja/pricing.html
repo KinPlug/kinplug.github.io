@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>料金プラン | KinPlug - kintoneプラグイン</title>
+  <meta name="description" content="KinPlugプラグインのシンプルな料金体系。14日間無料トライアル。月額・年額プランをご用意。">
+  <meta name="keywords" content="kintone プラグイン 料金, kintone PDF 価格, kintone カスタマイズ 費用">
+  <link rel="canonical" href="https://kinplug.com/ja/pricing.html">
+  <link rel="alternate" hreflang="en" href="https://kinplug.com/pricing.html">
+  <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/pricing.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/ja/" class="logo">Kin<span>Plug</span></a>
+      <div class="nav-links">
+        <a href="/ja/plugins/">プラグイン</a>
+        <a href="/ja/pricing.html" class="active">料金</a>
+        <a href="/ja/docs/">ドキュメント</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher"><a href="/pricing.html">EN</a> | <a href="/ja/pricing.html" class="active">日本語</a></div>
+        <div class="nav-auth">
+          <div id="auth-nav">
+            <button class="btn btn-secondary btn-sm" onclick="KinPlug.signIn()">ログイン</button>
+            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">無料で始める</button>
+          </div>
+          <div id="user-nav" class="hidden">
+            <a href="/dashboard.html" class="btn btn-secondary btn-sm">ダッシュボード</a>
+            <div class="user-info" onclick="KinPlug.openProfile()">
+              <div id="user-avatar" class="user-avatar">?</div>
+              <span id="user-name">User</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="pricing-header">
+    <div class="container">
+      <h1>シンプルな料金体系</h1>
+      <p class="section-subtitle">すべてのプラグインで同一料金。隠れた費用はありません。</p>
+    </div>
+  </section>
+
+  <section class="pricing" style="padding-top: 0;">
+    <div class="container">
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>無料トライアル</h3>
+          <div class="price">¥0</div>
+          <div class="period">14日間</div>
+          <ul>
+            <li>✓ 全機能利用可能</li>
+            <li>✓ クレジットカード不要</li>
+            <li>✓ メールサポート</li>
+            <li>✓ 自動的に終了（課金なし）</li>
+          </ul>
+          <button class="btn btn-outline btn-lg" onclick="KinPlug.signUp()" style="width:100%;">無料で試す</button>
+        </div>
+        
+        <div class="pricing-card featured">
+          <div class="pricing-badge">おすすめ</div>
+          <h3>年額プラン</h3>
+          <div class="price">¥29,800<span>/年</span></div>
+          <div class="period">月額換算 ¥2,483（28%お得）</div>
+          <ul>
+            <li>✓ 全機能利用可能</li>
+            <li>✓ 優先サポート</li>
+            <li>✓ 無料アップデート</li>
+            <li>✓ 請求書払い対応</li>
+          </ul>
+          <a href="mailto:support@kinplug.com?subject=年額プラン申し込み" class="btn btn-primary btn-lg" style="width:100%;">お問い合わせ</a>
+        </div>
+        
+        <div class="pricing-card">
+          <h3>月額プラン</h3>
+          <div class="price">¥3,480<span>/月</span></div>
+          <div class="period">いつでもキャンセル可能</div>
+          <ul>
+            <li>✓ 全機能利用可能</li>
+            <li>✓ メールサポート</li>
+            <li>✓ 無料アップデート</li>
+            <li>✓ 月単位で柔軟に</li>
+          </ul>
+          <a href="mailto:support@kinplug.com?subject=月額プラン申し込み" class="btn btn-outline btn-lg" style="width:100%;">お問い合わせ</a>
+        </div>
+      </div>
+      
+      <p class="pricing-note">※ 料金はプラグインごと、kintoneサブドメインごとです。同一環境内のアプリ数・ユーザー数は無制限。</p>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="container">
+      <h2>料金に関するよくある質問</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>1つのライセンスで複数のアプリに使えますか？</h3>
+          <p>はい、1つのkintoneサブドメイン内であれば、何個のアプリでも使えます。ユーザー数も無制限です。</p>
+        </div>
+        <div class="faq-item">
+          <h3>支払い方法は？</h3>
+          <p>クレジットカード、銀行振込、請求書払いに対応しています。年額プランは請求書払いが可能です。</p>
+        </div>
+        <div class="faq-item">
+          <h3>トライアル後は自動課金されますか？</h3>
+          <p>いいえ、トライアルは自動的に終了します。継続利用には別途お申し込みが必要です。</p>
+        </div>
+        <div class="faq-item">
+          <h3>返金ポリシーは？</h3>
+          <p>年額プランは30日以内であれば全額返金いたします。月額プランは日割り返金はありません。</p>
+        </div>
+        <div class="faq-item">
+          <h3>複数のプラグインを使う場合は？</h3>
+          <p>各プラグインごとにライセンスが必要です。複数プラグインの同時契約で割引があります。お問い合わせください。</p>
+        </div>
+        <div class="faq-item">
+          <h3>サブドメインを変更したい場合は？</h3>
+          <p>ダッシュボードから変更できます。トライアルは1回、月額は月1回、年額は年2回まで変更可能です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>まずは14日間無料でお試しください</h2>
+      <p>クレジットカード不要・5分で導入完了</p>
+      <button class="btn btn-white btn-lg" onclick="KinPlug.signUp()">無料トライアルを始める →</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/ja/" class="logo">Kin<span>Plug</span></a>
+          <p>kintoneの可能性を最大限に引き出すプレミアムプラグイン</p>
+        </div>
+        <div>
+          <h4>プラグイン</h4>
+          <ul>
+            <li><a href="/ja/plugins/pdf-designer/">PDF Designer</a></li>
+            <li><a href="/ja/plugins/">すべてのプラグイン</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>サポート</h4>
+          <ul>
+            <li><a href="/ja/docs/">ドキュメント</a></li>
+            <li><a href="mailto:support@kinplug.com">お問い合わせ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>会社情報</h4>
+          <ul>
+            <li><a href="/ja/legal/privacy.html">プライバシーポリシー</a></li>
+            <li><a href="/ja/legal/terms.html">利用規約</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 KinPlug by Edamame Inc.</div>
+        <div><a href="/pricing.html">English</a> | <a href="/ja/pricing.html">日本語</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/app.js"></script>
+  
+  <style>
+    .pricing-header { padding: 60px 0 40px; background: var(--bg-light); text-align: center; }
+    .pricing-header h1 { margin-bottom: 16px; }
+    .nav-links a.active { color: var(--primary); font-weight: 600; }
+  </style>
+</body>
+</html>
