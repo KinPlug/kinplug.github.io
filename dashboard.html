@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - KinPlug</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <!-- Clerk - Replace pk_test_dW5jb21tb24tdHVuYS0xMi5jbGVyay5hY2NvdW50cy5kZXYk with your actual key -->
+  <script 
+    async 
+    crossorigin="anonymous" 
+    data-clerk-publishable-key="pk_test_dW5jb21tb24tdHVuYS0xMi5jbGVyay5hY2NvdW50cy5kZXYk"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+    onload="window.Clerk && window.Clerk.load()"
+  ></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="logo">Kin<span>Plug</span></a>
+      
+      <div class="nav-links">
+        <a href="/plugins/">Plugins</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/docs/">Documentation</a>
+      </div>
+      
+      <div class="nav-auth">
+        <!-- Show when NOT logged in -->
+        <div id="auth-nav">
+          <button class="btn btn-secondary btn-sm" onclick="KinPlug.signIn()">Sign In</button>
+          <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">Get Started</button>
+        </div>
+        
+        <!-- Show when logged in -->
+        <div id="user-nav" class="hidden">
+          <a href="/dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
+          <div class="user-info" onclick="KinPlug.openProfile()" style="cursor:pointer;">
+            <div id="user-avatar" class="user-avatar">?</div>
+            <span id="user-name">User</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard Content -->
+  <section class="dashboard">
+    <div class="container">
+      <div class="dashboard-header">
+        <h1>Dashboard</h1>
+        <div>
+          <button class="btn btn-primary" onclick="showStartTrialModal()">+ Start New Trial</button>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="dashboard-grid">
+        <div class="stat-card">
+          <h3>Active Licenses</h3>
+          <div id="stat-active" class="value success">-</div>
+        </div>
+        <div class="stat-card">
+          <h3>Active Trials</h3>
+          <div id="stat-trial" class="value warning">-</div>
+        </div>
+        <div class="stat-card">
+          <h3>Expired</h3>
+          <div id="stat-expired" class="value danger">-</div>
+        </div>
+      </div>
+
+      <!-- Licenses Table -->
+      <div class="licenses-section">
+        <h2>Your Licenses</h2>
+        <table class="license-table">
+          <thead>
+            <tr>
+              <th>Plugin</th>
+              <th>License Key</th>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Expires</th>
+            </tr>
+          </thead>
+          <tbody id="licenses-table">
+            <tr>
+              <td colspan="5">
+                <div class="loading"><div class="spinner"></div></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="mt-40">
+        <h2 style="margin-bottom: 20px;">Quick Actions</h2>
+        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+          <button class="btn btn-secondary" onclick="KinPlug.loadUserLicenses()">
+            🔄 Refresh Licenses
+          </button>
+          <a href="/docs/" class="btn btn-secondary">
+            📖 View Documentation
+          </a>
+          <a href="/cdn-cgi/l/email-protection#3744424747584543775253565a565a5219475f" class="btn btn-secondary">
+            💬 Contact Support
+          </a>
+          <button class="btn btn-secondary" onclick="KinPlug.openProfile()">
+            ⚙️ Account Settings
+          </button>
+          <button class="btn btn-secondary" onclick="KinPlug.signOut()">
+            🚪 Sign Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Start Trial Modal -->
+  <div id="trial-modal" class="hidden" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 9999;">
+    <div style="background: white; padding: 40px; border-radius: 12px; width: 100%; max-width: 450px;">
+      <h2 style="margin-bottom: 20px;">Start Free Trial</h2>
+      
+      <div style="margin-bottom: 20px;">
+        <label style="display: block; margin-bottom: 8px; font-weight: 600;">Select Plugin</label>
+        <select id="trial-plugin" style="width: 100%; padding: 12px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 16px;">
+          <option value="pdf-designer">PDF Designer</option>
+          <option value="template-builder">Template Builder</option>
+        </select>
+      </div>
+      
+      <div style="margin-bottom: 20px;">
+        <label style="display: block; margin-bottom: 8px; font-weight: 600;">Kintone Subdomain</label>
+        <div style="display: flex; align-items: center; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
+          <input type="text" id="trial-subdomain" placeholder="mycompany" style="flex: 1; padding: 12px; border: none; font-size: 16px;">
+          <span style="padding: 12px; background: #f8f9fa; color: #666;">.kintone.com</span>
+        </div>
+        <small style="color: #666; margin-top: 5px; display: block;">Enter only the subdomain part</small>
+      </div>
+      
+      <div style="display: flex; gap: 15px;">
+        <button class="btn btn-primary" onclick="submitTrial()" style="flex: 1;">Start 14-Day Trial</button>
+        <button class="btn btn-secondary" onclick="hideTrialModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/app.js"></script>
+  <script>
+    // Check if user is logged in
+    document.addEventListener('DOMContentLoaded', () => {
+      // Wait for Clerk to load
+      const checkAuth = setInterval(() => {
+        if (window.Clerk && window.Clerk.loaded) {
+          clearInterval(checkAuth);
+          if (!window.Clerk.user) {
+            // Not logged in, redirect to login
+            window.location.href = '/login.html?redirect=/dashboard.html';
+          }
+        }
+      }, 100);
+      
+      // Timeout after 3 seconds - allow demo mode
+      setTimeout(() => clearInterval(checkAuth), 3000);
+    });
+    
+    function showStartTrialModal() {
+      document.getElementById('trial-modal').classList.remove('hidden');
+      document.getElementById('trial-modal').style.display = 'flex';
+    }
+    
+    function hideTrialModal() {
+      document.getElementById('trial-modal').classList.add('hidden');
+      document.getElementById('trial-modal').style.display = 'none';
+    }
+    
+    async function submitTrial() {
+      const plugin = document.getElementById('trial-plugin').value;
+      const subdomain = document.getElementById('trial-subdomain').value.trim();
+      
+      if (!subdomain) {
+        alert('Please enter your K
