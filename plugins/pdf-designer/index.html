@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Designer - KinPlug</title>
+  <meta name="description" content="Generate beautiful PDF documents from your Kintone records. Invoices, reports, certificates, and more.">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  
+  <script 
+    async 
+    crossorigin="anonymous" 
+    data-clerk-publishable-key="pk_test_dW5jb21tb24tdHVuYS0xMi5jbGVyay5hY2NvdW50cy5kZXYk"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+    onload="window.Clerk && window.Clerk.load()"
+  ></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="logo">Kin<span>Plug</span></a>
+      
+      <div class="nav-links">
+        <a href="/plugins/">Plugins</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/docs/">Documentation</a>
+      </div>
+      
+      <div class="nav-auth">
+        <div id="auth-nav">
+          <button class="btn btn-secondary btn-sm" onclick="KinPlug.signIn()">Sign In</button>
+          <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">Get Started</button>
+        </div>
+        <div id="user-nav" class="hidden">
+          <a href="/dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
+          <div class="user-info" onclick="KinPlug.openProfile()" style="cursor:pointer;">
+            <div id="user-avatar" class="user-avatar">?</div>
+            <span id="user-name">User</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" style="padding: 60px 0;">
+    <div class="container">
+      <div class="hero-content">
+        <div>
+          <span class="plugin-badge" style="margin-bottom: 15px; display: inline-block;">Most Popular</span>
+          <h1>KinPlug <span>PDF Designer</span></h1>
+          <p>Generate beautiful PDF documents from your Kintone records. Perfect for invoices, reports, certificates, and any document you need to create from your data.</p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary btn-lg" onclick="KinPlug.startTrial('pdf-designer')">Start Free Trial</button>
+            <a href="/pricing.html" class="btn btn-outline btn-lg">View Pricing</a>
+          </div>
+          <p style="margin-top: 15px; font-size: 14px; color: var(--gray);">✓ 14-day free trial &nbsp; ✓ No credit card required</p>
+        </div>
+        <div class="hero-image">
+          <div style="background: linear-gradient(135deg, #4a90d9 0%, #357abd 100%); padding: 60px; border-radius: 12px; color: white; text-align: center;">
+            <div style="font-size: 80px; margin-bottom: 20px;">📄</div>
+            <p style="font-size: 18px; opacity: 0.9;">PDF Designer v1.0.56</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>Features</h2>
+        <p>Everything you need to create professional PDFs</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>Visual Template Designer</h3>
+          <p>Drag-and-drop interface to design your PDF templates. No coding required.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🔗</div>
+          <h3>Field Mapping</h3>
+          <p>Automatically map Kintone fields to your template. Support for all field types.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Subtable Support</h3>
+          <p>Display subtable data in formatted tables. Perfect for line items and lists.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🖼️</div>
+          <h3>Images & Logos</h3>
+          <p>Add company logos, signatures, and images from Kintone attachments.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📐</div>
+          <h3>Multiple Page Sizes</h3>
+          <p>A4, Letter, Legal, and custom sizes. Portrait or landscape orientation.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🌏</div>
+          <h3>Japanese Support</h3>
+          <p>Full Japanese language support with proper fonts and formatting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section style="padding: 80px 0; background: var(--bg-light);">
+    <div class="container">
+      <div class="section-title">
+        <h2>Use Cases</h2>
+        <p>Create any document from your Kintone data</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+        <div style="background: white; padding: 25px; border-radius: 8px; text-align: center; box-shadow: var(--shadow);">
+          <div style="font-size: 40px; margin-bottom: 10px;">🧾</div>
+          <h4>Invoices</h4>
+        </div>
+        <div style="background: white; padding: 25px; border-radius: 8px; text-align: center; box-shadow: var(--shadow);">
+          <div style="font-size: 40px; margin-bottom: 10px;">📋</div>
+          <h4>Reports</h4>
+        </div>
+        <div style="background: white; padding: 25px; border-radius: 8px; text-align: center; box-shadow: var(--shadow);">
+          <div style="font-size: 40px; margin-bottom: 10px;">📜</div>
+          <h4>Certificates</h4>
+        </div>
+        <div style="background: white; padding: 25px; border-radius: 8px; text-align: center; box-shadow: var(--shadow);">
+          <div style="font-size: 40px; margin-bottom: 10px;">📦</div>
+          <h4>Packing Lists</h4>
+        </div>
+        <div style="background: white; padding: 25px; border-radius: 8px; text-align: center; box-shadow: var(--shadow);">
+          <div style="font-size: 40px; margin-bottom: 10px;">📑</div>
+          <h4>Contracts</h4>
+        </div>
+        <div style="background: white; padding: 25px; border-radius: 8px; text-align: center; box-shadow: var(--shadow);">
+          <div style="font-size: 40px; margin-bottom: 10px;">🏷️</div>
+          <h4>Labels</h4>
+        </div>
+        <div style="background: white; padding: 25px; border-radius: 8px; text-align: center; box-shadow: var(--shadow);">
+          <div style="font-size: 40px; margin-bottom: 10px;">📝</div>
+          <h4>Quotes</h4>
+        </div>
+        <div style="background: white; padding: 25px; border-radius: 8px; text-align: center; box-shadow: var(--shadow);">
+          <div style="font-size: 40px; margin-bottom: 10px;">📄</div>
+          <h4>Any Document</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding: 80px 0; background: linear-gradient(135deg, #4a90d9 0%, #357abd 100%); color: white; text-align: center;">
+    <div class="container">
+      <h2 style="font-size: 36px; margin-bottom: 20px;">Ready to create beautiful PDFs?</h2>
+      <p style="font-size: 18px; opacity: 0.9; margin-bottom: 30px;">Start your free 14-day trial today. No credit card required.</p>
+      <button class="btn btn-lg" style="background: white; color: #4a90d9;" onclick="KinPlug.startTrial('pdf-designer')">Start Free Trial</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="color: white;">Kin<span style="color: #999;">Plug</span></div>
+          <p>Premium plugins for Kintone by Edamame Inc.</p>
+        </div>
+        <div>
+          <h4>Products</h4>
+          <ul>
+            <li><a href="/plugins/pdf-designer/">PDF Designer</a></li>
+            <li><a href="/plugins/template-builder/">Template Builder</a></li>
+            <li><a href="/pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/docs/">Documentation</a></li>
+            <li><a href="/cdn-cgi/l/email-protection#6615131616091412260302070b070b0348160e">Support</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="https://edamame.ph">Edamame Inc.</a></li>
+            <li><a href="/legal/terms.html">Terms</a></li>
+            <li><a href="/legal/privacy.html">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 KinPlug by Edamame Inc.</div>
+        <div>Built with ❤️ in the Philippines</div>
+      </div>
+    </div>
+  </footer>
+
+  <script data-cfasync="
