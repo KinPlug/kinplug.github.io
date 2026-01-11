@@ -1,683 +1,408 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KinPlug | kintoneプラグイン - PDF帳票出力・ダッシュボード・自動化</title>
-    <meta name="description" content="kintoneの機能を拡張するプラグイン。請求書・見積書のPDF出力、リアルタイムダッシュボード、ワークフロー自動化。ノーコードで導入可能。30日間無料トライアル。">
-    <meta name="keywords" content="kintoneプラグイン, kintone PDF出力, kintone帳票, kintone請求書, kintoneダッシュボード, kintone自動化, サイボウズ kintone, kintoneカスタマイズ">
-    <meta name="author" content="KinPlug">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://kinplug.com/ja/">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://kinplug.com/ja/">
-    <meta property="og:title" content="KinPlug | kintoneプラグイン - PDF・ダッシュボード・自動化">
-    <meta property="og:description" content="kintone向けプラグイン。PDF帳票出力、ダッシュボード作成、業務自動化をノーコードで実現。30日間無料でお試しいただけます。">
-    <meta property="og:site_name" content="KinPlug">
-    <meta property="og:locale" content="ja_JP">
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="KinPlug | kintone向けプラグイン">
-    <meta name="twitter:description" content="PDF帳票出力、ダッシュボード、業務自動化。kintoneをもっと便利に。無料トライアル実施中。">
-    
-    <!-- Language Alternates -->
-    <link rel="alternate" hreflang="en" href="https://kinplug.com/">
-    <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/">
-    <link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "KinPlug",
-        "url": "https://kinplug.com",
-        "logo": "https://kinplug.com/favicon.svg",
-        "description": "kintone向けプラグイン - PDF帳票出力、ダッシュボード、ワークフロー自動化",
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "email": "support@kinplug.com",
-            "contactType": "customer support"
-        },
-        "offers": {
-            "@type": "AggregateOffer",
-            "offerCount": "3",
-            "lowPrice": "0",
-            "highPrice": "14800",
-            "priceCurrency": "JPY"
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags - Japanese Optimized -->
+  <title>KinPlug - kintoneプラグイン | PDF出力・帳票・ワークフロー・ダッシュボード</title>
+  <meta name="description" content="kintoneを強化するプレミアムプラグイン。PDF帳票出力、高度なダッシュボード、ワークフロー自動化、一括編集など。14日間無料トライアル。500社以上が導入。">
+  <meta name="keywords" content="kintone プラグイン, kintone PDF, kintone 帳票, kintone カスタマイズ, kintone ダッシュボード, kintone ワークフロー, kintone 一括編集, サイボウズ プラグイン, kintone 拡張機能">
+  <meta name="author" content="Edamame Inc.">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kinplug.com/ja/">
+  <meta property="og:title" content="KinPlug - kintoneプラグイン | PDF・帳票・ワークフロー">
+  <meta property="og:description" content="kintoneを強化するプレミアムプラグイン。14日間無料トライアル実施中。">
+  <meta property="og:image" content="https://kinplug.com/assets/images/og-image-ja.png">
+  <meta property="og:locale" content="ja_JP">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@kinaboratory">
+  <meta name="twitter:title" content="KinPlug - kintoneプラグイン">
+  
+  <!-- Language Alternates -->
+  <link rel="alternate" hreflang="en" href="https://kinplug.com/">
+  <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/">
+  <link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
+  
+  <!-- Canonical -->
+  <link rel="canonical" href="https://kinplug.com/ja/">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  
+  <!-- Structured Data - Japanese -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "KinPlug",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY",
+      "description": "14日間無料トライアル"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "127"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Edamame Inc."
     }
-    </script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --kp-primary: #2563EB;
-            --kp-primary-light: #3B82F6;
-            --kp-primary-dark: #1D4ED8;
-            --kp-secondary: #0EA5E9;
-            --kp-success: #10B981;
-            --kp-success-light: #34D399;
-            --kp-navy: #0F172A;
-            --kp-slate: #475569;
-            --kp-gray: #64748B;
-            --kp-light: #F1F5F9;
-            --kp-lighter: #F8FAFC;
-            --kp-white: #FFFFFF;
-            --kp-border: #E2E8F0;
-            --gradient-primary: linear-gradient(135deg, var(--kp-primary) 0%, var(--kp-secondary) 100%);
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        
-        body {
-            font-family: 'Noto Sans JP', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--kp-navy);
-            line-height: 1.8;
-            background: var(--kp-white);
-            -webkit-font-smoothing: antialiased;
-        }
-        
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 48px;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--kp-border);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-        
-        .logo-mark { width: 40px; height: 40px; }
-        .logo-mark svg { width: 100%; height: 100%; }
-        
-        .logo-text {
-            font-size: 1.4rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .logo-text .kin { color: var(--kp-primary); }
-        .logo-text .plug { color: var(--kp-navy); }
-        
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-        
-        .nav-links a {
-            color: var(--kp-slate);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-        }
-        
-        .nav-links a:hover { color: var(--kp-primary); }
-        
-        .lang-switch {
-            display: flex;
-            background: var(--kp-light);
-            border-radius: 20px;
-            padding: 4px;
-            font-size: 0.85rem;
-        }
-        
-        .lang-switch a {
-            padding: 6px 12px;
-            border-radius: 16px;
-            font-weight: 500;
-        }
-        
-        .lang-switch a.active {
-            background: var(--kp-white);
-            color: var(--kp-navy) !important;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px 24px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.25s ease;
-        }
-        
-        .btn-primary {
-            color: var(--kp-white);
-            background: var(--kp-primary);
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
-        }
-        
-        .btn-primary:hover {
-            background: var(--kp-primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
-        }
-        
-        .btn-secondary {
-            color: var(--kp-navy);
-            background: var(--kp-white);
-            border: 2px solid var(--kp-border);
-        }
-        
-        .btn-secondary:hover {
-            border-color: var(--kp-primary);
-            color: var(--kp-primary);
-        }
-        
-        .hero {
-            min-height: 92vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 80px 24px;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(180deg, var(--kp-lighter) 0%, var(--kp-white) 100%);
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -30%;
-            right: -15%;
-            width: 60%;
-            height: 120%;
-            background: radial-gradient(ellipse, rgba(37, 99, 235, 0.06) 0%, transparent 70%);
-            pointer-events: none;
-            animation: float 15s ease-in-out infinite;
-        }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -20%;
-            left: -10%;
-            width: 50%;
-            height: 100%;
-            background: radial-gradient(ellipse, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
-            pointer-events: none;
-            animation: float 18s ease-in-out infinite reverse;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(20px, -20px) rotate(2deg); }
-            66% { transform: translate(-10px, 10px) rotate(-1deg); }
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-        }
-        
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.25);
-            border-radius: 100px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--kp-success);
-            margin-bottom: 32px;
-            animation: fadeInUp 0.6s ease;
-        }
-        
-        .hero-badge .pulse {
-            width: 8px;
-            height: 8px;
-            background: var(--kp-success);
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.1); }
-        }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .hero h1 {
-            font-size: clamp(2.25rem, 5vw, 3.5rem);
-            font-weight: 800;
-            line-height: 1.3;
-            margin-bottom: 24px;
-            letter-spacing: -0.5px;
-            animation: fadeInUp 0.6s ease 0.1s both;
-        }
-        
-        .hero h1 .gradient {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero .tagline {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--kp-navy);
-            margin-bottom: 24px;
-            animation: fadeInUp 0.6s ease 0.2s both;
-        }
-        
-        .hero .subtitle {
-            font-size: 1.1rem;
-            color: var(--kp-slate);
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.9;
-            animation: fadeInUp 0.6s ease 0.3s both;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
-            animation: fadeInUp 0.6s ease 0.4s both;
-        }
-        
-        .plugins {
-            padding: 120px 48px;
-            background: var(--kp-white);
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-        
-        .section-header .overline {
-            display: inline-block;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--kp-primary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
-            padding: 8px 16px;
-            background: rgba(37, 99, 235, 0.08);
-            border-radius: 20px;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .section-header h2 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-        }
-        
-        .section-header p {
-            color: var(--kp-slate);
-            font-size: 1.05rem;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        
-        .plugins-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 28px;
-            max-width: 1140px;
-            margin: 0 auto;
-        }
-        
-        .plugin-card {
-            background: var(--kp-white);
-            border-radius: 20px;
-            padding: 36px;
-            border: 1px solid var(--kp-border);
-            transition: all 0.35s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .plugin-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--kp-border);
-            transition: background 0.35s ease;
-        }
-        
-        .plugin-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
-            border-color: transparent;
-        }
-        
-        .plugin-card.available::before {
-            background: var(--gradient-primary);
-        }
-        
-        .plugin-card.available {
-            border-color: rgba(37, 99, 235, 0.15);
-        }
-        
-        .plugin-card.available:hover {
-            box-shadow: 0 20px 50px rgba(37, 99, 235, 0.15);
-        }
-        
-        .plugin-card .icon {
-            width: 64px;
-            height: 64px;
-            background: var(--kp-light);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            transition: all 0.35s ease;
-        }
-        
-        .plugin-card .icon svg {
-            width: 32px;
-            height: 32px;
-            stroke: var(--kp-slate);
-            stroke-width: 1.5;
-            fill: none;
-            transition: stroke 0.35s ease;
-        }
-        
-        .plugin-card.available .icon {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%);
-        }
-        
-        .plugin-card.available .icon svg {
-            stroke: var(--kp-primary);
-        }
-        
-        .plugin-card:hover .icon {
-            transform: scale(1.05);
-        }
-        
-        .plugin-card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 14px;
-        }
-        
-        .plugin-card p {
-            font-size: 0.95rem;
-            color: var(--kp-slate);
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-        
-        .plugin-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 14px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            border-radius: 8px;
-        }
-        
-        .plugin-badge.available {
-            background: rgba(16, 185, 129, 0.12);
-            color: var(--kp-success);
-        }
-        
-        .plugin-badge.coming {
-            background: rgba(100, 116, 139, 0.1);
-            color: var(--kp-gray);
-        }
-        
-        .plugin-card .learn-more {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--kp-primary);
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-top: 16px;
-            transition: gap 0.25s ease;
-        }
-        
-        .plugin-card:hover .learn-more {
-            gap: 10px;
-        }
-        
-        .footer {
-            padding: 60px 48px;
-            background: var(--kp-navy);
-            color: white;
-        }
-        
-        .footer-content {
-            max-width: 1140px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 24px;
-        }
-        
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .footer-logo svg { width: 32px; height: 32px; }
-        .footer-logo span { font-size: 1.2rem; font-weight: 700; font-family: 'Inter', sans-serif; }
-        
-        .footer-links {
-            display: flex;
-            gap: 36px;
-            flex-wrap: wrap;
-        }
-        
-        .footer-links a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-        }
-        
-        .footer-links a:hover { color: white; }
-        
-        .footer-copy {
-            width: 100%;
-            text-align: center;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.4);
-            margin-top: 40px;
-            padding-top: 32px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        @media (max-width: 768px) {
-            .nav { padding: 14px 20px; }
-            .nav-links a:not(.lang-switch):not(.btn) { display: none; }
-            .hero { padding: 60px 24px; min-height: auto; }
-            .hero h1 { font-size: 1.85rem; }
-            .hero-buttons { flex-direction: column; align-items: center; width: 100%; }
-            .btn { width: 100%; max-width: 300px; }
-            .plugins { padding: 80px 20px; }
-            .plugins-grid { grid-template-columns: 1fr; }
-            .footer { padding: 48px 24px; }
-            .footer-content { flex-direction: column; text-align: center; }
-            .footer-links { justify-content: center; }
-        }
-    </style>
+  }
+  </script>
+  
+  <!-- Clerk -->
+  <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
 </head>
 <body>
-    <nav class="nav" role="navigation" aria-label="メインナビゲーション">
-        <a href="/ja/" class="logo" aria-label="KinPlug ホーム">
-            <div class="logo-mark">
-                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <rect x="10" y="4" width="6" height="14" rx="2" fill="#2563EB"/>
-                    <rect x="24" y="4" width="6" height="14" rx="2" fill="#2563EB"/>
-                    <rect x="6" y="16" width="28" height="12" rx="4" fill="#2563EB"/>
-                    <rect x="16" y="28" width="8" height="8" rx="2" fill="#10B981"/>
-                    <circle cx="20" cy="22" r="3" fill="white"/>
-                </svg>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="/ja/" class="logo">Kin<span>Plug</span></a>
+      <div class="nav-links">
+        <a href="/ja/plugins/">プラグイン</a>
+        <a href="/ja/pricing.html">料金</a>
+        <a href="/ja/docs/">ドキュメント</a>
+        <a href="/ja/blog/">ブログ</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switcher"><a href="/">EN</a> | <a href="/ja/" class="active">日本語</a></div>
+        <div class="nav-auth">
+          <div id="auth-nav">
+            <button class="btn btn-secondary btn-sm" onclick="KinPlug.signIn()">ログイン</button>
+            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">無料で始める</button>
+          </div>
+          <div id="user-nav" class="hidden">
+            <a href="/dashboard.html" class="btn btn-secondary btn-sm">ダッシュボード</a>
+            <div class="user-info" onclick="KinPlug.openProfile()" style="cursor:pointer;">
+              <div id="user-avatar" class="user-avatar">?</div>
+              <span id="user-name">User</span>
             </div>
-            <span class="logo-text"><span class="kin">Kin</span><span class="plug">Plug</span></span>
-        </a>
-        <div class="nav-links">
-            <a href="#plugins">プラグイン一覧</a>
-            <a href="/ja/products/pdf-designer/">PDF Designer</a>
-            <div class="lang-switch" role="group" aria-label="言語切替">
-                <a href="/">EN</a>
-                <a href="/ja/" class="active" aria-current="page">JP</a>
-            </div>
-            <a href="/ja/products/pdf-designer/" class="btn btn-primary">無料で試す</a>
+          </div>
         </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
 
-    <main>
-        <section class="hero" aria-labelledby="hero-heading">
-            <div class="hero-content">
-                <div class="hero-badge" role="status">
-                    <span class="pulse" aria-hidden="true"></span>
-                    PDF Designer リリース開始
-                </div>
-                <h1 id="hero-heading"><span class="gradient">kintone</span>の可能性を<br>広げるプラグイン</h1>
-                <p class="tagline">導入するだけで、すぐにパワーアップ。</p>
-                <p class="subtitle">PDF帳票の出力、リアルタイムダッシュボード、業務の自動化。コードを書かずに、すべて実現できます。現場を知るkintone開発者がつくりました。</p>
-                <div class="hero-buttons">
-                    <a href="/ja/products/pdf-designer/" class="btn btn-primary">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
-                        </svg>
-                        PDF Designerを試す
-                    </a>
-                    <a href="#plugins" class="btn btn-secondary">すべてのプラグインを見る</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="plugins" id="plugins" aria-labelledby="plugins-heading">
-            <header class="section-header">
-                <div class="overline">Plugins</div>
-                <h2 id="plugins-heading">kintoneをもっと便利にするプラグイン</h2>
-                <p>現場の課題を解決する、すぐに使えるツール</p>
-            </header>
-            <div class="plugins-grid">
-                <a href="/ja/products/pdf-designer/" class="plugin-card available" aria-label="PDF Designerの詳細を見る">
-                    <div class="icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
-                        </svg>
-                    </div>
-                    <h3>PDF Designer</h3>
-                    <p>ドラッグ＆ドロップで帳票テンプレートを作成。請求書、見積書、納品書など、kintoneのレコードから直接PDFを出力できます。長いテーブルも自動で改ページ。コーディング不要です。</p>
-                    <span class="plugin-badge available">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        提供中
-                    </span>
-                    <div class="learn-more">無料で試す <span aria-hidden="true">→</span></div>
-                </a>
-                
-                <article class="plugin-card">
-                    <div class="icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <line x1="18" y1="20" x2="18" y2="10"/>
-                            <line x1="12" y1="20" x2="12" y2="4"/>
-                            <line x1="6" y1="20" x2="6" y2="14"/>
-                            <line x1="3" y1="20" x2="21" y2="20"/>
-                        </svg>
-                    </div>
-                    <h3>Dashboard Builder</h3>
-                    <p>kintoneのデータをリアルタイムで可視化。グラフ、KPI、分析ウィジェットを組み合わせて、経営判断に役立つダッシュボードを簡単に作成できます。</p>
-                    <span class="plugin-badge coming">近日公開</span>
-                </article>
-                
-                <article class="plugin-card">
-                    <div class="icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                        </svg>
-                    </div>
-                    <h3>Workflow Automation</h3>
-                    <p>繰り返し作業を自動化。通知の送信、アプリ間のデータ連携、承認フローの効率化など、コードなしで業務プロセスを改善できます。</p>
-                    <span class="plugin-badge coming">近日公開</span>
-                </article>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer" role="contentinfo">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <rect x="10" y="4" width="6" height="14" rx="2" fill="white"/>
-                    <rect x="24" y="4" width="6" height="14" rx="2" fill="white"/>
-                    <rect x="6" y="16" width="28" height="12" rx="4" fill="white"/>
-                    <rect x="16" y="28" width="8" height="8" rx="2" fill="#10B981"/>
-                    <circle cx="20" cy="22" r="3" fill="#0F172A"/>
-                </svg>
-                <span>KinPlug</span>
-            </div>
-            <nav class="footer-links" aria-label="フッターナビゲーション">
-                <a href="#plugins">プラグイン一覧</a>
-                <a href="/ja/products/pdf-designer/">PDF Designer</a>
-                <a href="mailto:support@kinplug.com">お問い合わせ</a>
-                <a href="/">English</a>
-            </nav>
-            <p class="footer-copy">© 2026 KinPlug. kintoneをもっと便利にするプラグイン。</p>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="hero-badge">🚀 500社以上が導入済み</div>
+          <h1>kintoneに<span class="highlight">足りない機能</span>を<br>すべて追加</h1>
+          <p class="hero-subtitle">PDF帳票出力、高度なダッシュボード、ワークフロー自動化など。プログラミング不要で、すぐに使えるプロフェッショナルなプラグイン。</p>
+          <div class="hero-features">
+            <span>✓ ノーコード</span>
+            <span>✓ 14日間無料</span>
+            <span>✓ 5分で導入</span>
+          </div>
+          <div class="hero-buttons">
+            <button class="btn btn-primary btn-lg" onclick="KinPlug.signUp()">無料トライアルを始める →</button>
+            <a href="/ja/plugins/" class="btn btn-outline btn-lg">プラグイン一覧</a>
+          </div>
+          <p class="hero-note">クレジットカード不要 • いつでもキャンセル可能</p>
         </div>
-    </footer>
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-card-header"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span> PDF Designer</div>
+            <div class="hero-card-body">
+              <div class="preview-pdf">
+                <div class="pdf-header">請求書 #2024-001</div>
+                <div class="pdf-line"></div>
+                <div class="pdf-table">
+                  <div class="pdf-row"><span>商品A</span><span>¥5,000</span></div>
+                  <div class="pdf-row"><span>商品B</span><span>¥3,000</span></div>
+                </div>
+                <div class="pdf-total">合計: ¥8,000</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problems - Japanese market specific -->
+  <section class="problems">
+    <div class="container">
+      <h2>kintoneは便利。でも...</h2>
+      <p class="section-subtitle">こんな悩みはありませんか？</p>
+      <div class="problems-grid">
+        <div class="problem-card">
+          <div class="problem-icon">😤</div>
+          <h3>帳票が出力できない</h3>
+          <p>請求書や見積書をkintoneから直接出力したいのに、標準機能では対応できない。</p>
+          <div class="solution">→ <strong>PDF Designer</strong>で解決</div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">📊</div>
+          <h3>グラフが物足りない</h3>
+          <p>標準のグラフは基本的すぎる。ドリルダウンやリアルタイム更新がほしい。</p>
+          <div class="solution">→ <strong>Dashboard Pro</strong>で解決（近日公開）</div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">🔄</div>
+          <h3>ワークフローが手間</h3>
+          <p>承認フローの設定が複雑。もっとシンプルに自動化したい。</p>
+          <div class="solution">→ <strong>Workflow Automator</strong>で解決（近日公開）</div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">✏️</div>
+          <h3>一括編集ができない</h3>
+          <p>100件のレコードを更新するのに100回クリック。Excelのように編集したい。</p>
+          <div class="solution">→ <strong>Bulk Editor</strong>で解決（近日公開）</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plugins -->
+  <section class="plugins" id="plugins">
+    <div class="container">
+      <h2>あらゆるニーズに対応するプラグイン</h2>
+      <p class="section-subtitle">kintoneの「あったらいいな」を実現</p>
+      <div class="plugins-grid">
+        <div class="plugin-card featured">
+          <div class="plugin-badge">人気No.1</div>
+          <div class="plugin-icon">📄</div>
+          <h3>PDF Designer</h3>
+          <p>ドラッグ＆ドロップでPDFテンプレートを設計。kintoneのレコードから請求書、見積書、報告書を自動生成。</p>
+          <ul><li>ビジュアルエディタ</li><li>レコードから自動入力</li><li>サブテーブル対応</li></ul>
+          <div class="plugin-actions">
+            <button class="btn btn-primary" onclick="KinPlug.startTrial('pdf-designer')">無料トライアル</button>
+            <a href="/ja/plugins/pdf-designer/">詳細を見る →</a>
+          </div>
+        </div>
+        <div class="plugin-card">
+          <div class="plugin-icon">📝</div>
+          <h3>Template Builder</h3>
+          <p>Wordのようなエディタでドキュメントテンプレートを作成。契約書、通知書、申請書に最適。</p>
+          <ul><li>リッチテキスト編集</li><li>フィールド差し込み</li><li>PDF出力</li></ul>
+          <div class="plugin-actions">
+            <button class="btn btn-primary" onclick="KinPlug.startTrial('template-builder')">無料トライアル</button>
+            <a href="/ja/plugins/template-builder/">詳細を見る →</a>
+          </div>
+        </div>
+        <div class="plugin-card">
+          <div class="plugin-icon">🔍</div>
+          <h3>Enhanced Lookup</h3>
+          <p>検索機能を強化したルックアップ。フィルタリングと高度なマッピングに対応。</p>
+          <ul><li>インスタント検索</li><li>複数フィールド連携</li><li>サブテーブル対応</li></ul>
+          <div class="plugin-actions">
+            <button class="btn btn-primary" onclick="KinPlug.startTrial('enhanced-lookup')">無料トライアル</button>
+            <a href="/ja/plugins/enhanced-lookup/">詳細を見る →</a>
+          </div>
+        </div>
+        <div class="plugin-card coming-soon">
+          <div class="plugin-badge soon">近日公開</div>
+          <div class="plugin-icon">📋</div>
+          <h3>カンバンボード</h3>
+          <p>Trelloのようなボードでkintoneデータを視覚的に管理。</p>
+          <button class="btn btn-secondary" onclick="KinPlug.notifyMe('kanban')">通知を受け取る</button>
+        </div>
+        <div class="plugin-card coming-soon">
+          <div class="plugin-badge soon">近日公開</div>
+          <div class="plugin-icon">📈</div>
+          <h3>Dashboard Pro</h3>
+          <p>インタラクティブなチャートとKPIダッシュボード。</p>
+          <button class="btn btn-secondary" onclick="KinPlug.notifyMe('dashboard')">通知を受け取る</button>
+        </div>
+        <div class="plugin-card coming-soon">
+          <div class="plugin-badge soon">近日公開</div>
+          <div class="plugin-icon">✏️</div>
+          <h3>一括編集</h3>
+          <p>Excelのように複数レコードをまとめて編集。</p>
+          <button class="btn btn-secondary" onclick="KinPlug.notifyMe('bulk-editor')">通知を受け取る</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat"><div class="stat-number">500+</div><div class="stat-label">導入企業</div></div>
+        <div class="stat"><div class="stat-number">50,000+</div><div class="stat-label">PDF生成数</div></div>
+        <div class="stat"><div class="stat-number">4.9/5</div><div class="stat-label">ユーザー評価</div></div>
+        <div class="stat"><div class="stat-number">24時間</div><div class="stat-label">サポート対応</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <div class="container">
+      <h2>5分で導入完了</h2>
+      <p class="section-subtitle">プログラミング不要、すぐに使えます</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><h3>プラグインをダウンロード</h3><p>サインアップ後、すぐにファイルとライセンスキーを取得。</p></div>
+        <div class="step"><div class="step-num">2</div><h3>kintoneにインストール</h3><p>システム管理→プラグイン→読み込むからアップロード。</p></div>
+        <div class="step"><div class="step-num">3</div><h3>設定して完了</h3><p>アプリに追加してライセンスキーを入力。すぐに使えます。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials - Japanese -->
+  <section class="testimonials">
+    <div class="container">
+      <h2>お客様の声</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>「PDF Designerのおかげで、毎週何時間も節約できています。以前はExcelで手動で請求書を作っていましたが、今はワンクリックです。」</p>
+          <div class="author"><strong>田中様</strong> - 東京 / 営業部長</div>
+        </div>
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>「ルックアップの検索機能がまさに欲しかったものです。標準機能にあるべき機能ですね。」</p>
+          <div class="author"><strong>山本様</strong> - 大阪 / システム管理者</div>
+        </div>
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>「導入がとても簡単でした。ITに詳しくない私でも10分以内に設定完了。」</p>
+          <div class="author"><strong>佐藤様</strong> - 福岡 / 総務課長</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing - Japanese -->
+  <section class="pricing">
+    <div class="container">
+      <h2>シンプルで分かりやすい料金</h2>
+      <p class="section-subtitle">無料で始めて、必要な時にアップグレード</p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>無料トライアル</h3>
+          <div class="price">¥0</div>
+          <div class="period">14日間</div>
+          <ul><li>✓ 全機能利用可能</li><li>✓ クレジットカード不要</li><li>✓ メールサポート</li></ul>
+          <button class="btn btn-outline" onclick="KinPlug.signUp()">無料で始める</button>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-badge">おすすめ</div>
+          <h3>年間プラン</h3>
+          <div class="price">¥29,800<span>/年</span></div>
+          <div class="period">28%お得</div>
+          <ul><li>✓ 全機能利用可能</li><li>✓ 優先サポート</li><li>✓ 無料アップデート</li></ul>
+          <a href="/ja/pricing.html" class="btn btn-primary">申し込む</a>
+        </div>
+        <div class="pricing-card">
+          <h3>月額プラン</h3>
+          <div class="price">¥3,480<span>/月</span></div>
+          <div class="period">いつでも解約可</div>
+          <ul><li>✓ 全機能利用可能</li><li>✓ メールサポート</li><li>✓ 無料アップデート</li></ul>
+          <a href="/ja/pricing.html" class="btn btn-outline">申し込む</a>
+        </div>
+      </div>
+      <p class="pricing-note">※料金はプラグインごと、サブドメインごとです。 <a href="/ja/pricing.html">料金詳細を見る →</a></p>
+    </div>
+  </section>
+
+  <!-- FAQ - Japanese -->
+  <section class="faq">
+    <div class="container">
+      <h2>よくあるご質問</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>プラグインのインストール方法は？</h3>
+          <p>zipファイルをダウンロードし、kintoneシステム管理→プラグイン→読み込むからアップロードします。<a href="/ja/docs/">詳しいガイドはこちら</a>。</p>
+        </div>
+        <div class="faq-item">
+          <h3>プログラミングは必要ですか？</h3>
+          <p>いいえ。すべてのプラグインは非エンジニア向けに設計されており、ビジュアルな設定画面で操作できます。</p>
+        </div>
+        <div class="faq-item">
+          <h3>対応しているkintoneプランは？</h3>
+          <p>スタンダードコースとプロフェッショナルコースに対応。ライトコースはkintoneの制限によりプラグイン非対応です。</p>
+        </div>
+        <div class="faq-item">
+          <h3>データのセキュリティは？</h3>
+          <p>プラグインはお客様のkintone環境内で動作します。データの外部送信や保存は一切行いません。</p>
+        </div>
+        <div class="faq-item">
+          <h3>複数のアプリで使えますか？</h3>
+          <p>はい。1ライセンスで同一サブドメイン内の複数アプリに導入可能です。</p>
+        </div>
+        <div class="faq-item">
+          <h3>サポートはありますか？</h3>
+          <p>メールサポートを提供しています。年間プランでは優先サポートをご利用いただけます。<a href="mailto:support@kinplug.com">support@kinplug.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2>kintoneをもっと便利に</h2>
+      <p>500社以上が導入済みのKinPlugプラグイン</p>
+      <button class="btn btn-white btn-lg" onclick="KinPlug.signUp()">無料トライアルを始める →</button>
+      <p class="cta-note">クレジットカード不要 • 14日間無料 • いつでもキャンセル可能</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">Kin<span>Plug</span></div>
+          <p>Edamame Inc.が提供するkintoneプラグイン</p>
+          <div class="social-links">
+            <a href="https://twitter.com/kinaboratory" target="_blank" title="X/Twitter">𝕏</a>
+            <a href="https://linkedin.com/company/kinplug" target="_blank" title="LinkedIn">in</a>
+            <a href="https://github.com/KinPlug" target="_blank" title="GitHub">GH</a>
+          </div>
+        </div>
+        <div>
+          <h4>プラグイン</h4>
+          <ul>
+            <li><a href="/ja/plugins/pdf-designer/">PDF Designer</a></li>
+            <li><a href="/ja/plugins/template-builder/">Template Builder</a></li>
+            <li><a href="/ja/plugins/enhanced-lookup/">Enhanced Lookup</a></li>
+            <li><a href="/ja/pricing.html">料金</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>リソース</h4>
+          <ul>
+            <li><a href="/ja/docs/">ドキュメント</a></li>
+            <li><a href="/ja/blog/">ブログ</a></li>
+            <li><a href="mailto:support@kinplug.com">サポート</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>会社情報</h4>
+          <ul>
+            <li><a href="https://edamame.ph">Edamame Inc.</a></li>
+            <li><a href="/ja/legal/terms.html">利用規約</a></li>
+            <li><a href="/ja/legal/privacy.html">プライバシーポリシー</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 KinPlug by Edamame Inc.</div>
+        <div><a href="/">English</a> | <a href="/ja/">日本語</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/app.js"></script>
 </body>
 </html>
