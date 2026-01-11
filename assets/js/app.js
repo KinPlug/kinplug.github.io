@@ -1,84 +1,66 @@
 /**
  * KinPlug Website JavaScript
- * Clerk Authentication Integration
+ * Clerk Authentication + API Integration
  */
 
-// ============================================================
-// CONFIGURATION - UPDATE THESE VALUES
-// ============================================================
 const CONFIG = {
-  // Clerk - Get from https://dashboard.clerk.com → API Keys
   CLERK_PUBLISHABLE_KEY: 'pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk',
-  
-  // API
   API_URL: 'https://kinplug-api-production.up.railway.app',
-  
-  // URLs
-  SITE_URL: 'https://kinplug.com',
-  
-  // Debug mode
-  DEBUG: true
+  DEBUG: false
 };
 
-// ============================================================
-// UTILITIES
-// ============================================================
 function log(...args) {
   if (CONFIG.DEBUG) console.log('[KinPlug]', ...args);
 }
 
+// ============================================================
+// UTILITIES
+// ============================================================
+
 function showLoading(elementId) {
   const el = document.getElementById(elementId);
-  if (el) {
-    el.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
-  }
+  if (el) el.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
 }
 
 function showError(elementId, message) {
   const el = document.getElementById(elementId);
-  if (el) {
-    el.innerHTML = `<div class="alert alert-error">${message}</div>`;
-  }
+  if (el) el.innerHTML = `<div class="alert alert-error">${message}</div>`;
 }
 
 function showEmpty(elementId, title, message) {
   const el = document.getElementById(elementId);
-  if (el) {
-    el.innerHTML = `
-      <div class="empty-state">
-        <h3>${title}</h3>
-        <p>${message}</p>
-      </div>
-    `;
-  }
+  if (el) el.innerHTML = `<div class="empty-state"><h3>${title}</h3><p>${message}</p></div>`;
 }
 
-// Format date
 function formatDate(dateString) {
   if (!dateString) return '-';
-  return new Date(dateString).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
+  const lang = document.documentElement.lang || 'en';
+  return new Date(dateString).toLocaleDateString(lang === 'ja' ? 'ja-JP' : 'en-US', {
+    year: 'numeric', month: 'short', day: 'numeric'
   });
 }
 
-// Copy to clipboard
 function copyToClipboard(text) {
   navigator.clipboard.writeText(text).then(() => {
-    alert('Copied to clipboard!');
+    const lang = document.documentElement.lang || 'en';
+    alert(lang === 'ja' ? 'クリップボードにコピーしました！' : 'Copied to clipboard!');
   });
 }
 
+function getLanguage() {
+  return document.documentElement.lang || 'en';
+}
+
 // ============================================================
-// CLERK INTEGRATION
+// CLERK AUTHENTICATION
 // ============================================================
+
 let clerkLoaded = false;
 let currentUser = null;
 
 async function initClerk() {
-  if (CONFIG.CLERK_PUBLISHABLE_KEY === 'YOUR_CLERK_PUBLISHABLE_KEY' || !CONFIG.CLERK_PUBLISHABLE_KEY) {
-    log('⚠️ Clerk not configured - using demo mode');
+  if (!CONFIG.CLERK_PUBLISHABLE_KEY || CONFIG.CLERK_PUBLISHABLE_KEY.includes('YOUR_')) {
+    log('Clerk not configured');
     updateAuthUI(null);
     return;
   }
@@ -87,20 +69,17 @@ async function initClerk() {
     await window.Clerk.load();
     clerkLoaded = true;
     currentUser = window.Clerk.user;
+    log('Clerk loaded, user:', currentUser?.primaryEmailAddress?.emailAddress || 'not signed in');
     
-    log('Clerk loaded, user:', currentUser ? currentUser.primaryEmailAddress?.emailAddress : 'not signed in');
-    
-    // Listen for auth changes
-    window.Clerk.addListener((event) => {
-      log('Clerk event:', event);
+    window.Clerk.addListener(() => {
       currentUser = window.Clerk.user;
       updateAuthUI(currentUser);
     });
     
     updateAuthUI(currentUser);
-    
   } catch (err) {
     console.error('Clerk init error:', err);
+    updateAuthUI(null);
   }
 }
 
@@ -111,7 +90,6 @@ function updateAuthUI(user) {
   const userAvatar = document.getElementById('user-avatar');
   
   if (user) {
-    // User is logged in
     if (authNav) authNav.classList.add('hidden');
     if (userNav) userNav.classList.remove('hidden');
     
@@ -127,19 +105,15 @@ function updateAuthUI(user) {
       }
     }
     
-    // Load user-specific content
     if (document.getElementById('licenses-table')) {
       loadUserLicenses();
     }
-    
   } else {
-    // User is not logged in
     if (authNav) authNav.classList.remove('hidden');
     if (userNav) userNav.classList.add('hidden');
   }
 }
 
-// Sign in
 function signIn() {
   if (clerkLoaded && window.Clerk) {
     window.Clerk.openSignIn({
@@ -147,24 +121,21 @@ function signIn() {
       afterSignUpUrl: window.location.href
     });
   } else {
-    // Demo mode - redirect to login page
     window.location.href = '/login.html';
   }
 }
 
-// Sign up
 function signUp() {
   if (clerkLoaded && window.Clerk) {
     window.Clerk.openSignUp({
-      afterSignInUrl: window.location.href,
-      afterSignUpUrl: window.location.href
+      afterSignInUrl: '/dashboard.html',
+      afterSignUpUrl: '/dashboard.html'
     });
   } else {
     window.location.href = '/login.html';
   }
 }
 
-// Sign out
 function signOut() {
   if (clerkLoaded && window.Clerk) {
     window.Clerk.signOut().then(() => {
@@ -173,19 +144,10 @@ function signOut() {
   }
 }
 
-// Open user profile
 function openProfile() {
   if (clerkLoaded && window.Clerk) {
     window.Clerk.openUserProfile();
   }
-}
-
-// Get auth token for API calls
-async function getAuthToken() {
-  if (clerkLoaded && window.Clerk && window.Clerk.session) {
-    return await window.Clerk.session.getToken();
-  }
-  return null;
 }
 
 // ============================================================
@@ -198,8 +160,7 @@ async function apiCall(endpoint, options = {}) {
     ...options.headers
   };
   
-  // Send user email for authenticated requests
-  if (currentUser && currentUser.primaryEmailAddress) {
+  if (currentUser?.primaryEmailAddress) {
     headers['X-User-Email'] = currentUser.primaryEmailAddress.emailAddress;
   }
   
@@ -211,7 +172,6 @@ async function apiCall(endpoint, options = {}) {
   return response.json();
 }
 
-// Load user's licenses
 async function loadUserLicenses() {
   const tableBody = document.getElementById('licenses-table');
   if (!tableBody) return;
@@ -221,14 +181,22 @@ async function loadUserLicenses() {
   try {
     const email = currentUser?.primaryEmailAddress?.emailAddress;
     if (!email) {
-      showEmpty('licenses-table', 'Not logged in', 'Please sign in to view your licenses.');
+      const lang = getLanguage();
+      showEmpty('licenses-table', 
+        lang === 'ja' ? 'ログインしてください' : 'Not logged in',
+        lang === 'ja' ? 'ライセンスを表示するにはログインが必要です。' : 'Please sign in to view your licenses.'
+      );
       return;
     }
     
     const data = await apiCall('/licenses');
     
     if (!data.licenses || data.licenses.length === 0) {
-      showEmpty('licenses-table', 'No licenses yet', 'Start a free trial or purchase a license to get started.');
+      const lang = getLanguage();
+      showEmpty('licenses-table',
+        lang === 'ja' ? 'ライセンスがありません' : 'No licenses yet',
+        lang === 'ja' ? '無料トライアルを開始してください。' : 'Start a free trial or purchase a license to get started.'
+      );
       return;
     }
     
@@ -236,7 +204,7 @@ async function loadUserLicenses() {
       <tr>
         <td>${license.product || 'Unknown'}</td>
         <td>
-          <span class="license-key" onclick="copyToClipboard('${license.license_key}')" title="Click to copy">
+          <span class="license-key" onclick="KinPlug.copyToClipboard('${license.license_key}')" title="Click to copy" style="cursor:pointer;">
             ${license.license_key}
           </span>
         </td>
@@ -246,40 +214,41 @@ async function loadUserLicenses() {
       </tr>
     `).join('');
     
-    // Update stats
     updateDashboardStats(data.licenses);
-    
   } catch (err) {
     console.error('Error loading licenses:', err);
-    showError('licenses-table', 'Failed to load licenses. Please try again.');
+    showError('licenses-table', getLanguage() === 'ja' ? 'ライセンスの読み込みに失敗しました。' : 'Failed to load licenses. Please try again.');
   }
 }
 
-// Update dashboard statistics
 function updateDashboardStats(licenses) {
-  const activeLicenses = licenses.filter(l => l.status === 'active').length;
-  const trialLicenses = licenses.filter(l => l.type === 'trial' && l.status === 'active').length;
-  const expiredLicenses = licenses.filter(l => l.status === 'expired').length;
+  const active = licenses.filter(l => l.status === 'active').length;
+  const trial = licenses.filter(l => l.type === 'trial' && l.status === 'active').length;
+  const expired = licenses.filter(l => l.status === 'expired').length;
   
   const activeEl = document.getElementById('stat-active');
   const trialEl = document.getElementById('stat-trial');
   const expiredEl = document.getElementById('stat-expired');
   
-  if (activeEl) activeEl.textContent = activeLicenses;
-  if (trialEl) trialEl.textContent = trialLicenses;
-  if (expiredEl) expiredEl.textContent = expiredLicenses;
+  if (activeEl) activeEl.textContent = active;
+  if (trialEl) trialEl.textContent = trial;
+  if (expiredEl) expiredEl.textContent = expired;
 }
 
-// Start a trial
 async function startTrial(product) {
+  const lang = getLanguage();
+  
   if (!currentUser) {
-    signIn();
+    signUp();
     return;
   }
   
   const email = currentUser.primaryEmailAddress?.emailAddress;
-  const subdomain = prompt('Enter your Kintone subdomain (e.g., "mycompany" from mycompany.kintone.com):');
+  const promptMsg = lang === 'ja' 
+    ? 'kintoneサブドメインを入力してください（例：mycompany.kintone.com の場合は mycompany）：'
+    : 'Enter your Kintone subdomain (e.g., "mycompany" from mycompany.kintone.com):';
   
+  const subdomain = prompt(promptMsg);
   if (!subdomain) return;
   
   try {
@@ -287,26 +256,67 @@ async function startTrial(product) {
       method: 'POST',
       body: JSON.stringify({
         email,
-        subdomain: subdomain.replace('.kintone.com', ''),
+        subdomain: subdomain.replace('.kintone.com', '').trim(),
         product
       })
     });
     
     if (data.success) {
-      alert(`🎉 Trial started!\n\nYour license key:\n${data.license_key}\n\nExpires: ${formatDate(data.expiresAt)}`);
+      const successMsg = lang === 'ja'
+        ? `🎉 トライアル開始！\n\nライセンスキー：\n${data.license_key}\n\n有効期限：${formatDate(data.expiresAt)}\n\nこのキーをプラグイン設定画面で入力してください。`
+        : `🎉 Trial started!\n\nYour license key:\n${data.license_key}\n\nExpires: ${formatDate(data.expiresAt)}\n\nEnter this key in the plugin settings.`;
       
-      // Reload licenses
-      loadUserLicenses();
+      alert(successMsg);
+      
+      if (document.getElementById('licenses-table')) {
+        loadUserLicenses();
+      }
     } else {
       alert(`Error: ${data.error || 'Failed to start trial'}`);
     }
   } catch (err) {
     console.error('Error starting trial:', err);
-    alert('Failed to start trial. Please try again.');
+    alert(lang === 'ja' ? 'トライアル開始に失敗しました。もう一度お試しください。' : 'Failed to start trial. Please try again.');
   }
 }
 
-// Load plugins list
+async function notifyMe(product) {
+  const lang = getLanguage();
+  
+  let email = currentUser?.primaryEmailAddress?.emailAddress;
+  
+  if (!email) {
+    const promptMsg = lang === 'ja'
+      ? 'メールアドレスを入力してください：'
+      : 'Enter your email address:';
+    email = prompt(promptMsg);
+    if (!email) return;
+  }
+  
+  try {
+    const data = await apiCall('/signup', {
+      method: 'POST',
+      body: JSON.stringify({
+        email,
+        product,
+        type: 'notify'
+      })
+    });
+    
+    const successMsg = lang === 'ja'
+      ? `✅ 登録完了！\n\n${product}のリリース時にお知らせします。`
+      : `✅ You're on the list!\n\nWe'll notify you when ${product} is available.`;
+    
+    alert(successMsg);
+  } catch (err) {
+    console.error('Error signing up for notification:', err);
+    const errorMsg = lang === 'ja'
+      ? '登録に失敗しました。もう一度お試しください。'
+      : 'Failed to sign up. Please try again.';
+    alert(errorMsg);
+  }
+}
+
 async function loadPlugins() {
   const container = document.getElementById('plugins-list');
   if (!container) return;
@@ -323,22 +333,15 @@ async function loadPlugins() {
     
     container.innerHTML = data.plugins.map(plugin => `
       <div class="plugin-card">
-        <div class="plugin-image">📄</div>
-        <div class="plugin-content">
-          <h3>${plugin.name}</h3>
-          <p>${plugin.description}</p>
-          <div class="plugin-meta">
-            <span class="plugin-price">From $20/mo</span>
-            <span class="plugin-badge ${plugin.status}">${plugin.status}</span>
-          </div>
-          <div class="mt-20">
-            <button class="btn btn-primary" onclick="startTrial('${plugin.plugin_id}')">Start Free Trial</button>
-            <a href="/plugins/${plugin.plugin_id}/" class="btn btn-secondary">Learn More</a>
-          </div>
+        <div class="plugin-icon">📄</div>
+        <h3>${plugin.name}</h3>
+        <p>${plugin.description || ''}</p>
+        <div class="plugin-actions">
+          <button class="btn btn-primary" onclick="KinPlug.startTrial('${plugin.plugin_id}')">Start Free Trial</button>
+          <a href="/plugins/${plugin.plugin_id}/" class="btn btn-text">Learn More →</a>
         </div>
       </div>
     `).join('');
-    
   } catch (err) {
     console.error('Error loading plugins:', err);
     showError('plugins-list', 'Failed to load plugins.');
@@ -346,17 +349,16 @@ async function loadPlugins() {
 }
 
 // ============================================================
-// PAGE INITIALIZATION
+// INITIALIZATION
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
   log('Page loaded, initializing...');
   
-  // Initialize Clerk when script loads
+  // Initialize Clerk
   if (window.Clerk) {
     initClerk();
   } else {
-    // Wait for Clerk script to load
     const checkClerk = setInterval(() => {
       if (window.Clerk) {
         clearInterval(checkClerk);
@@ -364,17 +366,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, 100);
     
-    // Timeout after 5 seconds
     setTimeout(() => {
       clearInterval(checkClerk);
       if (!window.Clerk) {
-        log('Clerk not loaded, using demo mode');
+        log('Clerk not loaded');
         updateAuthUI(null);
       }
     }, 5000);
   }
   
-  // Load page-specific content
+  // Load plugins if on plugins page
   if (document.getElementById('plugins-list')) {
     loadPlugins();
   }
@@ -383,12 +384,14 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================================
 // GLOBAL EXPORTS
 // ============================================================
+
 window.KinPlug = {
   signIn,
   signUp,
   signOut,
   openProfile,
   startTrial,
+  notifyMe,
   copyToClipboard,
   loadUserLicenses,
   loadPlugins
