@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>kintoneプラグイン一覧 | PDF・ルックアップ・ダッシュボード | KinPlug</title>
-  <meta name="description" content="kintone用プレミアムプラグイン。PDF帳票出力、高機能ルックアップ、ダッシュボード、ワークフロー自動化。14日間無料トライアル。コーディング不要。">
-  <meta name="keywords" content="kintone プラグイン, kintone PDF, kintone ルックアップ, kintone ダッシュボード, kintone カスタマイズ">
+  <title>プラグイン一覧 - 現場から生まれた、kintoneプラグイン | KinPlug</title>
+  <meta name="description" content="kintoneの「あったらいいのに」を形にしました。PDF帳票、高機能ルックアップ、文書テンプレート。毎日kintoneを使う開発者が作ったプラグイン。">
   <link rel="canonical" href="https://kinplug.com/ja/plugins/">
   <link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/">
   <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/">
@@ -17,196 +16,116 @@
   <nav class="navbar">
     <div class="container">
       <a href="/ja/" class="logo">Kin<span>Plug</span></a>
-      <div class="nav-links">
-        <a href="/ja/plugins/" class="active">プラグイン</a>
-        <a href="/ja/pricing.html">料金</a>
-        <a href="/ja/docs/">ドキュメント</a>
-      </div>
+      <div class="nav-links"><a href="/ja/plugins/" class="active">プラグイン</a><a href="/ja/pricing.html">料金</a><a href="/ja/docs/">ドキュメント</a></div>
       <div class="nav-right">
         <div class="lang-switcher"><a href="/plugins/">EN</a> | <a href="/ja/plugins/" class="active">日本語</a></div>
-        <div class="nav-auth">
-          <div id="auth-nav">
-            <button class="btn btn-secondary btn-sm" onclick="KinPlug.signIn()">ログイン</button>
-            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">無料で始める</button>
-          </div>
-          <div id="user-nav" class="hidden">
-            <a href="/dashboard.html" class="btn btn-secondary btn-sm">ダッシュボード</a>
-            <div class="user-info" onclick="KinPlug.openProfile()">
-              <div id="user-avatar" class="user-avatar">?</div>
-              <span id="user-name">User</span>
-            </div>
-          </div>
-        </div>
+        <div class="nav-auth"><div id="auth-nav"><button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">ログイン</button><button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">無料で始める</button></div><div id="user-nav" class="hidden"><a href="/ja/dashboard.html" class="btn btn-secondary btn-sm">ダッシュボード</a></div></div>
       </div>
     </div>
   </nav>
 
-  <section class="plugins-header">
+  <section class="hero" style="padding: 60px 0;">
     <div class="container">
-      <h1>kintoneプラグイン</h1>
-      <p class="section-subtitle">kintoneの機能を拡張するプロフェッショナルなプラグイン。コーディング不要。</p>
+      <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+        <span class="badge badge-primary" style="margin-bottom: 16px;">🎯 現場から生まれた、現場のためのプラグイン</span>
+        <h1>kintoneの「あったらいいのに」<br><span class="text-gradient">全部、作りました。</span></h1>
+        <p class="hero-description">
+          私たちも毎日kintoneを使っています。<br>
+          「ここ、もうちょっと何とかならないかな」の積み重ねが、<br>
+          このプラグインになりました。
+        </p>
+      </div>
     </div>
   </section>
 
-  <section class="plugins" style="padding-top: 0;">
+  <section class="plugins" style="padding-top: 40px;">
     <div class="container">
-      <h2 style="text-align: left; margin-bottom: 24px;">提供中のプラグイン</h2>
       <div class="plugins-grid">
-        
         <div class="plugin-card featured">
-          <div class="plugin-badge">人気</div>
+          <span class="plugin-badge popular">一番人気</span>
           <div class="plugin-icon">📄</div>
           <h3>PDF Designer</h3>
-          <p>kintoneレコードからプロフェッショナルなPDF帳票を生成。請求書、見積書、報告書をドラッグ＆ドロップで作成。</p>
-          <ul>
-            <li>ビジュアルテンプレートエディタ</li>
+          <p>請求書、見積書、納品書。kintoneのデータを美しいPDFに一発変換。もうExcelにコピペしなくていい。</p>
+          <ul class="plugin-features">
+            <li>ドラッグ&ドロップで編集</li>
             <li>サブテーブル完全対応</li>
-            <li>複数テンプレート対応</li>
-            <li>ヘッダー・フッター</li>
+            <li>複数テンプレート管理</li>
+            <li>自動連番・計算</li>
           </ul>
           <div class="plugin-actions">
-            <button class="btn btn-primary" onclick="KinPlug.startTrial('pdf-designer')">無料トライアル</button>
-            <a href="/ja/plugins/pdf-designer/" class="btn btn-text">詳細を見る →</a>
+            <button class="btn btn-primary" onclick="KinPlug.startTrial('pdf-designer')">試してみる</button>
+            <a href="/ja/plugins/pdf-designer/" class="btn btn-ghost">詳しく見る →</a>
           </div>
         </div>
-
+        
         <div class="plugin-card">
+          <span class="plugin-badge new">NEW</span>
           <div class="plugin-icon">🔍</div>
           <h3>Enhanced Lookup</h3>
-          <p>高機能ルックアップフィールド。インスタント検索、複数フィールドマッピング、サブテーブル対応。</p>
-          <ul>
-            <li>入力中にリアルタイム検索</li>
-            <li>複数フィールドを一括マッピング</li>
-            <li>サブテーブル内で動作</li>
-            <li>カスタム表示形式</li>
+          <p>標準ルックアップの「惜しい」を解消。文字入力で即検索、複数フィールド一括コピー、サブテーブル内でも動作。</p>
+          <ul class="plugin-features">
+            <li>インクリメンタル検索</li>
+            <li>複数フィールド同時コピー</li>
+            <li>サブテーブル対応</li>
+            <li>表示形式カスタマイズ</li>
           </ul>
           <div class="plugin-actions">
-            <button class="btn btn-primary" onclick="KinPlug.startTrial('enhanced-lookup')">無料トライアル</button>
-            <a href="/ja/plugins/enhanced-lookup/" class="btn btn-text">詳細を見る →</a>
+            <button class="btn btn-primary" onclick="KinPlug.startTrial('enhanced-lookup')">試してみる</button>
+            <a href="/ja/plugins/enhanced-lookup/" class="btn btn-ghost">詳しく見る →</a>
           </div>
         </div>
-
+        
         <div class="plugin-card">
           <div class="plugin-icon">📝</div>
           <h3>Template Builder</h3>
-          <p>WYSIWYGドキュメントエディタ。Word感覚でテンプレートを作成し、フィールドを自動挿入。</p>
-          <ul>
+          <p>契約書、報告書、議事録。Wordのような操作感で文書テンプレートを作成し、kintoneのデータを自動差し込み。</p>
+          <ul class="plugin-features">
             <li>リッチテキスト編集</li>
-            <li>フィールドプレースホルダー</li>
-            <li>条件付きセクション</li>
-            <li>PDF/Word出力</li>
+            <li>条件分岐・繰り返し</li>
+            <li>Word/PDF出力</li>
+            <li>電子署名対応</li>
           </ul>
           <div class="plugin-actions">
-            <button class="btn btn-primary" onclick="KinPlug.startTrial('template-builder')">無料トライアル</button>
-            <a href="/ja/plugins/template-builder/" class="btn btn-text">詳細を見る →</a>
+            <button class="btn btn-primary" onclick="KinPlug.startTrial('template-builder')">試してみる</button>
+            <a href="/ja/plugins/template-builder/" class="btn btn-ghost">詳しく見る →</a>
           </div>
         </div>
-
-      </div>
-
-      <h2 style="text-align: left; margin: 60px 0 24px;">開発中のプラグイン</h2>
-      <div class="plugins-grid">
-        
-        <div class="plugin-card coming-soon">
-          <div class="plugin-badge soon">近日公開</div>
-          <div class="plugin-icon">📊</div>
-          <h3>Dashboard Pro</h3>
-          <p>美しいダッシュボードをkintoneに。グラフ、KPI、リアルタイムデータ可視化。</p>
-          <ul>
-            <li>多様なグラフタイプ</li>
-            <li>リアルタイム更新</li>
-            <li>アプリ横断データ</li>
-          </ul>
-          <div class="plugin-actions">
-            <button class="btn btn-outline" onclick="KinPlug.notifyMe('dashboard-pro')">リリース通知を受け取る</button>
-          </div>
-        </div>
-
-        <div class="plugin-card coming-soon">
-          <div class="plugin-badge soon">近日公開</div>
-          <div class="plugin-icon">📋</div>
-          <h3>Kanban Board</h3>
-          <p>ドラッグ＆ドロップでカンバンビュー。プロジェクト管理、タスク管理に最適。</p>
-          <ul>
-            <li>カードをドラッグ＆ドロップ</li>
-            <li>カスタムカラム</li>
-            <li>フィルター・検索</li>
-          </ul>
-          <div class="plugin-actions">
-            <button class="btn btn-outline" onclick="KinPlug.notifyMe('kanban')">リリース通知を受け取る</button>
-          </div>
-        </div>
-
-        <div class="plugin-card coming-soon">
-          <div class="plugin-badge soon">近日公開</div>
-          <div class="plugin-icon">✏️</div>
-          <h3>Bulk Editor</h3>
-          <p>複数レコードを一括編集。Excelのようなスプレッドシート操作でkintoneデータを編集。</p>
-          <ul>
-            <li>Excel風の編集操作</li>
-            <li>コピー＆ペースト対応</li>
-            <li>元に戻す・やり直し</li>
-          </ul>
-          <div class="plugin-actions">
-            <button class="btn btn-outline" onclick="KinPlug.notifyMe('bulk-editor')">リリース通知を受け取る</button>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
 
-  <section class="cta">
+  <section class="stats" style="margin-top: 80px;">
     <div class="container">
-      <h2>14日間無料でお試しください</h2>
-      <p>クレジットカード不要・全機能利用可能・いつでもキャンセル</p>
-      <button class="btn btn-white btn-lg" onclick="KinPlug.signUp()">無料トライアルを始める →</button>
+      <div class="stats-grid">
+        <div class="stat-item"><h3>14日間</h3><p>無料で全機能お試し</p></div>
+        <div class="stat-item"><h3>5分</h3><p>で使い始められる</p></div>
+        <div class="stat-item"><h3>無制限</h3><p>アプリもユーザーも</p></div>
+        <div class="stat-item"><h3>24時間以内</h3><p>にサポート返信</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" style="margin-top: 80px;">
+    <div class="container">
+      <h2>どのプラグインも<br>14日間無料で試せます</h2>
+      <p>クレジットカードの登録は不要。自動課金もありません。</p>
+      <div class="cta-actions">
+        <button class="btn btn-white btn-lg" onclick="KinPlug.signUp()">無料で始める</button>
+      </div>
     </div>
   </section>
 
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="/ja/" class="logo">Kin<span>Plug</span></a>
-          <p>kintoneの可能性を最大限に引き出すプレミアムプラグイン</p>
-        </div>
-        <div>
-          <h4>プラグイン</h4>
-          <ul>
-            <li><a href="/ja/plugins/pdf-designer/">PDF Designer</a></li>
-            <li><a href="/ja/plugins/enhanced-lookup/">Enhanced Lookup</a></li>
-            <li><a href="/ja/plugins/">すべてのプラグイン</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>サポート</h4>
-          <ul>
-            <li><a href="/ja/docs/">ドキュメント</a></li>
-            <li><a href="mailto:support@kinplug.com">お問い合わせ</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>会社情報</h4>
-          <ul>
-            <li><a href="/ja/legal/privacy.html">プライバシーポリシー</a></li>
-            <li><a href="/ja/legal/terms.html">利用規約</a></li>
-          </ul>
-        </div>
+        <div class="footer-brand"><a href="/ja/" class="logo">Kin<span>Plug</span></a><p style="margin-top: 12px;">kintoneを毎日使うから、わかる。</p></div>
+        <div><h4>プラグイン</h4><ul><li><a href="/ja/plugins/pdf-designer/">PDF Designer</a></li><li><a href="/ja/plugins/enhanced-lookup/">Enhanced Lookup</a></li><li><a href="/ja/plugins/template-builder/">Template Builder</a></li></ul></div>
+        <div><h4>サポート</h4><ul><li><a href="/ja/docs/">使い方ガイド</a></li><li><a href="mailto:support@kinplug.com">お問い合わせ</a></li></ul></div>
+        <div><h4>会社情報</h4><ul><li><a href="/ja/legal/privacy.html">プライバシーポリシー</a></li><li><a href="/ja/legal/terms.html">利用規約</a></li></ul></div>
       </div>
-      <div class="footer-bottom">
-        <div>© 2026 KinPlug by Edamame Inc.</div>
-        <div><a href="/plugins/">English</a> | <a href="/ja/plugins/">日本語</a></div>
-      </div>
+      <div class="footer-bottom"><div>© 2026 KinPlug by Edamame Inc.</div></div>
     </div>
   </footer>
-
   <script src="/assets/js/app.js"></script>
-  
-  <style>
-    .plugins-header { padding: 60px 0 40px; background: var(--bg-light); text-align: center; }
-    .plugins-header h1 { margin-bottom: 16px; }
-    .nav-links a.active { color: var(--primary); font-weight: 600; }
-  </style>
 </body>
 </html>
