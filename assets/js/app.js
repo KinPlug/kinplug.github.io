@@ -1,6 +1,7 @@
 /**
  * KinPlug Website JavaScript
  * Clerk Authentication + API Integration
+ * v1.3.0 - Fixed auth flash issue
  */
 
 const CONFIG = {
@@ -61,7 +62,7 @@ let currentUser = null;
 async function initClerk() {
   if (!CONFIG.CLERK_PUBLISHABLE_KEY || CONFIG.CLERK_PUBLISHABLE_KEY.includes('YOUR_')) {
     log('Clerk not configured');
-    updateAuthUI(null);
+    showAuthReady(null);
     return;
   }
   
@@ -71,16 +72,27 @@ async function initClerk() {
     currentUser = window.Clerk.user;
     log('Clerk loaded, user:', currentUser?.primaryEmailAddress?.emailAddress || 'not signed in');
     
+    // Listen for auth changes
     window.Clerk.addListener(() => {
       currentUser = window.Clerk.user;
       updateAuthUI(currentUser);
     });
     
-    updateAuthUI(currentUser);
+    // Show auth UI now that we know the state
+    showAuthReady(currentUser);
   } catch (err) {
     console.error('Clerk init error:', err);
-    updateAuthUI(null);
+    showAuthReady(null);
   }
+}
+
+// Show auth section after Clerk determines state (prevents flash)
+function showAuthReady(user) {
+  const navAuth = document.querySelector('.nav-auth');
+  if (navAuth) {
+    navAuth.classList.add('ready');
+  }
+  updateAuthUI(user);
 }
 
 function updateAuthUI(user) {
@@ -90,6 +102,7 @@ function updateAuthUI(user) {
   const userAvatar = document.getElementById('user-avatar');
   
   if (user) {
+    // User is logged in
     if (authNav) authNav.classList.add('hidden');
     if (userNav) userNav.classList.remove('hidden');
     
@@ -99,16 +112,18 @@ function updateAuthUI(user) {
     if (userName) userName.textContent = name;
     if (userAvatar) {
       if (user.imageUrl) {
-        userAvatar.innerHTML = `<img src="${user.imageUrl}" alt="${name}" style="width:100%;height:100%;border-radius:50%;">`;
+        userAvatar.innerHTML = `<img src="${user.imageUrl}" alt="${name}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
       } else {
         userAvatar.textContent = name.charAt(0).toUpperCase();
       }
     }
     
+    // Load licenses if on dashboard
     if (document.getElementById('licenses-table')) {
       loadUserLicenses();
     }
   } else {
+    // User is logged out
     if (authNav) authNav.classList.remove('hidden');
     if (userNav) userNav.classList.add('hidden');
   }
@@ -204,7 +219,7 @@ async function loadUserLicenses() {
       <tr>
         <td>${license.product || 'Unknown'}</td>
         <td>
-          <span class="license-key" onclick="KinPlug.copyToClipboard('${license.license_key}')" title="Click to copy" style="cursor:pointer;">
+          <span class="license-key" onclick="KinPlug.copyToClipboard('${license.license_key}')" title="Click to copy" style="cursor:pointer;font-family:monospace;font-size:0.85rem;">
             ${license.license_key}
           </span>
         </td>
@@ -272,7 +287,7 @@ async function startTrial(product) {
         loadUserLicenses();
       }
     } else {
-      alert(`Error: ${data.error || 'Failed to start trial'}`);
+      alert(`Error: ${data.error || data.message || 'Failed to start trial'}`);
     }
   } catch (err) {
     console.error('Error starting trial:', err);
@@ -366,11 +381,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, 100);
     
+    // Timeout after 5 seconds - show logged out state
     setTimeout(() => {
       clearInterval(checkClerk);
       if (!window.Clerk) {
-        log('Clerk not loaded');
-        updateAuthUI(null);
+        log('Clerk not loaded after timeout');
+        showAuthReady(null);
       }
     }, 5000);
   }
