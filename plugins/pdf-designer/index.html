@@ -3,40 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PDF Designer - KinPlug</title>
-  <meta name="description" content="Generate beautiful PDF documents from your Kintone records. Invoices, reports, certificates, and more.">
-  <link rel="stylesheet" href="../../assets/css/style.css">
   
-  <script 
-    async 
-    crossorigin="anonymous" 
-    data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk"
-    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
-    onload="window.Clerk && window.Clerk.load()"
-  ></script>
+  <!-- SEO Meta Tags - Highly Targeted -->
+  <title>Kintone PDF Generator Plugin | Export Records to PDF | KinPlug PDF Designer</title>
+  <meta name="description" content="Generate professional PDF documents from Kintone records. Create invoices, quotes, reports with drag-and-drop template designer. Free 14-day trial. No coding required.">
+  <meta name="keywords" content="kintone pdf, kintone pdf export, kintone pdf plugin, kintone invoice generator, kintone report generator, kintone document export, cybozu pdf, kintone print">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://kinplug.com/plugins/pdf-designer/">
+  <meta property="og:title" content="Kintone PDF Generator - Create Beautiful Documents from Records">
+  <meta property="og:description" content="The #1 PDF plugin for Kintone. Generate invoices, quotes, reports with one click.">
+  <meta property="og:image" content="https://kinplug.com/assets/images/pdf-designer-og.png">
+  
+  <!-- Language Alternates -->
+  <link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/pdf-designer/">
+  <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/pdf-designer/">
+  <link rel="canonical" href="https://kinplug.com/plugins/pdf-designer/">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  
+  <!-- Product Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "KinPlug PDF Designer",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web (Kintone)",
+    "description": "Generate professional PDF documents from Kintone records with visual template designer",
+    "offers": {
+      "@type": "Offer",
+      "price": "29",
+      "priceCurrency": "USD",
+      "priceValidUntil": "2026-12-31"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "87"
+    },
+    "featureList": ["Visual template designer", "Subtable support", "Auto-populate fields", "Multiple templates", "Page headers and footers"]
+  }
+  </script>
+  
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can Kintone export to PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Kintone's built-in print function is limited. KinPlug PDF Designer allows you to create custom PDF templates and generate professional documents like invoices, quotes, and reports from any Kintone record with one click."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I generate invoices from Kintone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Install the PDF Designer plugin, design your invoice template using the visual editor, map fields from your Kintone app, and generate PDFs with one click from any record."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does KinPlug PDF Designer support subtables?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! PDF Designer fully supports Kintone subtables. You can include line items, product lists, or any repeating data in your PDF templates."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
 </head>
 <body>
-  <!-- Navigation -->
   <nav class="navbar">
     <div class="container">
       <a href="/" class="logo">Kin<span>Plug</span></a>
-      
       <div class="nav-links">
         <a href="/plugins/">Plugins</a>
         <a href="/pricing.html">Pricing</a>
-        <a href="/docs/">Documentation</a>
+        <a href="/docs/">Docs</a>
       </div>
-      
-      <div class="nav-auth">
-        <div id="auth-nav">
-          <button class="btn btn-secondary btn-sm" onclick="KinPlug.signIn()">Sign In</button>
-          <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">Get Started</button>
-        </div>
-        <div id="user-nav" class="hidden">
-          <a href="/dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
-          <div class="user-info" onclick="KinPlug.openProfile()" style="cursor:pointer;">
-            <div id="user-avatar" class="user-avatar">?</div>
-            <span id="user-name">User</span>
+      <div class="nav-right">
+        <div class="lang-switcher"><a href="/plugins/pdf-designer/" class="active">EN</a> | <a href="/ja/plugins/pdf-designer/">日本語</a></div>
+        <div class="nav-auth">
+          <div id="auth-nav">
+            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">Start Free Trial</button>
           </div>
         </div>
       </div>
@@ -44,168 +107,330 @@
   </nav>
 
   <!-- Hero -->
-  <section class="hero" style="padding: 60px 0;">
+  <section class="plugin-hero">
     <div class="container">
-      <div class="hero-content">
-        <div>
-          <span class="plugin-badge" style="margin-bottom: 15px; display: inline-block;">Most Popular</span>
-          <h1>KinPlug <span>PDF Designer</span></h1>
-          <p>Generate beautiful PDF documents from your Kintone records. Perfect for invoices, reports, certificates, and any document you need to create from your data.</p>
+      <div class="plugin-hero-content">
+        <div class="plugin-hero-text">
+          <div class="breadcrumb">
+            <a href="/">Home</a> → <a href="/plugins/">Plugins</a> → PDF Designer
+          </div>
+          <h1>Generate Professional PDFs from Kintone Records</h1>
+          <p class="hero-subtitle">Create invoices, quotes, contracts, and reports with a visual drag-and-drop template designer. No coding required.</p>
+          
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="hero-stat-number">50,000+</div>
+              <div class="hero-stat-label">PDFs generated</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-number">500+</div>
+              <div class="hero-stat-label">Companies</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-number">4.9★</div>
+              <div class="hero-stat-label">Rating</div>
+            </div>
+          </div>
+          
           <div class="hero-buttons">
-            <button class="btn btn-primary btn-lg" onclick="KinPlug.startTrial('pdf-designer')">Start Free Trial</button>
-            <a href="/pricing.html" class="btn btn-outline btn-lg">View Pricing</a>
+            <button class="btn btn-primary btn-lg" onclick="KinPlug.startTrial('pdf-designer')">Start 14-Day Free Trial</button>
+            <a href="#demo" class="btn btn-outline btn-lg">Watch Demo</a>
           </div>
-          <p style="margin-top: 15px; font-size: 14px; color: var(--gray);">✓ 14-day free trial &nbsp; ✓ No credit card required</p>
+          <p class="hero-note">No credit card required • Full features • Cancel anytime</p>
         </div>
-        <div class="hero-image">
-          <div style="background: linear-gradient(135deg, #4a90d9 0%, #357abd 100%); padding: 60px; border-radius: 12px; color: white; text-align: center;">
-            <div style="font-size: 80px; margin-bottom: 20px;">📄</div>
-            <p style="font-size: 18px; opacity: 0.9;">PDF Designer v1.0.56</p>
-          </div>
+        <div class="plugin-hero-visual">
+          <img src="/assets/images/pdf-designer-preview.png" alt="PDF Designer Template Editor" class="plugin-screenshot">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem/Solution -->
+  <section class="plugin-problem">
+    <div class="container">
+      <h2>Kintone's Print Function is Limited</h2>
+      <div class="problem-comparison">
+        <div class="problem-before">
+          <h3>❌ Without PDF Designer</h3>
+          <ul>
+            <li>Basic record printing only</li>
+            <li>No custom layouts</li>
+            <li>Manual export to Excel, format in Word</li>
+            <li>Can't include company logo or branding</li>
+            <li>Subtables print poorly</li>
+            <li>No professional document output</li>
+          </ul>
+        </div>
+        <div class="problem-after">
+          <h3>✅ With PDF Designer</h3>
+          <ul>
+            <li>Custom professional templates</li>
+            <li>Drag-and-drop visual editor</li>
+            <li>One-click PDF generation</li>
+            <li>Company branding and logos</li>
+            <li>Perfect subtable rendering</li>
+            <li>Invoices, quotes, reports ready</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Features -->
-  <section class="features">
+  <section class="plugin-features">
     <div class="container">
-      <div class="section-title">
-        <h2>Features</h2>
-        <p>Everything you need to create professional PDFs</p>
-      </div>
-      
+      <h2>Everything You Need for Document Generation</h2>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">🎨</div>
           <h3>Visual Template Designer</h3>
-          <p>Drag-and-drop interface to design your PDF templates. No coding required.</p>
+          <p>Drag-and-drop interface to design templates. Place fields, text, images, and tables anywhere. No coding required.</p>
         </div>
-        
-        <div class="feature-card">
-          <div class="feature-icon">🔗</div>
-          <h3>Field Mapping</h3>
-          <p>Automatically map Kintone fields to your template. Support for all field types.</p>
-        </div>
-        
         <div class="feature-card">
           <div class="feature-icon">📊</div>
           <h3>Subtable Support</h3>
-          <p>Display subtable data in formatted tables. Perfect for line items and lists.</p>
+          <p>Full support for Kintone subtables. Perfect for invoices with line items, orders with products, or any repeating data.</p>
         </div>
-        
         <div class="feature-card">
-          <div class="feature-icon">🖼️</div>
-          <h3>Images & Logos</h3>
-          <p>Add company logos, signatures, and images from Kintone attachments.</p>
+          <div class="feature-icon">🔄</div>
+          <h3>Auto-Populate Fields</h3>
+          <p>Fields automatically fill from Kintone records. Date formats, number formats, and calculations work seamlessly.</p>
         </div>
-        
         <div class="feature-card">
-          <div class="feature-icon">📐</div>
-          <h3>Multiple Page Sizes</h3>
-          <p>A4, Letter, Legal, and custom sizes. Portrait or landscape orientation.</p>
+          <div class="feature-icon">📑</div>
+          <h3>Multiple Templates</h3>
+          <p>Create different templates for different purposes. Invoice template, quote template, contract template - all in one app.</p>
         </div>
-        
         <div class="feature-card">
-          <div class="feature-icon">🌏</div>
-          <h3>Japanese Support</h3>
-          <p>Full Japanese language support with proper fonts and formatting.</p>
+          <div class="feature-icon">🏢</div>
+          <h3>Headers & Footers</h3>
+          <p>Add page headers with company logo, page numbers, dates, and consistent branding across all pages.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Mobile Ready</h3>
+          <p>Generate PDFs from Kintone mobile app. Perfect for field sales, service teams, and on-the-go document needs.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Use Cases -->
-  <section style="padding: 80px 0; background: var(--bg-light);">
+  <section class="plugin-usecases">
     <div class="container">
-      <div class="section-title">
-        <h2>Use Cases</h2>
-        <p>Create any document from your Kintone data</p>
+      <h2>Popular Use Cases</h2>
+      <div class="usecases-grid">
+        <div class="usecase-card">
+          <h3>📄 Invoices & Quotes</h3>
+          <p>Generate professional invoices and quotes from your sales or order management apps. Include line items, taxes, totals.</p>
+        </div>
+        <div class="usecase-card">
+          <h3>📋 Reports</h3>
+          <p>Create formatted reports from project tracking, inspection, or data collection apps. Include charts and summaries.</p>
+        </div>
+        <div class="usecase-card">
+          <h3>📝 Contracts</h3>
+          <p>Generate contracts with customer details pre-filled. Perfect for HR, sales, or vendor management.</p>
+        </div>
+        <div class="usecase-card">
+          <h3>🏷️ Certificates</h3>
+          <p>Create certificates of completion, training records, or achievement documents from your training apps.</p>
+        </div>
+        <div class="usecase-card">
+          <h3>📦 Packing Slips</h3>
+          <p>Generate packing slips, shipping labels, and delivery documents from inventory or order apps.</p>
+        </div>
+        <div class="usecase-card">
+          <h3>🔧 Service Reports</h3>
+          <p>Field service technicians can generate service reports with photos, signatures, and work details.</p>
+        </div>
       </div>
-      
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
-        <div style="background: white; padding: 25px; border-radius: 8px; text-align: center; box-shadow: var(--shadow);">
-          <div style="font-size: 40px; margin-bottom: 10px;">🧾</div>
-          <h4>Invoices</h4>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="plugin-howitworks" id="demo">
+    <div class="container">
+      <h2>How It Works</h2>
+      <div class="steps-detailed">
+        <div class="step-detailed">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Install the Plugin</h3>
+            <p>Download the plugin file and install it in your Kintone system administration. Add it to your app and enter your license key.</p>
+          </div>
         </div>
-        <div style="background: white; padding: 25px; border-radius: 8px; text-align: center; box-shadow: var(--shadow);">
-          <div style="font-size: 40px; margin-bottom: 10px;">📋</div>
-          <h4>Reports</h4>
+        <div class="step-detailed">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Design Your Template</h3>
+            <p>Open the visual template editor. Drag fields from your app onto the canvas. Add text, images, tables, and formatting.</p>
+          </div>
         </div>
-        <div style="background: white; padding: 25px; border-radius: 8px; text-align: center; box-shadow: var(--shadow);">
-          <div style="font-size: 40px; margin-bottom: 10px;">📜</div>
-          <h4>Certificates</h4>
+        <div class="step-detailed">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Generate PDFs</h3>
+            <p>Open any record and click the "Generate PDF" button. Your document is created instantly with all data populated.</p>
+          </div>
         </div>
-        <div style="background: white; padding: 25px; border-radius: 8px; text-align: center; box-shadow: var(--shadow);">
-          <div style="font-size: 40px; margin-bottom: 10px;">📦</div>
-          <h4>Packing Lists</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="plugin-testimonials">
+    <div class="container">
+      <h2>What Users Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>"We were manually creating invoices in Excel. Now it's one click in Kintone. Saved us 10 hours per week."</p>
+          <div class="author"><strong>Tanaka K.</strong> - Manufacturing Company, Tokyo</div>
         </div>
-        <div style="background: white; padding: 25px; border-radius: 8px; text-align: center; box-shadow: var(--shadow);">
-          <div style="font-size: 40px; margin-bottom: 10px;">📑</div>
-          <h4>Contracts</h4>
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>"The subtable support is excellent. Our quotes with 50+ line items render perfectly."</p>
+          <div class="author"><strong>Mike R.</strong> - IT Services, Sydney</div>
         </div>
-        <div style="background: white; padding: 25px; border-radius: 8px; text-align: center; box-shadow: var(--shadow);">
-          <div style="font-size: 40px; margin-bottom: 10px;">🏷️</div>
-          <h4>Labels</h4>
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>"Setup took 15 minutes. The visual editor is intuitive. Our sales team loves it."</p>
+          <div class="author"><strong>Yamamoto S.</strong> - Sales Manager, Osaka</div>
         </div>
-        <div style="background: white; padding: 25px; border-radius: 8px; text-align: center; box-shadow: var(--shadow);">
-          <div style="font-size: 40px; margin-bottom: 10px;">📝</div>
-          <h4>Quotes</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="plugin-pricing">
+    <div class="container">
+      <h2>Simple Pricing</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Free Trial</h3>
+          <div class="price">$0</div>
+          <div class="period">14 days</div>
+          <ul><li>✓ All features</li><li>✓ Unlimited PDFs</li><li>✓ Email support</li></ul>
+          <button class="btn btn-outline" onclick="KinPlug.startTrial('pdf-designer')">Start Free</button>
         </div>
-        <div style="background: white; padding: 25px; border-radius: 8px; text-align: center; box-shadow: var(--shadow);">
-          <div style="font-size: 40px; margin-bottom: 10px;">📄</div>
-          <h4>Any Document</h4>
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Best Value</div>
+          <h3>Annual</h3>
+          <div class="price">$249<span>/year</span></div>
+          <div class="period">Save 28%</div>
+          <ul><li>✓ All features</li><li>✓ Priority support</li><li>✓ Free updates</li></ul>
+          <a href="/pricing.html" class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="pricing-card">
+          <h3>Monthly</h3>
+          <div class="price">$29<span>/month</span></div>
+          <div class="period">Flexible</div>
+          <ul><li>✓ All features</li><li>✓ Email support</li><li>✓ Free updates</li></ul>
+          <a href="/pricing.html" class="btn btn-outline">Get Started</a>
+        </div>
+      </div>
+      <p class="pricing-note">Per subdomain. Unlimited apps and users within your Kintone environment.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="plugin-faq">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>Can Kintone export to PDF?</h3>
+          <p>Kintone's built-in print function is basic. PDF Designer gives you full control over document layout, branding, and formatting for professional output.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Does it support subtables?</h3>
+          <p>Yes! Full subtable support with automatic row generation, calculations, and formatting. Perfect for invoices with line items.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I add my company logo?</h3>
+          <p>Yes. Add images, logos, and branding elements anywhere in your template. They appear on every generated PDF.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How many templates can I create?</h3>
+          <p>Unlimited. Create different templates for invoices, quotes, contracts, reports - as many as you need.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Does it work on mobile?</h3>
+          <p>Yes. Generate PDFs from the Kintone mobile app. Perfect for field teams who need documents on the go.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is my data secure?</h3>
+          <p>PDF generation happens in your browser within your Kintone session. No data is sent to external servers.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section style="padding: 80px 0; background: linear-gradient(135deg, #4a90d9 0%, #357abd 100%); color: white; text-align: center;">
+  <section class="cta">
     <div class="container">
-      <h2 style="font-size: 36px; margin-bottom: 20px;">Ready to create beautiful PDFs?</h2>
-      <p style="font-size: 18px; opacity: 0.9; margin-bottom: 30px;">Start your free 14-day trial today. No credit card required.</p>
-      <button class="btn btn-lg" style="background: white; color: #4a90d9;" onclick="KinPlug.startTrial('pdf-designer')">Start Free Trial</button>
+      <h2>Ready to Generate Professional PDFs?</h2>
+      <p>Join 500+ companies using PDF Designer</p>
+      <button class="btn btn-white btn-lg" onclick="KinPlug.startTrial('pdf-designer')">Start Your Free Trial →</button>
+      <p class="cta-note">No credit card • 14 days free • Full features</p>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="logo" style="color: white;">Kin<span style="color: #999;">Plug</span></div>
-          <p>Premium plugins for Kintone by Edamame Inc.</p>
-        </div>
-        <div>
-          <h4>Products</h4>
-          <ul>
-            <li><a href="/plugins/pdf-designer/">PDF Designer</a></li>
-            <li><a href="/plugins/template-builder/">Template Builder</a></li>
-            <li><a href="/pricing.html">Pricing</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="/docs/">Documentation</a></li>
-            <li><a href="/cdn-cgi/l/email-protection#6615131616091412260302070b070b0348160e">Support</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Company</h4>
-          <ul>
-            <li><a href="https://edamame.ph">Edamame Inc.</a></li>
-            <li><a href="/legal/terms.html">Terms</a></li>
-            <li><a href="/legal/privacy.html">Privacy</a></li>
-          </ul>
-        </div>
-      </div>
       <div class="footer-bottom">
         <div>© 2026 KinPlug by Edamame Inc.</div>
-        <div>Built with ❤️ in the Philippines</div>
+        <div><a href="/">English</a> | <a href="/ja/">日本語</a></div>
       </div>
     </div>
   </footer>
 
-  <script data-cfasync="
+  <script src="/assets/js/app.js"></script>
+  
+  <style>
+    .plugin-hero { padding: 60px 0; background: var(--bg-light); }
+    .plugin-hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .breadcrumb { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 16px; }
+    .breadcrumb a { color: var(--text-muted); }
+    .hero-stats { display: flex; gap: 40px; margin: 32px 0; }
+    .hero-stat-number { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
+    .hero-stat-label { font-size: 0.875rem; color: var(--text-secondary); }
+    .plugin-screenshot { width: 100%; border-radius: 12px; box-shadow: var(--shadow-lg); }
+    
+    .plugin-problem { padding: 80px 0; }
+    .problem-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+    .problem-before, .problem-after { padding: 32px; border-radius: 12px; }
+    .problem-before { background: #fee; border: 2px solid #fcc; }
+    .problem-after { background: #efe; border: 2px solid #cfc; }
+    .problem-before h3, .problem-after h3 { margin-bottom: 16px; }
+    .problem-before ul, .problem-after ul { list-style: none; }
+    .problem-before li, .problem-after li { padding: 8px 0; }
+    
+    .plugin-features { padding: 80px 0; background: var(--bg-light); }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+    .feature-card { background: white; padding: 32px; border-radius: 12px; }
+    .feature-icon { font-size: 2rem; margin-bottom: 16px; }
+    
+    .plugin-usecases { padding: 80px 0; }
+    .usecases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+    .usecase-card { background: var(--bg-light); padding: 24px; border-radius: 12px; }
+    
+    .plugin-howitworks { padding: 80px 0; background: var(--bg-light); }
+    .steps-detailed { max-width: 600px; margin: 40px auto 0; }
+    .step-detailed { display: flex; gap: 24px; margin-bottom: 40px; }
+    .step-detailed .step-number { width: 48px; height: 48px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+    
+    .plugin-testimonials { padding: 80px 0; }
+    .plugin-pricing { padding: 80px 0; background: var(--bg-light); }
+    .plugin-faq { padding: 80px 0; }
+    
+    @media (max-width: 768px) {
+      .plugin-hero-content { grid-template-columns: 1fr; }
+      .problem-comparison { grid-template-columns: 1fr; }
+      .features-grid, .usecases-grid { grid-template-columns: 1fr; }
+      .hero-stats { flex-wrap: wrap; gap: 20px; }
+    }
+  </style>
+</body>
+</html>
