@@ -7,360 +7,79 @@
   <link rel="stylesheet" href="/assets/css/style.css">
   <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
   <style>
-    .dashboard-hero {
-      background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
-      color: white;
-      padding: 40px 0;
-      margin-bottom: 40px;
-    }
-    .dashboard-hero h1 { color: white; margin-bottom: 8px; }
-    .dashboard-hero p { color: rgba(255,255,255,0.8); margin: 0; }
-    .welcome-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    .welcome-info { display: flex; align-items: center; gap: 16px; }
-    .welcome-avatar {
-      width: 64px; height: 64px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; font-weight: 700;
-      border: 3px solid rgba(255,255,255,0.3);
-    }
-    .subdomain-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.15);
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.875rem;
-      margin-top: 8px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .subdomain-badge:hover { background: rgba(255,255,255,0.25); }
-    
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-    .stat-card {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      border: 1px solid #e5e7eb;
-      transition: all 0.2s ease;
-    }
-    .stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
-    .stat-card .icon {
-      width: 44px; height: 44px;
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.25rem;
-      margin-bottom: 12px;
-    }
-    .stat-card .icon.blue { background: #dbeafe; }
-    .stat-card .icon.green { background: #dcfce7; }
-    .stat-card .icon.yellow { background: #fef3c7; }
-    .stat-card .icon.red { background: #fee2e2; }
-    .stat-card .value { font-size: 1.75rem; font-weight: 800; color: #111; line-height: 1; }
-    .stat-card .label { font-size: 0.8125rem; color: #6b7280; margin-top: 4px; }
-
-    .section-card {
-      background: white;
-      border-radius: 16px;
-      padding: 28px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      border: 1px solid #e5e7eb;
-      margin-bottom: 24px;
-    }
-    .section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .section-header h2 { margin: 0; font-size: 1.125rem; font-weight: 700; }
-
-    .license-grid { display: grid; gap: 12px; }
-    .license-card {
-      background: #f9fafb;
-      border-radius: 12px;
-      padding: 16px 20px;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 16px;
-      transition: all 0.2s ease;
-      border: 2px solid transparent;
-    }
-    .license-card:hover { border-color: var(--primary); background: white; }
-    .license-icon {
-      width: 48px; height: 48px;
-      border-radius: 12px;
-      background: white;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
-    }
-    .license-info h3 { margin: 0 0 2px 0; font-size: 0.9375rem; }
-    .license-info .subdomain { font-size: 0.8125rem; color: #6b7280; margin-bottom: 6px; }
-    .license-key-box {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: white;
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-family: 'SF Mono', Monaco, monospace;
-      font-size: 0.6875rem;
-      color: #6b7280;
-      border: 1px solid #e5e7eb;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .license-key-box:hover { border-color: var(--primary); color: var(--primary); }
-    .license-meta { text-align: right; }
-    .license-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 4px 10px;
-      border-radius: 16px;
-      font-size: 0.6875rem;
-      font-weight: 600;
-    }
-    .license-status.active { background: #dcfce7; color: #166534; }
-    .license-status.trial { background: #dbeafe; color: #1e40af; }
-    .license-status.expired { background: #fee2e2; color: #991b1b; }
-    .license-expires { font-size: 0.75rem; color: #6b7280; margin-top: 6px; }
-    .license-expires.warning { color: #d97706; font-weight: 600; }
-    .license-expires.danger { color: #dc2626; font-weight: 600; }
-
-    .empty-state { text-align: center; padding: 48px 20px; }
-    .empty-state .icon { font-size: 3rem; margin-bottom: 12px; opacity: 0.5; }
-    .empty-state h3 { margin-bottom: 6px; color: #111; font-size: 1.125rem; }
-    .empty-state p { color: #6b7280; margin-bottom: 20px; font-size: 0.9375rem; }
-
-    .quick-actions {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 10px;
-    }
-    .action-btn {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 16px;
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      color: #374151;
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
-    .action-btn:hover {
-      background: white;
-      border-color: var(--primary);
-      color: var(--primary);
-      transform: translateY(-1px);
-    }
-    .action-btn .icon { font-size: 1.125rem; }
-
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(4px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-    .modal-overlay.active { opacity: 1; visibility: visible; }
-    .modal-content {
-      background: white;
-      padding: 32px;
-      border-radius: 20px;
-      width: 100%;
-      max-width: 440px;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
-      transform: translateY(20px) scale(0.95);
-      transition: all 0.3s ease;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-    .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
-    .modal-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
-    .modal-icon {
-      width: 48px; height: 48px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--primary), #1e40af);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem;
-    }
-    .modal-header h2 { margin: 0; font-size: 1.25rem; }
-    .modal-header p { margin: 2px 0 0; color: #6b7280; font-size: 0.875rem; }
-    .form-group { margin-bottom: 16px; }
-    .form-group label { display: block; margin-bottom: 6px; font-weight: 600; color: #374151; font-size: 0.875rem; }
-    .form-group select, .form-group input {
-      width: 100%;
-      padding: 12px 14px;
-      border: 2px solid #e5e7eb;
-      border-radius: 10px;
-      font-size: 0.9375rem;
-      transition: all 0.2s ease;
-    }
-    .form-group select:focus, .form-group input:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    }
-    .subdomain-input {
-      display: flex;
-      align-items: stretch;
-      border: 2px solid #e5e7eb;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: all 0.2s ease;
-    }
-    .subdomain-input:focus-within {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    }
-    .subdomain-input input { flex: 1; border: none; padding: 12px 14px; font-size: 0.9375rem; }
-    .subdomain-input input:focus { outline: none; }
-    .subdomain-input .suffix {
-      padding: 12px 14px;
-      background: #f9fafb;
-      color: #6b7280;
-      font-size: 0.875rem;
-      border-left: 1px solid #e5e7eb;
-      white-space: nowrap;
-    }
-    .modal-actions { display: flex; gap: 10px; margin-top: 24px; }
-    .modal-actions .btn { flex: 1; }
-    
-    .plugin-option {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      border: 2px solid #e5e7eb;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      margin-bottom: 6px;
-    }
-    .plugin-option:hover { border-color: var(--primary); background: #f9fafb; }
-    .plugin-option.selected { border-color: var(--primary); background: #eff6ff; }
-    .plugin-option input { display: none; }
-    .plugin-option .icon { font-size: 1.25rem; }
-    .plugin-option .name { font-weight: 600; font-size: 0.875rem; }
-    .plugin-option .desc { font-size: 0.75rem; color: #6b7280; }
-
-    .setup-banner {
-      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-      border: 2px solid #f59e0b;
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .setup-banner .icon { font-size: 2.5rem; }
-    .setup-banner h3 { margin: 0 0 4px; color: #92400e; }
-    .setup-banner p { margin: 0; color: #a16207; font-size: 0.9375rem; }
-    .setup-banner .btn { margin-left: auto; white-space: nowrap; }
-
-    .settings-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 0;
-      border-bottom: 1px solid #e5e7eb;
-    }
-    .settings-item:last-child { border-bottom: none; }
-    .settings-item .label { font-weight: 600; color: #374151; }
-    .settings-item .value { color: #6b7280; font-family: monospace; }
-
-    .skeleton {
-      background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-      border-radius: 8px;
-    }
-    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-    .skeleton-card { height: 80px; margin-bottom: 12px; }
-
-    .toast {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: #111;
-      color: white;
-      padding: 14px 20px;
-      border-radius: 10px;
-      font-size: 0.9375rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      transform: translateY(100px);
-      opacity: 0;
-      transition: all 0.3s ease;
-      z-index: 10000;
-    }
-    .toast.show { transform: translateY(0); opacity: 1; }
-    .toast.success { background: #059669; }
-    .toast.error { background: #dc2626; }
-
-    @media (max-width: 768px) {
-      .license-card { grid-template-columns: 1fr; text-align: center; }
-      .license-icon { margin: 0 auto; }
-      .license-meta { text-align: center; margin-top: 8px; }
-      .welcome-card { text-align: center; justify-content: center; }
-      .welcome-info { flex-direction: column; }
-      .setup-banner { flex-direction: column; text-align: center; }
-      .setup-banner .btn { margin: 16px 0 0; }
-    }
+    .dashboard-hero{background:linear-gradient(135deg,var(--primary) 0%,#1e40af 100%);color:#fff;padding:40px 0;margin-bottom:40px}
+    .dashboard-hero h1{color:#fff;margin-bottom:8px}.dashboard-hero p{color:rgba(255,255,255,.8);margin:0}
+    .welcome-card{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+    .welcome-info{display:flex;align-items:center;gap:16px}
+    .welcome-avatar{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;border:3px solid rgba(255,255,255,.3)}
+    .subdomain-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);padding:8px 16px;border-radius:20px;font-size:.875rem;margin-top:8px;cursor:pointer;transition:all .2s ease}
+    .subdomain-badge:hover{background:rgba(255,255,255,.25)}
+    .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:32px}
+    .stat-card{background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.08);border:1px solid #e5e7eb;transition:all .2s ease}
+    .stat-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
+    .stat-card .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:12px}
+    .stat-card .icon.blue{background:#dbeafe}.stat-card .icon.green{background:#dcfce7}.stat-card .icon.yellow{background:#fef3c7}.stat-card .icon.red{background:#fee2e2}
+    .stat-card .value{font-size:1.75rem;font-weight:800;color:#111;line-height:1}.stat-card .label{font-size:.8125rem;color:#6b7280;margin-top:4px}
+    .section-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,.08);border:1px solid #e5e7eb;margin-bottom:24px}
+    .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+    .section-header h2{margin:0;font-size:1.125rem;font-weight:700}
+    .license-grid{display:grid;gap:12px}
+    .license-card{background:#f9fafb;border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;transition:all .2s ease;border:2px solid transparent}
+    .license-card:hover{border-color:var(--primary);background:#fff}
+    .license-icon{width:48px;height:48px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 2px 4px rgba(0,0,0,.06)}
+    .license-info h3{margin:0 0 2px;font-size:.9375rem}.license-info .subdomain{font-size:.8125rem;color:#6b7280;margin-bottom:6px}
+    .license-key-box{display:inline-flex;align-items:center;gap:6px;background:#fff;padding:6px 10px;border-radius:6px;font-family:'SF Mono',Monaco,monospace;font-size:.6875rem;color:#6b7280;border:1px solid #e5e7eb;cursor:pointer;transition:all .2s ease}
+    .license-key-box:hover{border-color:var(--primary);color:var(--primary)}
+    .license-meta{text-align:right}
+    .license-status{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:16px;font-size:.6875rem;font-weight:600}
+    .license-status.active{background:#dcfce7;color:#166534}.license-status.trial{background:#dbeafe;color:#1e40af}.license-status.expired{background:#fee2e2;color:#991b1b}
+    .license-expires{font-size:.75rem;color:#6b7280;margin-top:6px}.license-expires.warning{color:#d97706;font-weight:600}.license-expires.danger{color:#dc2626;font-weight:600}
+    .empty-state{text-align:center;padding:48px 20px}.empty-state .icon{font-size:3rem;margin-bottom:12px;opacity:.5}
+    .empty-state h3{margin-bottom:6px;color:#111;font-size:1.125rem}.empty-state p{color:#6b7280;margin-bottom:20px;font-size:.9375rem}
+    .quick-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+    .action-btn{display:flex;align-items:center;gap:8px;padding:14px 16px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;color:#374151;text-decoration:none;font-size:.875rem;font-weight:500;transition:all .2s ease;cursor:pointer}
+    .action-btn:hover{background:#fff;border-color:var(--primary);color:var(--primary);transform:translateY(-1px)}.action-btn .icon{font-size:1.125rem}
+    .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:9999;opacity:0;visibility:hidden;transition:all .3s ease}
+    .modal-overlay.active{opacity:1;visibility:visible}
+    .modal-content{background:#fff;padding:32px;border-radius:20px;width:100%;max-width:440px;box-shadow:0 25px 50px rgba(0,0,0,.25);transform:translateY(20px) scale(.95);transition:all .3s ease;max-height:90vh;overflow-y:auto}
+    .modal-overlay.active .modal-content{transform:translateY(0) scale(1)}
+    .modal-header{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+    .modal-icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--primary),#1e40af);display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+    .modal-header h2{margin:0;font-size:1.25rem}.modal-header p{margin:2px 0 0;color:#6b7280;font-size:.875rem}
+    .form-group{margin-bottom:16px}.form-group label{display:block;margin-bottom:6px;font-weight:600;color:#374151;font-size:.875rem}
+    .form-group select,.form-group input{width:100%;padding:12px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:.9375rem;transition:all .2s ease}
+    .form-group select:focus,.form-group input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+    .subdomain-input{display:flex;align-items:stretch;border:2px solid #e5e7eb;border-radius:10px;overflow:hidden;transition:all .2s ease}
+    .subdomain-input:focus-within{border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+    .subdomain-input input{flex:1;border:none;padding:12px 14px;font-size:.9375rem;min-width:0}
+    .subdomain-input input:focus{outline:none}
+    .subdomain-input select.domain-suffix{border:none;background:#f9fafb;color:#374151;font-size:.875rem;padding:12px 8px;cursor:pointer;border-left:1px solid #e5e7eb}
+    .subdomain-input select.domain-suffix:focus{outline:none}
+    .modal-actions{display:flex;gap:10px;margin-top:24px}.modal-actions .btn{flex:1}
+    .plugin-option{display:flex;align-items:center;gap:10px;padding:10px 12px;border:2px solid #e5e7eb;border-radius:10px;cursor:pointer;transition:all .2s ease;margin-bottom:6px}
+    .plugin-option:hover{border-color:var(--primary);background:#f9fafb}.plugin-option.selected{border-color:var(--primary);background:#eff6ff}
+    .plugin-option input{display:none}.plugin-option .icon{font-size:1.25rem}.plugin-option .name{font-weight:600;font-size:.875rem}.plugin-option .desc{font-size:.75rem;color:#6b7280}
+    .setup-banner{background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);border:2px solid #f59e0b;border-radius:16px;padding:24px;margin-bottom:24px;display:flex;align-items:center;gap:16px}
+    .setup-banner .icon{font-size:2.5rem}.setup-banner h3{margin:0 0 4px;color:#92400e}.setup-banner p{margin:0;color:#a16207;font-size:.9375rem}.setup-banner .btn{margin-left:auto;white-space:nowrap}
+    .settings-item{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .settings-item:last-child{border-bottom:none}.settings-item .label{font-weight:600;color:#374151}.settings-item .value{color:#6b7280;font-family:monospace}
+    .skeleton{background:linear-gradient(90deg,#f3f4f6 25%,#e5e7eb 50%,#f3f4f6 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:8px}
+    @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}.skeleton-card{height:80px;margin-bottom:12px}
+    .toast{position:fixed;bottom:24px;right:24px;background:#111;color:#fff;padding:14px 20px;border-radius:10px;font-size:.9375rem;box-shadow:0 10px 30px rgba(0,0,0,.2);transform:translateY(100px);opacity:0;transition:all .3s ease;z-index:10000}
+    .toast.show{transform:translateY(0);opacity:1}.toast.success{background:#059669}.toast.error{background:#dc2626}
+    @media(max-width:768px){.license-card{grid-template-columns:1fr;text-align:center}.license-icon{margin:0 auto}.license-meta{text-align:center;margin-top:8px}.welcome-card{text-align:center;justify-content:center}.welcome-info{flex-direction:column}.setup-banner{flex-direction:column;text-align:center}.setup-banner .btn{margin:16px 0 0}}
   </style>
 </head>
 <body>
   <nav class="navbar">
     <div class="container">
       <a href="/ja/" class="logo">Kin<span>Plug</span></a>
-      <div class="nav-links">
-        <a href="/ja/plugins/">プラグイン</a>
-        <a href="/ja/pricing.html">料金</a>
-        <a href="/ja/docs/">ドキュメント</a>
-      </div>
+      <div class="nav-links"><a href="/ja/plugins/">プラグイン</a><a href="/ja/pricing.html">料金</a><a href="/ja/docs/">ドキュメント</a></div>
       <div class="nav-right">
-        <div class="lang-switcher">
-          <a href="/dashboard.html">EN</a> | <a href="/ja/dashboard.html" class="active">日本語</a>
-        </div>
+        <div class="lang-switcher"><a href="/dashboard.html">EN</a> | <a href="/ja/dashboard.html" class="active">日本語</a></div>
         <div class="nav-auth">
-          <div id="auth-nav">
-            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">ログイン</button>
-            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">無料で始める</button>
-          </div>
-          <div id="user-nav" class="hidden">
-            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signOut()">ログアウト</button>
-          </div>
+          <div id="auth-nav"><button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">ログイン</button><button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">無料で始める</button></div>
+          <div id="user-nav" class="hidden"><button class="btn btn-ghost btn-sm" onclick="KinPlug.signOut()">ログアウト</button></div>
         </div>
       </div>
     </div>
@@ -373,10 +92,9 @@
           <div class="welcome-avatar" id="hero-avatar">?</div>
           <div>
             <h1>おかえりなさい<span id="hero-name"></span>！</h1>
-            <p>ライセンスの管理やプラグインの利用開始ができます。</p>
-            <div class="subdomain-badge" id="subdomain-badge" onclick="showSettingsModal()" style="display: none;">
-              📍 <span id="current-subdomain">-</span>.kintone.com
-              <span style="opacity: 0.7;">✏️</span>
+            <p>ライセンスの管理やプラグインの設定ができます。</p>
+            <div class="subdomain-badge" id="subdomain-badge" onclick="showSettingsModal()" style="display:none">
+              📍 <span id="current-subdomain">-</span>.<span id="current-domain">cybozu.com</span> <span style="opacity:.7">✏️</span>
             </div>
           </div>
         </div>
@@ -386,12 +104,9 @@
   </section>
 
   <div class="container">
-    <div class="setup-banner" id="setup-banner" style="display: none;">
+    <div class="setup-banner" id="setup-banner" style="display:none">
       <div class="icon">⚙️</div>
-      <div>
-        <h3>セットアップを完了してください</h3>
-        <p>プラグインを使い始めるには、kintoneサブドメインを設定してください。</p>
-      </div>
+      <div><h3>セットアップを完了してください</h3><p>プラグインを使い始めるには、kintone/cybozuサブドメインを設定してください。</p></div>
       <button class="btn btn-primary" onclick="showSetupModal()">設定する</button>
     </div>
 
@@ -403,20 +118,14 @@
     </div>
 
     <div class="section-card">
-      <div class="section-header">
-        <h2>🔐 ライセンス一覧</h2>
-        <button class="btn btn-secondary btn-sm" onclick="loadLicenses()">🔄 更新</button>
-      </div>
-      <div class="license-grid" id="licenses-container">
-        <div class="skeleton skeleton-card"></div>
-        <div class="skeleton skeleton-card"></div>
-      </div>
+      <div class="section-header"><h2>🔐 ライセンス一覧</h2><button class="btn btn-secondary btn-sm" onclick="loadLicenses()">🔄 更新</button></div>
+      <div class="license-grid" id="licenses-container"><div class="skeleton skeleton-card"></div><div class="skeleton skeleton-card"></div></div>
     </div>
 
     <div class="section-card">
       <div class="section-header"><h2>⚙️ アカウント設定</h2></div>
       <div class="settings-item">
-        <div><div class="label">デフォルトサブドメイン</div><div class="value" id="settings-subdomain">未設定</div></div>
+        <div><div class="label">デフォルト環境</div><div class="value" id="settings-subdomain">未設定</div></div>
         <div class="actions"><button class="btn btn-secondary btn-sm" onclick="showSettingsModal()">変更</button></div>
       </div>
       <div class="settings-item">
@@ -438,58 +147,46 @@
     </div>
   </div>
 
+  <!-- Setup Modal -->
   <div class="modal-overlay" id="setup-modal">
     <div class="modal-content">
-      <div class="modal-header">
-        <div class="modal-icon">🎯</div>
-        <div><h2>KinPlugへようこそ！</h2><p>アカウントを設定しましょう</p></div>
-      </div>
-      <p style="color: #6b7280; margin-bottom: 20px;">プラグインをインストールして使用するkintoneサブドメインを入力してください。</p>
+      <div class="modal-header"><div class="modal-icon">🎯</div><div><h2>KinPlugへようこそ！</h2><p>アカウントを設定しましょう</p></div></div>
+      <p style="color:#6b7280;margin-bottom:20px">kintone/cybozuのサブドメインを入力してください。</p>
       <div class="form-group">
-        <label>kintoneサブドメイン</label>
+        <label>kintone/cybozu環境</label>
         <div class="subdomain-input">
           <input type="text" id="setup-subdomain" placeholder="yourcompany">
-          <span class="suffix">.kintone.com</span>
+          <select class="domain-suffix" id="setup-domain">
+            <option value="cybozu.com">.cybozu.com</option>
+            <option value="kintone.com">.kintone.com</option>
+          </select>
         </div>
-        <small style="color: #6b7280; margin-top: 6px; display: block;">例：「mycompany.kintone.com」の場合は「mycompany」と入力</small>
+        <small style="color:#6b7280;margin-top:6px;display:block">例：「mycompany.cybozu.com」の場合は「mycompany」と入力</small>
       </div>
-      <div class="modal-actions">
-        <button class="btn btn-primary" onclick="saveSetup()" style="flex: 2;">続ける →</button>
-      </div>
+      <div class="modal-actions"><button class="btn btn-primary" onclick="saveSetup()" style="flex:2">続ける →</button></div>
     </div>
   </div>
 
+  <!-- Trial Modal -->
   <div class="modal-overlay" id="trial-modal" onclick="if(event.target===this)hideTrialModal()">
     <div class="modal-content">
-      <div class="modal-header">
-        <div class="modal-icon">✨</div>
-        <div><h2>無料トライアル開始</h2><p>14日間、全機能、クレジットカード不要</p></div>
-      </div>
+      <div class="modal-header"><div class="modal-icon">✨</div><div><h2>無料トライアル開始</h2><p>14日間、全機能、クレジットカード不要</p></div></div>
       <div class="form-group">
         <label>プラグインを選択</label>
         <div id="plugin-options">
-          <label class="plugin-option selected" onclick="selectPlugin(this, 'pdf-designer')">
-            <input type="radio" name="plugin" value="pdf-designer" checked>
-            <span class="icon">📄</span>
-            <div><div class="name">PDF Designer</div><div class="desc">kintoneからPDF生成</div></div>
-          </label>
-          <label class="plugin-option" onclick="selectPlugin(this, 'enhanced-lookup')">
-            <input type="radio" name="plugin" value="enhanced-lookup">
-            <span class="icon">🔍</span>
-            <div><div class="name">Enhanced Lookup</div><div class="desc">高機能ルックアップ</div></div>
-          </label>
-          <label class="plugin-option" onclick="selectPlugin(this, 'template-builder')">
-            <input type="radio" name="plugin" value="template-builder">
-            <span class="icon">📝</span>
-            <div><div class="name">Template Builder</div><div class="desc">文書テンプレート生成</div></div>
-          </label>
+          <label class="plugin-option selected" onclick="selectPlugin(this,'pdf-designer')"><input type="radio" name="plugin" value="pdf-designer" checked><span class="icon">📄</span><div><div class="name">PDF Designer</div><div class="desc">kintoneからPDF生成</div></div></label>
+          <label class="plugin-option" onclick="selectPlugin(this,'enhanced-lookup')"><input type="radio" name="plugin" value="enhanced-lookup"><span class="icon">🔍</span><div><div class="name">Enhanced Lookup</div><div class="desc">高機能ルックアップ</div></div></label>
+          <label class="plugin-option" onclick="selectPlugin(this,'template-builder')"><input type="radio" name="plugin" value="template-builder"><span class="icon">📝</span><div><div class="name">Template Builder</div><div class="desc">文書テンプレート生成</div></div></label>
         </div>
       </div>
       <div class="form-group">
-        <label>kintoneサブドメイン</label>
+        <label>kintone/cybozu環境</label>
         <div class="subdomain-input">
           <input type="text" id="trial-subdomain" placeholder="yourcompany">
-          <span class="suffix">.kintone.com</span>
+          <select class="domain-suffix" id="trial-domain">
+            <option value="cybozu.com">.cybozu.com</option>
+            <option value="kintone.com">.kintone.com</option>
+          </select>
         </div>
       </div>
       <div class="modal-actions">
@@ -499,21 +196,22 @@
     </div>
   </div>
 
+  <!-- Settings Modal -->
   <div class="modal-overlay" id="settings-modal" onclick="if(event.target===this)hideSettingsModal()">
     <div class="modal-content">
-      <div class="modal-header">
-        <div class="modal-icon">⚙️</div>
-        <div><h2>サブドメイン変更</h2><p>デフォルトのkintoneサブドメインを更新</p></div>
-      </div>
-      <div style="background: #fef3c7; border: 1px solid #f59e0b; border-radius: 10px; padding: 14px; margin-bottom: 20px;">
-        <strong style="color: #92400e;">⚠️ 重要：</strong>
-        <p style="color: #a16207; margin: 6px 0 0; font-size: 0.875rem;">サブドメインを変更しても、既存のライセンスは移行されません。各ライセンスは元のサブドメインに紐づいています。ライセンスの移行が必要な場合はサポートにお問い合わせください。</p>
+      <div class="modal-header"><div class="modal-icon">⚙️</div><div><h2>環境を変更</h2><p>デフォルトのkintone/cybozuサブドメインを更新</p></div></div>
+      <div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:10px;padding:14px;margin-bottom:20px">
+        <strong style="color:#92400e">⚠️ 重要：</strong>
+        <p style="color:#a16207;margin:6px 0 0;font-size:.875rem">環境を変更しても、既存のライセンスは移行されません。</p>
       </div>
       <div class="form-group">
-        <label>新しいサブドメイン</label>
+        <label>新しい環境</label>
         <div class="subdomain-input">
           <input type="text" id="new-subdomain" placeholder="newcompany">
-          <span class="suffix">.kintone.com</span>
+          <select class="domain-suffix" id="new-domain">
+            <option value="cybozu.com">.cybozu.com</option>
+            <option value="kintone.com">.kintone.com</option>
+          </select>
         </div>
       </div>
       <div class="modal-actions">
@@ -525,9 +223,7 @@
 
   <div class="toast" id="toast"></div>
 
-  <footer class="footer" style="margin-top: 48px;">
-    <div class="container"><div class="footer-bottom"><div>© 2026 KinPlug by Edamame Inc.</div></div></div>
-  </footer>
+  <footer class="footer" style="margin-top:48px"><div class="container"><div class="footer-bottom"><div>© 2026 KinPlug by Edamame Inc.</div></div></div></footer>
 
   <script src="/assets/js/app.js"></script>
   <script>
@@ -535,11 +231,13 @@
     let selectedPlugin = 'pdf-designer';
     let userEmail = null;
     let userSubdomain = null;
+    let userDomain = 'cybozu.com'; // Default to cybozu.com for Japanese users
 
     document.addEventListener('DOMContentLoaded', initDashboard);
 
     async function initDashboard() {
       userSubdomain = localStorage.getItem('kinplug_subdomain');
+      userDomain = localStorage.getItem('kinplug_domain') || 'cybozu.com';
       updateSubdomainUI();
       if (window.Clerk) {
         try { await window.Clerk.load(); setupClerkListener(); } catch (e) { console.error('Clerk error:', e); }
@@ -565,13 +263,17 @@
       const badge = document.getElementById('subdomain-badge');
       const banner = document.getElementById('setup-banner');
       const settingsVal = document.getElementById('settings-subdomain');
-      const currentSpan = document.getElementById('current-subdomain');
+      const currentSubdomainSpan = document.getElementById('current-subdomain');
+      const currentDomainSpan = document.getElementById('current-domain');
+
       if (userSubdomain) {
         badge.style.display = 'inline-flex';
         banner.style.display = 'none';
-        currentSpan.textContent = userSubdomain;
-        settingsVal.textContent = userSubdomain + '.kintone.com';
+        currentSubdomainSpan.textContent = userSubdomain;
+        currentDomainSpan.textContent = userDomain;
+        settingsVal.textContent = userSubdomain + '.' + userDomain;
         document.getElementById('trial-subdomain').value = userSubdomain;
+        document.getElementById('trial-domain').value = userDomain;
       } else {
         badge.style.display = 'none';
         settingsVal.textContent = '未設定';
@@ -587,18 +289,30 @@
     }
 
     function showSetupModal() { document.getElementById('setup-modal').classList.add('active'); setTimeout(() => document.getElementById('setup-subdomain').focus(), 100); }
-    function showTrialModal() { if (!userSubdomain) { showSetupModal(); return; } document.getElementById('trial-subdomain').value = userSubdomain; document.getElementById('trial-modal').classList.add('active'); }
+    function showTrialModal() { 
+      if (!userSubdomain) { showSetupModal(); return; } 
+      document.getElementById('trial-subdomain').value = userSubdomain;
+      document.getElementById('trial-domain').value = userDomain;
+      document.getElementById('trial-modal').classList.add('active'); 
+    }
     function hideTrialModal() { document.getElementById('trial-modal').classList.remove('active'); }
-    function showSettingsModal() { document.getElementById('new-subdomain').value = userSubdomain || ''; document.getElementById('settings-modal').classList.add('active'); }
+    function showSettingsModal() { 
+      document.getElementById('new-subdomain').value = userSubdomain || ''; 
+      document.getElementById('new-domain').value = userDomain;
+      document.getElementById('settings-modal').classList.add('active'); 
+    }
     function hideSettingsModal() { document.getElementById('settings-modal').classList.remove('active'); }
     function selectPlugin(el, plugin) { document.querySelectorAll('.plugin-option').forEach(p => p.classList.remove('selected')); el.classList.add('selected'); selectedPlugin = plugin; }
 
     function saveSetup() {
       const subdomain = document.getElementById('setup-subdomain').value.trim().toLowerCase();
+      const domain = document.getElementById('setup-domain').value;
       if (!subdomain) { showToast('サブドメインを入力してください', 'error'); return; }
       if (!/^[a-z0-9-]+$/.test(subdomain)) { showToast('サブドメインの形式が正しくありません', 'error'); return; }
       userSubdomain = subdomain;
+      userDomain = domain;
       localStorage.setItem('kinplug_subdomain', subdomain);
+      localStorage.setItem('kinplug_domain', domain);
       document.getElementById('setup-modal').classList.remove('active');
       updateSubdomainUI();
       showToast('セットアップ完了！トライアルを開始できます。', 'success');
@@ -606,24 +320,28 @@
 
     function saveNewSubdomain() {
       const newSubdomain = document.getElementById('new-subdomain').value.trim().toLowerCase();
+      const newDomain = document.getElementById('new-domain').value;
       if (!newSubdomain) { showToast('サブドメインを入力してください', 'error'); return; }
       if (!/^[a-z0-9-]+$/.test(newSubdomain)) { showToast('サブドメインの形式が正しくありません', 'error'); return; }
       userSubdomain = newSubdomain;
+      userDomain = newDomain;
       localStorage.setItem('kinplug_subdomain', newSubdomain);
+      localStorage.setItem('kinplug_domain', newDomain);
       hideSettingsModal();
       updateSubdomainUI();
-      showToast('サブドメインを更新しました！', 'success');
+      showToast('環境を更新しました！', 'success');
     }
 
     async function submitTrial() {
       const subdomain = document.getElementById('trial-subdomain').value.trim().toLowerCase();
+      const domain = document.getElementById('trial-domain').value;
       if (!subdomain) { showToast('サブドメインを入力してください', 'error'); return; }
       const btn = document.getElementById('submit-trial-btn');
       btn.disabled = true; btn.innerHTML = '⏳ 作成中...';
       try {
         const response = await fetch(`${API_URL}/trial`, {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: userEmail, subdomain: subdomain, product: selectedPlugin })
+          body: JSON.stringify({ email: userEmail, subdomain: subdomain + '.' + domain, product: selectedPlugin })
         });
         const data = await response.json();
         if (data.error) { showToast(data.message || data.error, 'error'); }
@@ -631,7 +349,12 @@
           hideTrialModal();
           navigator.clipboard.writeText(data.license_key);
           showToast('🎉 トライアル開始！ライセンスキーをコピーしました。', 'success');
-          if (subdomain !== userSubdomain) { userSubdomain = subdomain; localStorage.setItem('kinplug_subdomain', subdomain); updateSubdomainUI(); }
+          if (subdomain !== userSubdomain || domain !== userDomain) {
+            userSubdomain = subdomain; userDomain = domain;
+            localStorage.setItem('kinplug_subdomain', subdomain);
+            localStorage.setItem('kinplug_domain', domain);
+            updateSubdomainUI();
+          }
           loadLicenses();
         }
       } catch (err) { showToast('トライアル開始に失敗しました。', 'error'); }
@@ -640,7 +363,7 @@
 
     async function loadLicenses() {
       const container = document.getElementById('licenses-container');
-      if (!userEmail) { container.innerHTML = '<div class="empty-state"><div class="icon">🔒</div><h3>ログインしてください</h3><p>ライセンスを表示するにはログインが必要です。</p></div>'; return; }
+      if (!userEmail) { container.innerHTML = '<div class="empty-state"><div class="icon">🔒</div><h3>ログインしてください</h3></div>'; return; }
       try {
         const response = await fetch(`${API_URL}/licenses`, { headers: { 'X-User-Email': userEmail } });
         const data = await response.json();
@@ -665,20 +388,17 @@
       else if (daysLeft !== null && daysLeft <= 0) { expiresClass = 'danger'; expiresText = '❌ 期限切れ'; }
       const keyShort = license.license_key.length > 24 ? license.license_key.substring(0, 24) + '...' : license.license_key;
       const names = { 'pdf-designer': 'PDF Designer', 'enhanced-lookup': 'Enhanced Lookup', 'template-builder': 'Template Builder' };
-      return `<div class="license-card"><div class="license-icon">${icon}</div><div class="license-info"><h3>${names[license.product] || license.product}</h3><div class="subdomain">📍 ${license.subdomain}.kintone.com</div><div class="license-key-box" onclick="copyKey(this, '${license.license_key}')" title="クリックでコピー"><span>📋</span> ${keyShort}</div></div><div class="license-meta"><div class="license-status ${statusClass}">${license.type === 'trial' ? '🧪 トライアル' : '✅ 有効'}</div><div class="license-expires ${expiresClass}">${expiresText}</div></div></div>`;
+      const subdomainDisplay = license.subdomain.includes('.') ? license.subdomain : license.subdomain + '.cybozu.com';
+      return `<div class="license-card"><div class="license-icon">${icon}</div><div class="license-info"><h3>${names[license.product] || license.product}</h3><div class="subdomain">📍 ${subdomainDisplay}</div><div class="license-key-box" onclick="copyKey(this,'${license.license_key}')" title="クリックでコピー"><span>📋</span> ${keyShort}</div></div><div class="license-meta"><div class="license-status ${statusClass}">${license.type === 'trial' ? '🧪 トライアル' : '✅ 有効'}</div><div class="license-expires ${expiresClass}">${expiresText}</div></div></div>`;
     }
 
-    function copyKey(el, key) { navigator.clipboard.writeText(key); const original = el.innerHTML; el.innerHTML = '<span style="color: #059669;">✓ コピーしました！</span>'; setTimeout(() => el.innerHTML = original, 1500); }
+    function copyKey(el, key) { navigator.clipboard.writeText(key); const original = el.innerHTML; el.innerHTML = '<span style="color:#059669">✓ コピーしました！</span>'; setTimeout(() => el.innerHTML = original, 1500); }
 
     function updateStats(licenses) {
-      const total = licenses.length;
-      const active = licenses.filter(l => l.status === 'active' && l.type !== 'trial').length;
-      const trials = licenses.filter(l => l.type === 'trial' && l.status === 'active').length;
-      const expiring = licenses.filter(l => { if (!l.expiresAt || l.status !== 'active') return false; const days = Math.ceil((new Date(l.expiresAt) - new Date()) / (1000*60*60*24)); return days <= 7 && days > 0; }).length;
-      document.getElementById('stat-total').textContent = total;
-      document.getElementById('stat-active').textContent = active;
-      document.getElementById('stat-trial').textContent = trials;
-      document.getElementById('stat-expiring').textContent = expiring;
+      document.getElementById('stat-total').textContent = licenses.length;
+      document.getElementById('stat-active').textContent = licenses.filter(l => l.status === 'active' && l.type !== 'trial').length;
+      document.getElementById('stat-trial').textContent = licenses.filter(l => l.type === 'trial' && l.status === 'active').length;
+      document.getElementById('stat-expiring').textContent = licenses.filter(l => { if (!l.expiresAt || l.status !== 'active') return false; const days = Math.ceil((new Date(l.expiresAt) - new Date()) / (1000*60*60*24)); return days <= 7 && days > 0; }).length;
     }
 
     function showToast(message, type = '') { const toast = document.getElementById('toast'); toast.textContent = message; toast.className = 'toast ' + type + ' show'; setTimeout(() => toast.classList.remove('show'), 4000); }
