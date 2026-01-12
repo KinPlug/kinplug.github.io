@@ -7,420 +7,84 @@
   <link rel="stylesheet" href="/assets/css/style.css">
   <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
   <style>
-    .dashboard-hero {
-      background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
-      color: white;
-      padding: 40px 0;
-      margin-bottom: 40px;
-    }
-    .dashboard-hero h1 { color: white; margin-bottom: 8px; }
-    .dashboard-hero p { color: rgba(255,255,255,0.8); margin: 0; }
-    .welcome-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    .welcome-info { display: flex; align-items: center; gap: 16px; }
-    .welcome-avatar {
-      width: 64px; height: 64px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; font-weight: 700;
-      border: 3px solid rgba(255,255,255,0.3);
-    }
-    .subdomain-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.15);
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.875rem;
-      margin-top: 8px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .subdomain-badge:hover {
-      background: rgba(255,255,255,0.25);
-    }
-    
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-    .stat-card {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      border: 1px solid #e5e7eb;
-      transition: all 0.2s ease;
-    }
-    .stat-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    }
-    .stat-card .icon {
-      width: 44px; height: 44px;
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.25rem;
-      margin-bottom: 12px;
-    }
-    .stat-card .icon.blue { background: #dbeafe; }
-    .stat-card .icon.green { background: #dcfce7; }
-    .stat-card .icon.yellow { background: #fef3c7; }
-    .stat-card .icon.red { background: #fee2e2; }
-    .stat-card .value {
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: #111;
-      line-height: 1;
-    }
-    .stat-card .label {
-      font-size: 0.8125rem;
-      color: #6b7280;
-      margin-top: 4px;
-    }
-
-    .section-card {
-      background: white;
-      border-radius: 16px;
-      padding: 28px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      border: 1px solid #e5e7eb;
-      margin-bottom: 24px;
-    }
-    .section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .section-header h2 {
-      margin: 0;
-      font-size: 1.125rem;
-      font-weight: 700;
-    }
-
-    .license-grid { display: grid; gap: 12px; }
-    .license-card {
-      background: #f9fafb;
-      border-radius: 12px;
-      padding: 16px 20px;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 16px;
-      transition: all 0.2s ease;
-      border: 2px solid transparent;
-    }
-    .license-card:hover {
-      border-color: var(--primary);
-      background: white;
-    }
-    .license-icon {
-      width: 48px; height: 48px;
-      border-radius: 12px;
-      background: white;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
-    }
-    .license-info h3 { margin: 0 0 2px 0; font-size: 0.9375rem; }
-    .license-info .subdomain {
-      font-size: 0.8125rem;
-      color: #6b7280;
-      margin-bottom: 6px;
-    }
-    .license-key-box {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: white;
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-family: 'SF Mono', Monaco, monospace;
-      font-size: 0.6875rem;
-      color: #6b7280;
-      border: 1px solid #e5e7eb;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .license-key-box:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-    }
-    .license-meta { text-align: right; }
-    .license-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 4px 10px;
-      border-radius: 16px;
-      font-size: 0.6875rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-    }
-    .license-status.active { background: #dcfce7; color: #166534; }
-    .license-status.trial { background: #dbeafe; color: #1e40af; }
-    .license-status.expired { background: #fee2e2; color: #991b1b; }
-    .license-expires {
-      font-size: 0.75rem;
-      color: #6b7280;
-      margin-top: 6px;
-    }
-    .license-expires.warning { color: #d97706; font-weight: 600; }
-    .license-expires.danger { color: #dc2626; font-weight: 600; }
-
-    .empty-state {
-      text-align: center;
-      padding: 48px 20px;
-    }
-    .empty-state .icon { font-size: 3rem; margin-bottom: 12px; opacity: 0.5; }
-    .empty-state h3 { margin-bottom: 6px; color: #111; font-size: 1.125rem; }
-    .empty-state p { color: #6b7280; margin-bottom: 20px; font-size: 0.9375rem; }
-
-    .quick-actions {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 10px;
-    }
-    .action-btn {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 16px;
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      color: #374151;
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
-    .action-btn:hover {
-      background: white;
-      border-color: var(--primary);
-      color: var(--primary);
-      transform: translateY(-1px);
-    }
-    .action-btn .icon { font-size: 1.125rem; }
-
-    /* Modal Styles */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(4px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-    .modal-overlay.active { opacity: 1; visibility: visible; }
-    .modal-content {
-      background: white;
-      padding: 32px;
-      border-radius: 20px;
-      width: 100%;
-      max-width: 440px;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
-      transform: translateY(20px) scale(0.95);
-      transition: all 0.3s ease;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-    .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
-    .modal-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-    .modal-icon {
-      width: 48px; height: 48px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--primary), #1e40af);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem;
-    }
-    .modal-header h2 { margin: 0; font-size: 1.25rem; }
-    .modal-header p { margin: 2px 0 0; color: #6b7280; font-size: 0.875rem; }
-    .form-group { margin-bottom: 16px; }
-    .form-group label { display: block; margin-bottom: 6px; font-weight: 600; color: #374151; font-size: 0.875rem; }
-    .form-group select, .form-group input {
-      width: 100%;
-      padding: 12px 14px;
-      border: 2px solid #e5e7eb;
-      border-radius: 10px;
-      font-size: 0.9375rem;
-      transition: all 0.2s ease;
-    }
-    .form-group select:focus, .form-group input:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    }
-    .subdomain-input {
-      display: flex;
-      align-items: stretch;
-      border: 2px solid #e5e7eb;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: all 0.2s ease;
-    }
-    .subdomain-input:focus-within {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    }
-    .subdomain-input input { flex: 1; border: none; padding: 12px 14px; font-size: 0.9375rem; }
-    .subdomain-input input:focus { outline: none; }
-    .subdomain-input .suffix {
-      padding: 12px 14px;
-      background: #f9fafb;
-      color: #6b7280;
-      font-size: 0.875rem;
-      border-left: 1px solid #e5e7eb;
-      white-space: nowrap;
-    }
-    .modal-actions { display: flex; gap: 10px; margin-top: 24px; }
-    .modal-actions .btn { flex: 1; }
-    
-    .plugin-option {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      border: 2px solid #e5e7eb;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      margin-bottom: 6px;
-    }
-    .plugin-option:hover { border-color: var(--primary); background: #f9fafb; }
-    .plugin-option.selected { border-color: var(--primary); background: #eff6ff; }
-    .plugin-option input { display: none; }
-    .plugin-option .icon { font-size: 1.25rem; }
-    .plugin-option .name { font-weight: 600; font-size: 0.875rem; }
-    .plugin-option .desc { font-size: 0.75rem; color: #6b7280; }
-
-    /* Setup Required Banner */
-    .setup-banner {
-      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-      border: 2px solid #f59e0b;
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .setup-banner .icon { font-size: 2.5rem; }
-    .setup-banner h3 { margin: 0 0 4px; color: #92400e; }
-    .setup-banner p { margin: 0; color: #a16207; font-size: 0.9375rem; }
-    .setup-banner .btn { margin-left: auto; white-space: nowrap; }
-
-    /* Settings Section */
-    .settings-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 0;
-      border-bottom: 1px solid #e5e7eb;
-    }
-    .settings-item:last-child { border-bottom: none; }
-    .settings-item .label { font-weight: 600; color: #374151; }
-    .settings-item .value { color: #6b7280; font-family: monospace; }
-    .settings-item .actions { display: flex; gap: 8px; }
-
-    /* Loading skeleton */
-    .skeleton {
-      background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-      border-radius: 8px;
-    }
-    @keyframes shimmer {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-    .skeleton-card {
-      height: 80px;
-      margin-bottom: 12px;
-    }
-
-    /* Toast notification */
-    .toast {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: #111;
-      color: white;
-      padding: 14px 20px;
-      border-radius: 10px;
-      font-size: 0.9375rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      transform: translateY(100px);
-      opacity: 0;
-      transition: all 0.3s ease;
-      z-index: 10000;
-    }
-    .toast.show { transform: translateY(0); opacity: 1; }
-    .toast.success { background: #059669; }
-    .toast.error { background: #dc2626; }
-
-    @media (max-width: 768px) {
-      .license-card { grid-template-columns: 1fr; text-align: center; }
-      .license-icon { margin: 0 auto; }
-      .license-meta { text-align: center; margin-top: 8px; }
-      .welcome-card { text-align: center; justify-content: center; }
-      .welcome-info { flex-direction: column; }
-      .setup-banner { flex-direction: column; text-align: center; }
-      .setup-banner .btn { margin: 16px 0 0; }
-    }
+    .dashboard-hero{background:linear-gradient(135deg,var(--primary) 0%,#1e40af 100%);color:#fff;padding:40px 0;margin-bottom:40px}
+    .dashboard-hero h1{color:#fff;margin-bottom:8px}.dashboard-hero p{color:rgba(255,255,255,.8);margin:0}
+    .welcome-card{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+    .welcome-info{display:flex;align-items:center;gap:16px}
+    .welcome-avatar{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;border:3px solid rgba(255,255,255,.3)}
+    .subdomain-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);padding:8px 16px;border-radius:20px;font-size:.875rem;margin-top:8px;cursor:pointer;transition:all .2s ease}
+    .subdomain-badge:hover{background:rgba(255,255,255,.25)}
+    .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:32px}
+    .stat-card{background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.08);border:1px solid #e5e7eb;transition:all .2s ease}
+    .stat-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
+    .stat-card .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:12px}
+    .stat-card .icon.blue{background:#dbeafe}.stat-card .icon.green{background:#dcfce7}.stat-card .icon.yellow{background:#fef3c7}.stat-card .icon.red{background:#fee2e2}
+    .stat-card .value{font-size:1.75rem;font-weight:800;color:#111;line-height:1}.stat-card .label{font-size:.8125rem;color:#6b7280;margin-top:4px}
+    .section-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,.08);border:1px solid #e5e7eb;margin-bottom:24px}
+    .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+    .section-header h2{margin:0;font-size:1.125rem;font-weight:700}
+    .license-grid{display:grid;gap:12px}
+    .license-card{background:#f9fafb;border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;transition:all .2s ease;border:2px solid transparent}
+    .license-card:hover{border-color:var(--primary);background:#fff}
+    .license-icon{width:48px;height:48px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 2px 4px rgba(0,0,0,.06)}
+    .license-info h3{margin:0 0 2px;font-size:.9375rem}.license-info .subdomain{font-size:.8125rem;color:#6b7280;margin-bottom:6px}
+    .license-key-box{display:inline-flex;align-items:center;gap:6px;background:#fff;padding:6px 10px;border-radius:6px;font-family:'SF Mono',Monaco,monospace;font-size:.6875rem;color:#6b7280;border:1px solid #e5e7eb;cursor:pointer;transition:all .2s ease}
+    .license-key-box:hover{border-color:var(--primary);color:var(--primary)}
+    .license-meta{text-align:right}
+    .license-status{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:16px;font-size:.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+    .license-status.active{background:#dcfce7;color:#166534}.license-status.trial{background:#dbeafe;color:#1e40af}.license-status.expired{background:#fee2e2;color:#991b1b}
+    .license-expires{font-size:.75rem;color:#6b7280;margin-top:6px}.license-expires.warning{color:#d97706;font-weight:600}.license-expires.danger{color:#dc2626;font-weight:600}
+    .empty-state{text-align:center;padding:48px 20px}.empty-state .icon{font-size:3rem;margin-bottom:12px;opacity:.5}
+    .empty-state h3{margin-bottom:6px;color:#111;font-size:1.125rem}.empty-state p{color:#6b7280;margin-bottom:20px;font-size:.9375rem}
+    .quick-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+    .action-btn{display:flex;align-items:center;gap:8px;padding:14px 16px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;color:#374151;text-decoration:none;font-size:.875rem;font-weight:500;transition:all .2s ease;cursor:pointer}
+    .action-btn:hover{background:#fff;border-color:var(--primary);color:var(--primary);transform:translateY(-1px)}.action-btn .icon{font-size:1.125rem}
+    .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:9999;opacity:0;visibility:hidden;transition:all .3s ease}
+    .modal-overlay.active{opacity:1;visibility:visible}
+    .modal-content{background:#fff;padding:32px;border-radius:20px;width:100%;max-width:440px;box-shadow:0 25px 50px rgba(0,0,0,.25);transform:translateY(20px) scale(.95);transition:all .3s ease;max-height:90vh;overflow-y:auto}
+    .modal-overlay.active .modal-content{transform:translateY(0) scale(1)}
+    .modal-header{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+    .modal-icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--primary),#1e40af);display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+    .modal-header h2{margin:0;font-size:1.25rem}.modal-header p{margin:2px 0 0;color:#6b7280;font-size:.875rem}
+    .form-group{margin-bottom:16px}.form-group label{display:block;margin-bottom:6px;font-weight:600;color:#374151;font-size:.875rem}
+    .form-group select,.form-group input{width:100%;padding:12px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:.9375rem;transition:all .2s ease}
+    .form-group select:focus,.form-group input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+    .subdomain-input{display:flex;align-items:stretch;border:2px solid #e5e7eb;border-radius:10px;overflow:hidden;transition:all .2s ease}
+    .subdomain-input:focus-within{border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+    .subdomain-input input{flex:1;border:none;padding:12px 14px;font-size:.9375rem;min-width:0}
+    .subdomain-input input:focus{outline:none}
+    .subdomain-input select.domain-suffix{border:none;background:#f9fafb;color:#374151;font-size:.875rem;padding:12px 8px;cursor:pointer;border-left:1px solid #e5e7eb}
+    .subdomain-input select.domain-suffix:focus{outline:none}
+    .modal-actions{display:flex;gap:10px;margin-top:24px}.modal-actions .btn{flex:1}
+    .plugin-option{display:flex;align-items:center;gap:10px;padding:10px 12px;border:2px solid #e5e7eb;border-radius:10px;cursor:pointer;transition:all .2s ease;margin-bottom:6px}
+    .plugin-option:hover{border-color:var(--primary);background:#f9fafb}.plugin-option.selected{border-color:var(--primary);background:#eff6ff}
+    .plugin-option input{display:none}.plugin-option .icon{font-size:1.25rem}.plugin-option .name{font-weight:600;font-size:.875rem}.plugin-option .desc{font-size:.75rem;color:#6b7280}
+    .setup-banner{background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);border:2px solid #f59e0b;border-radius:16px;padding:24px;margin-bottom:24px;display:flex;align-items:center;gap:16px}
+    .setup-banner .icon{font-size:2.5rem}.setup-banner h3{margin:0 0 4px;color:#92400e}.setup-banner p{margin:0;color:#a16207;font-size:.9375rem}.setup-banner .btn{margin-left:auto;white-space:nowrap}
+    .settings-item{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid #e5e7eb}
+    .settings-item:last-child{border-bottom:none}.settings-item .label{font-weight:600;color:#374151}.settings-item .value{color:#6b7280;font-family:monospace}
+    .skeleton{background:linear-gradient(90deg,#f3f4f6 25%,#e5e7eb 50%,#f3f4f6 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:8px}
+    @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}.skeleton-card{height:80px;margin-bottom:12px}
+    .toast{position:fixed;bottom:24px;right:24px;background:#111;color:#fff;padding:14px 20px;border-radius:10px;font-size:.9375rem;box-shadow:0 10px 30px rgba(0,0,0,.2);transform:translateY(100px);opacity:0;transition:all .3s ease;z-index:10000}
+    .toast.show{transform:translateY(0);opacity:1}.toast.success{background:#059669}.toast.error{background:#dc2626}
+    @media(max-width:768px){.license-card{grid-template-columns:1fr;text-align:center}.license-icon{margin:0 auto}.license-meta{text-align:center;margin-top:8px}.welcome-card{text-align:center;justify-content:center}.welcome-info{flex-direction:column}.setup-banner{flex-direction:column;text-align:center}.setup-banner .btn{margin:16px 0 0}}
   </style>
 </head>
 <body>
   <nav class="navbar">
     <div class="container">
       <a href="/" class="logo">Kin<span>Plug</span></a>
-      <div class="nav-links">
-        <a href="/plugins/">Plugins</a>
-        <a href="/pricing.html">Pricing</a>
-        <a href="/docs/">Docs</a>
-      </div>
+      <div class="nav-links"><a href="/plugins/">Plugins</a><a href="/pricing.html">Pricing</a><a href="/docs/">Docs</a></div>
       <div class="nav-right">
-        <div class="lang-switcher">
-          <a href="/dashboard.html" class="active">EN</a> | <a href="/ja/dashboard.html">日本語</a>
-        </div>
+        <div class="lang-switcher"><a href="/dashboard.html" class="active">EN</a> | <a href="/ja/dashboard.html">日本語</a></div>
         <div class="nav-auth">
-          <div id="auth-nav">
-            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">Sign In</button>
-            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">Get Started</button>
-          </div>
-          <div id="user-nav" class="hidden">
-            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signOut()">Sign Out</button>
-          </div>
+          <div id="auth-nav"><button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">Sign In</button><button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">Get Started</button></div>
+          <div id="user-nav" class="hidden"><button class="btn btn-ghost btn-sm" onclick="KinPlug.signOut()">Sign Out</button></div>
         </div>
       </div>
     </div>
   </nav>
 
-  <!-- Dashboard Hero -->
   <section class="dashboard-hero">
     <div class="container">
       <div class="welcome-card">
@@ -429,96 +93,49 @@
           <div>
             <h1>Welcome<span id="hero-name"></span>!</h1>
             <p>Manage your KinPlug licenses and plugins.</p>
-            <div class="subdomain-badge" id="subdomain-badge" onclick="showSettingsModal()" style="display: none;">
-              📍 <span id="current-subdomain">-</span>.kintone.com
-              <span style="opacity: 0.7;">✏️</span>
+            <div class="subdomain-badge" id="subdomain-badge" onclick="showSettingsModal()" style="display:none">
+              📍 <span id="current-subdomain">-</span>.<span id="current-domain">kintone.com</span> <span style="opacity:.7">✏️</span>
             </div>
           </div>
         </div>
-        <button class="btn btn-white btn-lg" onclick="showTrialModal()">
-          ✨ Start New Trial
-        </button>
+        <button class="btn btn-white btn-lg" onclick="showTrialModal()">✨ Start New Trial</button>
       </div>
     </div>
   </section>
 
   <div class="container">
-    <!-- Setup Required Banner (shown if no subdomain) -->
-    <div class="setup-banner" id="setup-banner" style="display: none;">
+    <div class="setup-banner" id="setup-banner" style="display:none">
       <div class="icon">⚙️</div>
-      <div>
-        <h3>Complete Your Setup</h3>
-        <p>Set your Kintone subdomain to start using plugins.</p>
-      </div>
+      <div><h3>Complete Your Setup</h3><p>Set your Kintone subdomain to start using plugins.</p></div>
       <button class="btn btn-primary" onclick="showSetupModal()">Set Up Now</button>
     </div>
 
-    <!-- Stats Row -->
     <div class="stats-row">
-      <div class="stat-card">
-        <div class="icon blue">🔑</div>
-        <div class="value" id="stat-total">-</div>
-        <div class="label">Total Licenses</div>
-      </div>
-      <div class="stat-card">
-        <div class="icon green">✅</div>
-        <div class="value" id="stat-active">-</div>
-        <div class="label">Active</div>
-      </div>
-      <div class="stat-card">
-        <div class="icon yellow">⏳</div>
-        <div class="value" id="stat-trial">-</div>
-        <div class="label">Trials</div>
-      </div>
-      <div class="stat-card">
-        <div class="icon red">⚠️</div>
-        <div class="value" id="stat-expiring">-</div>
-        <div class="label">Expiring Soon</div>
-      </div>
+      <div class="stat-card"><div class="icon blue">🔑</div><div class="value" id="stat-total">-</div><div class="label">Total Licenses</div></div>
+      <div class="stat-card"><div class="icon green">✅</div><div class="value" id="stat-active">-</div><div class="label">Active</div></div>
+      <div class="stat-card"><div class="icon yellow">⏳</div><div class="value" id="stat-trial">-</div><div class="label">Trials</div></div>
+      <div class="stat-card"><div class="icon red">⚠️</div><div class="value" id="stat-expiring">-</div><div class="label">Expiring Soon</div></div>
     </div>
 
-    <!-- Licenses Section -->
     <div class="section-card">
-      <div class="section-header">
-        <h2>🔐 Your Licenses</h2>
-        <button class="btn btn-secondary btn-sm" onclick="loadLicenses()">🔄 Refresh</button>
-      </div>
-      <div class="license-grid" id="licenses-container">
-        <div class="skeleton skeleton-card"></div>
-        <div class="skeleton skeleton-card"></div>
-      </div>
+      <div class="section-header"><h2>🔐 Your Licenses</h2><button class="btn btn-secondary btn-sm" onclick="loadLicenses()">🔄 Refresh</button></div>
+      <div class="license-grid" id="licenses-container"><div class="skeleton skeleton-card"></div><div class="skeleton skeleton-card"></div></div>
     </div>
 
-    <!-- Account Settings -->
     <div class="section-card">
-      <div class="section-header">
-        <h2>⚙️ Account Settings</h2>
+      <div class="section-header"><h2>⚙️ Account Settings</h2></div>
+      <div class="settings-item">
+        <div><div class="label">Default Environment</div><div class="value" id="settings-subdomain">Not set</div></div>
+        <div class="actions"><button class="btn btn-secondary btn-sm" onclick="showSettingsModal()">Change</button></div>
       </div>
       <div class="settings-item">
-        <div>
-          <div class="label">Default Subdomain</div>
-          <div class="value" id="settings-subdomain">Not set</div>
-        </div>
-        <div class="actions">
-          <button class="btn btn-secondary btn-sm" onclick="showSettingsModal()">Change</button>
-        </div>
-      </div>
-      <div class="settings-item">
-        <div>
-          <div class="label">Email</div>
-          <div class="value" id="settings-email">-</div>
-        </div>
-        <div class="actions">
-          <button class="btn btn-secondary btn-sm" onclick="KinPlug.openProfile()">Manage</button>
-        </div>
+        <div><div class="label">Email</div><div class="value" id="settings-email">-</div></div>
+        <div class="actions"><button class="btn btn-secondary btn-sm" onclick="KinPlug.openProfile()">Manage</button></div>
       </div>
     </div>
 
-    <!-- Quick Actions -->
     <div class="section-card">
-      <div class="section-header">
-        <h2>⚡ Quick Actions</h2>
-      </div>
+      <div class="section-header"><h2>⚡ Quick Actions</h2></div>
       <div class="quick-actions">
         <button class="action-btn" onclick="showTrialModal()"><span class="icon">✨</span> New Trial</button>
         <a href="/docs/" class="action-btn"><span class="icon">📖</span> Docs</a>
@@ -530,75 +147,48 @@
     </div>
   </div>
 
-  <!-- Setup Modal (First time) -->
+  <!-- Setup Modal -->
   <div class="modal-overlay" id="setup-modal">
     <div class="modal-content">
-      <div class="modal-header">
-        <div class="modal-icon">🎯</div>
-        <div>
-          <h2>Welcome to KinPlug!</h2>
-          <p>Let's set up your account</p>
-        </div>
-      </div>
-      <p style="color: #6b7280; margin-bottom: 20px;">
-        Enter your Kintone subdomain to get started. This is where you'll install and use plugins.
-      </p>
+      <div class="modal-header"><div class="modal-icon">🎯</div><div><h2>Welcome to KinPlug!</h2><p>Let's set up your account</p></div></div>
+      <p style="color:#6b7280;margin-bottom:20px">Enter your Kintone/Cybozu subdomain to get started.</p>
       <div class="form-group">
-        <label>Your Kintone Subdomain</label>
+        <label>Your Environment</label>
         <div class="subdomain-input">
           <input type="text" id="setup-subdomain" placeholder="yourcompany">
-          <span class="suffix">.kintone.com</span>
+          <select class="domain-suffix" id="setup-domain">
+            <option value="kintone.com">.kintone.com</option>
+            <option value="cybozu.com">.cybozu.com</option>
+          </select>
         </div>
-        <small style="color: #6b7280; margin-top: 6px; display: block;">
-          Example: If you access "mycompany.kintone.com", enter "mycompany"
-        </small>
+        <small style="color:#6b7280;margin-top:6px;display:block">Example: "mycompany" from mycompany.kintone.com or mycompany.cybozu.com</small>
       </div>
-      <div class="modal-actions">
-        <button class="btn btn-primary" onclick="saveSetup()" style="flex: 2;">Continue →</button>
-      </div>
+      <div class="modal-actions"><button class="btn btn-primary" onclick="saveSetup()" style="flex:2">Continue →</button></div>
     </div>
   </div>
 
   <!-- Trial Modal -->
   <div class="modal-overlay" id="trial-modal" onclick="if(event.target===this)hideTrialModal()">
     <div class="modal-content">
-      <div class="modal-header">
-        <div class="modal-icon">✨</div>
-        <div>
-          <h2>Start Free Trial</h2>
-          <p>14 days, all features, no credit card</p>
-        </div>
-      </div>
-      
+      <div class="modal-header"><div class="modal-icon">✨</div><div><h2>Start Free Trial</h2><p>14 days, all features, no credit card</p></div></div>
       <div class="form-group">
         <label>Select Plugin</label>
         <div id="plugin-options">
-          <label class="plugin-option selected" onclick="selectPlugin(this, 'pdf-designer')">
-            <input type="radio" name="plugin" value="pdf-designer" checked>
-            <span class="icon">📄</span>
-            <div><div class="name">PDF Designer</div><div class="desc">Generate PDFs from Kintone</div></div>
-          </label>
-          <label class="plugin-option" onclick="selectPlugin(this, 'enhanced-lookup')">
-            <input type="radio" name="plugin" value="enhanced-lookup">
-            <span class="icon">🔍</span>
-            <div><div class="name">Enhanced Lookup</div><div class="desc">Smarter lookup fields</div></div>
-          </label>
-          <label class="plugin-option" onclick="selectPlugin(this, 'template-builder')">
-            <input type="radio" name="plugin" value="template-builder">
-            <span class="icon">📝</span>
-            <div><div class="name">Template Builder</div><div class="desc">Document generation</div></div>
-          </label>
+          <label class="plugin-option selected" onclick="selectPlugin(this,'pdf-designer')"><input type="radio" name="plugin" value="pdf-designer" checked><span class="icon">📄</span><div><div class="name">PDF Designer</div><div class="desc">Generate PDFs from Kintone</div></div></label>
+          <label class="plugin-option" onclick="selectPlugin(this,'enhanced-lookup')"><input type="radio" name="plugin" value="enhanced-lookup"><span class="icon">🔍</span><div><div class="name">Enhanced Lookup</div><div class="desc">Smarter lookup fields</div></div></label>
+          <label class="plugin-option" onclick="selectPlugin(this,'template-builder')"><input type="radio" name="plugin" value="template-builder"><span class="icon">📝</span><div><div class="name">Template Builder</div><div class="desc">Document generation</div></div></label>
         </div>
       </div>
-      
       <div class="form-group">
-        <label>Kintone Subdomain</label>
+        <label>Kintone/Cybozu Environment</label>
         <div class="subdomain-input">
           <input type="text" id="trial-subdomain" placeholder="yourcompany">
-          <span class="suffix">.kintone.com</span>
+          <select class="domain-suffix" id="trial-domain">
+            <option value="kintone.com">.kintone.com</option>
+            <option value="cybozu.com">.cybozu.com</option>
+          </select>
         </div>
       </div>
-      
       <div class="modal-actions">
         <button class="btn btn-secondary" onclick="hideTrialModal()">Cancel</button>
         <button class="btn btn-primary" onclick="submitTrial()" id="submit-trial-btn">🚀 Start Trial</button>
@@ -609,29 +199,21 @@
   <!-- Settings Modal -->
   <div class="modal-overlay" id="settings-modal" onclick="if(event.target===this)hideSettingsModal()">
     <div class="modal-content">
-      <div class="modal-header">
-        <div class="modal-icon">⚙️</div>
-        <div>
-          <h2>Change Subdomain</h2>
-          <p>Update your default Kintone subdomain</p>
-        </div>
+      <div class="modal-header"><div class="modal-icon">⚙️</div><div><h2>Change Environment</h2><p>Update your default Kintone/Cybozu subdomain</p></div></div>
+      <div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:10px;padding:14px;margin-bottom:20px">
+        <strong style="color:#92400e">⚠️ Important:</strong>
+        <p style="color:#a16207;margin:6px 0 0;font-size:.875rem">Changing environment will NOT migrate existing licenses. Each license is tied to its original subdomain.</p>
       </div>
-      
-      <div style="background: #fef3c7; border: 1px solid #f59e0b; border-radius: 10px; padding: 14px; margin-bottom: 20px;">
-        <strong style="color: #92400e;">⚠️ Important:</strong>
-        <p style="color: #a16207; margin: 6px 0 0; font-size: 0.875rem;">
-          Changing subdomain will NOT migrate existing licenses. Each license is tied to its original subdomain. Contact support if you need to transfer licenses.
-        </p>
-      </div>
-      
       <div class="form-group">
-        <label>New Subdomain</label>
+        <label>New Environment</label>
         <div class="subdomain-input">
           <input type="text" id="new-subdomain" placeholder="newcompany">
-          <span class="suffix">.kintone.com</span>
+          <select class="domain-suffix" id="new-domain">
+            <option value="kintone.com">.kintone.com</option>
+            <option value="cybozu.com">.cybozu.com</option>
+          </select>
         </div>
       </div>
-      
       <div class="modal-actions">
         <button class="btn btn-secondary" onclick="hideSettingsModal()">Cancel</button>
         <button class="btn btn-primary" onclick="saveNewSubdomain()">Save Changes</button>
@@ -639,16 +221,9 @@
     </div>
   </div>
 
-  <!-- Toast -->
   <div class="toast" id="toast"></div>
 
-  <footer class="footer" style="margin-top: 48px;">
-    <div class="container">
-      <div class="footer-bottom">
-        <div>© 2026 KinPlug by Edamame Inc.</div>
-      </div>
-    </div>
-  </footer>
+  <footer class="footer" style="margin-top:48px"><div class="container"><div class="footer-bottom"><div>© 2026 KinPlug by Edamame Inc.</div></div></div></footer>
 
   <script src="/assets/js/app.js"></script>
   <script>
@@ -656,24 +231,16 @@
     let selectedPlugin = 'pdf-designer';
     let userEmail = null;
     let userSubdomain = null;
-    let licensesCache = [];
+    let userDomain = 'kintone.com';
 
-    // Initialize immediately
     document.addEventListener('DOMContentLoaded', initDashboard);
 
     async function initDashboard() {
-      // Load saved subdomain from localStorage
       userSubdomain = localStorage.getItem('kinplug_subdomain');
+      userDomain = localStorage.getItem('kinplug_domain') || 'kintone.com';
       updateSubdomainUI();
-
-      // Wait for Clerk
       if (window.Clerk) {
-        try {
-          await window.Clerk.load();
-          setupClerkListener();
-        } catch (e) {
-          console.error('Clerk error:', e);
-        }
+        try { await window.Clerk.load(); setupClerkListener(); } catch (e) { console.error('Clerk error:', e); }
       }
     }
 
@@ -684,20 +251,11 @@
           userEmail = user.primaryEmailAddress?.emailAddress;
           updateHeroName(user);
           document.getElementById('settings-email').textContent = userEmail || '-';
-          
-          // Check if subdomain is set
-          if (!userSubdomain) {
-            showSetupModal();
-          }
-          
+          if (!userSubdomain) showSetupModal();
           loadLicenses();
         }
       };
-
-      // Check immediately
       checkUser();
-
-      // Also listen for changes
       window.Clerk.addListener(checkUser);
     }
 
@@ -705,14 +263,17 @@
       const badge = document.getElementById('subdomain-badge');
       const banner = document.getElementById('setup-banner');
       const settingsVal = document.getElementById('settings-subdomain');
-      const currentSpan = document.getElementById('current-subdomain');
+      const currentSubdomainSpan = document.getElementById('current-subdomain');
+      const currentDomainSpan = document.getElementById('current-domain');
 
       if (userSubdomain) {
         badge.style.display = 'inline-flex';
         banner.style.display = 'none';
-        currentSpan.textContent = userSubdomain;
-        settingsVal.textContent = userSubdomain + '.kintone.com';
+        currentSubdomainSpan.textContent = userSubdomain;
+        currentDomainSpan.textContent = userDomain;
+        settingsVal.textContent = userSubdomain + '.' + userDomain;
         document.getElementById('trial-subdomain').value = userSubdomain;
+        document.getElementById('trial-domain').value = userDomain;
       } else {
         badge.style.display = 'none';
         settingsVal.textContent = 'Not set';
@@ -727,54 +288,31 @@
       if (avatarEl) avatarEl.textContent = name.charAt(0).toUpperCase() || '?';
     }
 
-    // Modal functions
-    function showSetupModal() {
-      document.getElementById('setup-modal').classList.add('active');
-      setTimeout(() => document.getElementById('setup-subdomain').focus(), 100);
-    }
-
-    function showTrialModal() {
-      if (!userSubdomain) {
-        showSetupModal();
-        return;
-      }
+    function showSetupModal() { document.getElementById('setup-modal').classList.add('active'); setTimeout(() => document.getElementById('setup-subdomain').focus(), 100); }
+    function showTrialModal() { 
+      if (!userSubdomain) { showSetupModal(); return; } 
       document.getElementById('trial-subdomain').value = userSubdomain;
-      document.getElementById('trial-modal').classList.add('active');
+      document.getElementById('trial-domain').value = userDomain;
+      document.getElementById('trial-modal').classList.add('active'); 
     }
-
-    function hideTrialModal() {
-      document.getElementById('trial-modal').classList.remove('active');
+    function hideTrialModal() { document.getElementById('trial-modal').classList.remove('active'); }
+    function showSettingsModal() { 
+      document.getElementById('new-subdomain').value = userSubdomain || ''; 
+      document.getElementById('new-domain').value = userDomain;
+      document.getElementById('settings-modal').classList.add('active'); 
     }
+    function hideSettingsModal() { document.getElementById('settings-modal').classList.remove('active'); }
+    function selectPlugin(el, plugin) { document.querySelectorAll('.plugin-option').forEach(p => p.classList.remove('selected')); el.classList.add('selected'); selectedPlugin = plugin; }
 
-    function showSettingsModal() {
-      document.getElementById('new-subdomain').value = userSubdomain || '';
-      document.getElementById('settings-modal').classList.add('active');
-    }
-
-    function hideSettingsModal() {
-      document.getElementById('settings-modal').classList.remove('active');
-    }
-
-    function selectPlugin(el, plugin) {
-      document.querySelectorAll('.plugin-option').forEach(p => p.classList.remove('selected'));
-      el.classList.add('selected');
-      selectedPlugin = plugin;
-    }
-
-    // Save functions
     function saveSetup() {
       const subdomain = document.getElementById('setup-subdomain').value.trim().toLowerCase();
-      if (!subdomain) {
-        showToast('Please enter your subdomain', 'error');
-        return;
-      }
-      if (!/^[a-z0-9-]+$/.test(subdomain)) {
-        showToast('Invalid subdomain format', 'error');
-        return;
-      }
-      
+      const domain = document.getElementById('setup-domain').value;
+      if (!subdomain) { showToast('Please enter your subdomain', 'error'); return; }
+      if (!/^[a-z0-9-]+$/.test(subdomain)) { showToast('Invalid subdomain format', 'error'); return; }
       userSubdomain = subdomain;
+      userDomain = domain;
       localStorage.setItem('kinplug_subdomain', subdomain);
+      localStorage.setItem('kinplug_domain', domain);
       document.getElementById('setup-modal').classList.remove('active');
       updateSubdomainUI();
       showToast('Setup complete! You can now start a trial.', 'success');
@@ -782,181 +320,89 @@
 
     function saveNewSubdomain() {
       const newSubdomain = document.getElementById('new-subdomain').value.trim().toLowerCase();
-      if (!newSubdomain) {
-        showToast('Please enter a subdomain', 'error');
-        return;
-      }
-      if (!/^[a-z0-9-]+$/.test(newSubdomain)) {
-        showToast('Invalid subdomain format', 'error');
-        return;
-      }
-
+      const newDomain = document.getElementById('new-domain').value;
+      if (!newSubdomain) { showToast('Please enter a subdomain', 'error'); return; }
+      if (!/^[a-z0-9-]+$/.test(newSubdomain)) { showToast('Invalid subdomain format', 'error'); return; }
       userSubdomain = newSubdomain;
+      userDomain = newDomain;
       localStorage.setItem('kinplug_subdomain', newSubdomain);
+      localStorage.setItem('kinplug_domain', newDomain);
       hideSettingsModal();
       updateSubdomainUI();
-      showToast('Subdomain updated!', 'success');
+      showToast('Environment updated!', 'success');
     }
 
-    // Trial submission
     async function submitTrial() {
       const subdomain = document.getElementById('trial-subdomain').value.trim().toLowerCase();
-      if (!subdomain) {
-        showToast('Please enter a subdomain', 'error');
-        return;
-      }
-
+      const domain = document.getElementById('trial-domain').value;
+      if (!subdomain) { showToast('Please enter a subdomain', 'error'); return; }
       const btn = document.getElementById('submit-trial-btn');
-      btn.disabled = true;
-      btn.innerHTML = '⏳ Creating...';
-
+      btn.disabled = true; btn.innerHTML = '⏳ Creating...';
       try {
         const response = await fetch(`${API_URL}/trial`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: userEmail,
-            subdomain: subdomain,
-            product: selectedPlugin
-          })
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: userEmail, subdomain: subdomain + '.' + domain, product: selectedPlugin })
         });
-
         const data = await response.json();
-
-        if (data.error) {
-          showToast(data.message || data.error, 'error');
-        } else if (data.license_key) {
+        if (data.error) { showToast(data.message || data.error, 'error'); }
+        else if (data.license_key) {
           hideTrialModal();
           navigator.clipboard.writeText(data.license_key);
-          showToast('🎉 Trial started! License key copied to clipboard.', 'success');
-          
-          // Update default subdomain if different
-          if (subdomain !== userSubdomain) {
-            userSubdomain = subdomain;
+          showToast('🎉 Trial started! License key copied.', 'success');
+          if (subdomain !== userSubdomain || domain !== userDomain) {
+            userSubdomain = subdomain; userDomain = domain;
             localStorage.setItem('kinplug_subdomain', subdomain);
+            localStorage.setItem('kinplug_domain', domain);
             updateSubdomainUI();
           }
-          
           loadLicenses();
         }
-      } catch (err) {
-        showToast('Failed to start trial. Please try again.', 'error');
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = '🚀 Start Trial';
-      }
+      } catch (err) { showToast('Failed to start trial.', 'error'); }
+      finally { btn.disabled = false; btn.innerHTML = '🚀 Start Trial'; }
     }
 
-    // Load licenses
     async function loadLicenses() {
       const container = document.getElementById('licenses-container');
-      
-      if (!userEmail) {
-        container.innerHTML = '<div class="empty-state"><div class="icon">🔒</div><h3>Sign in required</h3><p>Please sign in to view your licenses.</p></div>';
-        return;
-      }
-
+      if (!userEmail) { container.innerHTML = '<div class="empty-state"><div class="icon">🔒</div><h3>Sign in required</h3></div>'; return; }
       try {
-        const response = await fetch(`${API_URL}/licenses`, {
-          headers: { 'X-User-Email': userEmail }
-        });
+        const response = await fetch(`${API_URL}/licenses`, { headers: { 'X-User-Email': userEmail } });
         const data = await response.json();
-        licensesCache = data.licenses || [];
-
-        if (licensesCache.length === 0) {
-          container.innerHTML = `
-            <div class="empty-state">
-              <div class="icon">📦</div>
-              <h3>No licenses yet</h3>
-              <p>Start a free trial to get your first license!</p>
-              <button class="btn btn-primary" onclick="showTrialModal()">✨ Start Free Trial</button>
-            </div>
-          `;
+        const licenses = data.licenses || [];
+        if (licenses.length === 0) {
+          container.innerHTML = '<div class="empty-state"><div class="icon">📦</div><h3>No licenses yet</h3><p>Start a free trial to get started!</p><button class="btn btn-primary" onclick="showTrialModal()">✨ Start Free Trial</button></div>';
         } else {
-          container.innerHTML = licensesCache.map(renderLicenseCard).join('');
+          container.innerHTML = licenses.map(renderLicenseCard).join('');
         }
-
-        updateStats(licensesCache);
-      } catch (err) {
-        container.innerHTML = `
-          <div class="empty-state">
-            <div class="icon">❌</div>
-            <h3>Failed to load</h3>
-            <p>Please try again.</p>
-            <button class="btn btn-secondary" onclick="loadLicenses()">🔄 Retry</button>
-          </div>
-        `;
-      }
+        updateStats(licenses);
+      } catch (err) { container.innerHTML = '<div class="empty-state"><div class="icon">❌</div><h3>Failed to load</h3><button class="btn btn-secondary" onclick="loadLicenses()">🔄 Retry</button></div>'; }
     }
 
     function renderLicenseCard(license) {
       const icons = { 'pdf-designer': '📄', 'enhanced-lookup': '🔍', 'template-builder': '📝' };
       const icon = icons[license.product] || '🧩';
       const statusClass = license.status === 'active' ? (license.type === 'trial' ? 'trial' : 'active') : 'expired';
-
       const expiresDate = license.expiresAt ? new Date(license.expiresAt) : null;
       const daysLeft = expiresDate ? Math.ceil((expiresDate - new Date()) / (1000*60*60*24)) : null;
-      let expiresClass = '';
-      let expiresText = expiresDate ? expiresDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Never';
-
-      if (daysLeft !== null && daysLeft <= 7 && daysLeft > 0) {
-        expiresClass = 'warning';
-        expiresText = `⚠️ ${daysLeft} day${daysLeft === 1 ? '' : 's'} left`;
-      } else if (daysLeft !== null && daysLeft <= 0) {
-        expiresClass = 'danger';
-        expiresText = '❌ Expired';
-      }
-
+      let expiresClass = '', expiresText = expiresDate ? expiresDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Never';
+      if (daysLeft !== null && daysLeft <= 7 && daysLeft > 0) { expiresClass = 'warning'; expiresText = `⚠️ ${daysLeft} day${daysLeft === 1 ? '' : 's'} left`; }
+      else if (daysLeft !== null && daysLeft <= 0) { expiresClass = 'danger'; expiresText = '❌ Expired'; }
       const keyShort = license.license_key.length > 24 ? license.license_key.substring(0, 24) + '...' : license.license_key;
       const names = { 'pdf-designer': 'PDF Designer', 'enhanced-lookup': 'Enhanced Lookup', 'template-builder': 'Template Builder' };
-
-      return `
-        <div class="license-card">
-          <div class="license-icon">${icon}</div>
-          <div class="license-info">
-            <h3>${names[license.product] || license.product}</h3>
-            <div class="subdomain">📍 ${license.subdomain}.kintone.com</div>
-            <div class="license-key-box" onclick="copyKey(this, '${license.license_key}')" title="Click to copy">
-              <span>📋</span> ${keyShort}
-            </div>
-          </div>
-          <div class="license-meta">
-            <div class="license-status ${statusClass}">${license.type === 'trial' ? '🧪 Trial' : '✅ Active'}</div>
-            <div class="license-expires ${expiresClass}">${expiresText}</div>
-          </div>
-        </div>
-      `;
+      // Detect domain from subdomain (if it contains cybozu.com or kintone.com)
+      const subdomainDisplay = license.subdomain.includes('.') ? license.subdomain : license.subdomain + '.kintone.com';
+      return `<div class="license-card"><div class="license-icon">${icon}</div><div class="license-info"><h3>${names[license.product] || license.product}</h3><div class="subdomain">📍 ${subdomainDisplay}</div><div class="license-key-box" onclick="copyKey(this,'${license.license_key}')" title="Click to copy"><span>📋</span> ${keyShort}</div></div><div class="license-meta"><div class="license-status ${statusClass}">${license.type === 'trial' ? '🧪 Trial' : '✅ Active'}</div><div class="license-expires ${expiresClass}">${expiresText}</div></div></div>`;
     }
 
-    function copyKey(el, key) {
-      navigator.clipboard.writeText(key);
-      const original = el.innerHTML;
-      el.innerHTML = '<span style="color: #059669;">✓ Copied!</span>';
-      setTimeout(() => el.innerHTML = original, 1500);
-    }
+    function copyKey(el, key) { navigator.clipboard.writeText(key); const original = el.innerHTML; el.innerHTML = '<span style="color:#059669">✓ Copied!</span>'; setTimeout(() => el.innerHTML = original, 1500); }
 
     function updateStats(licenses) {
-      const total = licenses.length;
-      const active = licenses.filter(l => l.status === 'active' && l.type !== 'trial').length;
-      const trials = licenses.filter(l => l.type === 'trial' && l.status === 'active').length;
-      const expiring = licenses.filter(l => {
-        if (!l.expiresAt || l.status !== 'active') return false;
-        const days = Math.ceil((new Date(l.expiresAt) - new Date()) / (1000*60*60*24));
-        return days <= 7 && days > 0;
-      }).length;
-
-      document.getElementById('stat-total').textContent = total;
-      document.getElementById('stat-active').textContent = active;
-      document.getElementById('stat-trial').textContent = trials;
-      document.getElementById('stat-expiring').textContent = expiring;
+      document.getElementById('stat-total').textContent = licenses.length;
+      document.getElementById('stat-active').textContent = licenses.filter(l => l.status === 'active' && l.type !== 'trial').length;
+      document.getElementById('stat-trial').textContent = licenses.filter(l => l.type === 'trial' && l.status === 'active').length;
+      document.getElementById('stat-expiring').textContent = licenses.filter(l => { if (!l.expiresAt || l.status !== 'active') return false; const days = Math.ceil((new Date(l.expiresAt) - new Date()) / (1000*60*60*24)); return days <= 7 && days > 0; }).length;
     }
 
-    function showToast(message, type = '') {
-      const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.className = 'toast ' + type + ' show';
-      setTimeout(() => toast.classList.remove('show'), 4000);
-    }
+    function showToast(message, type = '') { const toast = document.getElementById('toast'); toast.textContent = message; toast.className = 'toast ' + type + ' show'; setTimeout(() => toast.classList.remove('show'), 4000); }
   </script>
 </body>
 </html>
