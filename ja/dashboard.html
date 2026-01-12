@@ -27,6 +27,9 @@
     .welcome-avatar{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;border:3px solid rgba(255,255,255,.3)}
     .subdomain-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);padding:8px 16px;border-radius:20px;font-size:.875rem;margin-top:8px;cursor:pointer;transition:all .2s ease}
     .subdomain-badge:hover{background:rgba(255,255,255,.25)}
+    .email-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:12px;font-size:.75rem;margin-left:8px}
+    .email-badge.verified{background:rgba(34,197,94,.2);color:#22c55e}
+    .email-badge.unverified{background:rgba(239,68,68,.2);color:#ef4444}
     .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:32px}
     .stat-card{background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.08);border:1px solid #e5e7eb;transition:all .2s ease}
     .stat-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
@@ -75,13 +78,15 @@
     .plugin-option input{display:none}.plugin-option .icon{font-size:1.25rem}.plugin-option .name{font-weight:600;font-size:.875rem}.plugin-option .desc{font-size:.75rem;color:#6b7280}
     .setup-banner{background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);border:2px solid #f59e0b;border-radius:16px;padding:24px;margin-bottom:24px;display:flex;align-items:center;gap:16px}
     .setup-banner .icon{font-size:2.5rem}.setup-banner h3{margin:0 0 4px;color:#92400e}.setup-banner p{margin:0;color:#a16207;font-size:.9375rem}.setup-banner .btn{margin-left:auto;white-space:nowrap}
+    .verify-banner{background:linear-gradient(135deg,#fee2e2 0%,#fecaca 100%);border:2px solid #ef4444;border-radius:16px;padding:24px;margin-bottom:24px;display:flex;align-items:center;gap:16px}
+    .verify-banner .icon{font-size:2.5rem}.verify-banner h3{margin:0 0 4px;color:#991b1b}.verify-banner p{margin:0;color:#b91c1c;font-size:.9375rem}.verify-banner .btn{margin-left:auto;white-space:nowrap}
     .settings-item{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid #e5e7eb}
     .settings-item:last-child{border-bottom:none}.settings-item .label{font-weight:600;color:#374151}.settings-item .value{color:#6b7280;font-family:monospace}
     .skeleton{background:linear-gradient(90deg,#f3f4f6 25%,#e5e7eb 50%,#f3f4f6 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:8px}
     @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}.skeleton-card{height:80px;margin-bottom:12px}
     .toast{position:fixed;bottom:24px;right:24px;background:#111;color:#fff;padding:14px 20px;border-radius:10px;font-size:.9375rem;box-shadow:0 10px 30px rgba(0,0,0,.2);transform:translateY(100px);opacity:0;transition:all .3s ease;z-index:10000}
     .toast.show{transform:translateY(0);opacity:1}.toast.success{background:#059669}.toast.error{background:#dc2626}
-    @media(max-width:768px){.license-card{grid-template-columns:1fr;text-align:center}.license-icon{margin:0 auto}.license-meta{text-align:center;margin-top:8px}.welcome-card{text-align:center;justify-content:center}.welcome-info{flex-direction:column}.setup-banner{flex-direction:column;text-align:center}.setup-banner .btn{margin:16px 0 0}.subdomain-input{flex-direction:column}.subdomain-input input{min-width:100%}.subdomain-input select.domain-suffix{min-width:100%;border-left:none;border-top:2px solid #e5e7eb}}
+    @media(max-width:768px){.license-card{grid-template-columns:1fr;text-align:center}.license-icon{margin:0 auto}.license-meta{text-align:center;margin-top:8px}.welcome-card{text-align:center;justify-content:center}.welcome-info{flex-direction:column}.setup-banner,.verify-banner{flex-direction:column;text-align:center}.setup-banner .btn,.verify-banner .btn{margin:16px 0 0}.subdomain-input{flex-direction:column}.subdomain-input input{min-width:100%}.subdomain-input select.domain-suffix{min-width:100%;border-left:none;border-top:2px solid #e5e7eb}}
   </style>
 </head>
 <body>
@@ -118,6 +123,13 @@
   </section>
 
   <div class="container">
+    <!-- Email Verification Banner -->
+    <div class="verify-banner" id="verify-banner" style="display:none">
+      <div class="icon">📧</div>
+      <div><h3>メールアドレスを確認してください</h3><p>トライアルを開始するには、メールアドレスの確認が必要です。</p></div>
+      <button class="btn btn-primary" onclick="resendVerification()">確認メールを再送</button>
+    </div>
+
     <div class="setup-banner" id="setup-banner" style="display:none">
       <div class="icon">⚙️</div>
       <div><h3>セットアップを完了してください</h3><p>プラグインを使い始めるには、サブドメインを設定してください。</p></div>
@@ -139,12 +151,12 @@
     <div class="section-card">
       <div class="section-header"><h2>⚙️ アカウント設定</h2></div>
       <div class="settings-item">
-        <div><div class="label">デフォルト環境</div><div class="value" id="settings-subdomain">未設定</div></div>
-        <div class="actions"><button class="btn btn-secondary btn-sm" onclick="showSettingsModal()">変更</button></div>
+        <div><div class="label">メールアドレス</div><div class="value"><span id="settings-email">-</span><span class="email-badge" id="email-status"></span></div></div>
+        <div class="actions"><button class="btn btn-secondary btn-sm" onclick="KinPlug.openProfile()">管理</button></div>
       </div>
       <div class="settings-item">
-        <div><div class="label">メールアドレス</div><div class="value" id="settings-email">-</div></div>
-        <div class="actions"><button class="btn btn-secondary btn-sm" onclick="KinPlug.openProfile()">管理</button></div>
+        <div><div class="label">デフォルト環境</div><div class="value" id="settings-subdomain">未設定</div></div>
+        <div class="actions"><button class="btn btn-secondary btn-sm" onclick="showSettingsModal()">変更</button></div>
       </div>
     </div>
 
@@ -210,6 +222,20 @@
     </div>
   </div>
 
+  <!-- Verification Required Modal -->
+  <div class="modal-overlay" id="verify-modal" onclick="if(event.target===this)hideVerifyModal()">
+    <div class="modal-content" style="text-align:center">
+      <div style="font-size:4rem;margin-bottom:16px">📧</div>
+      <h2 style="margin-bottom:8px">メール確認が必要です</h2>
+      <p style="color:#6b7280;margin-bottom:24px">トライアルを開始する前に、メールアドレスを確認してください。受信トレイをご確認ください。</p>
+      <div class="modal-actions" style="flex-direction:column;gap:12px">
+        <button class="btn btn-primary" onclick="resendVerification()" id="resend-btn">📤 確認メールを再送</button>
+        <button class="btn btn-secondary" onclick="hideVerifyModal()">閉じる</button>
+      </div>
+      <p style="color:#9ca3af;font-size:.8125rem;margin-top:16px">確認済みですか？ <a href="#" onclick="location.reload()">ページを更新</a></p>
+    </div>
+  </div>
+
   <!-- Settings Modal -->
   <div class="modal-overlay" id="settings-modal" onclick="if(event.target===this)hideSettingsModal()">
     <div class="modal-content">
@@ -247,6 +273,7 @@
     let userSubdomain = null;
     let userDomain = 'cybozu.com';
     let licensesLoaded = false;
+    let emailVerified = false;
 
     initDashboard();
 
@@ -264,14 +291,32 @@
         const user = window.Clerk?.user;
         if (user) {
           userEmail = user.primaryEmailAddress?.emailAddress;
+          const emailObj = user.primaryEmailAddress;
+          emailVerified = emailObj?.verification?.status === 'verified';
           updateHeroName(user);
-          document.getElementById('settings-email').textContent = userEmail || '-';
+          updateEmailStatus();
           if (!licensesLoaded) loadLicenses();
-          if (!userSubdomain) setTimeout(showSetupModal, 500);
+          if (!userSubdomain && emailVerified) setTimeout(showSetupModal, 500);
         }
       };
       checkUser();
       window.Clerk.addListener(checkUser);
+    }
+
+    function updateEmailStatus() {
+      const emailEl = document.getElementById('settings-email');
+      const statusEl = document.getElementById('email-status');
+      const verifyBanner = document.getElementById('verify-banner');
+      emailEl.textContent = userEmail || '-';
+      if (emailVerified) {
+        statusEl.className = 'email-badge verified';
+        statusEl.textContent = '✓ 確認済み';
+        verifyBanner.style.display = 'none';
+      } else {
+        statusEl.className = 'email-badge unverified';
+        statusEl.textContent = '⚠ 未確認';
+        verifyBanner.style.display = 'flex';
+      }
     }
 
     function updateSubdomainUI() {
@@ -296,12 +341,44 @@
       if (name) { document.getElementById('hero-name').textContent = '、' + name + 'さん'; document.getElementById('hero-avatar').textContent = name.charAt(0).toUpperCase(); }
     }
 
-    function showSetupModal() { document.getElementById('setup-modal').classList.add('active'); setTimeout(() => document.getElementById('setup-subdomain').focus(), 100); }
-    function showTrialModal() { if (!userSubdomain) { showSetupModal(); return; } document.getElementById('trial-subdomain').value = userSubdomain; document.getElementById('trial-domain').value = userDomain; document.getElementById('trial-modal').classList.add('active'); }
+    function showSetupModal() { 
+      if (!emailVerified) { showVerifyModal(); return; }
+      document.getElementById('setup-modal').classList.add('active'); 
+      setTimeout(() => document.getElementById('setup-subdomain').focus(), 100); 
+    }
+    function showTrialModal() { 
+      if (!emailVerified) { showVerifyModal(); return; }
+      if (!userSubdomain) { showSetupModal(); return; } 
+      document.getElementById('trial-subdomain').value = userSubdomain;
+      document.getElementById('trial-domain').value = userDomain;
+      document.getElementById('trial-modal').classList.add('active'); 
+    }
     function hideTrialModal() { document.getElementById('trial-modal').classList.remove('active'); }
+    function showVerifyModal() { document.getElementById('verify-modal').classList.add('active'); }
+    function hideVerifyModal() { document.getElementById('verify-modal').classList.remove('active'); }
     function showSettingsModal() { document.getElementById('new-subdomain').value = userSubdomain || ''; document.getElementById('new-domain').value = userDomain; document.getElementById('settings-modal').classList.add('active'); setTimeout(() => document.getElementById('new-subdomain').focus(), 100); }
     function hideSettingsModal() { document.getElementById('settings-modal').classList.remove('active'); }
     function selectPlugin(el, plugin) { document.querySelectorAll('.plugin-option').forEach(p => p.classList.remove('selected')); el.classList.add('selected'); selectedPlugin = plugin; }
+
+    async function resendVerification() {
+      const btn = document.getElementById('resend-btn');
+      btn.disabled = true;
+      btn.innerHTML = '⏳ 送信中...';
+      try {
+        const user = window.Clerk?.user;
+        const emailObj = user?.primaryEmailAddress;
+        if (emailObj) {
+          await emailObj.prepareVerification({ strategy: 'email_code' });
+          showToast('確認メールを送信しました！受信トレイをご確認ください。', 'success');
+        }
+      } catch (err) {
+        console.error('Verification error:', err);
+        showToast('送信に失敗しました。もう一度お試しください。', 'error');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '📤 確認メールを再送';
+      }
+    }
 
     function saveSetup() {
       const subdomain = document.getElementById('setup-subdomain').value.trim().toLowerCase();
@@ -329,6 +406,7 @@
     }
 
     async function submitTrial() {
+      if (!emailVerified) { showVerifyModal(); return; }
       const subdomain = document.getElementById('trial-subdomain').value.trim().toLowerCase();
       const domain = document.getElementById('trial-domain').value;
       if (!subdomain) { showToast('サブドメインを入力してください', 'error'); return; }
