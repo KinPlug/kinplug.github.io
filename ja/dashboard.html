@@ -3,11 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ダッシュボード | KinPlug</title>
-  <meta name="robots" content="noindex">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <title>ダッシュボード - KinPlug</title>
   <link rel="stylesheet" href="/assets/css/style.css">
-  <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
+  <script 
+    async 
+    crossorigin="anonymous" 
+    data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+    onload="window.Clerk && window.Clerk.load()"
+  ></script>
 </head>
 <body>
   <nav class="navbar">
@@ -19,15 +23,16 @@
         <a href="/ja/docs/">ドキュメント</a>
       </div>
       <div class="nav-right">
-        <div class="lang-switcher"><a href="/dashboard.html">EN</a> | <a href="/ja/dashboard.html" class="active">日本語</a></div>
+        <div class="lang-switcher">
+          <a href="/dashboard.html">EN</a> | <a href="/ja/dashboard.html" class="active">日本語</a>
+        </div>
         <div class="nav-auth">
           <div id="auth-nav">
-            <button class="btn btn-secondary btn-sm" onclick="KinPlug.signIn()">ログイン</button>
+            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">ログイン</button>
             <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">無料で始める</button>
           </div>
           <div id="user-nav" class="hidden">
-            <a href="/ja/dashboard.html" class="btn btn-secondary btn-sm">ダッシュボード</a>
-            <div class="user-info" onclick="KinPlug.openProfile()">
+            <div class="user-info" onclick="KinPlug.openProfile()" style="cursor:pointer;">
               <div id="user-avatar" class="user-avatar">?</div>
               <span id="user-name">User</span>
             </div>
@@ -37,39 +42,31 @@
     </div>
   </nav>
 
-  <section class="dashboard-header">
+  <section class="dashboard">
     <div class="container">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
+      <div class="dashboard-header">
         <h1>ダッシュボード</h1>
         <button class="btn btn-primary" onclick="showStartTrialModal()">+ 新しいトライアルを開始</button>
       </div>
-    </div>
-  </section>
 
-  <section class="dashboard-content">
-    <div class="container">
-      <!-- Stats Cards -->
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px;">
-        <div class="card" style="text-align: center;">
-          <h3 style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 8px;">有効なライセンス</h3>
-          <div id="stat-active" style="font-size: 2.5rem; font-weight: 800; color: var(--success);">-</div>
+      <div class="dashboard-grid">
+        <div class="stat-card">
+          <h3>有効なライセンス</h3>
+          <div id="stat-active" class="value success">-</div>
         </div>
-        <div class="card" style="text-align: center;">
-          <h3 style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 8px;">トライアル中</h3>
-          <div id="stat-trial" style="font-size: 2.5rem; font-weight: 800; color: var(--warning);">-</div>
+        <div class="stat-card">
+          <h3>トライアル中</h3>
+          <div id="stat-trial" class="value warning">-</div>
         </div>
-        <div class="card" style="text-align: center;">
-          <h3 style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 8px;">期限切れ</h3>
-          <div id="stat-expired" style="font-size: 2.5rem; font-weight: 800; color: var(--danger);">-</div>
+        <div class="stat-card">
+          <h3>期限切れ</h3>
+          <div id="stat-expired" class="value danger">-</div>
         </div>
       </div>
 
-      <!-- Licenses Table -->
-      <div class="card">
-        <div class="card-header">
-          <h2 style="margin: 0;">ライセンス一覧</h2>
-        </div>
-        <table>
+      <div class="licenses-section">
+        <h2>ライセンス一覧</h2>
+        <table class="license-table">
           <thead>
             <tr>
               <th>プラグイン</th>
@@ -80,56 +77,45 @@
             </tr>
           </thead>
           <tbody id="licenses-table">
-            <tr>
-              <td colspan="5" style="text-align: center; padding: 40px; color: var(--text-muted);">
-                読み込み中...
-              </td>
-            </tr>
+            <tr><td colspan="5"><div class="loading"><div class="spinner"></div></div></td></tr>
           </tbody>
         </table>
       </div>
 
-      <!-- Quick Actions -->
-      <div class="card" style="margin-top: 24px;">
-        <h3>クイックアクション</h3>
-        <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px;">
-          <button class="btn btn-primary" onclick="KinPlug.startTrial('pdf-designer')">PDF Designer トライアル</button>
-          <button class="btn btn-outline" onclick="KinPlug.startTrial('enhanced-lookup')">Enhanced Lookup トライアル</button>
-          <button class="btn btn-outline" onclick="KinPlug.startTrial('template-builder')">Template Builder トライアル</button>
-        </div>
-      </div>
-
-      <!-- Help Section -->
-      <div class="card" style="margin-top: 24px; background: var(--bg-light);">
-        <h3>ヘルプ</h3>
-        <p style="color: var(--text-secondary); margin: 16px 0;">ご不明な点がございましたら、お気軽にお問い合わせください。</p>
-        <div style="display: flex; gap: 16px;">
-          <a href="/ja/docs/" class="btn btn-outline">ドキュメント</a>
-          <a href="mailto:support@kinplug.com" class="btn btn-outline">サポートに連絡</a>
+      <div class="mt-40">
+        <h2 style="margin-bottom: 20px;">クイックアクション</h2>
+        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+          <button class="btn btn-secondary" onclick="KinPlug.loadUserLicenses()">🔄 ライセンスを更新</button>
+          <a href="/ja/docs/" class="btn btn-secondary">📖 ドキュメント</a>
+          <a href="mailto:support@kinplug.com" class="btn btn-secondary">💬 サポート</a>
+          <button class="btn btn-secondary" onclick="KinPlug.openProfile()">⚙️ アカウント設定</button>
+          <button class="btn btn-secondary" onclick="KinPlug.signOut()">🚪 ログアウト</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Start Trial Modal -->
-  <div id="trial-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center;">
-    <div style="background: white; padding: 32px; border-radius: 12px; max-width: 400px; width: 90%;">
-      <h2 style="margin-bottom: 24px;">トライアルを開始</h2>
-      <div style="margin-bottom: 16px;">
-        <label style="display: block; margin-bottom: 8px; font-weight: 500;">プラグイン</label>
-        <select id="trial-product" style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px;">
+  <div id="trial-modal" class="hidden" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 9999;">
+    <div style="background: white; padding: 40px; border-radius: 12px; width: 100%; max-width: 450px;">
+      <h2 style="margin-bottom: 20px;">無料トライアルを開始</h2>
+      <div style="margin-bottom: 20px;">
+        <label style="display: block; margin-bottom: 8px; font-weight: 600;">プラグインを選択</label>
+        <select id="trial-plugin" style="width: 100%; padding: 12px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 16px;">
           <option value="pdf-designer">PDF Designer</option>
           <option value="enhanced-lookup">Enhanced Lookup</option>
           <option value="template-builder">Template Builder</option>
         </select>
       </div>
-      <div style="margin-bottom: 24px;">
-        <label style="display: block; margin-bottom: 8px; font-weight: 500;">kintoneサブドメイン</label>
-        <input type="text" id="trial-subdomain" placeholder="例: mycompany" style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; box-sizing: border-box;">
-        <small style="color: var(--text-muted);">mycompany.kintone.com の場合は「mycompany」</small>
+      <div style="margin-bottom: 20px;">
+        <label style="display: block; margin-bottom: 8px; font-weight: 600;">kintoneサブドメイン</label>
+        <div style="display: flex; align-items: center; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
+          <input type="text" id="trial-subdomain" placeholder="mycompany" style="flex: 1; padding: 12px; border: none; font-size: 16px;">
+          <span style="padding: 12px; background: #f8f9fa; color: #666;">.kintone.com</span>
+        </div>
+        <small style="color: #666; margin-top: 5px; display: block;">サブドメイン部分のみを入力してください</small>
       </div>
-      <div style="display: flex; gap: 12px;">
-        <button class="btn btn-primary" onclick="submitTrial()" style="flex: 1;">トライアル開始</button>
+      <div style="display: flex; gap: 15px;">
+        <button class="btn btn-primary" onclick="submitTrial()" style="flex: 1;">14日間無料で試す</button>
         <button class="btn btn-secondary" onclick="hideTrialModal()">キャンセル</button>
       </div>
     </div>
@@ -139,7 +125,7 @@
     <div class="container">
       <div class="footer-bottom">
         <div>© 2026 KinPlug by Edamame Inc.</div>
-        <div><a href="/dashboard.html">English</a> | <a href="/ja/dashboard.html">日本語</a></div>
+        <div><a href="/">English</a> | <a href="/ja/">日本語</a></div>
       </div>
     </div>
   </footer>
@@ -147,20 +133,28 @@
   <script src="/assets/js/app.js"></script>
   <script>
     function showStartTrialModal() {
-      document.getElementById('trial-modal').style.display = 'flex';
+      document.getElementById('trial-modal').classList.remove('hidden');
     }
     function hideTrialModal() {
-      document.getElementById('trial-modal').style.display = 'none';
+      document.getElementById('trial-modal').classList.add('hidden');
     }
     async function submitTrial() {
-      const product = document.getElementById('trial-product').value;
-      const subdomain = document.getElementById('trial-subdomain').value;
+      const plugin = document.getElementById('trial-plugin').value;
+      const subdomain = document.getElementById('trial-subdomain').value.trim();
       if (!subdomain) {
-        alert('サブドメインを入力してください');
+        alert('kintoneサブドメインを入力してください');
         return;
       }
-      hideTrialModal();
-      await KinPlug.startTrial(product);
+      try {
+        const result = await KinPlug.startTrial(plugin, subdomain);
+        if (result && result.license_key) {
+          hideTrialModal();
+          KinPlug.loadUserLicenses();
+          alert('トライアルを開始しました！ライセンスキー: ' + result.license_key);
+        }
+      } catch (err) {
+        alert('エラー: ' + (err.message || 'トライアルの開始に失敗しました'));
+      }
     }
   </script>
 </body>
