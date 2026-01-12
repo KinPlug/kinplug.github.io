@@ -6,6 +6,19 @@
   <title>ダッシュボード - KinPlug</title>
   <link rel="stylesheet" href="/assets/css/style.css">
   <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/678394d73a842732607a29cc/1ihco10u7';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
   <style>
     .dashboard-hero{background:linear-gradient(135deg,var(--primary) 0%,#1e40af 100%);color:#fff;padding:40px 0;margin-bottom:40px}
     .dashboard-hero h1{color:#fff;margin-bottom:8px}.dashboard-hero p{color:rgba(255,255,255,.8);margin:0}
@@ -20,7 +33,7 @@
     .stat-card .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:12px}
     .stat-card .icon.blue{background:#dbeafe}.stat-card .icon.green{background:#dcfce7}.stat-card .icon.yellow{background:#fef3c7}.stat-card .icon.red{background:#fee2e2}
     .stat-card .value{font-size:1.75rem;font-weight:800;color:#111;line-height:1}.stat-card .label{font-size:.8125rem;color:#6b7280;margin-top:4px}
-    .section-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,.08);border:1px solid #e5e7eb;margin-bottom:24px}
+    .section-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,.08);border:1px solid #e5e7eb;margin-bottom:24px;position:relative}
     .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px}
     .section-header h2{margin:0;font-size:1.125rem;font-weight:700}
     .license-grid{display:grid;gap:12px}
@@ -41,20 +54,21 @@
     .action-btn:hover{background:#fff;border-color:var(--primary);color:var(--primary);transform:translateY(-1px)}.action-btn .icon{font-size:1.125rem}
     .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:9999;opacity:0;visibility:hidden;transition:all .3s ease}
     .modal-overlay.active{opacity:1;visibility:visible}
-    .modal-content{background:#fff;padding:32px;border-radius:20px;width:100%;max-width:440px;box-shadow:0 25px 50px rgba(0,0,0,.25);transform:translateY(20px) scale(.95);transition:all .3s ease;max-height:90vh;overflow-y:auto}
+    .modal-content{background:#fff;padding:32px;border-radius:20px;width:100%;max-width:480px;box-shadow:0 25px 50px rgba(0,0,0,.25);transform:translateY(20px) scale(.95);transition:all .3s ease;max-height:90vh;overflow-y:auto}
     .modal-overlay.active .modal-content{transform:translateY(0) scale(1)}
     .modal-header{display:flex;align-items:center;gap:14px;margin-bottom:20px}
     .modal-icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--primary),#1e40af);display:flex;align-items:center;justify-content:center;font-size:1.5rem}
     .modal-header h2{margin:0;font-size:1.25rem}.modal-header p{margin:2px 0 0;color:#6b7280;font-size:.875rem}
-    .form-group{margin-bottom:16px}.form-group label{display:block;margin-bottom:6px;font-weight:600;color:#374151;font-size:.875rem}
-    .form-group select,.form-group input{width:100%;padding:12px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:.9375rem;transition:all .2s ease}
+    .form-group{margin-bottom:16px}.form-group label{display:block;margin-bottom:8px;font-weight:600;color:#374151;font-size:.875rem}
+    .form-group select,.form-group input{width:100%;padding:12px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:1rem;transition:all .2s ease;box-sizing:border-box}
     .form-group select:focus,.form-group input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
-    .subdomain-input{display:flex;align-items:stretch;border:2px solid #e5e7eb;border-radius:10px;overflow:hidden;transition:all .2s ease}
+    .subdomain-input{display:flex;align-items:stretch;border:2px solid #e5e7eb;border-radius:10px;overflow:hidden;transition:all .2s ease;background:#fff}
     .subdomain-input:focus-within{border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
-    .subdomain-input input{flex:1;border:none;padding:12px 14px;font-size:.9375rem;min-width:0}
+    .subdomain-input input{flex:2;border:none;padding:14px 16px;font-size:1rem;min-width:120px;background:transparent}
     .subdomain-input input:focus{outline:none}
-    .subdomain-input select.domain-suffix{border:none;background:#f9fafb;color:#374151;font-size:.875rem;padding:12px 8px;cursor:pointer;border-left:1px solid #e5e7eb}
-    .subdomain-input select.domain-suffix:focus{outline:none}
+    .subdomain-input input::placeholder{color:#9ca3af}
+    .subdomain-input select.domain-suffix{flex:0 0 auto;width:auto;min-width:140px;border:none;background:#f3f4f6;color:#374151;font-size:.9375rem;font-weight:500;padding:14px 12px;cursor:pointer;border-left:2px solid #e5e7eb}
+    .subdomain-input select.domain-suffix:focus{outline:none;background:#e5e7eb}
     .modal-actions{display:flex;gap:10px;margin-top:24px}.modal-actions .btn{flex:1}
     .plugin-option{display:flex;align-items:center;gap:10px;padding:10px 12px;border:2px solid #e5e7eb;border-radius:10px;cursor:pointer;transition:all .2s ease;margin-bottom:6px}
     .plugin-option:hover{border-color:var(--primary);background:#f9fafb}.plugin-option.selected{border-color:var(--primary);background:#eff6ff}
@@ -67,7 +81,7 @@
     @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}.skeleton-card{height:80px;margin-bottom:12px}
     .toast{position:fixed;bottom:24px;right:24px;background:#111;color:#fff;padding:14px 20px;border-radius:10px;font-size:.9375rem;box-shadow:0 10px 30px rgba(0,0,0,.2);transform:translateY(100px);opacity:0;transition:all .3s ease;z-index:10000}
     .toast.show{transform:translateY(0);opacity:1}.toast.success{background:#059669}.toast.error{background:#dc2626}
-    @media(max-width:768px){.license-card{grid-template-columns:1fr;text-align:center}.license-icon{margin:0 auto}.license-meta{text-align:center;margin-top:8px}.welcome-card{text-align:center;justify-content:center}.welcome-info{flex-direction:column}.setup-banner{flex-direction:column;text-align:center}.setup-banner .btn{margin:16px 0 0}}
+    @media(max-width:768px){.license-card{grid-template-columns:1fr;text-align:center}.license-icon{margin:0 auto}.license-meta{text-align:center;margin-top:8px}.welcome-card{text-align:center;justify-content:center}.welcome-info{flex-direction:column}.setup-banner{flex-direction:column;text-align:center}.setup-banner .btn{margin:16px 0 0}.subdomain-input{flex-direction:column}.subdomain-input input{min-width:100%}.subdomain-input select.domain-suffix{min-width:100%;border-left:none;border-top:2px solid #e5e7eb}}
   </style>
 </head>
 <body>
@@ -106,7 +120,7 @@
   <div class="container">
     <div class="setup-banner" id="setup-banner" style="display:none">
       <div class="icon">⚙️</div>
-      <div><h3>セットアップを完了してください</h3><p>プラグインを使い始めるには、kintone/cybozuサブドメインを設定してください。</p></div>
+      <div><h3>セットアップを完了してください</h3><p>プラグインを使い始めるには、サブドメインを設定してください。</p></div>
       <button class="btn btn-primary" onclick="showSetupModal()">設定する</button>
     </div>
 
@@ -139,7 +153,7 @@
       <div class="quick-actions">
         <button class="action-btn" onclick="showTrialModal()"><span class="icon">✨</span> 新規トライアル</button>
         <a href="/ja/docs/" class="action-btn"><span class="icon">📖</span> ドキュメント</a>
-        <a href="mailto:support@kinplug.com" class="action-btn"><span class="icon">💬</span> サポート</a>
+        <a href="javascript:void(Tawk_API.toggle())" class="action-btn"><span class="icon">💬</span> ライブチャット</a>
         <button class="action-btn" onclick="KinPlug.openProfile()"><span class="icon">👤</span> プロフィール</button>
         <a href="/ja/plugins/" class="action-btn"><span class="icon">🧩</span> プラグイン</a>
         <a href="/ja/pricing.html" class="action-btn"><span class="icon">💳</span> アップグレード</a>
@@ -161,7 +175,7 @@
             <option value="kintone.com">.kintone.com</option>
           </select>
         </div>
-        <small style="color:#6b7280;margin-top:6px;display:block">例：「mycompany.cybozu.com」の場合は「mycompany」と入力</small>
+        <small style="color:#6b7280;margin-top:8px;display:block">例：「mycompany.cybozu.com」の場合は「mycompany」と入力</small>
       </div>
       <div class="modal-actions"><button class="btn btn-primary" onclick="saveSetup()" style="flex:2">続ける →</button></div>
     </div>
@@ -207,7 +221,7 @@
       <div class="form-group">
         <label>新しい環境</label>
         <div class="subdomain-input">
-          <input type="text" id="new-subdomain" placeholder="newcompany">
+          <input type="text" id="new-subdomain" placeholder="yourcompany">
           <select class="domain-suffix" id="new-domain">
             <option value="cybozu.com">.cybozu.com</option>
             <option value="kintone.com">.kintone.com</option>
@@ -231,9 +245,10 @@
     let selectedPlugin = 'pdf-designer';
     let userEmail = null;
     let userSubdomain = null;
-    let userDomain = 'cybozu.com'; // Default to cybozu.com for Japanese users
+    let userDomain = 'cybozu.com';
+    let licensesLoaded = false;
 
-    document.addEventListener('DOMContentLoaded', initDashboard);
+    initDashboard();
 
     async function initDashboard() {
       userSubdomain = localStorage.getItem('kinplug_subdomain');
@@ -241,7 +256,7 @@
       updateSubdomainUI();
       if (window.Clerk) {
         try { await window.Clerk.load(); setupClerkListener(); } catch (e) { console.error('Clerk error:', e); }
-      }
+      } else { setTimeout(initDashboard, 100); }
     }
 
     function setupClerkListener() {
@@ -251,8 +266,8 @@
           userEmail = user.primaryEmailAddress?.emailAddress;
           updateHeroName(user);
           document.getElementById('settings-email').textContent = userEmail || '-';
-          if (!userSubdomain) showSetupModal();
-          loadLicenses();
+          if (!licensesLoaded) loadLicenses();
+          if (!userSubdomain) setTimeout(showSetupModal, 500);
         }
       };
       checkUser();
@@ -261,16 +276,12 @@
 
     function updateSubdomainUI() {
       const badge = document.getElementById('subdomain-badge');
-      const banner = document.getElementById('setup-banner');
       const settingsVal = document.getElementById('settings-subdomain');
-      const currentSubdomainSpan = document.getElementById('current-subdomain');
-      const currentDomainSpan = document.getElementById('current-domain');
-
       if (userSubdomain) {
         badge.style.display = 'inline-flex';
-        banner.style.display = 'none';
-        currentSubdomainSpan.textContent = userSubdomain;
-        currentDomainSpan.textContent = userDomain;
+        document.getElementById('setup-banner').style.display = 'none';
+        document.getElementById('current-subdomain').textContent = userSubdomain;
+        document.getElementById('current-domain').textContent = userDomain;
         settingsVal.textContent = userSubdomain + '.' + userDomain;
         document.getElementById('trial-subdomain').value = userSubdomain;
         document.getElementById('trial-domain').value = userDomain;
@@ -282,25 +293,13 @@
 
     function updateHeroName(user) {
       const name = user?.firstName || user?.primaryEmailAddress?.emailAddress?.split('@')[0] || '';
-      const nameEl = document.getElementById('hero-name');
-      const avatarEl = document.getElementById('hero-avatar');
-      if (nameEl && name) nameEl.textContent = '、' + name + 'さん';
-      if (avatarEl) avatarEl.textContent = name.charAt(0).toUpperCase() || '?';
+      if (name) { document.getElementById('hero-name').textContent = '、' + name + 'さん'; document.getElementById('hero-avatar').textContent = name.charAt(0).toUpperCase(); }
     }
 
     function showSetupModal() { document.getElementById('setup-modal').classList.add('active'); setTimeout(() => document.getElementById('setup-subdomain').focus(), 100); }
-    function showTrialModal() { 
-      if (!userSubdomain) { showSetupModal(); return; } 
-      document.getElementById('trial-subdomain').value = userSubdomain;
-      document.getElementById('trial-domain').value = userDomain;
-      document.getElementById('trial-modal').classList.add('active'); 
-    }
+    function showTrialModal() { if (!userSubdomain) { showSetupModal(); return; } document.getElementById('trial-subdomain').value = userSubdomain; document.getElementById('trial-domain').value = userDomain; document.getElementById('trial-modal').classList.add('active'); }
     function hideTrialModal() { document.getElementById('trial-modal').classList.remove('active'); }
-    function showSettingsModal() { 
-      document.getElementById('new-subdomain').value = userSubdomain || ''; 
-      document.getElementById('new-domain').value = userDomain;
-      document.getElementById('settings-modal').classList.add('active'); 
-    }
+    function showSettingsModal() { document.getElementById('new-subdomain').value = userSubdomain || ''; document.getElementById('new-domain').value = userDomain; document.getElementById('settings-modal').classList.add('active'); setTimeout(() => document.getElementById('new-subdomain').focus(), 100); }
     function hideSettingsModal() { document.getElementById('settings-modal').classList.remove('active'); }
     function selectPlugin(el, plugin) { document.querySelectorAll('.plugin-option').forEach(p => p.classList.remove('selected')); el.classList.add('selected'); selectedPlugin = plugin; }
 
@@ -309,13 +308,12 @@
       const domain = document.getElementById('setup-domain').value;
       if (!subdomain) { showToast('サブドメインを入力してください', 'error'); return; }
       if (!/^[a-z0-9-]+$/.test(subdomain)) { showToast('サブドメインの形式が正しくありません', 'error'); return; }
-      userSubdomain = subdomain;
-      userDomain = domain;
+      userSubdomain = subdomain; userDomain = domain;
       localStorage.setItem('kinplug_subdomain', subdomain);
       localStorage.setItem('kinplug_domain', domain);
       document.getElementById('setup-modal').classList.remove('active');
       updateSubdomainUI();
-      showToast('セットアップ完了！トライアルを開始できます。', 'success');
+      showToast('セットアップ完了！', 'success');
     }
 
     function saveNewSubdomain() {
@@ -323,12 +321,10 @@
       const newDomain = document.getElementById('new-domain').value;
       if (!newSubdomain) { showToast('サブドメインを入力してください', 'error'); return; }
       if (!/^[a-z0-9-]+$/.test(newSubdomain)) { showToast('サブドメインの形式が正しくありません', 'error'); return; }
-      userSubdomain = newSubdomain;
-      userDomain = newDomain;
+      userSubdomain = newSubdomain; userDomain = newDomain;
       localStorage.setItem('kinplug_subdomain', newSubdomain);
       localStorage.setItem('kinplug_domain', newDomain);
-      hideSettingsModal();
-      updateSubdomainUI();
+      hideSettingsModal(); updateSubdomainUI();
       showToast('環境を更新しました！', 'success');
     }
 
@@ -364,17 +360,26 @@
     async function loadLicenses() {
       const container = document.getElementById('licenses-container');
       if (!userEmail) { container.innerHTML = '<div class="empty-state"><div class="icon">🔒</div><h3>ログインしてください</h3></div>'; return; }
+      container.innerHTML = '<div class="skeleton skeleton-card"></div><div class="skeleton skeleton-card"></div>';
       try {
-        const response = await fetch(`${API_URL}/licenses`, { headers: { 'X-User-Email': userEmail } });
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
+        const response = await fetch(`${API_URL}/licenses`, { headers: { 'X-User-Email': userEmail }, signal: controller.signal });
+        clearTimeout(timeoutId);
         const data = await response.json();
         const licenses = data.licenses || [];
+        licensesLoaded = true;
         if (licenses.length === 0) {
           container.innerHTML = '<div class="empty-state"><div class="icon">📦</div><h3>ライセンスがありません</h3><p>無料トライアルを開始しましょう！</p><button class="btn btn-primary" onclick="showTrialModal()">✨ 無料トライアル</button></div>';
         } else {
           container.innerHTML = licenses.map(renderLicenseCard).join('');
         }
         updateStats(licenses);
-      } catch (err) { container.innerHTML = '<div class="empty-state"><div class="icon">❌</div><h3>読み込み失敗</h3><button class="btn btn-secondary" onclick="loadLicenses()">🔄 再試行</button></div>'; }
+      } catch (err) {
+        container.innerHTML = err.name === 'AbortError' 
+          ? '<div class="empty-state"><div class="icon">⏱️</div><h3>タイムアウト</h3><button class="btn btn-secondary" onclick="loadLicenses()">🔄 再試行</button></div>'
+          : '<div class="empty-state"><div class="icon">❌</div><h3>読み込み失敗</h3><button class="btn btn-secondary" onclick="loadLicenses()">🔄 再試行</button></div>';
+      }
     }
 
     function renderLicenseCard(license) {
