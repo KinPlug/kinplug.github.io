@@ -3,34 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog | KinPlug - Kintone Tips & Tutorials</title>
-  <meta name="description" content="Kintone tips, tutorials, and best practices. Learn how to get the most out of your Kintone apps with KinPlug.">
+  <title>Journal — KinPlug</title>
+  <meta name="description" content="Essays on Kintone, customization, enterprise software, and the business of shipping real products.">
   <link rel="canonical" href="https://kinplug.com/blog/">
-  <link rel="alternate" hreflang="en" href="https://kinplug.com/blog/">
-  <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..600,0..100,0..1&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
-  <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
+  <script async crossorigin="anonymous"
+    data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+    onload="window.Clerk && window.Clerk.load()"></script>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="/" class="logo">Kin<span>Plug</span></a>
-      <div class="nav-links">
-        <a href="/plugins/">Plugins</a>
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/" class="brand"><span>Kin<em>·</em>Plug</span><span class="brand-sub">Archive · Vol. I</span></a>
+      <div class="nav-menu">
+        <a href="/plugins/">Catalog</a>
         <a href="/pricing.html">Pricing</a>
-        <a href="/docs/">Docs</a>
-        <a href="/blog/" class="active">Blog</a>
+        <a href="/docs/">Documentation</a>
+        <a href="/blog/" style="color:var(--ink);">Journal</a>
       </div>
       <div class="nav-right">
-        <div class="lang-switcher"><a href="/blog/" class="active">EN</a> | <a href="/ja/blog/">日本語</a></div>
+        <div class="lang">
+          <a href="/blog/" class="active">EN</a>
+          <a href="/ja/blog/" class="">JA</a>
+        </div>
         <div class="nav-auth">
           <div id="auth-nav">
-            <button class="btn btn-secondary btn-sm" onclick="KinPlug.signIn()">Sign In</button>
-            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">Get Started</button>
+            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">Sign in</button>
+            <button class="btn btn-ink btn-sm" onclick="KinPlug.signUp()">Start free</button>
           </div>
-          <div id="user-nav" class="hidden">
-            <a href="/dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
+          <div id="user-nav" class="hidden flex gap-2 items-center">
+            <a href="/dashboard.html" class="btn btn-ghost btn-sm">Dashboard</a>
             <div class="user-info" onclick="KinPlug.openProfile()">
               <div id="user-avatar" class="user-avatar">?</div>
               <span id="user-name">User</span>
@@ -39,74 +47,98 @@
         </div>
       </div>
     </div>
-  </nav>
-
-  <section class="blog-header">
-    <div class="container">
-      <h1>Blog</h1>
-      <p class="section-subtitle">Kintone tips, tutorials, and best practices</p>
+  </div>
+</nav>
+<section class="prod-masthead">
+  <div class="wrap">
+    <div class="prod-meta">
+      <span class="label label-seal">Section VI</span>
+      <span class="label">Journal · MMXXVI</span>
     </div>
-  </section>
+    <div class="grid">
+      <div class="col-wide">
+        <h1 class="prod-title">The <em class="italic" style="color:var(--seal);">Journal.</em></h1>
+        <p class="hero-lede">Essays on Kintone, customization, enterprise software, and the business of shipping real products.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section class="blog-content">
-    <div class="container">
-      <div class="coming-soon-card">
-        <div class="coming-soon-icon">📝</div>
-        <h2>Coming Soon!</h2>
-        <p>We're working on helpful articles about Kintone customization, plugin tutorials, and best practices.</p>
-        <p>Want to be notified when we publish new content?</p>
-        <div style="margin-top: 24px;">
-          <a href="mailto:support@kinplug.com?subject=Blog Notification Signup" class="btn btn-primary">Notify Me →</a>
+<section class="sec" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="catalog">
+      <div class="cat-item">
+        <span class="cat-num">Jan MMXXVI</span>
+        <div><div class="cat-name">We built Flow because clients were paying Zapier to send Gmail.</div></div>
+        <div class="cat-desc">Why OAuth 2.0 ate the Kintone automation world, and what it means for your stack.</div>
+        <div class="cat-price">— Essay</div>
+        <span class="cat-status cat-status-soon">Coming</span>
+      </div>
+      <div class="cat-item">
+        <span class="cat-num">Feb MMXXVI</span>
+        <div><div class="cat-name">50,000 records in a lookup modal, and why that's the wrong goal.</div></div>
+        <div class="cat-desc">The engineering behind Smart Lookup — progressive loading, virtual scroll, and the form layout API trick that nobody tells you about.</div>
+        <div class="cat-price">— Engineering note</div>
+        <span class="cat-status cat-status-soon">Coming</span>
+      </div>
+      <div class="cat-item">
+        <span class="cat-num">Mar MMXXVI</span>
+        <div><div class="cat-name">Pricing in JPY, billing in USD, supporting clients in three languages.</div></div>
+        <div class="cat-desc">Running a plugin business across Manila, Tokyo, and everyone else.</div>
+        <div class="cat-price">— Field note</div>
+        <span class="cat-status cat-status-soon">Coming</span>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top: clamp(60px, 8vw, 100px);">
+      <div class="col-center-8" style="text-align:center;">
+        <span class="label label-seal">Notice</span>
+        <h2 class="display-3 serif" style="margin-top: 14px;">The Journal launches Q2 MMXXVI.</h2>
+        <p class="prose" style="margin: 24px auto 0; max-width: 52ch;">
+          <span style="color:var(--ink-soft);">Subscribe to get one essay a month in your inbox. No marketing, no drip sequence, no "are you still interested?" emails.</span>
+        </p>
+        <div style="display:flex; justify-content:center; gap:14px; margin-top: 36px; flex-wrap:wrap;">
+          <button class="btn btn-ink btn-lg" onclick="KinPlug.notifyMe('journal')">Subscribe <span class="arrow">→</span></button>
         </div>
       </div>
-
-      <div class="blog-preview">
-        <h3>Upcoming Topics</h3>
-        <div class="topics-grid">
-          <div class="topic-card">
-            <span class="topic-tag">Tutorial</span>
-            <h4>How to Generate PDFs from Kintone Records</h4>
-            <p>Step-by-step guide to creating professional PDF documents from your Kintone data.</p>
-          </div>
-          <div class="topic-card">
-            <span class="topic-tag">Tips</span>
-            <h4>5 Ways to Speed Up Your Kintone Workflows</h4>
-            <p>Productivity hacks and plugin recommendations for power users.</p>
-          </div>
-          <div class="topic-card">
-            <span class="topic-tag">Comparison</span>
-            <h4>Best Kintone PDF Plugins in 2026</h4>
-            <p>A comprehensive comparison of PDF generation options for Kintone.</p>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-bottom">
-        <div>© 2026 KinPlug by Edamame Inc.</div>
-        <div><a href="/blog/">English</a> | <a href="/ja/blog/">日本語</a></div>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="brand"><span style="color:var(--paper-light);">Kin<em>·</em>Plug</span><span class="brand-sub">Archive · Vol. I</span></a>
+        <p>Premium plugins for Kintone. Built by Edamame Inc.</p>
       </div>
+      <div class="footer-col"><h4>Catalog</h4><ul>
+        <li><a href="/plugins/flow/">Flow</a></li>
+        <li><a href="/plugins/pdf-designer/">PDF Pro</a></li>
+        <li><a href="/plugins/enhanced-lookup/">Smart Lookup</a></li>
+        <li><a href="/plugins/">All titles</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul>
+        <li><a href="/docs/">Documentation</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/blog/">Journal</a></li>
+        <li><a href="mailto:support@kinplug.com">Support</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Company</h4><ul>
+        <li><a href="https://edamame.ph" target="_blank" rel="noopener">Edamame Inc.</a></li>
+        <li><a href="/legal/privacy.html">Privacy</a></li>
+        <li><a href="/legal/terms.html">Terms</a></li>
+        <li><a href="mailto:billing@kinplug.com">Billing</a></li>
+      </ul></div>
     </div>
-  </footer>
+    <div class="footer-bottom">
+      <span>© MMXXVI · Edamame Inc.</span>
+      <span>Built with Kintone · Composed in Manila</span>
+      <span>v3.0 · ISSN 0000-0000</span>
+    </div>
+  </div>
+</footer>
 
-  <script src="/assets/js/app.js"></script>
-  <style>
-    .blog-header { padding: 60px 0 40px; background: var(--bg-light); text-align: center; }
-    .blog-content { padding: 60px 0; }
-    .coming-soon-card { text-align: center; padding: 60px; background: var(--bg-light); border-radius: var(--radius-lg); margin-bottom: 60px; }
-    .coming-soon-icon { font-size: 4rem; margin-bottom: 24px; }
-    .coming-soon-card h2 { margin-bottom: 16px; }
-    .coming-soon-card p { color: var(--text-secondary); margin-bottom: 8px; }
-    .blog-preview h3 { margin-bottom: 24px; }
-    .topics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .topic-card { background: white; border: 1px solid var(--border); padding: 24px; border-radius: var(--radius); }
-    .topic-tag { display: inline-block; background: var(--primary-light); color: var(--primary); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; margin-bottom: 12px; }
-    .topic-card h4 { margin-bottom: 8px; }
-    .topic-card p { color: var(--text-secondary); font-size: 0.9rem; }
-    .nav-links a.active { color: var(--primary); font-weight: 600; }
-  </style>
+<script src="/assets/js/app.js"></script>
 </body>
 </html>
