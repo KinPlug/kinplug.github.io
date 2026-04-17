@@ -7,6 +7,18 @@
   <meta name="description" content="Essays on Kintone, customization, enterprise software, and the business of shipping real products.">
   <link rel="canonical" href="https://kinplug.com/blog/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+  <meta property="og:title" content="Journal — KinPlug">
+  <meta property="og:description" content="Essays on Kintone, customization, enterprise software, and the business of shipping real products.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kinplug.com/blog/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://kinplug.com/assets/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..600,0..100,0..1&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -67,13 +79,14 @@
 <section class="sec" style="padding-top: 0;">
   <div class="wrap">
     <div class="catalog">
-      <div class="cat-item">
+      <a href="/blog/why-we-built-flow.html" class="cat-item">
         <span class="cat-num">Jan MMXXVI</span>
-        <div><div class="cat-name">We built Flow because clients were paying Zapier to send Gmail.</div></div>
-        <div class="cat-desc">Why OAuth 2.0 ate the Kintone automation world, and what it means for your stack.</div>
-        <div class="cat-price">— Essay</div>
-        <span class="cat-status cat-status-soon">Coming</span>
-      </div>
+        <div><div class="cat-name">Why we built Flow.</div></div>
+        <div class="cat-desc">The origin story. Google killed SMTP, Kintone teams were paying Zapier $240/year to send a single email. Eighteen months later: a production system handling thousands of emails a day.</div>
+        <div class="cat-price">— Essay · 8 min</div>
+        <span class="cat-status cat-status-live">Published</span>
+        <span class="cat-arrow">→</span>
+      </a>
       <div class="cat-item">
         <span class="cat-num">Feb MMXXVI</span>
         <div><div class="cat-name">50,000 records in a lookup modal, and why that's the wrong goal.</div></div>
@@ -92,10 +105,10 @@
 
     <div class="grid" style="margin-top: clamp(60px, 8vw, 100px);">
       <div class="col-center-8" style="text-align:center;">
-        <span class="label label-seal">Notice</span>
-        <h2 class="display-3 serif" style="margin-top: 14px;">The Journal launches Q2 MMXXVI.</h2>
+        <span class="label label-seal">Subscribe</span>
+        <h2 class="display-3 serif" style="margin-top: 14px;">One essay a month, no marketing.</h2>
         <p class="prose" style="margin: 24px auto 0; max-width: 52ch;">
-          <span style="color:var(--ink-soft);">Subscribe to get one essay a month in your inbox. No marketing, no drip sequence, no "are you still interested?" emails.</span>
+          <span style="color:var(--ink-soft);">Written by the people who build KinPlug, on Kintone, enterprise tooling, and shipping real products. No drip sequence, no "are you still interested?" emails.</span>
         </p>
         <div style="display:flex; justify-content:center; gap:14px; margin-top: 36px; flex-wrap:wrap;">
           <button class="btn btn-ink btn-lg" onclick="KinPlug.notifyMe('journal')">Subscribe <span class="arrow">→</span></button>
