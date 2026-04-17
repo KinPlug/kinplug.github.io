@@ -3,174 +3,113 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PDF Designer - kintoneの帳票出力、もう悩まない | KinPlug</title>
-  <meta name="description" content="kintoneから請求書・見積書・報告書をワンクリックでPDF出力。毎日kintoneを使う開発者が「自分たちのために」作った帳票プラグイン。14日間無料。">
+  <title>PDF Pro — Kintone用プロPDF | KinPlug</title>
+  <meta name="description" content="Kintone用WYSIWYG PDFテンプレート設計。計算式、インラインチャート、複数ページ、日本語フォント標準搭載。">
   <link rel="canonical" href="https://kinplug.com/ja/plugins/pdf-designer/">
-  <link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/pdf-designer/">
-  <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/pdf-designer/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..600,0..100,0..1&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
-  <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
+  <script async crossorigin="anonymous"
+    data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+    onload="window.Clerk && window.Clerk.load()"></script>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="/ja/" class="logo">Kin<span>Plug</span></a>
-      <div class="nav-links">
-        <a href="/ja/plugins/" class="active">プラグイン</a>
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/ja/" class="brand"><span>Kin<em>·</em>Plug</span><span class="brand-sub">アーカイブ・第一巻</span></a>
+      <div class="nav-menu">
+        <a href="/ja/plugins/" style="color:var(--ink);">カタログ</a>
         <a href="/ja/pricing.html">料金</a>
         <a href="/ja/docs/">ドキュメント</a>
+        <a href="/ja/blog/">ジャーナル</a>
       </div>
       <div class="nav-right">
-        <div class="lang-switcher">
-          <a href="/plugins/pdf-designer/">EN</a> | <a href="/ja/plugins/pdf-designer/" class="active">日本語</a>
+        <div class="lang">
+          <a href="/plugins/pdf-designer/" class="">EN</a>
+          <a href="/ja/plugins/pdf-designer/" class="active">JA</a>
         </div>
         <div class="nav-auth">
           <div id="auth-nav">
-            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">ログイン</button>
-            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">無料で始める</button>
+            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">サインイン</button>
+            <button class="btn btn-ink btn-sm" onclick="KinPlug.signUp()">無料で始める</button>
           </div>
-          <div id="user-nav" class="hidden">
-            <a href="/ja/dashboard.html" class="btn btn-secondary btn-sm">ダッシュボード</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <section class="hero" style="padding: 60px 0 80px;">
-    <div class="container">
-      <div style="text-align: center; max-width: 800px; margin: 0 auto 48px;">
-        <nav style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 24px;">
-          <a href="/ja/">ホーム</a> / <a href="/ja/plugins/">プラグイン</a> / PDF Designer
-        </nav>
-        <span class="badge badge-primary" style="margin-bottom: 16px;">📄 一番人気のプラグイン</span>
-        <h1>「また今日もExcelにコピペか…」<br><span class="text-gradient">その作業、もう終わりにしませんか。</span></h1>
-        <p class="hero-description" style="max-width: 640px; margin: 24px auto;">
-          私たちも毎日、同じことを繰り返していました。<br>
-          kintone → Excel → 体裁整え → PDF保存 → メール添付…。<br>
-          だから作りました。ワンクリックで終わるやつを。
-        </p>
-        <div class="hero-actions" style="justify-content: center;">
-          <button class="btn btn-primary btn-lg" onclick="KinPlug.startTrial('pdf-designer')">14日間無料で試す</button>
-          <a href="#demo" class="btn btn-secondary btn-lg">どんな感じか見る</a>
-        </div>
-        <p class="hero-note" style="margin-top: 16px;">クレジットカード不要 • 自動課金なし</p>
-      </div>
-    </div>
-  </section>
-
-  <section style="padding: 80px 0; background: var(--bg-subtle);">
-    <div class="container">
-      <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <p style="font-size: 1.375rem; color: var(--text); line-height: 1.9;">
-          「kintoneの印刷機能、なんでこんなイマイチなの…」<br>
-          「お客様に出せるレベルの帳票が作れない」<br>
-          「毎回Excelに書き出すの、いい加減めんどくさい」
-        </p>
-        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: 24px;">
-          わかります。私たちも何年もそう思ってきました。<br>
-          だからもう、<strong>自分たちで作っちゃいました。</strong>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="problems" id="demo">
-    <div class="container">
-      <div class="section-header"><h2>何が変わるの？</h2></div>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 900px; margin: 0 auto;">
-        <div style="background: #fef2f2; border: 2px solid #fecaca; border-radius: 16px; padding: 32px;">
-          <h3 style="color: #dc2626; margin-bottom: 20px;">😫 今までのやり方</h3>
-          <ul style="list-style: none; color: var(--text-secondary);">
-            <li style="padding: 8px 0;">❌ kintoneからExcelにコピペ</li>
-            <li style="padding: 8px 0;">❌ 書式を手作業で整える</li>
-            <li style="padding: 8px 0;">❌ PDFに変換して保存</li>
-            <li style="padding: 8px 0;">❌ 1件あたり10〜15分</li>
-          </ul>
-          <div style="margin-top: 20px; padding: 16px; background: white; border-radius: 8px; text-align: center;">
-            <div style="font-size: 2rem; font-weight: 800; color: #dc2626;">月20時間</div>
-            <div style="font-size: 0.875rem; color: var(--text-muted);">の工数がかかってた</div>
-          </div>
-        </div>
-        <div style="background: #f0fdf4; border: 2px solid #86efac; border-radius: 16px; padding: 32px;">
-          <h3 style="color: #16a34a; margin-bottom: 20px;">✨ PDF Designerなら</h3>
-          <ul style="list-style: none; color: var(--text-secondary);">
-            <li style="padding: 8px 0;">✅ kintoneから直接PDF出力</li>
-            <li style="padding: 8px 0;">✅ テンプレートは一度作れば使い回し</li>
-            <li style="padding: 8px 0;">✅ ボタン押すだけ</li>
-            <li style="padding: 8px 0;">✅ 1件あたり3秒</li>
-          </ul>
-          <div style="margin-top: 20px; padding: 16px; background: white; border-radius: 8px; text-align: center;">
-            <div style="font-size: 2rem; font-weight: 800; color: #16a34a;">月30分</div>
-            <div style="font-size: 0.875rem; color: var(--text-muted);">まで削減</div>
+          <div id="user-nav" class="hidden flex gap-2 items-center">
+            <a href="/ja/dashboard.html" class="btn btn-ghost btn-sm">ダッシュボード</a>
+            <div class="user-info" onclick="KinPlug.openProfile()">
+              <div id="user-avatar" class="user-avatar">?</div>
+              <span id="user-name">User</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-
-  <section class="features">
-    <div class="container">
-      <div class="section-header">
-        <h2>現場で本当に必要な機能だけ</h2>
-        <p>余計なものは入れてません。毎日使うものだから、シンプルに。</p>
-      </div>
-      <div class="features-grid">
-        <div class="feature-card"><div class="feature-icon">🎨</div><h3>見たまま編集</h3><p>プレビュー見ながらドラッグ&ドロップ。「ここちょっとズレてる」もすぐ直せる。</p></div>
-        <div class="feature-card"><div class="feature-icon">📊</div><h3>明細行もバッチリ</h3><p>サブテーブルの行数が増えても大丈夫。自動でページ分割、ヘッダーも各ページに。</p></div>
-        <div class="feature-card"><div class="feature-icon">🔢</div><h3>連番、自動で</h3><p>請求書番号の採番、年度リセット。「この番号使ったっけ？」がなくなる。</p></div>
-        <div class="feature-card"><div class="feature-icon">📐</div><h3>ピクセル単位で調整</h3><p>既存のExcel帳票をそのまま再現できる。会社のフォーマットにぴったり。</p></div>
-        <div class="feature-card"><div class="feature-icon">🖼️</div><h3>ロゴ・印鑑もOK</h3><p>会社ロゴ、社印、電子印鑑を配置。透過PNGにも対応。</p></div>
-        <div class="feature-card"><div class="feature-icon">📑</div><h3>テンプレート使い分け</h3><p>請求書・見積書・納品書、同じアプリで管理。ボタンで切り替え。</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="pricing">
-    <div class="container">
-      <div class="section-header"><h2>わかりやすい料金</h2><p>機能制限なし。全部使えます。</p></div>
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <h3>まずは無料で</h3><div class="pricing-price">¥0</div><div class="pricing-period">14日間</div>
-          <ul class="pricing-features"><li>全機能使える</li><li>クレジットカード不要</li><li>メールサポート付き</li></ul>
-          <button class="btn btn-secondary btn-lg" onclick="KinPlug.startTrial('pdf-designer')">無料で試す</button>
+  </div>
+</nav><section class="prod-masthead"><div class="wrap">
+        <div class="prod-meta"><span class="label label-seal">№ 03 · ドキュメント</span><span class="label">提供中 · v3.2+</span><span class="label">$29 / 月</span><span class="badge badge-ok">出荷中</span></div>
+        <div class="grid"><div class="col-wide">
+          <h1 class="prod-title"><em class="italic" style="color:var(--seal);">PDF&nbsp;Pro。</em></h1>
+          <p class="prod-sub">Kintoneのための本格PDF設計ツール。WYSIWYGテンプレート、計算式エンジン、複数ページレイアウト、日本語フォント標準搭載。</p>
+          <div class="hero-actions" style="margin-top:40px;">
+            <button class="btn btn-ink btn-lg" onclick="KinPlug.startTrial('pdf-designer')">14日間トライアル <span class="arrow">→</span></button>
+          </div>
+        </div></div>
+        </div></section>
+        <section class="sec sec-alt"><div class="wrap"><div class="grid">
+        <div class="col-left"><span class="label label-seal">課題</span><h2 class="display-2 serif" style="margin-top: 18px;">KintoneのPDF出力は<em class="italic">2005年のまま。</em></h2></div>
+        <div class="col-right prose">
+          <p>KintoneからPDFを出力すると、レコード画面そのまま — 全フィールド、全ラベル、フォームビルダーでの配置順。顧客に送れるドキュメントではない。請求書でも見積書でもない。</p>
+          <p>そこでチームは回避策を作る。CSV出力→Excel→整形→PDF保存。あるいは開発者を雇ってJavaScriptを書かせる。あるいは、醜さを受け入れる。</p>
+          <p>PDF Proは第三の選択肢：レコードから本物のドキュメントを生成するビジュアルテンプレート設計ツール。ヘッダ・フッタ、サブテーブル繰返し、計算式フィールド、インラインチャート、任意言語対応。</p>
+        </div></div></div></section>
+        <section class="sec"><div class="wrap">
+        <header class="sec-head"><span class="sec-num">I.</span><h2 class="sec-title">PDF Proができること</h2><span class="sec-note">6つの機能</span></header>
+        <div class="feat-grid">
+          <div class="feat-cell"><span class="feat-cell-num">01 · 設計</span><h3 class="feat-cell-title">WYSIWYGレイアウト</h3><p>ドラッグ&amp;ドロップで本物のドキュメントを作成。テキスト、画像、罫線、表。CSS近似値ではなくミリメートル単位で配置。</p></div>
+          <div class="feat-cell"><span class="feat-cell-num">02 · 計算式</span><h3 class="feat-cell-title">計算式エンジン</h3><p><code class="mono" style="background:var(--paper-deep);padding:2px 6px;border-radius:2px;font-size:0.85em;">{{subtotal * 1.10}}</code>、条件分岐、日付計算、文字列操作。Excelでできることは全て。</p></div>
+          <div class="feat-cell"><span class="feat-cell-num">03 · サブテーブル</span><h3 class="feat-cell-title">行繰返し</h3><p>サブテーブルの行は繰返し表示され、合計、改ページ、交互色に対応。</p></div>
+          <div class="feat-cell"><span class="feat-cell-num">04 · チャート</span><h3 class="feat-cell-title">インライン可視化</h3><p>棒、折線、円 — レコードデータから描画時に生成。外部チャートサービス不要、ちらつきなし。</p></div>
+          <div class="feat-cell"><span class="feat-cell-num">05 · 複数ページ</span><h3 class="feat-cell-title">ヘッダ &amp; フッタ</h3><p>ページ番号、ランニングタイトル、セクション別ヘッダ。A2から封筒サイズ。縦・横対応。</p></div>
+          <div class="feat-cell"><span class="feat-cell-num">06 · フォント</span><h3 class="feat-cell-title">日本語標準搭載</h3><p>Noto Sans JP、Noto Serif JP、IPA明朝、IPAゴシック標準搭載。カスタムフォントもアップロード可。</p></div>
         </div>
-        <div class="pricing-card featured">
-          <span class="pricing-badge">年払いがお得</span><h3>年額プラン</h3><div class="pricing-price">¥29,800<span>/年</span></div><div class="pricing-period">月あたり¥2,483</div>
-          <ul class="pricing-features"><li>全機能使える</li><li>優先サポート</li><li>30日間返金保証</li></ul>
-          <a href="mailto:support@kinplug.com?subject=PDF Designer 年額プラン" class="btn btn-primary btn-lg">お問い合わせ</a>
-        </div>
-        <div class="pricing-card">
-          <h3>月額プラン</h3><div class="pricing-price">¥3,480<span>/月</span></div><div class="pricing-period">いつでも解約OK</div>
-          <ul class="pricing-features"><li>全機能使える</li><li>メールサポート</li><li>アップデート無料</li></ul>
-          <a href="mailto:support@kinplug.com?subject=PDF Designer 月額プラン" class="btn btn-secondary btn-lg">お問い合わせ</a>
-        </div>
+        </div></section>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/ja/" class="brand"><span style="color:var(--paper-light);">Kin<em>·</em>Plug</span><span class="brand-sub">アーカイブ・第一巻</span></a>
+        <p>Kintone用プレミアムプラグイン集。Edamame Inc. 制作。</p>
       </div>
+      <div class="footer-col"><h4>カタログ</h4><ul>
+        <li><a href="/ja/plugins/flow/">Flow</a></li>
+        <li><a href="/ja/plugins/pdf-designer/">PDF Pro</a></li>
+        <li><a href="/ja/plugins/enhanced-lookup/">Smart Lookup</a></li>
+        <li><a href="/ja/plugins/">全タイトル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>リソース</h4><ul>
+        <li><a href="/ja/docs/">ドキュメント</a></li>
+        <li><a href="/ja/pricing.html">料金</a></li>
+        <li><a href="/ja/blog/">ジャーナル</a></li>
+        <li><a href="mailto:support@kinplug.com">サポート</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>会社情報</h4><ul>
+        <li><a href="https://edamame.ph" target="_blank" rel="noopener">Edamame Inc.</a></li>
+        <li><a href="/ja/legal/privacy.html">プライバシー</a></li>
+        <li><a href="/ja/legal/terms.html">利用規約</a></li>
+        <li><a href="mailto:billing@kinplug.com">請求</a></li>
+      </ul></div>
     </div>
-  </section>
+    <div class="footer-bottom">
+      <span>© MMXXVI · Edamame Inc.</span>
+      <span>Kintone上で構築 · 於マニラ</span>
+      <span>v3.0 · ISSN 0000-0000</span>
+    </div>
+  </div>
+</footer>
 
-  <section class="cta">
-    <div class="container">
-      <h2>Excelコピペ生活、<br>そろそろ終わりにしませんか？</h2>
-      <p>14日間、全機能を無料で試せます。</p>
-      <div class="cta-actions">
-        <button class="btn btn-white btn-lg" onclick="KinPlug.startTrial('pdf-designer')">無料で試してみる</button>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand"><a href="/ja/" class="logo">Kin<span>Plug</span></a><p style="margin-top: 12px;">kintoneを毎日使うから、わかる。</p></div>
-        <div><h4>プラグイン</h4><ul><li><a href="/ja/plugins/pdf-designer/">PDF Designer</a></li><li><a href="/ja/plugins/enhanced-lookup/">Enhanced Lookup</a></li><li><a href="/ja/plugins/template-builder/">Template Builder</a></li></ul></div>
-        <div><h4>サポート</h4><ul><li><a href="/ja/docs/">使い方ガイド</a></li><li><a href="mailto:support@kinplug.com">お問い合わせ</a></li></ul></div>
-        <div><h4>会社情報</h4><ul><li><a href="/ja/legal/privacy.html">プライバシーポリシー</a></li><li><a href="/ja/legal/terms.html">利用規約</a></li></ul></div>
-      </div>
-      <div class="footer-bottom"><div>© 2026 KinPlug by Edamame Inc.</div></div>
-    </div>
-  </footer>
-  <script src="/assets/js/app.js"></script>
+<script src="/assets/js/app.js"></script>
 </body>
 </html>
