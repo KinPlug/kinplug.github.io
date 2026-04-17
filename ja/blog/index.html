@@ -3,34 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ブログ | KinPlug - kintone活用術・チュートリアル</title>
-  <meta name="description" content="kintoneの活用術、チュートリアル、ベストプラクティス。KinPlugでkintoneを最大限活用する方法をご紹介。">
+  <title>ジャーナル — KinPlug</title>
+  <meta name="description" content="Kintone、カスタマイズ、エンタープライズソフトウェアについてのエッセイ。">
   <link rel="canonical" href="https://kinplug.com/ja/blog/">
-  <link rel="alternate" hreflang="en" href="https://kinplug.com/blog/">
-  <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..600,0..100,0..1&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
-  <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
+  <script async crossorigin="anonymous"
+    data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+    onload="window.Clerk && window.Clerk.load()"></script>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="/ja/" class="logo">Kin<span>Plug</span></a>
-      <div class="nav-links">
-        <a href="/ja/plugins/">プラグイン</a>
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/ja/" class="brand"><span>Kin<em>·</em>Plug</span><span class="brand-sub">アーカイブ・第一巻</span></a>
+      <div class="nav-menu">
+        <a href="/ja/plugins/">カタログ</a>
         <a href="/ja/pricing.html">料金</a>
         <a href="/ja/docs/">ドキュメント</a>
-        <a href="/ja/blog/" class="active">ブログ</a>
+        <a href="/ja/blog/" style="color:var(--ink);">ジャーナル</a>
       </div>
       <div class="nav-right">
-        <div class="lang-switcher"><a href="/blog/">EN</a> | <a href="/ja/blog/" class="active">日本語</a></div>
+        <div class="lang">
+          <a href="/blog/" class="">EN</a>
+          <a href="/ja/blog/" class="active">JA</a>
+        </div>
         <div class="nav-auth">
           <div id="auth-nav">
-            <button class="btn btn-secondary btn-sm" onclick="KinPlug.signIn()">ログイン</button>
-            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">無料で始める</button>
+            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">サインイン</button>
+            <button class="btn btn-ink btn-sm" onclick="KinPlug.signUp()">無料で始める</button>
           </div>
-          <div id="user-nav" class="hidden">
-            <a href="/dashboard.html" class="btn btn-secondary btn-sm">ダッシュボード</a>
+          <div id="user-nav" class="hidden flex gap-2 items-center">
+            <a href="/ja/dashboard.html" class="btn btn-ghost btn-sm">ダッシュボード</a>
             <div class="user-info" onclick="KinPlug.openProfile()">
               <div id="user-avatar" class="user-avatar">?</div>
               <span id="user-name">User</span>
@@ -39,74 +47,62 @@
         </div>
       </div>
     </div>
-  </nav>
-
-  <section class="blog-header">
-    <div class="container">
-      <h1>ブログ</h1>
-      <p class="section-subtitle">kintone活用術、チュートリアル、ベストプラクティス</p>
-    </div>
-  </section>
-
-  <section class="blog-content">
-    <div class="container">
-      <div class="coming-soon-card">
-        <div class="coming-soon-icon">📝</div>
-        <h2>近日公開！</h2>
-        <p>kintoneカスタマイズ、プラグインチュートリアル、ベストプラクティスに関する記事を準備中です。</p>
-        <p>新しい記事が公開されたら通知を受け取りますか？</p>
-        <div style="margin-top: 24px;">
-          <a href="mailto:support@kinplug.com?subject=ブログ通知登録" class="btn btn-primary">通知を受け取る →</a>
+  </div>
+</nav><section class="prod-masthead"><div class="wrap">
+        <div class="prod-meta"><span class="label label-seal">第六章</span><span class="label">ジャーナル · MMXXVI</span></div>
+        <div class="grid"><div class="col-wide"><h1 class="prod-title"><em class="italic" style="color:var(--seal);">ジャーナル。</em></h1>
+        <p class="hero-lede">Kintone、カスタマイズ、エンタープライズソフトウェア、そして本物の製品を作る仕事についてのエッセイ。</p></div></div>
+        </div></section>
+        <section class="sec" style="padding-top:0;"><div class="wrap">
+        <div class="catalog">
+          <div class="cat-item"><span class="cat-num">2026年1月</span><div><div class="cat-name">顧客がZapierにGmail代行料を払っていたので、Flowを作った。</div></div><div class="cat-desc">OAuth 2.0がKintone自動化の世界を飲み込んだ理由と、あなたのスタックへの影響。</div><div class="cat-price">— エッセイ</div><span class="cat-status cat-status-soon">近日</span></div>
+          <div class="cat-item"><span class="cat-num">2026年2月</span><div><div class="cat-name">ルックアップモーダルで5万件、そしてそれが間違った目標である理由。</div></div><div class="cat-desc">Smart Lookupのエンジニアリング — 段階的読込、仮想スクロール、誰も教えてくれないフォームレイアウトAPIの使い方。</div><div class="cat-price">— 技術ノート</div><span class="cat-status cat-status-soon">近日</span></div>
         </div>
-      </div>
-
-      <div class="blog-preview">
-        <h3>今後のトピック</h3>
-        <div class="topics-grid">
-          <div class="topic-card">
-            <span class="topic-tag">チュートリアル</span>
-            <h4>kintoneレコードからPDFを生成する方法</h4>
-            <p>kintoneデータからプロフェッショナルなPDF帳票を作成するステップバイステップガイド。</p>
+        <div class="grid" style="margin-top: clamp(60px, 8vw, 100px);">
+          <div class="col-center-8" style="text-align:center;">
+          <span class="label label-seal">お知らせ</span>
+          <h2 class="display-3 serif" style="margin-top: 14px;">ジャーナルは2026年第2四半期開始。</h2>
+          <p class="prose" style="margin: 24px auto 0; max-width: 52ch;"><span style="color:var(--ink-soft);">月1本のエッセイをメールで受信できます。マーケティング、ドリップ配信、「まだご興味ありますか？」メールは一切ありません。</span></p>
+          <div style="display:flex; justify-content:center; gap:14px; margin-top: 36px; flex-wrap:wrap;">
+            <button class="btn btn-ink btn-lg" onclick="KinPlug.notifyMe('journal')">購読 <span class="arrow">→</span></button>
           </div>
-          <div class="topic-card">
-            <span class="topic-tag">Tips</span>
-            <h4>kintoneワークフローを高速化する5つの方法</h4>
-            <p>パワーユーザー向けの生産性向上テクニックとおすすめプラグイン。</p>
-          </div>
-          <div class="topic-card">
-            <span class="topic-tag">比較</span>
-            <h4>2026年版 kintone PDF出力プラグイン比較</h4>
-            <p>kintone向けPDF生成オプションの徹底比較。</p>
           </div>
         </div>
+        </div></section>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/ja/" class="brand"><span style="color:var(--paper-light);">Kin<em>·</em>Plug</span><span class="brand-sub">アーカイブ・第一巻</span></a>
+        <p>Kintone用プレミアムプラグイン集。Edamame Inc. 制作。</p>
       </div>
+      <div class="footer-col"><h4>カタログ</h4><ul>
+        <li><a href="/ja/plugins/flow/">Flow</a></li>
+        <li><a href="/ja/plugins/pdf-designer/">PDF Pro</a></li>
+        <li><a href="/ja/plugins/enhanced-lookup/">Smart Lookup</a></li>
+        <li><a href="/ja/plugins/">全タイトル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>リソース</h4><ul>
+        <li><a href="/ja/docs/">ドキュメント</a></li>
+        <li><a href="/ja/pricing.html">料金</a></li>
+        <li><a href="/ja/blog/">ジャーナル</a></li>
+        <li><a href="mailto:support@kinplug.com">サポート</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>会社情報</h4><ul>
+        <li><a href="https://edamame.ph" target="_blank" rel="noopener">Edamame Inc.</a></li>
+        <li><a href="/ja/legal/privacy.html">プライバシー</a></li>
+        <li><a href="/ja/legal/terms.html">利用規約</a></li>
+        <li><a href="mailto:billing@kinplug.com">請求</a></li>
+      </ul></div>
     </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-bottom">
-        <div>© 2026 KinPlug by Edamame Inc.</div>
-        <div><a href="/blog/">English</a> | <a href="/ja/blog/">日本語</a></div>
-      </div>
+    <div class="footer-bottom">
+      <span>© MMXXVI · Edamame Inc.</span>
+      <span>Kintone上で構築 · 於マニラ</span>
+      <span>v3.0 · ISSN 0000-0000</span>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <script src="/assets/js/app.js"></script>
-  <style>
-    .blog-header { padding: 60px 0 40px; background: var(--bg-light); text-align: center; }
-    .blog-content { padding: 60px 0; }
-    .coming-soon-card { text-align: center; padding: 60px; background: var(--bg-light); border-radius: var(--radius-lg); margin-bottom: 60px; }
-    .coming-soon-icon { font-size: 4rem; margin-bottom: 24px; }
-    .coming-soon-card h2 { margin-bottom: 16px; }
-    .coming-soon-card p { color: var(--text-secondary); margin-bottom: 8px; }
-    .blog-preview h3 { margin-bottom: 24px; }
-    .topics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .topic-card { background: white; border: 1px solid var(--border); padding: 24px; border-radius: var(--radius); }
-    .topic-tag { display: inline-block; background: var(--primary-light); color: var(--primary); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; margin-bottom: 12px; }
-    .topic-card h4 { margin-bottom: 8px; }
-    .topic-card p { color: var(--text-secondary); font-size: 0.9rem; }
-    .nav-links a.active { color: var(--primary); font-weight: 600; }
-  </style>
+<script src="/assets/js/app.js"></script>
 </body>
 </html>
