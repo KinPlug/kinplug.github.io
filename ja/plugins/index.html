@@ -3,129 +3,182 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>プラグイン一覧 - 現場から生まれた、kintoneプラグイン | KinPlug</title>
-  <meta name="description" content="kintoneの「あったらいいのに」を形にしました。PDF帳票、高機能ルックアップ、文書テンプレート。毎日kintoneを使う開発者が作ったプラグイン。">
+  <title>カタログ — KinPlug</title>
+  <meta name="description" content="KinPlugの全カタログ。Kintone向けプレミアムプラグイン15タイトル、カテゴリ別整理。">
   <link rel="canonical" href="https://kinplug.com/ja/plugins/">
-  <link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/">
-  <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..600,0..100,0..1&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
-  <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
+  <script async crossorigin="anonymous"
+    data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+    onload="window.Clerk && window.Clerk.load()"></script>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="/ja/" class="logo">Kin<span>Plug</span></a>
-      <div class="nav-links"><a href="/ja/plugins/" class="active">プラグイン</a><a href="/ja/pricing.html">料金</a><a href="/ja/docs/">ドキュメント</a></div>
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/ja/" class="brand"><span>Kin<em>·</em>Plug</span><span class="brand-sub">アーカイブ・第一巻</span></a>
+      <div class="nav-menu">
+        <a href="/ja/plugins/" style="color:var(--ink);">カタログ</a>
+        <a href="/ja/pricing.html">料金</a>
+        <a href="/ja/docs/">ドキュメント</a>
+        <a href="/ja/blog/">ジャーナル</a>
+      </div>
       <div class="nav-right">
-        <div class="lang-switcher"><a href="/plugins/">EN</a> | <a href="/ja/plugins/" class="active">日本語</a></div>
-        <div class="nav-auth"><div id="auth-nav"><button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">ログイン</button><button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">無料で始める</button></div><div id="user-nav" class="hidden"><a href="/ja/dashboard.html" class="btn btn-secondary btn-sm">ダッシュボード</a></div></div>
-      </div>
-    </div>
-  </nav>
-
-  <section class="hero" style="padding: 60px 0;">
-    <div class="container">
-      <div style="text-align: center; max-width: 700px; margin: 0 auto;">
-        <span class="badge badge-primary" style="margin-bottom: 16px;">🎯 現場から生まれた、現場のためのプラグイン</span>
-        <h1>kintoneの「あったらいいのに」<br><span class="text-gradient">全部、作りました。</span></h1>
-        <p class="hero-description">
-          私たちも毎日kintoneを使っています。<br>
-          「ここ、もうちょっと何とかならないかな」の積み重ねが、<br>
-          このプラグインになりました。
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="plugins" style="padding-top: 40px;">
-    <div class="container">
-      <div class="plugins-grid">
-        <div class="plugin-card featured">
-          <span class="plugin-badge popular">一番人気</span>
-          <div class="plugin-icon">📄</div>
-          <h3>PDF Designer</h3>
-          <p>請求書、見積書、納品書。kintoneのデータを美しいPDFに一発変換。もうExcelにコピペしなくていい。</p>
-          <ul class="plugin-features">
-            <li>ドラッグ&ドロップで編集</li>
-            <li>サブテーブル完全対応</li>
-            <li>複数テンプレート管理</li>
-            <li>自動連番・計算</li>
-          </ul>
-          <div class="plugin-actions">
-            <button class="btn btn-primary" onclick="KinPlug.startTrial('pdf-designer')">試してみる</button>
-            <a href="/ja/plugins/pdf-designer/" class="btn btn-ghost">詳しく見る →</a>
-          </div>
+        <div class="lang">
+          <a href="/plugins/" class="">EN</a>
+          <a href="/ja/plugins/" class="active">JA</a>
         </div>
-        
-        <div class="plugin-card">
-          <span class="plugin-badge new">NEW</span>
-          <div class="plugin-icon">🔍</div>
-          <h3>Enhanced Lookup</h3>
-          <p>標準ルックアップの「惜しい」を解消。文字入力で即検索、複数フィールド一括コピー、サブテーブル内でも動作。</p>
-          <ul class="plugin-features">
-            <li>インクリメンタル検索</li>
-            <li>複数フィールド同時コピー</li>
-            <li>サブテーブル対応</li>
-            <li>表示形式カスタマイズ</li>
-          </ul>
-          <div class="plugin-actions">
-            <button class="btn btn-primary" onclick="KinPlug.startTrial('enhanced-lookup')">試してみる</button>
-            <a href="/ja/plugins/enhanced-lookup/" class="btn btn-ghost">詳しく見る →</a>
+        <div class="nav-auth">
+          <div id="auth-nav">
+            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">サインイン</button>
+            <button class="btn btn-ink btn-sm" onclick="KinPlug.signUp()">無料で始める</button>
           </div>
-        </div>
-        
-        <div class="plugin-card">
-          <div class="plugin-icon">📝</div>
-          <h3>Template Builder</h3>
-          <p>契約書、報告書、議事録。Wordのような操作感で文書テンプレートを作成し、kintoneのデータを自動差し込み。</p>
-          <ul class="plugin-features">
-            <li>リッチテキスト編集</li>
-            <li>条件分岐・繰り返し</li>
-            <li>Word/PDF出力</li>
-            <li>電子署名対応</li>
-          </ul>
-          <div class="plugin-actions">
-            <button class="btn btn-primary" onclick="KinPlug.startTrial('template-builder')">試してみる</button>
-            <a href="/ja/plugins/template-builder/" class="btn btn-ghost">詳しく見る →</a>
+          <div id="user-nav" class="hidden flex gap-2 items-center">
+            <a href="/ja/dashboard.html" class="btn btn-ghost btn-sm">ダッシュボード</a>
+            <div class="user-info" onclick="KinPlug.openProfile()">
+              <div id="user-avatar" class="user-avatar">?</div>
+              <span id="user-name">User</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-
-  <section class="stats" style="margin-top: 80px;">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item"><h3>14日間</h3><p>無料で全機能お試し</p></div>
-        <div class="stat-item"><h3>5分</h3><p>で使い始められる</p></div>
-        <div class="stat-item"><h3>無制限</h3><p>アプリもユーザーも</p></div>
-        <div class="stat-item"><h3>24時間以内</h3><p>にサポート返信</p></div>
+  </div>
+</nav>
+<section class="prod-masthead">
+  <div class="wrap">
+    <div class="prod-meta">
+      <span class="label label-seal">第二章</span>
+      <span class="label">15タイトル · MMXXVI</span>
+    </div>
+    <div class="grid">
+      <div class="col-wide">
+        <h1 class="prod-title"><em class="italic" style="color:var(--seal);">カタログ。</em></h1>
+        <p class="hero-lede">これまでに出荷した、あるいは出荷を約束した全タイトルを、Kintoneワークフロー内の役割別に整理。個別購入、またはStudioバンドルで全てまとめて。</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="cta" style="margin-top: 80px;">
-    <div class="container">
-      <h2>どのプラグインも<br>14日間無料で試せます</h2>
-      <p>クレジットカードの登録は不要。自動課金もありません。</p>
-      <div class="cta-actions">
-        <button class="btn btn-white btn-lg" onclick="KinPlug.signUp()">無料で始める</button>
-      </div>
+<section class="sec" style="padding-top:0;">
+  <div class="wrap">
+    <header class="sec-head"><span class="sec-num">I.</span><h2 class="sec-title">プラットフォーム</h2><span class="sec-note">基幹タイトル · 2点</span></header>
+    <div class="catalog">
+      <a href="/ja/plugins/flow/" class="cat-item">
+        <span class="cat-num">№ 01</span><div><div class="cat-name">Flow</div></div>
+        <div class="cat-desc">OAuth 2.0メール（Gmail + Microsoft 365）、条件分岐、AIアクション対応のビジュアル自動化。</div>
+        <div class="cat-price">$49–399 / 月</div>
+        <span class="cat-status cat-status-dev">開発中</span>
+        <span class="cat-arrow">→</span>
+      </a>
+      <div class="cat-item"><span class="cat-num">№ 02</span><div><div class="cat-name">Connect</div></div><div class="cat-desc">アプリ間の関係を可視化。</div><div class="cat-price">$29 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand"><a href="/ja/" class="logo">Kin<span>Plug</span></a><p style="margin-top: 12px;">kintoneを毎日使うから、わかる。</p></div>
-        <div><h4>プラグイン</h4><ul><li><a href="/ja/plugins/pdf-designer/">PDF Designer</a></li><li><a href="/ja/plugins/enhanced-lookup/">Enhanced Lookup</a></li><li><a href="/ja/plugins/template-builder/">Template Builder</a></li></ul></div>
-        <div><h4>サポート</h4><ul><li><a href="/ja/docs/">使い方ガイド</a></li><li><a href="mailto:support@kinplug.com">お問い合わせ</a></li></ul></div>
-        <div><h4>会社情報</h4><ul><li><a href="/ja/legal/privacy.html">プライバシーポリシー</a></li><li><a href="/ja/legal/terms.html">利用規約</a></li></ul></div>
-      </div>
-      <div class="footer-bottom"><div>© 2026 KinPlug by Edamame Inc.</div></div>
+<section class="sec sec-alt">
+  <div class="wrap">
+    <header class="sec-head"><span class="sec-num">II.</span><h2 class="sec-title">ドキュメント</h2><span class="sec-note">出力タイトル · 2点</span></header>
+    <div class="catalog">
+      <a href="/ja/plugins/pdf-designer/" class="cat-item">
+        <span class="cat-num">№ 03</span><div><div class="cat-name">PDF Pro</div></div>
+        <div class="cat-desc">WYSIWYG PDFテンプレート設計。計算式、チャート、複数ページ、サブテーブル対応。日本語フォント標準。</div>
+        <div class="cat-price">$29 / 月</div>
+        <span class="cat-status cat-status-live">提供中 · v3.2+</span>
+        <span class="cat-arrow">→</span>
+      </a>
+      <div class="cat-item"><span class="cat-num">№ 04</span><div><div class="cat-name">Print</div></div><div class="cat-desc">ラベル・サーマルプリンタ直接印刷。</div><div class="cat-price">$19 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
     </div>
-  </footer>
-  <script src="/assets/js/app.js"></script>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <header class="sec-head"><span class="sec-num">III.</span><h2 class="sec-title">体験</h2><span class="sec-note">フォーム・フィールドタイトル · 3点</span></header>
+    <div class="catalog">
+      <div class="cat-item"><span class="cat-num">№ 05</span><div><div class="cat-name">Fields</div></div><div class="cat-desc">条件付き表示・必須・編集可否ルール。JavaScript不要。</div><div class="cat-price">$29 / 月</div><span class="cat-status cat-status-dev">開発中</span></div>
+      <a href="/ja/plugins/enhanced-lookup/" class="cat-item">
+        <span class="cat-num">№ 06</span><div><div class="cat-name">Smart Lookup</div></div>
+        <div class="cat-desc">全文検索、段階的読込、モバイル完全対応、サブテーブル対応の強化ルックアップ。</div>
+        <div class="cat-price">$29 / 月</div>
+        <span class="cat-status cat-status-live">提供中 · v3.0</span>
+        <span class="cat-arrow">→</span>
+      </a>
+      <div class="cat-item"><span class="cat-num">№ 07</span><div><div class="cat-name">Grid</div></div><div class="cat-desc">Excel風の一括編集。キーボード操作、貼付、式、取消/やり直し。</div><div class="cat-price">$39 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-alt">
+  <div class="wrap">
+    <header class="sec-head"><span class="sec-num">IV.</span><h2 class="sec-title">ビュー</h2><span class="sec-note">可視化タイトル · 3点</span></header>
+    <div class="catalog">
+      <div class="cat-item"><span class="cat-num">№ 08</span><div><div class="cat-name">Calendar</div></div><div class="cat-desc">Googleカレンダー双方向同期、ドラッグ操作で予定変更。</div><div class="cat-price">$39 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
+      <div class="cat-item"><span class="cat-num">№ 09</span><div><div class="cat-name">Board</div></div><div class="cat-desc">カンバンとガントを統合。カード移動とタイムラインを同時表示。</div><div class="cat-price">$39 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
+      <div class="cat-item"><span class="cat-num">№ 10</span><div><div class="cat-name">Dashboard</div></div><div class="cat-desc">KPIタイル、ピボット、チャート、クロスアプリ集計。</div><div class="cat-price">$49 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <header class="sec-head"><span class="sec-num">V.</span><h2 class="sec-title">データ</h2><span class="sec-note">データタイトル · 3点</span></header>
+    <div class="catalog">
+      <div class="cat-item"><span class="cat-num">№ 11</span><div><div class="cat-name">Import</div></div><div class="cat-desc">スマートCSV/Excelインポート、列マッピング、重複排除、変換。</div><div class="cat-price">$39 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
+      <div class="cat-item"><span class="cat-num">№ 12</span><div><div class="cat-name">Backup</div></div><div class="cat-desc">S3、Google Drive、Dropboxへの自動バックアップ。バージョン管理・暗号化。</div><div class="cat-price">$39 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
+      <div class="cat-item"><span class="cat-num">№ 13</span><div><div class="cat-name">Numbers</div></div><div class="cat-desc">自動採番、カスタムパターン、衝突解決。</div><div class="cat-price">$19 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-alt">
+  <div class="wrap">
+    <header class="sec-head"><span class="sec-num">VI.</span><h2 class="sec-title">モバイル &amp; 連携</h2><span class="sec-note">外部連携タイトル · 2点</span></header>
+    <div class="catalog">
+      <div class="cat-item"><span class="cat-num">№ 14</span><div><div class="cat-name">Scan</div></div><div class="cat-desc">バーコード、QR、OCRをモバイルカメラから直接レコードへ。</div><div class="cat-price">$29 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
+      <div class="cat-item"><span class="cat-num">№ 15</span><div><div class="cat-name">Portal</div></div><div class="cat-desc">ベンダーポータル、顧客入力フォーム等に最適な外部ユーザーアクセス。</div><div class="cat-price">$79 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/ja/" class="brand"><span style="color:var(--paper-light);">Kin<em>·</em>Plug</span><span class="brand-sub">アーカイブ・第一巻</span></a>
+        <p>Kintone用プレミアムプラグイン集。Edamame Inc. 制作。</p>
+      </div>
+      <div class="footer-col"><h4>カタログ</h4><ul>
+        <li><a href="/ja/plugins/flow/">Flow</a></li>
+        <li><a href="/ja/plugins/pdf-designer/">PDF Pro</a></li>
+        <li><a href="/ja/plugins/enhanced-lookup/">Smart Lookup</a></li>
+        <li><a href="/ja/plugins/">全タイトル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>リソース</h4><ul>
+        <li><a href="/ja/docs/">ドキュメント</a></li>
+        <li><a href="/ja/pricing.html">料金</a></li>
+        <li><a href="/ja/blog/">ジャーナル</a></li>
+        <li><a href="mailto:support@kinplug.com">サポート</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>会社情報</h4><ul>
+        <li><a href="https://edamame.ph" target="_blank" rel="noopener">Edamame Inc.</a></li>
+        <li><a href="/ja/legal/privacy.html">プライバシー</a></li>
+        <li><a href="/ja/legal/terms.html">利用規約</a></li>
+        <li><a href="mailto:billing@kinplug.com">請求</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© MMXXVI · Edamame Inc.</span>
+      <span>Kintone上で構築 · 於マニラ</span>
+      <span>v3.0 · ISSN 0000-0000</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/app.js"></script>
 </body>
 </html>
