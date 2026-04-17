@@ -1,56 +1,56 @@
-# KinPlug Website
+# KinPlug · kinplug.com
 
-Premium kintone plugins. Plug in. Power up.
+The static site for **KinPlug**, a curated catalog of premium plugins for Kintone.
+Built and operated by **Edamame Inc.** (Manila · Tokyo).
 
-## 🌐 Live Site
+## Design · "KinPlug Archive" v3.0
 
-[https://kinplug.com](https://kinplug.com)
+An editorial technical journal aesthetic. Rejects the generic SaaS look in favor of:
 
-## 🚀 Deployment
+- **Typography** — Fraunces (display serif, variable axes), Geist (body sans), JetBrains Mono (technical labels), Shippori Mincho + Noto Sans JP (Japanese).
+- **Palette** — warm cream paper, deep warm ink, single vermillion accent (朱 · seal).
+- **Structure** — numbered magazine sections, asymmetric 12-col grid, hairline rules.
+- **Voice** — the catalog is a table of contents, not a feature grid.
 
-This site is deployed via GitHub Pages from the `main` branch.
+## Stack
 
-### Setup
+- Plain HTML + CSS + vanilla JS.
+- Deployed via **GitHub Pages** → `kinplug.com` via CNAME.
+- Auth by **Clerk** (Google, Microsoft, email).
+- License API on **Google Cloud Run** (asia-northeast1, Tokyo) with Railway fallback.
 
-1. Push to `main` branch
-2. Go to repo Settings → Pages
-3. Source: Deploy from branch → `main` → `/ (root)`
-4. Custom domain: `kinplug.com`
-
-### DNS Configuration (Squarespace)
-
-Add these records in Squarespace DNS settings:
-
-| Type | Host | Value |
-|------|------|-------|
-| A | @ | 185.199.108.153 |
-| A | @ | 185.199.109.153 |
-| A | @ | 185.199.110.153 |
-| A | @ | 185.199.111.153 |
-| CNAME | www | kinplug.github.io |
-
-## 📁 Structure
+## Structure
 
 ```
-/
-├── index.html      # Landing page
-├── CNAME           # Custom domain config
-└── README.md       # This file
+/                           English root
+/plugins/                   Catalog + plugin detail pages
+/plugins/flow/              Flagship product (v4.9, in development)
+/plugins/pdf-designer/      PDF Pro (v3.2+, live)
+/plugins/enhanced-lookup/   Smart Lookup (v3.0, live)
+/pricing.html               Tiers & comparison
+/docs/                      Documentation landing
+/blog/                      Journal
+/dashboard.html             User account (Clerk-gated)
+/login.html                 Auth entry
+/legal/{privacy,terms}.html Legal
+/ja/*                       Japanese mirror of every page
+
+/assets/css/style.css       Design system
+/assets/js/app.js           Clerk + API integration
+/favicon.svg                Vermillion seal-mark
 ```
 
-## 🎨 Brand Colors
+## Deploy
 
-| Color | Hex | Usage |
-|-------|-----|-------|
-| KinPlug Blue | `#0EA5E9` | Primary |
-| KinPlug Teal | `#14B8A6` | Secondary |
-| KinPlug Gold | `#F59E0B` | Accent |
-| Navy | `#0F172A` | Text/Headers |
+Merge to `main` — GitHub Pages builds automatically.
+Custom domain is set via `/CNAME` = `kinplug.com`.
+DNS A records point at GitHub Pages IPs.
 
-## 📧 Email Signup
+## Contact
 
-Currently logs to console. TODO: Connect to kintone app for storage.
+- Product · <support@kinplug.com>
+- Billing · <billing@kinplug.com>
+- Privacy · <privacy@kinplug.com>
+- Operator · [Edamame Inc.](https://edamame.ph)
 
-## License
-
-© 2026 KinPlug
+© MMXXVI · Edamame Inc.
