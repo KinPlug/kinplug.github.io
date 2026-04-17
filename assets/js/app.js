@@ -306,3 +306,56 @@ window.KinPlug = {
   startTrial, notifyMe, copyToClipboard,
   loadUserLicenses, loadPlugins
 };
+
+// ============================================================
+// MOBILE NAV DRAWER — auto-injected into any page with .nav-menu
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  const menu = document.querySelector('.nav-menu');
+  const navInner = document.querySelector('.nav-inner');
+  if (!menu || !navInner) return;
+
+  // Inject hamburger button inside .nav-right (before .nav-auth, at the end)
+  const navRight = document.querySelector('.nav-right');
+  if (navRight && !document.querySelector('.nav-toggle')) {
+    const btn = document.createElement('button');
+    btn.className = 'nav-toggle';
+    btn.setAttribute('aria-label', 'Toggle menu');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.innerHTML = '<span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>';
+    navRight.appendChild(btn);
+  }
+  // Inject scrim at body end
+  if (!document.querySelector('.nav-scrim')) {
+    const scrim = document.createElement('div');
+    scrim.className = 'nav-scrim';
+    scrim.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(scrim);
+  }
+
+  const toggle = document.querySelector('.nav-toggle');
+  const scrim = document.querySelector('.nav-scrim');
+
+  const close = () => {
+    toggle.classList.remove('open');
+    menu.classList.remove('open');
+    scrim.classList.remove('open');
+    document.body.style.overflow = '';
+    toggle.setAttribute('aria-expanded', 'false');
+  };
+  const open = () => {
+    toggle.classList.add('open');
+    menu.classList.add('open');
+    scrim.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    toggle.setAttribute('aria-expanded', 'true');
+  };
+  toggle.addEventListener('click', () => {
+    (menu.classList.contains('open') ? close : open)();
+  });
+  scrim.addEventListener('click', close);
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) close();
+  });
+});
