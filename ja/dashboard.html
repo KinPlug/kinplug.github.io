@@ -3,488 +3,165 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ダッシュボード - KinPlug</title>
+  <title>ダッシュボード — KinPlug</title>
+  <meta name="description" content="KinPlugライセンスとトライアルの管理。">
+  <link rel="canonical" href="https://kinplug.com/ja/dashboard.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..600,0..100,0..1&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
-  <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
-  <!--Start of Tawk.to Script-->
-  <script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/678394d73a842732607a29cc/1ihco10u7';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-  })();
-  </script>
-  <!--End of Tawk.to Script-->
-  <style>
-    .dashboard-hero{background:linear-gradient(135deg,var(--primary) 0%,#1e40af 100%);color:#fff;padding:40px 0;margin-bottom:40px}
-    .dashboard-hero h1{color:#fff;margin-bottom:8px}.dashboard-hero p{color:rgba(255,255,255,.8);margin:0}
-    .welcome-card{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
-    .welcome-info{display:flex;align-items:center;gap:16px}
-    .welcome-avatar{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;border:3px solid rgba(255,255,255,.3)}
-    .subdomain-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);padding:8px 16px;border-radius:20px;font-size:.875rem;margin-top:8px;cursor:pointer;transition:all .2s ease}
-    .subdomain-badge:hover{background:rgba(255,255,255,.25)}
-    .email-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:12px;font-size:.75rem;margin-left:8px}
-    .email-badge.verified{background:rgba(34,197,94,.2);color:#22c55e}
-    .email-badge.unverified{background:rgba(239,68,68,.2);color:#ef4444}
-    .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:32px}
-    .stat-card{background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.08);border:1px solid #e5e7eb;transition:all .2s ease}
-    .stat-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
-    .stat-card .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:12px}
-    .stat-card .icon.blue{background:#dbeafe}.stat-card .icon.green{background:#dcfce7}.stat-card .icon.yellow{background:#fef3c7}.stat-card .icon.red{background:#fee2e2}
-    .stat-card .value{font-size:1.75rem;font-weight:800;color:#111;line-height:1}.stat-card .label{font-size:.8125rem;color:#6b7280;margin-top:4px}
-    .section-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,.08);border:1px solid #e5e7eb;margin-bottom:24px;position:relative}
-    .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px}
-    .section-header h2{margin:0;font-size:1.125rem;font-weight:700}
-    .license-grid{display:grid;gap:12px}
-    .license-card{background:#f9fafb;border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;transition:all .2s ease;border:2px solid transparent}
-    .license-card:hover{border-color:var(--primary);background:#fff}
-    .license-icon{width:48px;height:48px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 2px 4px rgba(0,0,0,.06)}
-    .license-info h3{margin:0 0 2px;font-size:.9375rem}.license-info .subdomain{font-size:.8125rem;color:#6b7280;margin-bottom:6px}
-    .license-key-box{display:inline-flex;align-items:center;gap:6px;background:#fff;padding:6px 10px;border-radius:6px;font-family:'SF Mono',Monaco,monospace;font-size:.6875rem;color:#6b7280;border:1px solid #e5e7eb;cursor:pointer;transition:all .2s ease}
-    .license-key-box:hover{border-color:var(--primary);color:var(--primary)}
-    .license-meta{text-align:right}
-    .license-status{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:16px;font-size:.6875rem;font-weight:600}
-    .license-status.active{background:#dcfce7;color:#166534}.license-status.trial{background:#dbeafe;color:#1e40af}.license-status.expired{background:#fee2e2;color:#991b1b}
-    .license-expires{font-size:.75rem;color:#6b7280;margin-top:6px}.license-expires.warning{color:#d97706;font-weight:600}.license-expires.danger{color:#dc2626;font-weight:600}
-    .empty-state{text-align:center;padding:48px 20px}.empty-state .icon{font-size:3rem;margin-bottom:12px;opacity:.5}
-    .empty-state h3{margin-bottom:6px;color:#111;font-size:1.125rem}.empty-state p{color:#6b7280;margin-bottom:20px;font-size:.9375rem}
-    .quick-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
-    .action-btn{display:flex;align-items:center;gap:8px;padding:14px 16px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;color:#374151;text-decoration:none;font-size:.875rem;font-weight:500;transition:all .2s ease;cursor:pointer}
-    .action-btn:hover{background:#fff;border-color:var(--primary);color:var(--primary);transform:translateY(-1px)}.action-btn .icon{font-size:1.125rem}
-    .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:9999;opacity:0;visibility:hidden;transition:all .3s ease}
-    .modal-overlay.active{opacity:1;visibility:visible}
-    .modal-content{background:#fff;padding:32px;border-radius:20px;width:100%;max-width:480px;box-shadow:0 25px 50px rgba(0,0,0,.25);transform:translateY(20px) scale(.95);transition:all .3s ease;max-height:90vh;overflow-y:auto}
-    .modal-overlay.active .modal-content{transform:translateY(0) scale(1)}
-    .modal-header{display:flex;align-items:center;gap:14px;margin-bottom:20px}
-    .modal-icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--primary),#1e40af);display:flex;align-items:center;justify-content:center;font-size:1.5rem}
-    .modal-header h2{margin:0;font-size:1.25rem}.modal-header p{margin:2px 0 0;color:#6b7280;font-size:.875rem}
-    .form-group{margin-bottom:16px}.form-group label{display:block;margin-bottom:8px;font-weight:600;color:#374151;font-size:.875rem}
-    .form-group select,.form-group input{width:100%;padding:12px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:1rem;transition:all .2s ease;box-sizing:border-box}
-    .form-group select:focus,.form-group input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
-    .subdomain-input{display:flex;align-items:stretch;border:2px solid #e5e7eb;border-radius:10px;overflow:hidden;transition:all .2s ease;background:#fff}
-    .subdomain-input:focus-within{border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
-    .subdomain-input input{flex:2;border:none;padding:14px 16px;font-size:1rem;min-width:120px;background:transparent}
-    .subdomain-input input:focus{outline:none}
-    .subdomain-input input::placeholder{color:#9ca3af}
-    .subdomain-input select.domain-suffix{flex:0 0 auto;width:auto;min-width:140px;border:none;background:#f3f4f6;color:#374151;font-size:.9375rem;font-weight:500;padding:14px 12px;cursor:pointer;border-left:2px solid #e5e7eb}
-    .subdomain-input select.domain-suffix:focus{outline:none;background:#e5e7eb}
-    .modal-actions{display:flex;gap:10px;margin-top:24px}.modal-actions .btn{flex:1}
-    .plugin-option{display:flex;align-items:center;gap:10px;padding:10px 12px;border:2px solid #e5e7eb;border-radius:10px;cursor:pointer;transition:all .2s ease;margin-bottom:6px}
-    .plugin-option:hover{border-color:var(--primary);background:#f9fafb}.plugin-option.selected{border-color:var(--primary);background:#eff6ff}
-    .plugin-option input{display:none}.plugin-option .icon{font-size:1.25rem}.plugin-option .name{font-weight:600;font-size:.875rem}.plugin-option .desc{font-size:.75rem;color:#6b7280}
-    .setup-banner{background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);border:2px solid #f59e0b;border-radius:16px;padding:24px;margin-bottom:24px;display:flex;align-items:center;gap:16px}
-    .setup-banner .icon{font-size:2.5rem}.setup-banner h3{margin:0 0 4px;color:#92400e}.setup-banner p{margin:0;color:#a16207;font-size:.9375rem}.setup-banner .btn{margin-left:auto;white-space:nowrap}
-    .verify-banner{background:linear-gradient(135deg,#fee2e2 0%,#fecaca 100%);border:2px solid #ef4444;border-radius:16px;padding:24px;margin-bottom:24px;display:flex;align-items:center;gap:16px}
-    .verify-banner .icon{font-size:2.5rem}.verify-banner h3{margin:0 0 4px;color:#991b1b}.verify-banner p{margin:0;color:#b91c1c;font-size:.9375rem}.verify-banner .btn{margin-left:auto;white-space:nowrap}
-    .settings-item{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid #e5e7eb}
-    .settings-item:last-child{border-bottom:none}.settings-item .label{font-weight:600;color:#374151}.settings-item .value{color:#6b7280;font-family:monospace}
-    .skeleton{background:linear-gradient(90deg,#f3f4f6 25%,#e5e7eb 50%,#f3f4f6 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:8px}
-    @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}.skeleton-card{height:80px;margin-bottom:12px}
-    .toast{position:fixed;bottom:24px;right:24px;background:#111;color:#fff;padding:14px 20px;border-radius:10px;font-size:.9375rem;box-shadow:0 10px 30px rgba(0,0,0,.2);transform:translateY(100px);opacity:0;transition:all .3s ease;z-index:10000}
-    .toast.show{transform:translateY(0);opacity:1}.toast.success{background:#059669}.toast.error{background:#dc2626}
-    @media(max-width:768px){.license-card{grid-template-columns:1fr;text-align:center}.license-icon{margin:0 auto}.license-meta{text-align:center;margin-top:8px}.welcome-card{text-align:center;justify-content:center}.welcome-info{flex-direction:column}.setup-banner,.verify-banner{flex-direction:column;text-align:center}.setup-banner .btn,.verify-banner .btn{margin:16px 0 0}.subdomain-input{flex-direction:column}.subdomain-input input{min-width:100%}.subdomain-input select.domain-suffix{min-width:100%;border-left:none;border-top:2px solid #e5e7eb}}
-  </style>
+  <script async crossorigin="anonymous"
+    data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+    onload="window.Clerk && window.Clerk.load()"></script>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="/ja/" class="logo">Kin<span>Plug</span></a>
-      <div class="nav-links"><a href="/ja/plugins/">プラグイン</a><a href="/ja/pricing.html">料金</a><a href="/ja/docs/">ドキュメント</a></div>
-      <div class="nav-right">
-        <div class="lang-switcher"><a href="/dashboard.html">EN</a> | <a href="/ja/dashboard.html" class="active">日本語</a></div>
-        <div class="nav-auth">
-          <div id="auth-nav"><button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">ログイン</button><button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">無料で始める</button></div>
-          <div id="user-nav" class="hidden"><button class="btn btn-ghost btn-sm" onclick="KinPlug.signOut()">ログアウト</button></div>
-        </div>
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/ja/" class="brand"><span>Kin<em>·</em>Plug</span><span class="brand-sub">アーカイブ・第一巻</span></a>
+      <div class="nav-menu">
+        <a href="/ja/plugins/">カタログ</a>
+        <a href="/ja/pricing.html">料金</a>
+        <a href="/ja/docs/">ドキュメント</a>
+        <a href="/ja/blog/">ジャーナル</a>
       </div>
-    </div>
-  </nav>
-
-  <section class="dashboard-hero">
-    <div class="container">
-      <div class="welcome-card">
-        <div class="welcome-info">
-          <div class="welcome-avatar" id="hero-avatar">?</div>
-          <div>
-            <h1>おかえりなさい<span id="hero-name"></span>！</h1>
-            <p>ライセンスの管理やプラグインの設定ができます。</p>
-            <div class="subdomain-badge" id="subdomain-badge" onclick="showSettingsModal()" style="display:none">
-              📍 <span id="current-subdomain">-</span>.<span id="current-domain">cybozu.com</span> <span style="opacity:.7">✏️</span>
+      <div class="nav-right">
+        <div class="lang">
+          <a href="/dashboard.html" class="">EN</a>
+          <a href="/ja/dashboard.html" class="active">JA</a>
+        </div>
+        <div class="nav-auth">
+          <div id="auth-nav">
+            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">サインイン</button>
+            <button class="btn btn-ink btn-sm" onclick="KinPlug.signUp()">無料で始める</button>
+          </div>
+          <div id="user-nav" class="hidden flex gap-2 items-center">
+            <a href="/ja/dashboard.html" class="btn btn-ghost btn-sm">ダッシュボード</a>
+            <div class="user-info" onclick="KinPlug.openProfile()">
+              <div id="user-avatar" class="user-avatar">?</div>
+              <span id="user-name">User</span>
             </div>
           </div>
         </div>
-        <button class="btn btn-white btn-lg" onclick="showTrialModal()">✨ 新しいトライアル</button>
-      </div>
-    </div>
-  </section>
-
-  <div class="container">
-    <!-- Email Verification Banner -->
-    <div class="verify-banner" id="verify-banner" style="display:none">
-      <div class="icon">📧</div>
-      <div><h3>メールアドレスを確認してください</h3><p>トライアルを開始するには、メールアドレスの確認が必要です。</p></div>
-      <button class="btn btn-primary" onclick="resendVerification()">確認メールを再送</button>
-    </div>
-
-    <div class="setup-banner" id="setup-banner" style="display:none">
-      <div class="icon">⚙️</div>
-      <div><h3>セットアップを完了してください</h3><p>プラグインを使い始めるには、サブドメインを設定してください。</p></div>
-      <button class="btn btn-primary" onclick="showSetupModal()">設定する</button>
-    </div>
-
-    <div class="stats-row">
-      <div class="stat-card"><div class="icon blue">🔑</div><div class="value" id="stat-total">-</div><div class="label">ライセンス総数</div></div>
-      <div class="stat-card"><div class="icon green">✅</div><div class="value" id="stat-active">-</div><div class="label">有効</div></div>
-      <div class="stat-card"><div class="icon yellow">⏳</div><div class="value" id="stat-trial">-</div><div class="label">トライアル</div></div>
-      <div class="stat-card"><div class="icon red">⚠️</div><div class="value" id="stat-expiring">-</div><div class="label">まもなく期限</div></div>
-    </div>
-
-    <div class="section-card">
-      <div class="section-header"><h2>🔐 ライセンス一覧</h2><button class="btn btn-secondary btn-sm" onclick="loadLicenses()">🔄 更新</button></div>
-      <div class="license-grid" id="licenses-container"><div class="skeleton skeleton-card"></div><div class="skeleton skeleton-card"></div></div>
-    </div>
-
-    <div class="section-card">
-      <div class="section-header"><h2>⚙️ アカウント設定</h2></div>
-      <div class="settings-item">
-        <div><div class="label">メールアドレス</div><div class="value"><span id="settings-email">-</span><span class="email-badge" id="email-status"></span></div></div>
-        <div class="actions"><button class="btn btn-secondary btn-sm" onclick="KinPlug.openProfile()">管理</button></div>
-      </div>
-      <div class="settings-item">
-        <div><div class="label">デフォルト環境</div><div class="value" id="settings-subdomain">未設定</div></div>
-        <div class="actions"><button class="btn btn-secondary btn-sm" onclick="showSettingsModal()">変更</button></div>
-      </div>
-    </div>
-
-    <div class="section-card">
-      <div class="section-header"><h2>⚡ クイックアクション</h2></div>
-      <div class="quick-actions">
-        <button class="action-btn" onclick="showTrialModal()"><span class="icon">✨</span> 新規トライアル</button>
-        <a href="/ja/docs/" class="action-btn"><span class="icon">📖</span> ドキュメント</a>
-        <a href="javascript:void(Tawk_API.toggle())" class="action-btn"><span class="icon">💬</span> ライブチャット</a>
-        <button class="action-btn" onclick="KinPlug.openProfile()"><span class="icon">👤</span> プロフィール</button>
-        <a href="/ja/plugins/" class="action-btn"><span class="icon">🧩</span> プラグイン</a>
-        <a href="/ja/pricing.html" class="action-btn"><span class="icon">💳</span> アップグレード</a>
       </div>
     </div>
   </div>
-
-  <!-- Setup Modal -->
-  <div class="modal-overlay" id="setup-modal">
-    <div class="modal-content">
-      <div class="modal-header"><div class="modal-icon">🎯</div><div><h2>KinPlugへようこそ！</h2><p>アカウントを設定しましょう</p></div></div>
-      <p style="color:#6b7280;margin-bottom:20px">kintone/cybozuのサブドメインを入力してください。</p>
-      <div class="form-group">
-        <label>kintone/cybozu環境</label>
-        <div class="subdomain-input">
-          <input type="text" id="setup-subdomain" placeholder="yourcompany">
-          <select class="domain-suffix" id="setup-domain">
-            <option value="cybozu.com">.cybozu.com</option>
-            <option value="kintone.com">.kintone.com</option>
-          </select>
-        </div>
-        <small style="color:#6b7280;margin-top:8px;display:block">例：「mycompany.cybozu.com」の場合は「mycompany」と入力</small>
+</nav>
+<section class="dash-layout">
+  <div class="wrap">
+    <div class="dash-head">
+      <div>
+        <span class="label label-seal">アカウント</span>
+        <h1 class="dash-title" style="margin-top: 10px;">ダッシュボード</h1>
       </div>
-      <div class="modal-actions"><button class="btn btn-primary" onclick="saveSetup()" style="flex:2">続ける →</button></div>
-    </div>
-  </div>
-
-  <!-- Trial Modal -->
-  <div class="modal-overlay" id="trial-modal" onclick="if(event.target===this)hideTrialModal()">
-    <div class="modal-content">
-      <div class="modal-header"><div class="modal-icon">✨</div><div><h2>無料トライアル開始</h2><p>14日間、全機能、クレジットカード不要</p></div></div>
-      <div class="form-group">
-        <label>プラグインを選択</label>
-        <div id="plugin-options">
-          <label class="plugin-option selected" onclick="selectPlugin(this,'pdf-designer')"><input type="radio" name="plugin" value="pdf-designer" checked><span class="icon">📄</span><div><div class="name">PDF Designer</div><div class="desc">kintoneからPDF生成</div></div></label>
-          <label class="plugin-option" onclick="selectPlugin(this,'enhanced-lookup')"><input type="radio" name="plugin" value="enhanced-lookup"><span class="icon">🔍</span><div><div class="name">Enhanced Lookup</div><div class="desc">高機能ルックアップ</div></div></label>
-          <label class="plugin-option" onclick="selectPlugin(this,'template-builder')"><input type="radio" name="plugin" value="template-builder"><span class="icon">📝</span><div><div class="name">Template Builder</div><div class="desc">文書テンプレート生成</div></div></label>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>kintone/cybozu環境</label>
-        <div class="subdomain-input">
-          <input type="text" id="trial-subdomain" placeholder="yourcompany">
-          <select class="domain-suffix" id="trial-domain">
-            <option value="cybozu.com">.cybozu.com</option>
-            <option value="kintone.com">.kintone.com</option>
-          </select>
-        </div>
-      </div>
-      <div class="modal-actions">
-        <button class="btn btn-secondary" onclick="hideTrialModal()">キャンセル</button>
-        <button class="btn btn-primary" onclick="submitTrial()" id="submit-trial-btn">🚀 トライアル開始</button>
+      <div style="display:flex; gap:12px;">
+        <a href="/plugins/" class="btn btn-ghost">カタログを見る</a>
+        <button class="btn btn-ink" onclick="KinPlug.signUp()">新規トライアル</button>
       </div>
     </div>
-  </div>
 
-  <!-- Verification Required Modal -->
-  <div class="modal-overlay" id="verify-modal" onclick="if(event.target===this)hideVerifyModal()">
-    <div class="modal-content" style="text-align:center">
-      <div style="font-size:4rem;margin-bottom:16px">📧</div>
-      <h2 style="margin-bottom:8px">メール確認が必要です</h2>
-      <p style="color:#6b7280;margin-bottom:24px">トライアルを開始する前に、メールアドレスを確認してください。受信トレイをご確認ください。</p>
-      <div class="modal-actions" style="flex-direction:column;gap:12px">
-        <button class="btn btn-primary" onclick="resendVerification()" id="resend-btn">📤 確認メールを再送</button>
-        <button class="btn btn-secondary" onclick="hideVerifyModal()">閉じる</button>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-label">有効なライセンス</div>
+        <div class="stat-value" id="stat-active">—</div>
       </div>
-      <p style="color:#9ca3af;font-size:.8125rem;margin-top:16px">確認済みですか？ <a href="#" onclick="location.reload()">ページを更新</a></p>
-    </div>
-  </div>
-
-  <!-- Settings Modal -->
-  <div class="modal-overlay" id="settings-modal" onclick="if(event.target===this)hideSettingsModal()">
-    <div class="modal-content">
-      <div class="modal-header"><div class="modal-icon">⚙️</div><div><h2>環境を変更</h2><p>デフォルトのkintone/cybozuサブドメインを更新</p></div></div>
-      <div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:10px;padding:14px;margin-bottom:20px">
-        <strong style="color:#92400e">⚠️ 重要：</strong>
-        <p style="color:#a16207;margin:6px 0 0;font-size:.875rem">環境を変更しても、既存のライセンスは移行されません。</p>
+      <div class="stat">
+        <div class="stat-label">トライアル中</div>
+        <div class="stat-value" id="stat-trial">—</div>
       </div>
-      <div class="form-group">
-        <label>新しい環境</label>
-        <div class="subdomain-input">
-          <input type="text" id="new-subdomain" placeholder="yourcompany">
-          <select class="domain-suffix" id="new-domain">
-            <option value="cybozu.com">.cybozu.com</option>
-            <option value="kintone.com">.kintone.com</option>
-          </select>
-        </div>
-      </div>
-      <div class="modal-actions">
-        <button class="btn btn-secondary" onclick="hideSettingsModal()">キャンセル</button>
-        <button class="btn btn-primary" onclick="saveNewSubdomain()">変更を保存</button>
+      <div class="stat">
+        <div class="stat-label">期限切れ</div>
+        <div class="stat-value" id="stat-expired">—</div>
       </div>
     </div>
+
+    <header class="sec-head">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">ライセンス一覧</h2>
+      <span class="sec-note">キーをクリックでコピー</span>
+    </header>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>プラグイン</th>
+          <th>ライセンスキー</th>
+          <th>種別</th>
+          <th>ステータス</th>
+          <th>有効期限</th>
+        </tr>
+      </thead>
+      <tbody id="licenses-table">
+        <tr><td colspan="5"><div class="loading"><div class="spinner"></div></div></td></tr>
+      </tbody>
+    </table>
+
+    <header class="sec-head" style="margin-top: 72px;">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">次のステップ</h2>
+      <span class="sec-note">初めての方へ</span>
+    </header>
+
+    <div class="feat-grid">
+      <div class="feat-cell">
+        <span class="feat-cell-num">01 · Install</span>
+        <h3 class="feat-cell-title">Upload to Kintone</h3>
+        <p>Download the .zip for each trial, then upload via <em>System administration → プラグインs → New</em>. Add to any app.</p>
+      </div>
+      <div class="feat-cell">
+        <span class="feat-cell-num">02 · License</span>
+        <h3 class="feat-cell-title">Paste the key</h3>
+        <p>In the plugin settings, paste your license key. The plugin verifies with our API on Cloud Run (Tokyo).</p>
+      </div>
+      <div class="feat-cell">
+        <span class="feat-cell-num">03 · Ship</span>
+        <h3 class="feat-cell-title">That's it.</h3>
+        <p>Every feature activates immediately. The plugin runs for 14 days. Buy a license any time before — or after — expiry.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top: 72px; padding-top: 48px; border-top: 1px solid var(--rule);">
+      <button class="btn btn-link" onclick="KinPlug.signOut()">サインアウト</button>
+    </div>
   </div>
+</section>
 
-  <div class="toast" id="toast"></div>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/ja/" class="brand"><span style="color:var(--paper-light);">Kin<em>·</em>Plug</span><span class="brand-sub">アーカイブ・第一巻</span></a>
+        <p>Kintone用プレミアムプラグイン集。Edamame Inc. 制作。</p>
+      </div>
+      <div class="footer-col"><h4>カタログ</h4><ul>
+        <li><a href="/ja/plugins/flow/">Flow</a></li>
+        <li><a href="/ja/plugins/pdf-designer/">PDF Pro</a></li>
+        <li><a href="/ja/plugins/enhanced-lookup/">Smart Lookup</a></li>
+        <li><a href="/ja/plugins/">全タイトル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>リソース</h4><ul>
+        <li><a href="/ja/docs/">ドキュメント</a></li>
+        <li><a href="/ja/pricing.html">料金</a></li>
+        <li><a href="/ja/blog/">ジャーナル</a></li>
+        <li><a href="mailto:support@kinplug.com">サポート</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>会社情報</h4><ul>
+        <li><a href="https://edamame.ph" target="_blank" rel="noopener">Edamame Inc.</a></li>
+        <li><a href="/ja/legal/privacy.html">プライバシー</a></li>
+        <li><a href="/ja/legal/terms.html">利用規約</a></li>
+        <li><a href="mailto:billing@kinplug.com">請求</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© MMXXVI · Edamame Inc.</span>
+      <span>Kintone上で構築 · 於マニラ</span>
+      <span>v3.0 · ISSN 0000-0000</span>
+    </div>
+  </div>
+</footer>
 
-  <footer class="footer" style="margin-top:48px"><div class="container"><div class="footer-bottom"><div>© 2026 KinPlug by Edamame Inc.</div></div></div></footer>
-
-  <script src="/assets/js/app.js"></script>
-  <script>
-    const API_URL = 'https://kinplug-api-production.up.railway.app';
-    let selectedPlugin = 'pdf-designer';
-    let userEmail = null;
-    let userSubdomain = null;
-    let userDomain = 'cybozu.com';
-    let licensesLoaded = false;
-    let emailVerified = false;
-
-    initDashboard();
-
-    async function initDashboard() {
-      userSubdomain = localStorage.getItem('kinplug_subdomain');
-      userDomain = localStorage.getItem('kinplug_domain') || 'cybozu.com';
-      updateSubdomainUI();
-      if (window.Clerk) {
-        try { await window.Clerk.load(); setupClerkListener(); } catch (e) { console.error('Clerk error:', e); }
-      } else { setTimeout(initDashboard, 100); }
-    }
-
-    function setupClerkListener() {
-      const checkUser = () => {
-        const user = window.Clerk?.user;
-        if (user) {
-          userEmail = user.primaryEmailAddress?.emailAddress;
-          const emailObj = user.primaryEmailAddress;
-          emailVerified = emailObj?.verification?.status === 'verified';
-          updateHeroName(user);
-          updateEmailStatus();
-          if (!licensesLoaded) loadLicenses();
-          if (!userSubdomain && emailVerified) setTimeout(showSetupModal, 500);
-        }
-      };
-      checkUser();
-      window.Clerk.addListener(checkUser);
-    }
-
-    function updateEmailStatus() {
-      const emailEl = document.getElementById('settings-email');
-      const statusEl = document.getElementById('email-status');
-      const verifyBanner = document.getElementById('verify-banner');
-      emailEl.textContent = userEmail || '-';
-      if (emailVerified) {
-        statusEl.className = 'email-badge verified';
-        statusEl.textContent = '✓ 確認済み';
-        verifyBanner.style.display = 'none';
-      } else {
-        statusEl.className = 'email-badge unverified';
-        statusEl.textContent = '⚠ 未確認';
-        verifyBanner.style.display = 'flex';
-      }
-    }
-
-    function updateSubdomainUI() {
-      const badge = document.getElementById('subdomain-badge');
-      const settingsVal = document.getElementById('settings-subdomain');
-      if (userSubdomain) {
-        badge.style.display = 'inline-flex';
-        document.getElementById('setup-banner').style.display = 'none';
-        document.getElementById('current-subdomain').textContent = userSubdomain;
-        document.getElementById('current-domain').textContent = userDomain;
-        settingsVal.textContent = userSubdomain + '.' + userDomain;
-        document.getElementById('trial-subdomain').value = userSubdomain;
-        document.getElementById('trial-domain').value = userDomain;
-      } else {
-        badge.style.display = 'none';
-        settingsVal.textContent = '未設定';
-      }
-    }
-
-    function updateHeroName(user) {
-      const name = user?.firstName || user?.primaryEmailAddress?.emailAddress?.split('@')[0] || '';
-      if (name) { document.getElementById('hero-name').textContent = '、' + name + 'さん'; document.getElementById('hero-avatar').textContent = name.charAt(0).toUpperCase(); }
-    }
-
-    function showSetupModal() { 
-      if (!emailVerified) { showVerifyModal(); return; }
-      document.getElementById('setup-modal').classList.add('active'); 
-      setTimeout(() => document.getElementById('setup-subdomain').focus(), 100); 
-    }
-    function showTrialModal() { 
-      if (!emailVerified) { showVerifyModal(); return; }
-      if (!userSubdomain) { showSetupModal(); return; } 
-      document.getElementById('trial-subdomain').value = userSubdomain;
-      document.getElementById('trial-domain').value = userDomain;
-      document.getElementById('trial-modal').classList.add('active'); 
-    }
-    function hideTrialModal() { document.getElementById('trial-modal').classList.remove('active'); }
-    function showVerifyModal() { document.getElementById('verify-modal').classList.add('active'); }
-    function hideVerifyModal() { document.getElementById('verify-modal').classList.remove('active'); }
-    function showSettingsModal() { document.getElementById('new-subdomain').value = userSubdomain || ''; document.getElementById('new-domain').value = userDomain; document.getElementById('settings-modal').classList.add('active'); setTimeout(() => document.getElementById('new-subdomain').focus(), 100); }
-    function hideSettingsModal() { document.getElementById('settings-modal').classList.remove('active'); }
-    function selectPlugin(el, plugin) { document.querySelectorAll('.plugin-option').forEach(p => p.classList.remove('selected')); el.classList.add('selected'); selectedPlugin = plugin; }
-
-    async function resendVerification() {
-      const btn = document.getElementById('resend-btn');
-      btn.disabled = true;
-      btn.innerHTML = '⏳ 送信中...';
-      try {
-        const user = window.Clerk?.user;
-        const emailObj = user?.primaryEmailAddress;
-        if (emailObj) {
-          await emailObj.prepareVerification({ strategy: 'email_code' });
-          showToast('確認メールを送信しました！受信トレイをご確認ください。', 'success');
-        }
-      } catch (err) {
-        console.error('Verification error:', err);
-        showToast('送信に失敗しました。もう一度お試しください。', 'error');
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = '📤 確認メールを再送';
-      }
-    }
-
-    function saveSetup() {
-      const subdomain = document.getElementById('setup-subdomain').value.trim().toLowerCase();
-      const domain = document.getElementById('setup-domain').value;
-      if (!subdomain) { showToast('サブドメインを入力してください', 'error'); return; }
-      if (!/^[a-z0-9-]+$/.test(subdomain)) { showToast('サブドメインの形式が正しくありません', 'error'); return; }
-      userSubdomain = subdomain; userDomain = domain;
-      localStorage.setItem('kinplug_subdomain', subdomain);
-      localStorage.setItem('kinplug_domain', domain);
-      document.getElementById('setup-modal').classList.remove('active');
-      updateSubdomainUI();
-      showToast('セットアップ完了！', 'success');
-    }
-
-    function saveNewSubdomain() {
-      const newSubdomain = document.getElementById('new-subdomain').value.trim().toLowerCase();
-      const newDomain = document.getElementById('new-domain').value;
-      if (!newSubdomain) { showToast('サブドメインを入力してください', 'error'); return; }
-      if (!/^[a-z0-9-]+$/.test(newSubdomain)) { showToast('サブドメインの形式が正しくありません', 'error'); return; }
-      userSubdomain = newSubdomain; userDomain = newDomain;
-      localStorage.setItem('kinplug_subdomain', newSubdomain);
-      localStorage.setItem('kinplug_domain', newDomain);
-      hideSettingsModal(); updateSubdomainUI();
-      showToast('環境を更新しました！', 'success');
-    }
-
-    async function submitTrial() {
-      if (!emailVerified) { showVerifyModal(); return; }
-      const subdomain = document.getElementById('trial-subdomain').value.trim().toLowerCase();
-      const domain = document.getElementById('trial-domain').value;
-      if (!subdomain) { showToast('サブドメインを入力してください', 'error'); return; }
-      const btn = document.getElementById('submit-trial-btn');
-      btn.disabled = true; btn.innerHTML = '⏳ 作成中...';
-      try {
-        const response = await fetch(`${API_URL}/trial`, {
-          method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: userEmail, subdomain: subdomain + '.' + domain, product: selectedPlugin })
-        });
-        const data = await response.json();
-        if (data.error) { showToast(data.message || data.error, 'error'); }
-        else if (data.license_key) {
-          hideTrialModal();
-          navigator.clipboard.writeText(data.license_key);
-          showToast('🎉 トライアル開始！ライセンスキーをコピーしました。', 'success');
-          if (subdomain !== userSubdomain || domain !== userDomain) {
-            userSubdomain = subdomain; userDomain = domain;
-            localStorage.setItem('kinplug_subdomain', subdomain);
-            localStorage.setItem('kinplug_domain', domain);
-            updateSubdomainUI();
-          }
-          loadLicenses();
-        }
-      } catch (err) { showToast('トライアル開始に失敗しました。', 'error'); }
-      finally { btn.disabled = false; btn.innerHTML = '🚀 トライアル開始'; }
-    }
-
-    async function loadLicenses() {
-      const container = document.getElementById('licenses-container');
-      if (!userEmail) { container.innerHTML = '<div class="empty-state"><div class="icon">🔒</div><h3>ログインしてください</h3></div>'; return; }
-      container.innerHTML = '<div class="skeleton skeleton-card"></div><div class="skeleton skeleton-card"></div>';
-      try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 10000);
-        const response = await fetch(`${API_URL}/licenses`, { headers: { 'X-User-Email': userEmail }, signal: controller.signal });
-        clearTimeout(timeoutId);
-        const data = await response.json();
-        const licenses = data.licenses || [];
-        licensesLoaded = true;
-        if (licenses.length === 0) {
-          container.innerHTML = '<div class="empty-state"><div class="icon">📦</div><h3>ライセンスがありません</h3><p>無料トライアルを開始しましょう！</p><button class="btn btn-primary" onclick="showTrialModal()">✨ 無料トライアル</button></div>';
-        } else {
-          container.innerHTML = licenses.map(renderLicenseCard).join('');
-        }
-        updateStats(licenses);
-      } catch (err) {
-        container.innerHTML = err.name === 'AbortError' 
-          ? '<div class="empty-state"><div class="icon">⏱️</div><h3>タイムアウト</h3><button class="btn btn-secondary" onclick="loadLicenses()">🔄 再試行</button></div>'
-          : '<div class="empty-state"><div class="icon">❌</div><h3>読み込み失敗</h3><button class="btn btn-secondary" onclick="loadLicenses()">🔄 再試行</button></div>';
-      }
-    }
-
-    function renderLicenseCard(license) {
-      const icons = { 'pdf-designer': '📄', 'enhanced-lookup': '🔍', 'template-builder': '📝' };
-      const icon = icons[license.product] || '🧩';
-      const statusClass = license.status === 'active' ? (license.type === 'trial' ? 'trial' : 'active') : 'expired';
-      const expiresDate = license.expiresAt ? new Date(license.expiresAt) : null;
-      const daysLeft = expiresDate ? Math.ceil((expiresDate - new Date()) / (1000*60*60*24)) : null;
-      let expiresClass = '', expiresText = expiresDate ? expiresDate.toLocaleDateString('ja-JP') : '無期限';
-      if (daysLeft !== null && daysLeft <= 7 && daysLeft > 0) { expiresClass = 'warning'; expiresText = `⚠️ 残り${daysLeft}日`; }
-      else if (daysLeft !== null && daysLeft <= 0) { expiresClass = 'danger'; expiresText = '❌ 期限切れ'; }
-      const keyShort = license.license_key.length > 24 ? license.license_key.substring(0, 24) + '...' : license.license_key;
-      const names = { 'pdf-designer': 'PDF Designer', 'enhanced-lookup': 'Enhanced Lookup', 'template-builder': 'Template Builder' };
-      const subdomainDisplay = license.subdomain.includes('.') ? license.subdomain : license.subdomain + '.cybozu.com';
-      return `<div class="license-card"><div class="license-icon">${icon}</div><div class="license-info"><h3>${names[license.product] || license.product}</h3><div class="subdomain">📍 ${subdomainDisplay}</div><div class="license-key-box" onclick="copyKey(this,'${license.license_key}')" title="クリックでコピー"><span>📋</span> ${keyShort}</div></div><div class="license-meta"><div class="license-status ${statusClass}">${license.type === 'trial' ? '🧪 トライアル' : '✅ 有効'}</div><div class="license-expires ${expiresClass}">${expiresText}</div></div></div>`;
-    }
-
-    function copyKey(el, key) { navigator.clipboard.writeText(key); const original = el.innerHTML; el.innerHTML = '<span style="color:#059669">✓ コピーしました！</span>'; setTimeout(() => el.innerHTML = original, 1500); }
-
-    function updateStats(licenses) {
-      document.getElementById('stat-total').textContent = licenses.length;
-      document.getElementById('stat-active').textContent = licenses.filter(l => l.status === 'active' && l.type !== 'trial').length;
-      document.getElementById('stat-trial').textContent = licenses.filter(l => l.type === 'trial' && l.status === 'active').length;
-      document.getElementById('stat-expiring').textContent = licenses.filter(l => { if (!l.expiresAt || l.status !== 'active') return false; const days = Math.ceil((new Date(l.expiresAt) - new Date()) / (1000*60*60*24)); return days <= 7 && days > 0; }).length;
-    }
-
-    function showToast(message, type = '') { const toast = document.getElementById('toast'); toast.textContent = message; toast.className = 'toast ' + type + ' show'; setTimeout(() => toast.classList.remove('show'), 4000); }
-  </script>
+<script src="/assets/js/app.js"></script>
 </body>
 </html>
