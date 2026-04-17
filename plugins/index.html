@@ -3,129 +3,296 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plugins - Built by People Who Actually Use Kintone | KinPlug</title>
-  <meta name="description" content="PDF generation, enhanced lookup, document templates. Plugins that solve the problems we had using Kintone every day. 14-day free trial on all plugins.">
+  <title>Catalog — KinPlug</title>
+  <meta name="description" content="The complete KinPlug catalog. Fifteen premium plugins for Kintone, organized by category.">
   <link rel="canonical" href="https://kinplug.com/plugins/">
   <link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/">
   <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..600,0..100,0..1&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
-  <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
+  <script async crossorigin="anonymous"
+    data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+    onload="window.Clerk && window.Clerk.load()"></script>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="/" class="logo">Kin<span>Plug</span></a>
-      <div class="nav-links"><a href="/plugins/" class="active">Plugins</a><a href="/pricing.html">Pricing</a><a href="/docs/">Docs</a></div>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/" class="brand"><span>Kin<em>·</em>Plug</span><span class="brand-sub">Archive · Vol. I</span></a>
+      <div class="nav-menu">
+        <a href="/plugins/" style="color:var(--ink);">Catalog</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/docs/">Documentation</a>
+        <a href="/blog/">Journal</a>
+      </div>
       <div class="nav-right">
-        <div class="lang-switcher"><a href="/plugins/" class="active">EN</a> | <a href="/ja/plugins/">日本語</a></div>
-        <div class="nav-auth"><div id="auth-nav"><button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">Sign In</button><button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">Start Free</button></div><div id="user-nav" class="hidden"><a href="/dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a></div></div>
+        <div class="lang"><a href="/plugins/" class="active">EN</a><a href="/ja/plugins/">JA</a></div>
+        <div class="nav-auth">
+          <div id="auth-nav">
+            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">Sign in</button>
+            <button class="btn btn-ink btn-sm" onclick="KinPlug.signUp()">Start free</button>
+          </div>
+          <div id="user-nav" class="hidden flex gap-2 items-center">
+            <a href="/dashboard.html" class="btn btn-ghost btn-sm">Dashboard</a>
+            <div class="user-info" onclick="KinPlug.openProfile()">
+              <div id="user-avatar" class="user-avatar">?</div>
+              <span id="user-name">User</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <section class="hero" style="padding: 60px 0;">
-    <div class="container">
-      <div style="text-align: center; max-width: 700px; margin: 0 auto;">
-        <span class="badge badge-primary" style="margin-bottom: 16px;">🎯 Built by people who actually use Kintone</span>
-        <h1>Plugins that solve<br><span class="text-gradient">real problems.</span></h1>
-        <p class="hero-description">
-          We use Kintone every day.<br>
-          These are the tools we wished existed.<br>
-          So we built them.
+<section class="prod-masthead">
+  <div class="wrap">
+    <div class="prod-meta">
+      <span class="label label-seal">Section II</span>
+      <span class="label">Fifteen titles · MMXXVI</span>
+    </div>
+    <div class="grid">
+      <div class="col-wide">
+        <h1 class="prod-title">The<br/><em class="italic" style="color:var(--seal);">Catalog.</em></h1>
+        <p class="hero-lede">
+          Every title we've shipped or committed to ship, organized by where it lives in
+          your Kintone workflow. Individually priced, or all of them under the Studio bundle.
         </p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="plugins" style="padding-top: 40px;">
-    <div class="container">
-      <div class="plugins-grid">
-        <div class="plugin-card featured">
-          <span class="plugin-badge popular">Most Popular</span>
-          <div class="plugin-icon">📄</div>
-          <h3>PDF Designer</h3>
-          <p>Invoices, quotes, reports. One click, beautiful PDF. No more Excel copy-paste routine.</p>
-          <ul class="plugin-features">
-            <li>Drag-and-drop editor</li>
-            <li>Full subtable support</li>
-            <li>Multiple templates</li>
-            <li>Auto-numbering & formulas</li>
-          </ul>
-          <div class="plugin-actions">
-            <button class="btn btn-primary" onclick="KinPlug.startTrial('pdf-designer')">Try It</button>
-            <a href="/plugins/pdf-designer/" class="btn btn-ghost">Learn More →</a>
-          </div>
-        </div>
-        
-        <div class="plugin-card">
-          <span class="plugin-badge new">NEW</span>
-          <div class="plugin-icon">🔍</div>
-          <h3>Enhanced Lookup</h3>
-          <p>Standard lookup, but actually good. Type to search, copy multiple fields, works in subtables.</p>
-          <ul class="plugin-features">
-            <li>Instant search as you type</li>
-            <li>Copy multiple fields at once</li>
-            <li>Works inside subtables</li>
-            <li>Custom display format</li>
-          </ul>
-          <div class="plugin-actions">
-            <button class="btn btn-primary" onclick="KinPlug.startTrial('enhanced-lookup')">Try It</button>
-            <a href="/plugins/enhanced-lookup/" class="btn btn-ghost">Learn More →</a>
-          </div>
-        </div>
-        
-        <div class="plugin-card">
-          <div class="plugin-icon">📝</div>
-          <h3>Template Builder</h3>
-          <p>Word-like editor for document templates. Perfect for contracts, proposals, and reports.</p>
-          <ul class="plugin-features">
-            <li>Rich text editing</li>
-            <li>Conditional sections</li>
-            <li>Word/PDF export</li>
-            <li>E-signature ready</li>
-          </ul>
-          <div class="plugin-actions">
-            <button class="btn btn-primary" onclick="KinPlug.startTrial('template-builder')">Try It</button>
-            <a href="/plugins/template-builder/" class="btn btn-ghost">Learn More →</a>
-          </div>
-        </div>
+<!-- PLATFORM -->
+<section class="sec" style="padding-top:0;">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="sec-num">I.</span>
+      <h2 class="sec-title">Platform</h2>
+      <span class="sec-note">Flagship titles · Two</span>
+    </header>
+
+    <div class="catalog">
+      <a href="/plugins/flow/" class="cat-item">
+        <span class="cat-num">№ 01</span>
+        <div><div class="cat-name">Flow</div></div>
+        <div class="cat-desc">Visual workflow automation with OAuth 2.0 email (Gmail + Microsoft 365), conditional triggers, AI actions.</div>
+        <div class="cat-price">$49–399 / mo</div>
+        <span class="cat-status cat-status-dev">In development</span>
+        <span class="cat-arrow">→</span>
+      </a>
+      <div class="cat-item">
+        <span class="cat-num">№ 02</span>
+        <div><div class="cat-name">Connect</div></div>
+        <div class="cat-desc">App-to-app relationship explorer. Diagrams your entire Kintone workspace.</div>
+        <div class="cat-price">$29 / mo</div>
+        <span class="cat-status cat-status-soon">Planned</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="stats" style="margin-top: 80px;">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item"><h3>14 Days</h3><p>Free, full-featured trial</p></div>
-        <div class="stat-item"><h3>5 Minutes</h3><p>To get started</p></div>
-        <div class="stat-item"><h3>Unlimited</h3><p>Apps and users</p></div>
-        <div class="stat-item"><h3>&lt; 24 Hours</h3><p>Support response</p></div>
+<!-- DOCUMENTS -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="sec-num">II.</span>
+      <h2 class="sec-title">Documents</h2>
+      <span class="sec-note">Output titles · Two</span>
+    </header>
+
+    <div class="catalog">
+      <a href="/plugins/pdf-designer/" class="cat-item">
+        <span class="cat-num">№ 03</span>
+        <div><div class="cat-name">PDF Pro</div></div>
+        <div class="cat-desc">WYSIWYG PDF template designer. Expression engine, inline charts, multi-page, subtables. Japanese fonts included.</div>
+        <div class="cat-price">$29 / mo</div>
+        <span class="cat-status cat-status-live">Live · v3.2+</span>
+        <span class="cat-arrow">→</span>
+      </a>
+      <div class="cat-item">
+        <span class="cat-num">№ 04</span>
+        <div><div class="cat-name">Print</div></div>
+        <div class="cat-desc">Label and thermal printer support — direct from record view. DYMO, Brother, Zebra.</div>
+        <div class="cat-price">$19 / mo</div>
+        <span class="cat-status cat-status-soon">Planned</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="cta" style="margin-top: 80px;">
-    <div class="container">
-      <h2>All plugins come with<br>14-day free trial</h2>
-      <p>No credit card required. No auto-billing.</p>
-      <div class="cta-actions">
-        <button class="btn btn-white btn-lg" onclick="KinPlug.signUp()">Start Free</button>
+<!-- UX -->
+<section class="sec">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="sec-num">III.</span>
+      <h2 class="sec-title">Experience</h2>
+      <span class="sec-note">Form &amp; field titles · Three</span>
+    </header>
+
+    <div class="catalog">
+      <div class="cat-item">
+        <span class="cat-num">№ 05</span>
+        <div><div class="cat-name">Fields</div></div>
+        <div class="cat-desc">Conditional visibility, required, and editability rules. No JavaScript. Rules travel with the app.</div>
+        <div class="cat-price">$29 / mo</div>
+        <span class="cat-status cat-status-dev">In development</span>
+      </div>
+      <a href="/plugins/enhanced-lookup/" class="cat-item">
+        <span class="cat-num">№ 06</span>
+        <div><div class="cat-name">Smart Lookup</div></div>
+        <div class="cat-desc">Enhanced lookup modal with full-text search, progressive loading, mobile parity, sub-table support.</div>
+        <div class="cat-price">$29 / mo</div>
+        <span class="cat-status cat-status-live">Live · v3.0</span>
+        <span class="cat-arrow">→</span>
+      </a>
+      <div class="cat-item">
+        <span class="cat-num">№ 07</span>
+        <div><div class="cat-name">Grid</div></div>
+        <div class="cat-desc">Excel-like bulk editing. Keyboard nav, paste ranges, formulas, undo/redo.</div>
+        <div class="cat-price">$39 / mo</div>
+        <span class="cat-status cat-status-soon">Planned</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand"><a href="/" class="logo">Kin<span>Plug</span></a><p style="margin-top: 12px;">We use Kintone every day. We built what we needed.</p></div>
-        <div><h4>Plugins</h4><ul><li><a href="/plugins/pdf-designer/">PDF Designer</a></li><li><a href="/plugins/enhanced-lookup/">Enhanced Lookup</a></li><li><a href="/plugins/template-builder/">Template Builder</a></li></ul></div>
-        <div><h4>Support</h4><ul><li><a href="/docs/">Documentation</a></li><li><a href="mailto:support@kinplug.com">Contact</a></li></ul></div>
-        <div><h4>Company</h4><ul><li><a href="/legal/privacy.html">Privacy</a></li><li><a href="/legal/terms.html">Terms</a></li></ul></div>
+<!-- VIEWS -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="sec-num">IV.</span>
+      <h2 class="sec-title">Views</h2>
+      <span class="sec-note">Visualization titles · Three</span>
+    </header>
+
+    <div class="catalog">
+      <div class="cat-item">
+        <span class="cat-num">№ 08</span>
+        <div><div class="cat-name">Calendar</div></div>
+        <div class="cat-desc">Full calendar view with two-way Google Calendar sync. Drag-to-reschedule.</div>
+        <div class="cat-price">$39 / mo</div>
+        <span class="cat-status cat-status-soon">Planned</span>
       </div>
-      <div class="footer-bottom"><div>© 2026 KinPlug by Edamame Inc.</div></div>
+      <div class="cat-item">
+        <span class="cat-num">№ 09</span>
+        <div><div class="cat-name">Board</div></div>
+        <div class="cat-desc">Kanban and Gantt combined. Drag cards between columns; see timeline below.</div>
+        <div class="cat-price">$39 / mo</div>
+        <span class="cat-status cat-status-soon">Planned</span>
+      </div>
+      <div class="cat-item">
+        <span class="cat-num">№ 10</span>
+        <div><div class="cat-name">Dashboard</div></div>
+        <div class="cat-desc">Custom analytics widgets — KPI tiles, pivot tables, charts, cross-app aggregation.</div>
+        <div class="cat-price">$49 / mo</div>
+        <span class="cat-status cat-status-soon">Planned</span>
+      </div>
     </div>
-  </footer>
-  <script src="/assets/js/app.js"></script>
+  </div>
+</section>
+
+<!-- DATA -->
+<section class="sec">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="sec-num">V.</span>
+      <h2 class="sec-title">Data</h2>
+      <span class="sec-note">Storage titles · Three</span>
+    </header>
+
+    <div class="catalog">
+      <div class="cat-item">
+        <span class="cat-num">№ 11</span>
+        <div><div class="cat-name">Import</div></div>
+        <div class="cat-desc">Smart CSV/Excel import with column mapping, deduplication, and row-level transformation.</div>
+        <div class="cat-price">$39 / mo</div>
+        <span class="cat-status cat-status-soon">Planned</span>
+      </div>
+      <div class="cat-item">
+        <span class="cat-num">№ 12</span>
+        <div><div class="cat-name">Backup</div></div>
+        <div class="cat-desc">Scheduled automated backups — S3, Google Drive, Dropbox. Versioned. Encrypted at rest.</div>
+        <div class="cat-price">$39 / mo</div>
+        <span class="cat-status cat-status-soon">Planned</span>
+      </div>
+      <div class="cat-item">
+        <span class="cat-num">№ 13</span>
+        <div><div class="cat-name">Numbers</div></div>
+        <div class="cat-desc">Automatic record numbering with custom patterns, sequences, and collision resolution.</div>
+        <div class="cat-price">$19 / mo</div>
+        <span class="cat-status cat-status-soon">Planned</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOBILE / INTEGRATION -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="sec-num">VI.</span>
+      <h2 class="sec-title">Mobile &amp; Integration</h2>
+      <span class="sec-note">External titles · Two</span>
+    </header>
+
+    <div class="catalog">
+      <div class="cat-item">
+        <span class="cat-num">№ 14</span>
+        <div><div class="cat-name">Scan</div></div>
+        <div class="cat-desc">Barcode, QR, and OCR from mobile camera — straight into record fields.</div>
+        <div class="cat-price">$29 / mo</div>
+        <span class="cat-status cat-status-soon">Planned</span>
+      </div>
+      <div class="cat-item">
+        <span class="cat-num">№ 15</span>
+        <div><div class="cat-name">Portal</div></div>
+        <div class="cat-desc">Limited-scope external user access. Perfect for vendor portals, customer submissions, supplier forms.</div>
+        <div class="cat-price">$79 / mo</div>
+        <span class="cat-status cat-status-soon">Planned</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec sec-dark">
+  <div class="wrap" style="text-align:center;">
+    <span class="label" style="color:var(--seal);">Next</span>
+    <h2 class="display-2 serif" style="color:var(--paper-light); margin-top: 14px;">
+      Start with one. <em class="italic" style="color:var(--seal);">Or start with all of them.</em>
+    </h2>
+    <div style="display:flex; justify-content:center; gap:14px; margin-top: 36px; flex-wrap:wrap;">
+      <button class="btn btn-seal btn-lg" onclick="KinPlug.signUp()">Start free trial <span class="arrow">→</span></button>
+      <a href="/pricing.html" class="btn btn-ghost btn-lg" style="border-color:var(--paper-warm); color:var(--paper-light);">See pricing</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="brand"><span style="color:var(--paper-light);">Kin<em>·</em>Plug</span><span class="brand-sub">Archive · Vol. I</span></a>
+        <p>Premium plugins for Kintone. Built by Edamame Inc.</p>
+      </div>
+      <div class="footer-col"><h4>Catalog</h4><ul><li><a href="/plugins/flow/">Flow</a></li><li><a href="/plugins/pdf-designer/">PDF Pro</a></li><li><a href="/plugins/enhanced-lookup/">Smart Lookup</a></li><li><a href="/plugins/">All titles</a></li></ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul><li><a href="/docs/">Documentation</a></li><li><a href="/pricing.html">Pricing</a></li><li><a href="/blog/">Journal</a></li><li><a href="mailto:support@kinplug.com">Support</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="https://edamame.ph" target="_blank" rel="noopener">Edamame Inc.</a></li><li><a href="/legal/privacy.html">Privacy</a></li><li><a href="/legal/terms.html">Terms</a></li><li><a href="mailto:billing@kinplug.com">Billing</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© MMXXVI · Edamame Inc.</span>
+      <span>Built with Kintone · Composed in Manila</span>
+      <span>v3.0 · ISSN 0000-0000</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/app.js"></script>
 </body>
 </html>
