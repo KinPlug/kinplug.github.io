@@ -3,246 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>プライバシーポリシー | KinPlug - kintoneプラグイン</title>
-  <meta name="description" content="KinPlugのプライバシーポリシー。kintoneプラグインをご利用いただく際のデータ保護について説明します。">
-  <meta name="robots" content="index, follow">
+  <title>プライバシー — KinPlug</title>
+  <meta name="description" content="Edamame Inc.によるKinPlugのプライバシーポリシー。">
   <link rel="canonical" href="https://kinplug.com/ja/legal/privacy.html">
-  <link rel="alternate" hreflang="en" href="https://kinplug.com/legal/privacy.html">
-  <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/legal/privacy.html">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..600,0..100,0..1&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <script async crossorigin="anonymous"
+    data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+    onload="window.Clerk && window.Clerk.load()"></script>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="/ja/" class="logo">Kin<span>Plug</span></a>
-      <div class="nav-links">
-        <a href="/ja/plugins/">プラグイン</a>
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/ja/" class="brand"><span>Kin<em>·</em>Plug</span><span class="brand-sub">アーカイブ・第一巻</span></a>
+      <div class="nav-menu">
+        <a href="/ja/plugins/">カタログ</a>
         <a href="/ja/pricing.html">料金</a>
         <a href="/ja/docs/">ドキュメント</a>
+        <a href="/ja/blog/">ジャーナル</a>
       </div>
       <div class="nav-right">
-        <div class="lang-switcher"><a href="/legal/privacy.html">EN</a> | <a href="/ja/legal/privacy.html" class="active">日本語</a></div>
-      </div>
-    </div>
-  </nav>
-
-  <main class="legal-page">
-    <div class="container">
-      <div class="legal-content">
-        <h1>プライバシーポリシー</h1>
-        <p class="last-updated">最終更新日: 2026年1月11日</p>
-
-        <section>
-          <h2>はじめに</h2>
-          <p>KinPlug（以下「当社」）は、Edamame Inc.が運営するサービスです。当社は、お客様のプライバシーの保護に努めています。本プライバシーポリシーは、当社のウェブサイト（kinplug.com）およびkintoneプラグインをご利用いただく際の情報の収集、使用、保護について説明します。</p>
-          <p><strong>重要なポイント：</strong> 当社のプラグインは、お客様のkintone環境内でのみ動作します。お客様のkintoneデータにアクセスしたり、保存したり、外部に送信することはありません。</p>
-        </section>
-
-        <section>
-          <h2>収集する情報</h2>
-          
-          <h3>1. アカウント情報</h3>
-          <p>アカウント作成またはトライアル開始時に、以下の情報を収集します：</p>
-          <ul>
-            <li>メールアドレス</li>
-            <li>お名前（任意）</li>
-            <li>kintoneサブドメイン（例：yourcompany.kintone.com の「yourcompany」部分）</li>
-            <li>認証データ（Clerk経由）</li>
-          </ul>
-
-          <h3>2. ライセンス情報</h3>
-          <p>以下の情報を保存します：</p>
-          <ul>
-            <li>発行されたライセンスキー</li>
-            <li>ライセンスタイプ（トライアル、月額、年額）</li>
-            <li>ライセンスの状態と有効期限</li>
-            <li>関連付けられたkintoneサブドメイン</li>
-          </ul>
-
-          <h3>3. 利用データ</h3>
-          <p>匿名化された利用統計を収集する場合があります：</p>
-          <ul>
-            <li>プラグインのアクティベーション/検証リクエスト</li>
-            <li>機能の利用パターン（匿名化）</li>
-            <li>エラーレポート（個人情報は含まれません）</li>
-          </ul>
-
-          <h3>4. ウェブサイト解析</h3>
-          <p>サイトトラフィックを理解するための標準的な解析データ：</p>
-          <ul>
-            <li>閲覧ページ</li>
-            <li>参照元</li>
-            <li>デバイスおよびブラウザ情報</li>
-            <li>地域（国レベル）</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>収集しない情報</h2>
-          <p><strong>お客様のkintoneデータはkintone内に留まります。</strong></p>
-          <p>当社のプラグインは：</p>
-          <ul>
-            <li>❌ kintoneのレコードやデータにアクセスしません</li>
-            <li>❌ kintone環境外にデータを送信しません</li>
-            <li>❌ お客様の業務データを当社サーバーに保存しません</li>
-            <li>❌ kintoneのログイン情報にアクセスしません</li>
-          </ul>
-          <p>すべてのプラグイン処理は、お客様のkintoneブラウザセッション内でローカルに行われます。</p>
-        </section>
-
-        <section>
-          <h2>情報の利用目的</h2>
-          <p>収集した情報は以下の目的で使用します：</p>
-          <ul>
-            <li>サービスの提供および維持</li>
-            <li>ライセンスの検証およびサブスクリプション管理</li>
-            <li>サービス関連のメール送信（トライアルリマインダー、アップデート通知）</li>
-            <li>カスタマーサポートの提供</li>
-            <li>製品およびサービスの改善</li>
-            <li>法的義務の遵守</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>メール通信</h2>
-          <p>以下のメールを送信します：</p>
-          <ul>
-            <li><strong>トランザクションメール：</strong> ウェルカムメール、ライセンス確認、トライアルリマインダー</li>
-            <li><strong>サポート：</strong> お問い合わせへの返信</li>
-            <li><strong>製品アップデート：</strong> 重要な機能のお知らせ（まれ）</li>
-          </ul>
-          <p>メールアドレスを第三者に販売したり、スパムを送信することはありません。</p>
-        </section>
-
-        <section>
-          <h2>データの保存とセキュリティ</h2>
-          <h3>データの保存場所</h3>
-          <ul>
-            <li><strong>アカウント/ライセンスデータ：</strong> 日本のkintone（当社インスタンス）に保存</li>
-            <li><strong>認証：</strong> Clerk（SOC 2 Type II認証取得）が処理</li>
-            <li><strong>メールサービス：</strong> Resend（東京リージョン）</li>
-          </ul>
-
-          <h3>セキュリティ対策</h3>
-          <ul>
-            <li>すべてのデータはHTTPS/TLS暗号化で送信</li>
-            <li>すべてのリクエストにAPI認証を使用</li>
-            <li>定期的なセキュリティレビュー</li>
-            <li>データへの従業員アクセスを制限</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>第三者サービス</h2>
-          <p>以下の第三者サービスを使用しています：</p>
-          <table>
-            <tr><th>サービス</th><th>用途</th><th>プライバシーポリシー</th></tr>
-            <tr><td>Clerk</td><td>認証</td><td><a href="https://clerk.com/privacy" target="_blank">clerk.com/privacy</a></td></tr>
-            <tr><td>Resend</td><td>メール配信</td><td><a href="https://resend.com/privacy" target="_blank">resend.com/privacy</a></td></tr>
-            <tr><td>GitHub Pages</td><td>ウェブサイトホスティング</td><td><a href="https://docs.github.com/en/site-policy/privacy-policies" target="_blank">GitHub Privacy</a></td></tr>
-            <tr><td>Railway</td><td>APIホスティング</td><td><a href="https://railway.app/legal/privacy" target="_blank">railway.app/privacy</a></td></tr>
-          </table>
-        </section>
-
-        <section>
-          <h2>お客様の権利</h2>
-          <p>お客様には以下の権利があります：</p>
-          <ul>
-            <li><strong>アクセス権：</strong> 個人データのコピーを請求する権利</li>
-            <li><strong>訂正権：</strong> 不正確な情報を更新する権利</li>
-            <li><strong>削除権：</strong> アカウントとデータの削除を請求する権利</li>
-            <li><strong>ポータビリティ権：</strong> ポータブルな形式でデータを受け取る権利</li>
-            <li><strong>異議申立権：</strong> 特定の処理活動に異議を申し立てる権利</li>
-          </ul>
-          <p>これらの権利を行使するには、<a href="mailto:privacy@kinplug.com">privacy@kinplug.com</a>までご連絡ください。</p>
-        </section>
-
-        <section>
-          <h2>データの保持期間</h2>
-          <ul>
-            <li><strong>アクティブなアカウント：</strong> アカウントが有効な間保持</li>
-            <li><strong>期限切れのトライアル：</strong> 1年間保持後、削除</li>
-            <li><strong>キャンセルされたサブスクリプション：</strong> 再アクティベーションのため90日間保持</li>
-            <li><strong>削除されたアカウント：</strong> 30日以内に完全削除</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Cookie</h2>
-          <p>最小限のCookieを使用しています：</p>
-          <ul>
-            <li><strong>認証Cookie：</strong> ログイン状態を維持するため（Clerk）</li>
-            <li><strong>設定Cookie：</strong> 言語設定</li>
-          </ul>
-          <p>トラッキングCookieは使用せず、広告主にデータを販売しません。</p>
-        </section>
-
-        <section>
-          <h2>お子様のプライバシー</h2>
-          <p>KinPlugは16歳未満のお子様を対象としたサービスではありません。お子様から意図的にデータを収集することはありません。</p>
-        </section>
-
-        <section>
-          <h2>海外のユーザー</h2>
-          <p>当社のサービスは日本およびフィリピンから運営されています。EUからサービスにアクセスする場合、お客様のデータは日本に転送され処理される場合があります。日本はEUから十分性認定を受けています。</p>
-        </section>
-
-        <section>
-          <h2>ポリシーの変更</h2>
-          <p>本プライバシーポリシーは随時更新される場合があります。重要な変更については、以下の方法でお知らせします：</p>
-          <ul>
-            <li>本ページに新しいポリシーを掲載</li>
-            <li>「最終更新日」を更新</li>
-            <li>重要な変更についてはメールでお知らせ</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>お問い合わせ</h2>
-          <p>本プライバシーポリシーについてご質問がある場合：</p>
-          <ul>
-            <li><strong>メール：</strong> <a href="mailto:privacy@kinplug.com">privacy@kinplug.com</a></li>
-            <li><strong>サポート：</strong> <a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
-          </ul>
-          <p><strong>運営会社：</strong><br>
-          Edamame Inc.<br>
-          フィリピン</p>
-        </section>
-
-        <div class="legal-footer">
-          <p>KinPlugをご利用いただくことで、本プライバシーポリシーに同意したものとみなされます。</p>
-          <a href="/ja/legal/terms.html" class="btn btn-outline">利用規約を読む →</a>
+        <div class="lang">
+          <a href="/legal/privacy.html" class="">EN</a>
+          <a href="/ja/legal/privacy.html" class="active">JA</a>
+        </div>
+        <div class="nav-auth">
+          <div id="auth-nav">
+            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">サインイン</button>
+            <button class="btn btn-ink btn-sm" onclick="KinPlug.signUp()">無料で始める</button>
+          </div>
+          <div id="user-nav" class="hidden flex gap-2 items-center">
+            <a href="/ja/dashboard.html" class="btn btn-ghost btn-sm">ダッシュボード</a>
+            <div class="user-info" onclick="KinPlug.openProfile()">
+              <div id="user-avatar" class="user-avatar">?</div>
+              <span id="user-name">User</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-bottom">
-        <div>© 2026 KinPlug by Edamame Inc.</div>
-        <div><a href="/">English</a> | <a href="/ja/">日本語</a></div>
+  </div>
+</nav><section class="prod-masthead"><div class="wrap">
+        <div class="prod-meta"><span class="label label-seal">法務</span><span class="label">最終更新 · MMXXVI年1月</span></div>
+        <div class="grid"><div class="col-wide"><h1 class="prod-title">プライバシー。</h1></div></div>
+        </div></section>
+        <section class="sec" style="padding-top:0;"><div class="wrap"><div class="grid"><div class="col-center-8 prose">
+        <p><strong style="color:var(--ink);">要約。</strong>サービス提供に必要な情報のみ収集します：メール、Kintoneサブドメイン、ライセンスキー、インストール済みバージョンのテレメトリ。データの販売、広告表示、マーケティングパートナーとの共有は一切行いません。</p>
+        <h2 class="serif display-3" style="margin-top: 60px; margin-bottom: 20px;">収集する情報</h2>
+        <p><strong style="color:var(--ink);">アカウント情報。</strong>メールアドレス、氏名（SSOから取得できる場合）、サインインプロバイダ。Clerkに保存。</p>
+        <p><strong style="color:var(--ink);">ライセンス情報。</strong>Kintoneサブドメイン、トライアル・購入プラグイン、ライセンスキー、有効化タイムスタンプ。edamame.kintone.comのライセンスアプリ（App 1370）に保存。</p>
+        <p><strong style="color:var(--ink);">OAuthトークン（Flowユーザーのみ）。</strong>暗号化されたGmail/Microsoft 365のアクセス・リフレッシュトークン。OAuthアプリ（App 1434）にAES-256暗号化で保存。サブドメイン単位でスコープ化。設定済みワークフロー起動時のメール送信のみに使用。</p>
+        <p><strong style="color:var(--ink);">テレメトリ。</strong>プラグインバージョン、Kintoneサブドメイン、最終接続日時。互換性問題の検出と重要アップデート通知に使用。</p>
+        <h2 class="serif display-3" style="margin-top: 60px; margin-bottom: 20px;">収集しない情報</h2>
+        <p>Kintoneのレコード内容は読み取りません。プラグインはブラウザ内で直接Kintoneと通信し、我々のサーバーはレコードデータを一切見ません。例外はFlowのメール送信時のみ、Gmail/Microsoftのサーバーへ中継する際にAPIを通過しますが、送信完了後は保持しません。</p>
+        <h2 class="serif display-3" style="margin-top: 60px; margin-bottom: 20px;">データの保管場所</h2>
+        <p>APIはGoogle Cloud Runの<code class="mono" style="background:var(--paper-deep);padding:2px 6px;border-radius:2px;font-size:0.85em;">asia-northeast1</code>（東京）リージョンで稼働。ライセンス・OAuthデータはKintone（日本・東京リージョン）に保管。Clerk認証は独自インフラ。</p>
+        <h2 class="serif display-3" style="margin-top: 60px; margin-bottom: 20px;">お問い合わせ</h2>
+        <p><a href="mailto:privacy@kinplug.com" style="border-bottom:1px solid var(--ink);">privacy@kinplug.com</a>までご連絡ください。全てのメッセージを読んでいます。</p>
+        </div></div></div></section>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/ja/" class="brand"><span style="color:var(--paper-light);">Kin<em>·</em>Plug</span><span class="brand-sub">アーカイブ・第一巻</span></a>
+        <p>Kintone用プレミアムプラグイン集。Edamame Inc. 制作。</p>
       </div>
+      <div class="footer-col"><h4>カタログ</h4><ul>
+        <li><a href="/ja/plugins/flow/">Flow</a></li>
+        <li><a href="/ja/plugins/pdf-designer/">PDF Pro</a></li>
+        <li><a href="/ja/plugins/enhanced-lookup/">Smart Lookup</a></li>
+        <li><a href="/ja/plugins/">全タイトル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>リソース</h4><ul>
+        <li><a href="/ja/docs/">ドキュメント</a></li>
+        <li><a href="/ja/pricing.html">料金</a></li>
+        <li><a href="/ja/blog/">ジャーナル</a></li>
+        <li><a href="mailto:support@kinplug.com">サポート</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>会社情報</h4><ul>
+        <li><a href="https://edamame.ph" target="_blank" rel="noopener">Edamame Inc.</a></li>
+        <li><a href="/ja/legal/privacy.html">プライバシー</a></li>
+        <li><a href="/ja/legal/terms.html">利用規約</a></li>
+        <li><a href="mailto:billing@kinplug.com">請求</a></li>
+      </ul></div>
     </div>
-  </footer>
+    <div class="footer-bottom">
+      <span>© MMXXVI · Edamame Inc.</span>
+      <span>Kintone上で構築 · 於マニラ</span>
+      <span>v3.0 · ISSN 0000-0000</span>
+    </div>
+  </div>
+</footer>
 
-  <style>
-    .legal-page { padding: 60px 0; }
-    .legal-content { max-width: 800px; margin: 0 auto; }
-    .legal-content h1 { margin-bottom: 8px; }
-    .last-updated { color: var(--text-muted); margin-bottom: 40px; }
-    .legal-content section { margin-bottom: 40px; }
-    .legal-content h2 { margin-top: 40px; margin-bottom: 16px; color: var(--primary); font-size: 1.5rem; }
-    .legal-content h3 { margin-top: 24px; margin-bottom: 12px; font-size: 1.1rem; }
-    .legal-content p, .legal-content li { color: var(--text-secondary); line-height: 1.8; }
-    .legal-content ul { margin-left: 24px; margin-bottom: 16px; }
-    .legal-content li { margin-bottom: 8px; }
-    .legal-content table { width: 100%; border-collapse: collapse; margin: 16px 0; }
-    .legal-content th, .legal-content td { padding: 12px; text-align: left; border: 1px solid var(--border); }
-    .legal-content th { background: var(--bg-light); }
-    .legal-footer { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); text-align: center; }
-    .legal-footer p { margin-bottom: 20px; }
-  </style>
+<script src="/assets/js/app.js"></script>
 </body>
 </html>
