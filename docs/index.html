@@ -3,33 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Documentation | KinPlug - Kintone Plugins</title>
-  <meta name="description" content="KinPlug documentation. Learn how to install, configure, and use KinPlug plugins for Kintone.">
+  <title>Documentation — KinPlug</title>
+  <meta name="description" content="Install guides, API references, and troubleshooting for KinPlug plugins.">
   <link rel="canonical" href="https://kinplug.com/docs/">
-  <link rel="alternate" hreflang="en" href="https://kinplug.com/docs/">
-  <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/docs/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..600,0..100,0..1&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
-  <script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js" onload="window.Clerk && window.Clerk.load()"></script>
+  <script async crossorigin="anonymous"
+    data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk"
+    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+    onload="window.Clerk && window.Clerk.load()"></script>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="/" class="logo">Kin<span>Plug</span></a>
-      <div class="nav-links">
-        <a href="/plugins/">Plugins</a>
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/" class="brand"><span>Kin<em>·</em>Plug</span><span class="brand-sub">Archive · Vol. I</span></a>
+      <div class="nav-menu">
+        <a href="/plugins/">Catalog</a>
         <a href="/pricing.html">Pricing</a>
-        <a href="/docs/" class="active">Docs</a>
+        <a href="/docs/" style="color:var(--ink);">Documentation</a>
+        <a href="/blog/">Journal</a>
       </div>
       <div class="nav-right">
-        <div class="lang-switcher"><a href="/docs/" class="active">EN</a> | <a href="/ja/docs/">日本語</a></div>
+        <div class="lang">
+          <a href="/docs/" class="active">EN</a>
+          <a href="/ja/docs/" class="">JA</a>
+        </div>
         <div class="nav-auth">
           <div id="auth-nav">
-            <button class="btn btn-secondary btn-sm" onclick="KinPlug.signIn()">Sign In</button>
-            <button class="btn btn-primary btn-sm" onclick="KinPlug.signUp()">Get Started</button>
+            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">Sign in</button>
+            <button class="btn btn-ink btn-sm" onclick="KinPlug.signUp()">Start free</button>
           </div>
-          <div id="user-nav" class="hidden">
-            <a href="/dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
+          <div id="user-nav" class="hidden flex gap-2 items-center">
+            <a href="/dashboard.html" class="btn btn-ghost btn-sm">Dashboard</a>
             <div class="user-info" onclick="KinPlug.openProfile()">
               <div id="user-avatar" class="user-avatar">?</div>
               <span id="user-name">User</span>
@@ -38,132 +47,168 @@
         </div>
       </div>
     </div>
-  </nav>
-
-  <section class="docs-header">
-    <div class="container">
-      <h1>Documentation</h1>
-      <p class="section-subtitle">Everything you need to get started with KinPlug plugins.</p>
+  </div>
+</nav>
+<section class="prod-masthead">
+  <div class="wrap">
+    <div class="prod-meta">
+      <span class="label label-seal">Section V</span>
+      <span class="label">Documentation · MMXXVI</span>
     </div>
-  </section>
-
-  <section class="docs-content">
-    <div class="container">
-      <div class="docs-grid">
-        <div class="docs-card">
-          <div class="docs-icon">🚀</div>
-          <h3>Getting Started</h3>
-          <ul>
-            <li><a href="#install">How to Install Plugins</a></li>
-            <li><a href="#license">Activating Your License</a></li>
-            <li><a href="#trial">Starting a Free Trial</a></li>
-          </ul>
-        </div>
-        
-        <div class="docs-card">
-          <div class="docs-icon">📄</div>
-          <h3>PDF Designer</h3>
-          <ul>
-            <li><a href="/plugins/pdf-designer/#setup">Setup Guide</a></li>
-            <li><a href="/plugins/pdf-designer/#templates">Creating Templates</a></li>
-            <li><a href="/plugins/pdf-designer/#faq">FAQ</a></li>
-          </ul>
-        </div>
-        
-        <div class="docs-card">
-          <div class="docs-icon">🔍</div>
-          <h3>Enhanced Lookup</h3>
-          <ul>
-            <li><a href="/plugins/enhanced-lookup/#setup">Setup Guide</a></li>
-            <li><a href="/plugins/enhanced-lookup/#mapping">Field Mapping</a></li>
-            <li><a href="/plugins/enhanced-lookup/#faq">FAQ</a></li>
-          </ul>
-        </div>
-        
-        <div class="docs-card">
-          <div class="docs-icon">📝</div>
-          <h3>Template Builder</h3>
-          <ul>
-            <li><a href="/plugins/template-builder/#setup">Setup Guide</a></li>
-            <li><a href="/plugins/template-builder/#editor">Using the Editor</a></li>
-            <li><a href="/plugins/template-builder/#faq">FAQ</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="docs-section" id="install">
-        <h2>How to Install Plugins</h2>
-        <ol class="docs-steps">
-          <li><strong>Download the plugin file</strong> - After starting a trial or purchasing, download the .zip file from your dashboard.</li>
-          <li><strong>Go to Kintone Administration</strong> - Click the gear icon → Kintone System Administration → Plugins.</li>
-          <li><strong>Upload the plugin</strong> - Click "Add Plugin" and upload the .zip file.</li>
-          <li><strong>Add to your app</strong> - Open your app settings → Plugins → Add the plugin.</li>
-          <li><strong>Configure</strong> - Open plugin settings and enter your license key.</li>
-          <li><strong>Deploy</strong> - Click "Update App" to activate the plugin.</li>
-        </ol>
-      </div>
-
-      <div class="docs-section" id="license">
-        <h2>Activating Your License</h2>
-        <ol class="docs-steps">
-          <li>Copy your license key from the dashboard or welcome email.</li>
-          <li>Open your Kintone app → Settings → Plugins.</li>
-          <li>Click the gear icon on the KinPlug plugin.</li>
-          <li>Paste your license key in the "License Key" field.</li>
-          <li>Click "Save" and deploy your app.</li>
-        </ol>
-        <p class="docs-note">💡 One license works for all apps in your Kintone subdomain.</p>
-      </div>
-
-      <div class="docs-section" id="trial">
-        <h2>Starting a Free Trial</h2>
-        <ol class="docs-steps">
-          <li>Create an account at <a href="/login.html">kinplug.com/login</a></li>
-          <li>Go to your <a href="/dashboard.html">Dashboard</a></li>
-          <li>Click "Start Trial" on the plugin you want to try.</li>
-          <li>Enter your Kintone subdomain (e.g., "mycompany" from mycompany.kintone.com)</li>
-          <li>Copy your trial license key and use it in Kintone.</li>
-        </ol>
-        <p class="docs-note">💡 Trial is 14 days with full features. No credit card required.</p>
-      </div>
-
-      <div class="docs-section">
-        <h2>Need Help?</h2>
-        <p>Can't find what you're looking for? Contact us:</p>
-        <ul>
-          <li>📧 Email: <a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
-          <li>💬 Response time: Within 24 hours (business days)</li>
-        </ul>
+    <div class="grid">
+      <div class="col-wide">
+        <h1 class="prod-title">Documentation.</h1>
+        <p class="hero-lede">Install guides, API references, and troubleshooting. Organized by plugin.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-bottom">
-        <div>© 2026 KinPlug by Edamame Inc.</div>
-        <div><a href="/docs/">English</a> | <a href="/ja/docs/">日本語</a></div>
+<section class="sec" style="padding-top: 0;">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">Getting started</h2>
+      <span class="sec-note">Five minutes · From zero</span>
+    </header>
+    <div class="grid">
+      <div class="col-left prose">
+        <p><strong style="color:var(--ink);">1. Sign up at kinplug.com.</strong> Google or Microsoft SSO, or email. No credit card.</p>
+        <p><strong style="color:var(--ink);">2. Start a trial</strong> from your dashboard. Enter your Kintone subdomain (the part before <code class="mono" style="background:var(--paper-deep);padding:2px 6px;border-radius:2px;font-size:0.85em;">.kintone.com</code>).</p>
+        <p><strong style="color:var(--ink);">3. Copy your license key.</strong> It looks like <code class="mono" style="background:var(--paper-deep);padding:2px 6px;border-radius:2px;font-size:0.85em;">KP-XXXX-XXXX-XXXX</code>.</p>
+        <p><strong style="color:var(--ink);">4. Upload the plugin</strong> to Kintone via <em>System administration → Plugins → New</em>. Download the latest .zip from your dashboard.</p>
+        <p><strong style="color:var(--ink);">5. Add the plugin</strong> to any Kintone app via <em>App settings → Plugins → Add plugin</em>, then configure with your license key.</p>
+      </div>
+      <div class="col-right">
+        <div class="feat-grid" style="grid-template-columns: 1fr;">
+          <div class="feat-cell">
+            <span class="feat-cell-num">Install · Flow</span>
+            <h3 class="feat-cell-title">OAuth email setup</h3>
+            <p>After installation, authorize Gmail or Microsoft 365 once. Tokens encrypt and store in App 1434.</p>
+          </div>
+          <div class="feat-cell">
+            <span class="feat-cell-num">Install · PDF Pro</span>
+            <h3 class="feat-cell-title">Template basics</h3>
+            <p>Start from a blank canvas or import one of eight starter templates (invoice, quote, receipt, report, packing slip, purchase order, contract, memo).</p>
+          </div>
+          <div class="feat-cell">
+            <span class="feat-cell-num">Install · Smart Lookup</span>
+            <h3 class="feat-cell-title">Zero-config activation</h3>
+            <p>No setup screen. Install, activate, and every lookup field in the app upgrades automatically.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script src="/assets/js/app.js"></script>
-  <style>
-    .docs-header { padding: 60px 0 40px; background: var(--bg-light); text-align: center; }
-    .docs-content { padding: 60px 0; }
-    .docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-bottom: 60px; }
-    .docs-card { background: var(--bg-light); padding: 24px; border-radius: var(--radius-lg); }
-    .docs-icon { font-size: 2rem; margin-bottom: 12px; }
-    .docs-card h3 { margin-bottom: 16px; }
-    .docs-card ul { list-style: none; }
-    .docs-card li { padding: 8px 0; border-bottom: 1px solid var(--border); }
-    .docs-card li:last-child { border-bottom: none; }
-    .docs-section { margin-bottom: 48px; padding-top: 24px; }
-    .docs-section h2 { margin-bottom: 24px; text-align: left; }
-    .docs-steps { margin-left: 24px; }
-    .docs-steps li { margin-bottom: 16px; line-height: 1.7; }
-    .docs-note { background: var(--primary-light); padding: 16px; border-radius: var(--radius); margin-top: 16px; }
-    .nav-links a.active { color: var(--primary); font-weight: 600; }
-  </style>
+<section class="sec sec-alt">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Plugin references</h2>
+      <span class="sec-note">One entry per title</span>
+    </header>
+    <div class="catalog">
+      <a href="/plugins/flow/" class="cat-item">
+        <span class="cat-num">№ 01</span>
+        <div><div class="cat-name">Flow</div></div>
+        <div class="cat-desc">Automation triggers, action types, OAuth setup, AI integration.</div>
+        <div class="cat-price">v4.9</div>
+        <span class="cat-status cat-status-dev">Dev</span>
+        <span class="cat-arrow">→</span>
+      </a>
+      <a href="/plugins/pdf-designer/" class="cat-item">
+        <span class="cat-num">№ 03</span>
+        <div><div class="cat-name">PDF Pro</div></div>
+        <div class="cat-desc">Template designer, expression syntax, chart types, font management.</div>
+        <div class="cat-price">v3.2+</div>
+        <span class="cat-status cat-status-live">Live</span>
+        <span class="cat-arrow">→</span>
+      </a>
+      <a href="/plugins/enhanced-lookup/" class="cat-item">
+        <span class="cat-num">№ 06</span>
+        <div><div class="cat-name">Smart Lookup</div></div>
+        <div class="cat-desc">Search configuration, performance tuning, mobile selectors.</div>
+        <div class="cat-price">v3.0</div>
+        <span class="cat-status cat-status-live">Live</span>
+        <span class="cat-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">Support</h2>
+      <span class="sec-note">Same-day · Weekdays</span>
+    </header>
+    <div class="grid">
+      <div class="col-left">
+        <h3 class="display-3 serif">We answer our own email.</h3>
+        <p class="prose" style="margin-top: 20px;">
+          Support goes to the developers who wrote the code. No tier-1 scripts, no ticketing system that forgets you. Most questions answered same-day during Manila or Tokyo business hours.
+        </p>
+      </div>
+      <div class="col-right">
+        <div class="feat-grid" style="grid-template-columns: 1fr;">
+          <div class="feat-cell">
+            <span class="feat-cell-num">Email</span>
+            <h3 class="feat-cell-title"><a href="mailto:support@kinplug.com" style="border-bottom:1px solid var(--ink);">support@kinplug.com</a></h3>
+            <p>English, 日本語, Tagalog. Include your subdomain and license key for fastest response.</p>
+          </div>
+          <div class="feat-cell">
+            <span class="feat-cell-num">Billing</span>
+            <h3 class="feat-cell-title"><a href="mailto:billing@kinplug.com" style="border-bottom:1px solid var(--ink);">billing@kinplug.com</a></h3>
+            <p>Invoices, refunds, JPY billing, annual pricing, enterprise contracts.</p>
+          </div>
+          <div class="feat-cell">
+            <span class="feat-cell-num">Emergency</span>
+            <h3 class="feat-cell-title">Production incident</h3>
+            <p>Studio bundle &amp; Enterprise customers have a direct Slack or Teams channel with the engineering team.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="brand"><span style="color:var(--paper-light);">Kin<em>·</em>Plug</span><span class="brand-sub">Archive · Vol. I</span></a>
+        <p>Premium plugins for Kintone. Built by Edamame Inc.</p>
+      </div>
+      <div class="footer-col"><h4>Catalog</h4><ul>
+        <li><a href="/plugins/flow/">Flow</a></li>
+        <li><a href="/plugins/pdf-designer/">PDF Pro</a></li>
+        <li><a href="/plugins/enhanced-lookup/">Smart Lookup</a></li>
+        <li><a href="/plugins/">All titles</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul>
+        <li><a href="/docs/">Documentation</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/blog/">Journal</a></li>
+        <li><a href="mailto:support@kinplug.com">Support</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Company</h4><ul>
+        <li><a href="https://edamame.ph" target="_blank" rel="noopener">Edamame Inc.</a></li>
+        <li><a href="/legal/privacy.html">Privacy</a></li>
+        <li><a href="/legal/terms.html">Terms</a></li>
+        <li><a href="mailto:billing@kinplug.com">Billing</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© MMXXVI · Edamame Inc.</span>
+      <span>Built with Kintone · Composed in Manila</span>
+      <span>v3.0 · ISSN 0000-0000</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/app.js"></script>
 </body>
 </html>
