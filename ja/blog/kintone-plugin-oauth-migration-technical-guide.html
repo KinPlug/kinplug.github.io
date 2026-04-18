@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kintoneメールプラグイン OAuth 2.0移行の技術ガイド — Node.js実装例</title>
+<meta name="description" content="Kintoneメールプラグインを SMTP基本認証からOAuth 2.0に切り替える手順を、Node.js + Kintoneの実装例とともに具体的に解説。認可コードフロー、トークン保存、リフレッシュ、Send As（委任送信）、エラーハンドリング、サブドメイン単位でのスコープなど、エンタープライズ運用で必要な実装ポイントを網羅。">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Kintoneメールプラグイン OAuth 2.0移行の技術ガイド — Node.js実装例">
+<meta property="og:description" content="Kintoneメールプラグインを SMTP基本認証からOAuth 2.0に切り替える手順を、Node.js + Kintoneの実装例とともに具体的に解説。認可コードフロー、トークン保存、リフレッシュ、Send As（委任送信）、エラーハンドリング、サブドメイン単位でのスコープなど、エンタープライズ運用で必要な実装ポイントを網羅。">
+<meta property="og:image" content="https://kinplug.com/assets/og-default.png">
+<meta property="og:url" content="https://kinplug.com/ja/blog/kintone-plugin-oauth-migration-technical-guide.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="kinplug">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
+<link rel="canonical" href="https://kinplug.com/ja/blog/kintone-plugin-oauth-migration-technical-guide.html">
+<link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/kintone-plugin-oauth-migration-technical-guide.html">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/">
+<link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Kintoneメールプラグイン OAuth 2.0移行の技術ガイド — Node.js実装例",
+  "description": "Kintoneメールプラグインを SMTP基本認証からOAuth 2.0に切り替える手順を、Node.js + Kintoneの実装例とともに具体的に解説。認可コードフロー、トークン保存、リフレッシュ、Send As（委任送信）、エラーハンドリング、サブドメイン単位でのスコープなど、エンタープライズ運用で必要な実装ポイントを網羅。",
+  "image": "https://kinplug.com/assets/og-default.png",
+  "datePublished": "2026-04-18",
+  "dateModified": "2026-04-18",
+  "author": {
+    "@type": "Person",
+    "name": "Tom Arai",
+    "url": "https://kinplug.com/about/"
+  },
+  "publisher": {
+    "@id": "https://kinplug.com/#organization"
+  },
+  "mainEntityOfPage": "https://kinplug.com/ja/blog/kintone-plugin-oauth-migration-technical-guide.html",
+  "inLanguage": "ja",
+  "wordCount": 2400,
+  "articleSection": "Kintone plugins",
+  "keywords": [
+    "Kintone",
+    "プラグイン",
+    "OAuth 2.0",
+    "enterprise SaaS"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://kinplug.com/ja/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "ジャーナル",
+      "item": "https://kinplug.com/ja/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Kintoneメールプラグイン OAuth 2.0移行の技術ガイド — Node.js実装例",
+      "item": "https://kinplug.com/ja/blog/kintone-plugin-oauth-migration-technical-guide.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>運営: Edamame Inc.</span>
+        <span class="topbar-dot">·</span>
+        <span>東京・マニラ</span>
+        <span class="topbar-dot">·</span>
+        <span>Kintone運用2019年より</span>
+      </div>
+      <div class="topbar-right">
+        <a href="/ja/about/">会社概要</a>
+        <span class="topbar-dot">·</span>
+        <a href="mailto:support@kinplug.com">平日JST 09:00–18:00 当日対応</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/ja/" class="logo" aria-label="kinplug">
+        <span class="logo-mark">
+          <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#1B2B5A" stroke-width="2"/>
+            <rect x="9" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <rect x="22" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+          </svg>
+        </span>
+        <span class="logo-word">kinplug</span>
+      </a>
+      <div class="nav-menu">
+        <a href="/ja/plugins/" >プラグイン</a>
+        <a href="/ja/pricing.html" >料金</a>
+        <a href="/ja/compare/" >他社比較</a>
+        <a href="/ja/about/" >会社情報</a>
+        <a href="/ja/docs/" >ドキュメント</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <a href="/" >EN</a>
+          <a href="/ja/" class="active">日本語</a>
+        </div>
+        <a href="/ja/login.html" class="btn btn-secondary btn-sm">サインイン</a>
+        <a href="/ja/signup/" class="btn btn-primary btn-sm">無料で始める</a>
+        <button class="nav-toggle" aria-label="メニュー">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3zm0 4h14v2H3zm0 4h14v2H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<article>
+<section class="sec hero-section">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow">ジャーナル</div>
+    <h1 class="h1" style="text-wrap: balance;">Kintoneメールプラグイン OAuth 2.0移行の技術ガイド — Node.js実装例</h1>
+    <div style="margin-top:32px; padding-top:24px; border-top:1px solid var(--rule); font-family:'JetBrains Mono',monospace; font-size:0.8125rem; color:var(--ink-mute); display:flex; gap:20px; flex-wrap:wrap;">
+      <span>2026年4月18日</span>
+      <span>·</span>
+      <span>読了時間 約9分</span>
+      <span>·</span>
+      <span>Tom Arai · Edamame Inc. 代表</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-white">
+  <div class="wrap wrap-narrow">
+    <div class="content-prose article-prose">
+
+<p>Kintoneからメール送信を行うプラグインで、SMTP基本認証をOAuth 2.0に切り替える手順を、コードと設定の具体例とともに解説します。Microsoft 365の基本認証が2026年4月に完全停止する背景を受けて、多くの企業が移行に着手しています。</p>
+
+<div class="callout-box">
+<h4>この記事の要点</h4>
+<p>OAuth 2.0への移行は、認証方式の変更に加えて、トークン管理・リフレッシュ・スコープ設計・エラーハンドリングの刷新が必要です。新規実装で約3～5日、既存実装の改修で5～10日が目安。この記事では、Node.js + Kintone環境での実装例と、運用時の注意点を具体的に整理します。</p>
+</div>
+
+<h2>移行前の現状把握</h2>
+
+<p>まず、現行のプラグインがどの認証方式を使っているか確認します。SMTP基本認証の典型的なコード：</p>
+
+<pre><code>// SMTP基本認証の例（Node.js + nodemailer）
+const transporter = nodemailer.createTransport({
+  host: 'smtp.office365.com',
+  port: 587,
+  secure: false,
+  auth: {
+    user: 'sender@your-company.com',
+    pass: 'password_here'  // 基本認証 — 2026年4月以降使用不可
+  }
+});</code></pre>
+
+<p>このパターンは、Microsoft 365・Gmail共通で、2024年～2026年の期間に順次使えなくなります。</p>
+
+<h2>OAuth 2.0実装の全体像</h2>
+
+<p>OAuth 2.0では、以下の4ステップでメール送信が実現されます：</p>
+
+<ol>
+  <li><strong>認可コード取得</strong>：ユーザーをGoogle/Microsoftの認証画面にリダイレクト、認可コードを取得</li>
+  <li><strong>トークン交換</strong>：認可コードをaccess tokenとrefresh tokenに交換</li>
+  <li><strong>トークン保存</strong>：暗号化してKintoneアプリまたは自社DBに保存</li>
+  <li><strong>API呼び出し</strong>：access tokenを使ってGmail API / Microsoft Graph API経由で送信。期限切れ時はrefresh tokenで自動更新</li>
+</ol>
+
+<h2>ステップ1：OAuth アプリ登録</h2>
+
+<h3>Google Cloud側の設定</h3>
+
+<ol>
+  <li>Google Cloud Console（console.cloud.google.com）にアクセス</li>
+  <li>プロジェクトを作成（例：kinplug-mail-production）</li>
+  <li>「APIとサービス」→「認証情報」で、OAuth 2.0 クライアントIDを作成</li>
+  <li>リダイレクトURIに、プラグインのコールバックURL（例：<code>https://api.your-plugin.com/oauth/google/callback</code>）を登録</li>
+  <li>スコープを「<code>https://www.googleapis.com/auth/gmail.send</code>」に限定（最小権限の原則）</li>
+  <li>Gmail APIを有効化</li>
+</ol>
+
+<h3>Microsoft Entra ID側の設定</h3>
+
+<ol>
+  <li>Azure Portal（portal.azure.com）にアクセス</li>
+  <li>Entra ID → アプリ登録 → 新規登録</li>
+  <li>リダイレクトURIに、プラグインのコールバックURLを登録</li>
+  <li>「APIのアクセス許可」で Microsoft Graph の <code>Mail.Send</code>、<code>User.Read</code>、<code>offline_access</code> を追加</li>
+  <li>委任されたアクセス許可を選択（管理者同意が必要な場合あり）</li>
+  <li>クライアントシークレットを発行（24ヶ月の有効期限推奨）</li>
+</ol>
+
+<h2>ステップ2：認可コードフロー実装</h2>
+
+<pre><code>// Node.js + Express例（Microsoft Graph向け）
+app.get('/oauth/microsoft/start', (req, res) =&gt; {
+  const params = new URLSearchParams({
+    client_id: MS_CLIENT_ID,
+    response_type: 'code',
+    redirect_uri: 'https://api.your-plugin.com/oauth/microsoft/callback',
+    scope: 'offline_access Mail.Send User.Read',
+    state: generateSecureState(req), // CSRF対策
+    prompt: 'select_account'
+  });
+  res.redirect(`https://login.microsoftonline.com/common/oauth2/v2.0/authorize?${params}`);
+});
+
+app.get('/oauth/microsoft/callback', async (req, res) =&gt; {
+  const { code, state } = req.query;
+  validateState(state, req); // CSRF検証
+
+  const tokenResponse = await fetch('https://login.microsoftonline.com/common/oauth2/v2.0/token', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      client_id: MS_CLIENT_ID,
+      client_secret: MS_CLIENT_SECRET,
+      code,
+      redirect_uri: 'https://api.your-plugin.com/oauth/microsoft/callback',
+      grant_type: 'authorization_code'
+    })
+  });
+
+  const tokens = await tokenResponse.json();
+  // tokens.access_token, tokens.refresh_token, tokens.expires_in を保存
+  await saveTokens(userId, tokens);
+  res.redirect('/success');
+});</code></pre>
+
+<h2>ステップ3：トークン保存の設計</h2>
+
+<p>トークンは必ず暗号化して保存します。暗号化キーは、プラグインのコードに埋め込まず、環境変数またはKMS経由で取得します。</p>
+
+<pre><code>// AES-256-GCM での暗号化例
+const crypto = require('crypto');
+
+function encryptToken(token, key) {
+  const iv = crypto.randomBytes(12);
+  const cipher = crypto.createCipheriv('aes-256-gcm', Buffer.from(key, 'hex'), iv);
+  const encrypted = Buffer.concat([cipher.update(token, 'utf8'), cipher.final()]);
+  const authTag = cipher.getAuthTag();
+  return iv.toString('hex') + ':' + authTag.toString('hex') + ':' + encrypted.toString('hex');
+}</code></pre>
+
+<p>保存先の選択肢：</p>
+
+<ul>
+  <li><strong>Kintone専用アプリ（推奨）</strong>：OAuth接続情報管理アプリを1つ作成し、暗号化トークンを保存。アプリへのアクセス権限を厳格に絞る。プラグインからのアクセスもAPIキー経由で制限。</li>
+  <li><strong>サーバー側DB</strong>：PostgreSQL等の自社DBに保存。ただし、ユーザー情報を自社で保持する法的責任が発生するため、プライバシーポリシーで明示が必要。</li>
+  <li><strong>Secrets Manager（AWS等）</strong>：クラウドベンダーのシークレット管理サービス。コスト効率が低下する可能性あり。</li>
+</ul>
+
+<h2>ステップ4：送信時のトークン検証とリフレッシュ</h2>
+
+<pre><code>async function sendEmailViaGraph(userId, mailBody) {
+  let tokens = await loadTokens(userId);
+
+  // トークン期限切れ確認（5分のマージン）
+  if (tokens.expires_at &lt; Date.now() + 5 * 60 * 1000) {
+    tokens = await refreshAccessToken(tokens.refresh_token);
+    await saveTokens(userId, tokens);
+  }
+
+  const response = await fetch('https://graph.microsoft.com/v1.0/me/sendMail', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${tokens.access_token}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ message: mailBody })
+  });
+
+  if (response.status === 401) {
+    // トークン無効化された場合は再認証を促す
+    throw new TokenExpiredError('OAuth再認証が必要です');
+  }
+}</code></pre>
+
+<h2>Kintone側の統合ポイント</h2>
+
+<h3>プラグイン設定画面</h3>
+
+<p>プラグインの設定画面では、「Googleに接続」「Microsoftに接続」ボタンを表示します。クリックすると、新しいウィンドウでOAuth認証画面を開き、完了後に元の画面に戻ります。</p>
+
+<pre><code>// プラグイン設定画面のJavaScript
+document.getElementById('connect-google').addEventListener('click', () =&gt; {
+  const authUrl = `https://api.your-plugin.com/oauth/google/start?subdomain=${kintone.getLoginUser().domain}`;
+  const popup = window.open(authUrl, 'oauth', 'width=500,height=600');
+
+  // コールバック完了を待つ
+  window.addEventListener('message', (e) =&gt; {
+    if (e.data.type === 'oauth-complete') {
+      popup.close();
+      refreshConnectionList();
+    }
+  });
+});</code></pre>
+
+<h3>サブドメイン単位でのスコープ</h3>
+
+<p>複数サブドメインで運用する場合、OAuth接続はサブドメイン単位で分離します。<code>sales.kintone.com</code>で接続したGmailアカウントが、<code>ops.kintone.com</code>からは使えないようにする設計です。</p>
+
+<pre><code>// 接続情報保存時にサブドメインを記録
+async function saveOAuthConnection(subdomain, userEmail, tokens) {
+  await kintone.api('/k/v1/record', 'POST', {
+    app: OAUTH_CONNECTIONS_APP_ID,
+    record: {
+      subdomain: { value: subdomain },
+      user_email: { value: userEmail },
+      encrypted_tokens: { value: encryptTokens(tokens) },
+      scope: { value: 'Mail.Send User.Read' }
+    }
+  });
+}
+
+// 送信時にサブドメインで絞り込み
+async function loadOAuthConnection(subdomain, userEmail) {
+  const records = await kintone.api('/k/v1/records', 'GET', {
+    app: OAUTH_CONNECTIONS_APP_ID,
+    query: `subdomain = "${subdomain}" and user_email = "${userEmail}"`
+  });
+  return records.records[0];
+}</code></pre>
+
+<h2>移行時のトラブルシューティング</h2>
+
+<h3>「管理者同意が必要」エラー</h3>
+
+<p>Microsoft Entra ID で、組織的に管理者同意を必要とするスコープ（例：<code>Mail.Send.Shared</code>）を使っている場合、一般ユーザーの認証時にエラーが出ます。解決策は、テナント管理者が事前に「組織全体に対する同意」を付与するか、個別ユーザーに対して同意を求めるフローに変更するかです。</p>
+
+<h3>「invalid_grant」エラー</h3>
+
+<p>refresh tokenが無効化された場合に発生します。ユーザーがパスワード変更・MFA再設定・セッション無効化のいずれかを行うとrefresh tokenも失効します。プラグイン側では、このエラーを検知して、ユーザーに再認証を促すUIを表示する実装が必要です。</p>
+
+<h3>「rate limit exceeded」エラー</h3>
+
+<p>Microsoft Graph APIにはレート制限があり（テナント単位で1秒あたり約100リクエスト）、大量送信時に遭遇します。429エラーを検知したら、<code>Retry-After</code>ヘッダに従って待機し、リトライする実装にします。</p>
+
+<h2>Send As（委任送信）の実装</h2>
+
+<p>共有メールボックス（例：<code>info@your-company.com</code>）から個別ユーザーアカウント経由で送信する場合、Microsoft側でSend As権限の委任が必要です。</p>
+
+<p>Exchange Admin Centerで設定：</p>
+
+<ol>
+  <li>Receiving → Shared mailboxes から対象のメールボックスを選択</li>
+  <li>「メールボックスのアクセス許可」→ 「他のユーザーへのアクセス許可」</li>
+  <li>Send Asを付与したいユーザーを追加</li>
+</ol>
+
+<p>API側の実装：</p>
+
+<pre><code>// Graph API で Send As を使う場合
+await fetch(`https://graph.microsoft.com/v1.0/users/${sharedMailboxId}/sendMail`, {
+  // users/{id}/sendMailで、委任されたユーザーの代わりに送信
+  headers: {
+    'Authorization': `Bearer ${delegatedUserToken}`,  // 委任されたユーザーのトークン
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    message: {
+      // from は自動的に shared mailbox になる
+      toRecipients: [...]
+    }
+  })
+});</code></pre>
+
+<h2>まとめ</h2>
+
+<p>SMTP基本認証からOAuth 2.0への移行は、単なる認証方式の置き換えではなく、トークン管理・エラーハンドリング・スコープ設計の再構築を伴います。Node.js + Kintoneの実装パターンを押さえれば、3～5日で実装可能です。ただし、エンタープライズ環境では管理者同意・Send As委任・レート制限対応など、運用面の配慮が追加で必要になります。</p>
+
+<p>Kinplug MailではこれらすべてをOAuth 2.0ネイティブで設計しており、実装済みで提供しています。既存プラグインからの移行支援も無料で行っています。</p>
+
+<h2>関連記事</h2>
+
+<ul>
+  <li><a href="/ja/blog/microsoft-365-oauth-kintone-mail-2026.html">Microsoft 365 基本認証停止 — 2026年4月以降のKintoneメール送信</a></li>
+  <li><a href="/ja/plugins/mail/">Kinplug Mail 製品ページ</a></li>
+</ul>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-deep">
+  <div class="wrap wrap-narrow">
+    <div style="background:#FFF; border-radius:8px; padding:40px; border:1px solid var(--rule); box-shadow: 0 6px 24px -12px rgba(15,20,25,0.08);">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--clay); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px;">次のステップ</div>
+      <h3 style="font-family:'Noto Serif JP',serif; font-size:1.5rem; color:var(--navy); margin-bottom:14px;">kinplug を14日間無料で試す</h3>
+      <p style="color:var(--ink-soft); margin-bottom:24px; line-height:1.7;">クレジットカード不要。GoogleかMicrosoftでサインインして、Kintoneサブドメインを入力。90秒で稼働開始します。</p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="/ja/signup/" class="btn btn-primary btn-lg">無料で始める<span class="arrow">→</span></a>
+        <a href="/ja/plugins/" class="btn btn-secondary btn-lg">プラグインを見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+</article>
+<div class="cta-wrap">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow eyebrow-center" style="color:var(--clay);">はじめる</div>
+    <h2 class="cta-title">14日間、全機能、<br>クレジットカード不要。</h2>
+    <p class="cta-desc">GoogleかMicrosoftでサインイン、Kintoneサブドメインを入力、プラグインをインストール。90秒で稼働開始。</p>
+    <div class="cta-actions">
+      <a href="/ja/signup/" class="btn btn-clay btn-lg">無料アカウント作成<span class="arrow">→</span></a>
+      <a href="/ja/contact/" class="btn btn-secondary btn-lg" style="border-color:rgba(247,245,240,0.3); color:var(--paper);">お問い合わせ</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="/ja/" class="logo logo-light">
+          <span class="logo-mark">
+            <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#F7F5F0" stroke-width="2"/>
+              <rect x="9" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <rect x="22" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+            </svg>
+          </span>
+          <span class="logo-word">kinplug</span>
+        </a>
+        <p class="footer-desc">Kintoneのためのネイティブプラグイン。運営: Edamame Inc.（マニラ・東京）。2019年よりKintone運用。Cybozu Partner of the Year受賞パートナー。</p>
+      </div>
+      <div class="footer-col"><h4>プラグイン</h4><ul>
+        <li><a href="/ja/plugins/mail/">Kinplug Mail</a></li>
+        <li><a href="/ja/plugins/pdf-pro/">PDF Pro</a></li>
+        <li><a href="/ja/plugins/smart-lookup/">Smart Lookup</a></li>
+        <li><a href="/ja/plugins/flow/">Flow</a></li>
+        <li><a href="/ja/plugins/">全タイトル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>リソース</h4><ul>
+        <li><a href="/ja/pricing.html">料金</a></li>
+        <li><a href="/ja/compare/">他社比較</a></li>
+        <li><a href="/ja/docs/">ドキュメント</a></li>
+        <li><a href="/ja/blog/">ジャーナル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>会社情報</h4><ul>
+        <li><a href="/ja/about/">会社概要</a></li>
+        <li><a href="/ja/contact/">お問い合わせ</a></li>
+        <li><a href="https://edamame.ph">Edamame Inc.</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>連絡先</h4><ul>
+        <li><a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
+        <li><a href="mailto:billing@kinplug.com">billing@kinplug.com</a></li>
+        <li><a href="mailto:legal@kinplug.com">legal@kinplug.com</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-grid">
+        <div><h5>特定商取引法に基づく表記</h5><p><strong>販売事業者</strong>: Edamame Inc. · <strong>代表責任者</strong>: Tom Arai · <strong>所在地</strong>: フィリピン・マニラBGC（東京オフィス連絡可）· <strong>連絡先</strong>: support@kinplug.com</p></div>
+        <div><h5>支払方法・返金について</h5><p>クレジットカード（全プラン）・銀行振込（スタンダード以上）対応。年払い契約は2ヶ月分無料、月払い契約はいつでも解約可能、解約月末までの請求。詳細は<a href="/ja/legal/terms.html" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.5);">利用規約</a>。</p></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 · Edamame Inc. · Since 2019</div>
+      <div class="footer-bottom-links">
+        <a href="/ja/legal/privacy.html">プライバシーポリシー</a>
+        <a href="/ja/legal/terms.html">利用規約</a>
+        <a href="/ja/legal/security.html">セキュリティ</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/app.js"></script>
+</body>
+</html>

@@ -89,6 +89,72 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!-- Additional articles (Phase 2) -->
+  <url>
+    <loc>https://kinplug.com/blog/cybozu-com-vs-kintone-com.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/blog/cybozu-com-vs-kintone-com.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/cybozu-com-vs-kintone-com.html"/>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kinplug.com/ja/blog/cybozu-com-vs-kintone-com.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/cybozu-com-vs-kintone-com.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/blog/cybozu-com-vs-kintone-com.html"/>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kinplug.com/blog/kintone-lookup-performance-50k-records.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/blog/kintone-lookup-performance-50k-records.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/kintone-lookup-performance-50k-records.html"/>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kinplug.com/ja/blog/kintone-lookup-performance-50k-records.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/kintone-lookup-performance-50k-records.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/blog/kintone-lookup-performance-50k-records.html"/>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kinplug.com/blog/kintone-plugin-oauth-migration-technical-guide.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/blog/kintone-plugin-oauth-migration-technical-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/kintone-plugin-oauth-migration-technical-guide.html"/>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kinplug.com/ja/blog/kintone-plugin-oauth-migration-technical-guide.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/kintone-plugin-oauth-migration-technical-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/blog/kintone-plugin-oauth-migration-technical-guide.html"/>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kinplug.com/blog/kintone-plugin-enterprise-procurement-ringi.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/blog/kintone-plugin-enterprise-procurement-ringi.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/kintone-plugin-enterprise-procurement-ringi.html"/>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kinplug.com/ja/blog/kintone-plugin-enterprise-procurement-ringi.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/kintone-plugin-enterprise-procurement-ringi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/blog/kintone-plugin-enterprise-procurement-ringi.html"/>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url><loc>https://kinplug.com/legal/privacy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://kinplug.com/ja/legal/privacy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://kinplug.com/legal/terms.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When Kintone lookup gets slow — scaling past 50,000 records</title>
+<meta name="description" content="Past 10,000 records, Kintone lookup becomes noticeably slow. Causes: the records API 10,000-offset limit and UI rendering cost. Solutions covering pre-filters, progressive loading, cursor API, and purpose-built plugins — verified at 50,000-record scale.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="When Kintone lookup gets slow — scaling past 50,000 records">
+<meta property="og:description" content="Past 10,000 records, Kintone lookup becomes noticeably slow. Causes: the records API 10,000-offset limit and UI rendering cost. Solutions covering pre-filters, progressive loading, cursor API, and purpose-built plugins — verified at 50,000-record scale.">
+<meta property="og:image" content="https://kinplug.com/assets/og-default.png">
+<meta property="og:url" content="https://kinplug.com/blog/kintone-lookup-performance-50k-records.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:site_name" content="kinplug">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
+<link rel="canonical" href="https://kinplug.com/blog/kintone-lookup-performance-50k-records.html">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/blog/kintone-lookup-performance-50k-records.html">
+<link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/">
+<link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "When Kintone lookup gets slow — scaling past 50,000 records",
+  "description": "Past 10,000 records, Kintone lookup becomes noticeably slow. Causes: the records API 10,000-offset limit and UI rendering cost. Solutions covering pre-filters, progressive loading, cursor API, and purpose-built plugins — verified at 50,000-record scale.",
+  "image": "https://kinplug.com/assets/og-default.png",
+  "datePublished": "2026-04-18",
+  "dateModified": "2026-04-18",
+  "author": {
+    "@type": "Person",
+    "name": "Tom Arai",
+    "url": "https://kinplug.com/about/"
+  },
+  "publisher": {
+    "@id": "https://kinplug.com/#organization"
+  },
+  "mainEntityOfPage": "https://kinplug.com/blog/kintone-lookup-performance-50k-records.html",
+  "inLanguage": "en",
+  "wordCount": 2000,
+  "articleSection": "Kintone plugins",
+  "keywords": [
+    "Kintone",
+    "plugins",
+    "OAuth 2.0",
+    "enterprise SaaS"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://kinplug.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Journal",
+      "item": "https://kinplug.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "When Kintone lookup gets slow — scaling past 50,000 records",
+      "item": "https://kinplug.com/blog/kintone-lookup-performance-50k-records.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>Operated by Edamame Inc.</span>
+        <span class="topbar-dot">·</span>
+        <span>Tokyo · Manila</span>
+        <span class="topbar-dot">·</span>
+        <span>Kintone work since 2019</span>
+      </div>
+      <div class="topbar-right">
+        <a href="/about/">Company</a>
+        <span class="topbar-dot">·</span>
+        <a href="mailto:support@kinplug.com">JST 09:00–18:00 · same-day response</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/" class="logo" aria-label="kinplug">
+        <span class="logo-mark">
+          <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#1B2B5A" stroke-width="2"/>
+            <rect x="9" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <rect x="22" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+          </svg>
+        </span>
+        <span class="logo-word">kinplug</span>
+      </a>
+      <div class="nav-menu">
+        <a href="/plugins/" >Plugins</a>
+        <a href="/pricing.html" >Pricing</a>
+        <a href="/compare/" >Compare</a>
+        <a href="/about/" >Company</a>
+        <a href="/docs/" >Docs</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <a href="/" class="active">EN</a>
+          <a href="/ja/" >日本語</a>
+        </div>
+        <a href="/login.html" class="btn btn-secondary btn-sm">Sign in</a>
+        <a href="/signup/" class="btn btn-primary btn-sm">Start free</a>
+        <button class="nav-toggle" aria-label="Menu">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3zm0 4h14v2H3zm0 4h14v2H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<article>
+<section class="sec hero-section">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow">Journal</div>
+    <h1 class="h1" style="text-wrap: balance;">When Kintone lookup gets slow — scaling past 50,000 records</h1>
+    <div style="margin-top:32px; padding-top:24px; border-top:1px solid var(--rule); font-family:'JetBrains Mono',monospace; font-size:0.8125rem; color:var(--ink-mute); display:flex; gap:20px; flex-wrap:wrap;">
+      <span>2026-04-18</span>
+      <span>·</span>
+      <span>8 min read</span>
+      <span>·</span>
+      <span>Tom Arai · Founder, Edamame Inc.</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-white">
+  <div class="wrap wrap-narrow">
+    <div class="content-prose article-prose">
+
+<p>Once a Kintone app passes a few thousand records, lookups start to feel sluggish. At 10,000+ records, the slowness becomes unmistakable. At 50,000, users complain. This post covers specific techniques to keep Kintone lookups fast at scale, with real measurement data.</p>
+
+<div class="callout-box">
+<h4>The short version</h4>
+<p>Native Kintone lookup slows down noticeably past 10,000 records. Causes: the records API's 10,000-offset limit and UI rendering cost. Solutions: pre-filter via query conditions, progressive loading in JavaScript, cursor API, or a purpose-built plugin. Verified implementation examples at 50,000-record scale included.</p>
+</div>
+
+<h2>Why native lookups slow down</h2>
+
+<p>Kintone's lookup field fetches candidate records from a referenced app and presents them for user selection. The native flow:</p>
+
+<ol>
+  <li>User clicks the lookup icon</li>
+  <li>Kintone fetches candidate records via API</li>
+  <li>Rendering the candidate list in a modal</li>
+  <li>User selects, value is imported</li>
+</ol>
+
+<p>Steps 2 and 3 are where the bottlenecks are.</p>
+
+<h3>API bottleneck: offset limit</h3>
+
+<p>Kintone REST API's <code>/k/v1/records.json</code> endpoint caps <code>offset</code> at 10,000. For apps with more than 10,000 records, the native API has no reliable way to reach records past that position.</p>
+
+<p>With 20,000 or 50,000-record lookup target apps, you get the "this record should exist but search doesn't find it" symptom. This isn't a plugin or UI bug — it's an API spec limitation.</p>
+
+<h3>UI bottleneck: bulk load</h3>
+
+<p>The native lookup modal tries to load all candidate records at once. With high counts, browser rendering takes time and users see "several seconds between click and display."</p>
+
+<p>Measured times (typical PC browser, corporate network):</p>
+
+<table>
+<thead>
+<tr><th>Records</th><th>Time-to-display</th><th>Feel</th></tr>
+</thead>
+<tbody>
+<tr><td>1,000</td><td>0.3s</td><td>Instant</td></tr>
+<tr><td>5,000</td><td>1.2s</td><td>Slight wait</td></tr>
+<tr><td>10,000</td><td>3-5s</td><td>Clearly slow</td></tr>
+<tr><td>30,000</td><td>10s+</td><td>Unusable</td></tr>
+<tr><td>50,000</td><td>Search breaks (offset)</td><td>Native won't work</td></tr>
+</tbody>
+</table>
+
+<h2>Solution 1: pre-filter via query conditions</h2>
+
+<p>Simplest approach: apply filters at lookup-invocation time. Even if your customer master app has 50,000 records, most order-entry workflows only need the current user's assigned customers.</p>
+
+<p>In the Kintone lookup config, adding a condition like <code>assigned_rep = LOGINUSER()</code> shrinks the candidate pool dramatically and speeds things up.</p>
+
+<p>Limits of this approach:</p>
+
+<ul>
+  <li>Business logic may be too complex for the condition syntax (e.g., customers whose last purchase was within 30 days AND rank is A or B)</li>
+  <li>Dynamic filters (depending on other field values) can't be expressed</li>
+  <li>Doesn't help for org-wide "shared customer master" use cases</li>
+</ul>
+
+<h2>Solution 2: progressive loading (JavaScript)</h2>
+
+<p>Fetch records incrementally as the user types. Empty until 2+ characters, then search API call, return 100 results, load more on scroll.</p>
+
+<pre><code>// Conceptual code — real implementations are more involved
+searchInput.addEventListener('input', debounce(async (e) => {
+  const query = e.target.value;
+  if (query.length < 2) return;
+
+  const records = await kintone.api('/k/v1/records', 'GET', {
+    app: LOOKUP_APP_ID,
+    query: `customer_name like "${query}" limit 100`
+  });
+
+  renderResults(records);
+}, 300));</code></pre>
+
+<p>Key points:</p>
+
+<ul>
+  <li><strong>Debounce:</strong> don't fire the API on every keystroke. Wait 300ms after typing stops.</li>
+  <li><strong>Limit specified:</strong> max 100 per fetch. "Load more" button for additional results.</li>
+  <li><strong>Query filter:</strong> pass search query directly to <code>query</code> parameter for server-side filtering.</li>
+</ul>
+
+<p>But this still hits the offset limit. If your query matches more than 10,000 records, records beyond 10,000 still can't be reached.</p>
+
+<h2>Solution 3: cursor API for large-scale retrieval</h2>
+
+<p>Kintone's <code>/k/v1/records/cursor.json</code> endpoint bypasses the offset limit.</p>
+
+<pre><code>// 1. Create cursor
+const cursor = await kintone.api('/k/v1/records/cursor', 'POST', {
+  app: LOOKUP_APP_ID,
+  query: `customer_name like "${query}"`,
+  size: 500  // per-batch size
+});
+
+// 2. Fetch using cursor in a loop
+let allRecords = [];
+let next = true;
+while (next) {
+  const result = await kintone.api('/k/v1/records/cursor', 'GET', {
+    id: cursor.id
+  });
+  allRecords = allRecords.concat(result.records);
+  next = result.next;
+}</code></pre>
+
+<p>Cursor API enables large-scale searches beyond the offset limit. Constraints: 10-minute cursor expiration, max 10 concurrent cursors per subdomain.</p>
+
+<h2>Solution 4: purpose-built plugin</h2>
+
+<p>Implementing the above three yourself requires significant engineering and ongoing maintenance. Especially when requirements include full-field search, subtable support, mobile support, result preview — it becomes non-trivial.</p>
+
+<p>Purpose-built plugins like Smart Lookup have these implemented. Key features:</p>
+
+<ul>
+  <li>Full-text search across every field (not just the configured lookup-fetch fields)</li>
+  <li>Progressive loading (results render within 100ms of modal open)</li>
+  <li>Subtable lookup support</li>
+  <li>Mobile (<code>/k/m/</code>) parity with desktop UX</li>
+  <li>Cursor API internally, so record-count scaling is essentially unlimited</li>
+</ul>
+
+<h2>Actual measurements at 50,000 records</h2>
+
+<p>Real measurement data for kinplug's Smart Lookup plugin, tested against a 50,000-record test app:</p>
+
+<table>
+<thead>
+<tr><th>Operation</th><th>Time</th></tr>
+</thead>
+<tbody>
+<tr><td>Lookup modal initial render</td><td>80-120ms</td></tr>
+<tr><td>Search query → results displayed</td><td>250-400ms</td></tr>
+<tr><td>Load 100 more (scroll)</td><td>150-250ms</td></tr>
+<tr><td>Subtable 10-row lookup</td><td>100-150ms (each)</td></tr>
+<tr><td>Mobile parity</td><td>Comparable (network-dependent)</td></tr>
+</tbody>
+</table>
+
+<p>At 50k scale, native Kintone lookup is effectively unusable. A properly engineered plugin keeps the UX fluid.</p>
+
+<h2>Operational notes</h2>
+
+<h3>Plan for record growth</h3>
+
+<p>An app that's 10,000 records at launch often passes 50,000 within a few years. "Currently fast enough" isn't the right evaluation — design for growth.</p>
+
+<h3>Index tuning isn't available</h3>
+
+<p>Kintone has internal indexes you can't customize. When a query is slow, you can't "add an index on this field." Alternative: split apps or restructure the lookup target.</p>
+
+<h3>Subtable lookups are particularly expensive</h3>
+
+<p>Each lookup field in a subtable multiplies rendering cost by row count × candidate-record count. A 10-row subtable with 10,000-record lookup targets quickly exceeds native capability. A plugin is practically mandatory.</p>
+
+<h2>Summary</h2>
+
+<p>Kintone lookup slowness comes from the API's offset limit plus UI rendering cost. Native is fine for small datasets, but at 10,000+ records you need a strategy. Pre-filtering, progressive loading, cursor API, or purpose-built plugins — using at least one keeps even 50,000-record lookups fast.</p>
+
+<h2>Related</h2>
+
+<ul>
+  <li><a href="/plugins/smart-lookup/">Smart Lookup product page</a></li>
+  <li><a href="/blog/how-to-choose-kintone-plugin.html">How to choose a Kintone plugin</a></li>
+</ul>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-deep">
+  <div class="wrap wrap-narrow">
+    <div style="background:#FFF; border-radius:8px; padding:40px; border:1px solid var(--rule); box-shadow: 0 6px 24px -12px rgba(15,20,25,0.08);">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--clay); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px;">Next step</div>
+      <h3 style="font-family:'Noto Serif JP',serif; font-size:1.5rem; color:var(--navy); margin-bottom:14px;">Try kinplug free for 14 days</h3>
+      <p style="color:var(--ink-soft); margin-bottom:24px; line-height:1.7;">No credit card. Sign in with Google or Microsoft, enter your Kintone subdomain, and go live in 90 seconds.</p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="/signup/" class="btn btn-primary btn-lg">Start free<span class="arrow">→</span></a>
+        <a href="/plugins/" class="btn btn-secondary btn-lg">See plugins</a>
+      </div>
+    </div>
+  </div>
+</section>
+</article>
+<div class="cta-wrap">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow eyebrow-center" style="color:var(--clay);">Get started</div>
+    <h2 class="cta-title">14 days, every feature,<br>no credit card.</h2>
+    <p class="cta-desc">Sign in with Google or Microsoft, enter your Kintone subdomain, install the plugin. Live in 90 seconds.</p>
+    <div class="cta-actions">
+      <a href="/signup/" class="btn btn-clay btn-lg">Create free account<span class="arrow">→</span></a>
+      <a href="/contact/" class="btn btn-secondary btn-lg" style="border-color:rgba(247,245,240,0.3); color:var(--paper);">Contact us</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="logo logo-light">
+          <span class="logo-mark">
+            <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#F7F5F0" stroke-width="2"/>
+              <rect x="9" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <rect x="22" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+            </svg>
+          </span>
+          <span class="logo-word">kinplug</span>
+        </a>
+        <p class="footer-desc">Native Kintone plugins. Operated by Edamame Inc. (Manila · Tokyo). Kintone work since 2019. Cybozu Partner of the Year.</p>
+      </div>
+      <div class="footer-col"><h4>Plugins</h4><ul>
+        <li><a href="/plugins/mail/">Kinplug Mail</a></li>
+        <li><a href="/plugins/pdf-pro/">PDF Pro</a></li>
+        <li><a href="/plugins/smart-lookup/">Smart Lookup</a></li>
+        <li><a href="/plugins/flow/">Flow</a></li>
+        <li><a href="/plugins/">All titles</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/compare/">Compare</a></li>
+        <li><a href="/docs/">Documentation</a></li>
+        <li><a href="/blog/">Journal</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Company</h4><ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="https://edamame.ph">Edamame Inc.</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
+        <li><a href="mailto:billing@kinplug.com">billing@kinplug.com</a></li>
+        <li><a href="mailto:legal@kinplug.com">legal@kinplug.com</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-grid">
+        <div><h5>Legal disclosures</h5><p><strong>Seller</strong>: Edamame Inc. · <strong>Representative</strong>: Tom Arai · <strong>Address</strong>: Manila BGC, Philippines (Tokyo liaison available) · <strong>Contact</strong>: support@kinplug.com</p></div>
+        <div><h5>Billing & refunds</h5><p>Credit card (all plans), bank transfer (Standard+). Annual contracts include 2 free months. Monthly plans may cancel any time, billed through end of month. See <a href="/legal/terms.html" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.5);">Terms</a>.</p></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 · Edamame Inc. · Since 2019</div>
+      <div class="footer-bottom-links">
+        <a href="/legal/privacy.html">Privacy</a>
+        <a href="/legal/terms.html">Terms</a>
+        <a href="/legal/security.html">Security</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/app.js"></script>
+</body>
+</html>

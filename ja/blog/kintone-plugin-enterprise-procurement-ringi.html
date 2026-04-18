@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kintoneプラグインの稟議の通し方 — 日本企業の購買プロセス対応</title>
+<meta name="description" content="日本の大企業でKintoneプラグインを導入する稟議プロセスのポイントを整理。必要な5種類の資料、通過しやすいベンダー選定基準、プロセス期間短縮のコツを、実際の導入事例から具体的に解説。">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Kintoneプラグインの稟議の通し方 — 日本企業の購買プロセス対応">
+<meta property="og:description" content="日本の大企業でKintoneプラグインを導入する稟議プロセスのポイントを整理。必要な5種類の資料、通過しやすいベンダー選定基準、プロセス期間短縮のコツを、実際の導入事例から具体的に解説。">
+<meta property="og:image" content="https://kinplug.com/assets/og-default.png">
+<meta property="og:url" content="https://kinplug.com/ja/blog/kintone-plugin-enterprise-procurement-ringi.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="kinplug">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
+<link rel="canonical" href="https://kinplug.com/ja/blog/kintone-plugin-enterprise-procurement-ringi.html">
+<link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/kintone-plugin-enterprise-procurement-ringi.html">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/">
+<link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Kintoneプラグインの稟議の通し方 — 日本企業の購買プロセス対応",
+  "description": "日本の大企業でKintoneプラグインを導入する稟議プロセスのポイントを整理。必要な5種類の資料、通過しやすいベンダー選定基準、プロセス期間短縮のコツを、実際の導入事例から具体的に解説。",
+  "image": "https://kinplug.com/assets/og-default.png",
+  "datePublished": "2026-04-18",
+  "dateModified": "2026-04-18",
+  "author": {
+    "@type": "Person",
+    "name": "Tom Arai",
+    "url": "https://kinplug.com/about/"
+  },
+  "publisher": {
+    "@id": "https://kinplug.com/#organization"
+  },
+  "mainEntityOfPage": "https://kinplug.com/ja/blog/kintone-plugin-enterprise-procurement-ringi.html",
+  "inLanguage": "ja",
+  "wordCount": 2500,
+  "articleSection": "Kintone plugins",
+  "keywords": [
+    "Kintone",
+    "プラグイン",
+    "OAuth 2.0",
+    "enterprise SaaS"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://kinplug.com/ja/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "ジャーナル",
+      "item": "https://kinplug.com/ja/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Kintoneプラグインの稟議の通し方 — 日本企業の購買プロセス対応",
+      "item": "https://kinplug.com/ja/blog/kintone-plugin-enterprise-procurement-ringi.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>運営: Edamame Inc.</span>
+        <span class="topbar-dot">·</span>
+        <span>東京・マニラ</span>
+        <span class="topbar-dot">·</span>
+        <span>Kintone運用2019年より</span>
+      </div>
+      <div class="topbar-right">
+        <a href="/ja/about/">会社概要</a>
+        <span class="topbar-dot">·</span>
+        <a href="mailto:support@kinplug.com">平日JST 09:00–18:00 当日対応</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/ja/" class="logo" aria-label="kinplug">
+        <span class="logo-mark">
+          <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#1B2B5A" stroke-width="2"/>
+            <rect x="9" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <rect x="22" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+          </svg>
+        </span>
+        <span class="logo-word">kinplug</span>
+      </a>
+      <div class="nav-menu">
+        <a href="/ja/plugins/" >プラグイン</a>
+        <a href="/ja/pricing.html" >料金</a>
+        <a href="/ja/compare/" >他社比較</a>
+        <a href="/ja/about/" >会社情報</a>
+        <a href="/ja/docs/" >ドキュメント</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <a href="/" >EN</a>
+          <a href="/ja/" class="active">日本語</a>
+        </div>
+        <a href="/ja/login.html" class="btn btn-secondary btn-sm">サインイン</a>
+        <a href="/ja/signup/" class="btn btn-primary btn-sm">無料で始める</a>
+        <button class="nav-toggle" aria-label="メニュー">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3zm0 4h14v2H3zm0 4h14v2H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<article>
+<section class="sec hero-section">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow">ジャーナル</div>
+    <h1 class="h1" style="text-wrap: balance;">Kintoneプラグインの稟議の通し方 — 日本企業の購買プロセス対応</h1>
+    <div style="margin-top:32px; padding-top:24px; border-top:1px solid var(--rule); font-family:'JetBrains Mono',monospace; font-size:0.8125rem; color:var(--ink-mute); display:flex; gap:20px; flex-wrap:wrap;">
+      <span>2026年4月18日</span>
+      <span>·</span>
+      <span>読了時間 約10分</span>
+      <span>·</span>
+      <span>Tom Arai · Edamame Inc. 代表</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-white">
+  <div class="wrap wrap-narrow">
+    <div class="content-prose article-prose">
+
+<p>日本の大企業でKintoneプラグインを導入する際、稟議（ringi）プロセスを通すことが必須になります。購買部門・情報システム部門・法務・監査・経営層を通す中で、どのような資料を用意し、どのようなベンダー選定基準を満たす必要があるのか。この記事では、実際の稟議通過率を上げるための具体的なポイントを整理します。</p>
+
+<div class="callout-box">
+<h4>この記事の要点</h4>
+<p>Kintoneプラグインの稟議を通すために必要な資料は、会社概要・公開料金表・セキュリティシート・データ処理契約書・事業継続計画の5セット。ベンダー選定基準では、上場企業でなくても「契約書で明文化されたコミットメント」があれば通りやすい。稟議プロセスの典型的な所要時間は4～8週間。これを事前に把握し、逆算したスケジュールで進める必要があります。</p>
+</div>
+
+<h2>稟議プロセスの典型的な流れ</h2>
+
+<p>日本の中堅・大企業では、Kintoneプラグイン導入を含めたITサービス導入の稟議は、以下のような流れが一般的です：</p>
+
+<ol>
+  <li><strong>発案部門から稟議書ドラフト作成</strong>（1週間）</li>
+  <li><strong>情報システム部門のセキュリティ審査</strong>（1～2週間）</li>
+  <li><strong>法務の契約書審査</strong>（1週間）</li>
+  <li><strong>購買部門の価格交渉・相見積もり</strong>（1～2週間）</li>
+  <li><strong>経営層の承認</strong>（1週間）</li>
+  <li><strong>契約締結・発注</strong>（数日）</li>
+</ol>
+
+<p>全工程で4～8週間、複雑な案件では3ヶ月以上かかるケースもあります。</p>
+
+<h2>稟議を通すために必要な資料（5セット）</h2>
+
+<h3>1. ベンダー会社概要</h3>
+
+<p>ベンダーの法人としての信頼性を示す資料です。以下を含めます：</p>
+
+<ul>
+  <li>会社名・本社所在地・連絡先</li>
+  <li>代表者名・設立年月日</li>
+  <li>資本金・従業員数</li>
+  <li>事業内容・主要取引先</li>
+  <li>認定・受賞歴（Cybozu Partner、ISO認証等）</li>
+</ul>
+
+<p>大企業の場合、東証上場情報・有価証券報告書があればベストですが、非上場のスタートアップでも問題ありません。ただし、3年以上の事業継続実績と、主要取引先リスト（業界名のみで可）があると通りやすくなります。</p>
+
+<h3>2. 公開料金表</h3>
+
+<p>日本の稟議プロセスでは、「言い値」のベンダーは敬遠されます。公開されている料金表・プラン表があると、購買部門が相見積もりなしで判断しやすくなります。</p>
+
+<p>確認事項：</p>
+
+<ul>
+  <li>月額・年額の基本料金</li>
+  <li>ユーザー数・アプリ数・データ量による追加料金</li>
+  <li>初期費用・オプション費用</li>
+  <li>税込/税抜の表示</li>
+  <li>支払サイト（NET30・月末締め翌月末払い等）</li>
+  <li>適格請求書発行事業者登録の有無</li>
+</ul>
+
+<h3>3. セキュリティシート</h3>
+
+<p>情報システム部門のセキュリティ審査で必要になる資料です。以下の項目を網羅します：</p>
+
+<ul>
+  <li>データの保存場所（リージョン・データセンター）</li>
+  <li>通信・保存の暗号化方式</li>
+  <li>認証方式（OAuth 2.0、SSO対応、MFA対応等）</li>
+  <li>アクセスログの取得・保管期間</li>
+  <li>SOC 2 / ISO 27001等の認証取得状況</li>
+  <li>インシデント対応体制・SLA</li>
+  <li>サブプロセッサ（再委託先）一覧</li>
+  <li>データ主体の権利（削除・開示・訂正等）</li>
+</ul>
+
+<p>多くの大企業では、独自のセキュリティシート（100問以上の質問票）への回答を求められます。ベンダー側で予め標準的な回答を用意しておき、企業固有の質問にのみ個別回答する、という対応が現実的です。</p>
+
+<h3>4. データ処理契約書（DPA）</h3>
+
+<p>個人情報保護法・GDPR（海外取引時）への対応として、データ処理契約書が必要です。日本国内向けでも、以下を明記した契約書があれば通りやすくなります：</p>
+
+<ul>
+  <li>データの利用目的（契約履行のためのみ、等）</li>
+  <li>データの第三者提供制限</li>
+  <li>データ主体の権利対応</li>
+  <li>データ侵害時の通知義務・期限</li>
+  <li>契約終了時のデータ削除</li>
+  <li>サブプロセッサの使用制限</li>
+</ul>
+
+<h3>5. 事業継続計画（BCP）</h3>
+
+<p>ベンダーが事業停止した場合、顧客はどうするのか。稟議審査で必ず問われる点です。以下を明文化しておきます：</p>
+
+<ul>
+  <li>ベンダー事業停止時の通知期間（最低6ヶ月前等）</li>
+  <li>契約終了時のデータエクスポート形式・方法</li>
+  <li>ソースコード・仕様書のエスクロー（預託）サービス利用の有無</li>
+  <li>代替ベンダー移行の支援範囲・費用</li>
+  <li>オープンソース化のコミットメント（該当する場合）</li>
+</ul>
+
+<h2>稟議に通りやすいベンダー選定基準</h2>
+
+<h3>「公開情報の量」が判断材料になる</h3>
+
+<p>日本の稟議プロセスは、情報の非対称性を嫌います。「営業に聞かないと分からない」ベンダーより、「サイトに全部書いてある」ベンダーのほうが、稟議担当者の作業負担が劇的に軽いため、選ばれやすくなります。</p>
+
+<ul>
+  <li>料金が公開されているか</li>
+  <li>セキュリティシートがダウンロード可能か</li>
+  <li>契約書テンプレートが閲覧可能か</li>
+  <li>利用規約・プライバシーポリシーが明確か</li>
+  <li>開発会社・運営会社が明記されているか</li>
+</ul>
+
+<h3>「同業他社の導入実績」が効く</h3>
+
+<p>同じ業界・同じ規模の他社での導入事例があると、説得力が劇的に上がります。事例の公開可否はNDAによりますが、「業界名・企業規模・導入時期・利用範囲」だけでも効果があります。</p>
+
+<h3>「規模が小さい」は必ずしもマイナスではない</h3>
+
+<p>大手ベンダーは、個別対応の柔軟性に欠ける場合があります。中堅・小規模ベンダーでも、以下の要件を満たせば稟議は通ります：</p>
+
+<ul>
+  <li>3年以上の事業継続実績</li>
+  <li>公開情報の充実</li>
+  <li>事業継続計画の明文化</li>
+  <li>セキュリティ対応の具体性</li>
+  <li>対応の迅速さ（資料請求後24時間以内等）</li>
+</ul>
+
+<h2>稟議プロセスの期間短縮のコツ</h2>
+
+<h3>早めに「情報収集フェーズ」を実施する</h3>
+
+<p>正式な稟議書作成の前に、情報システム部門と購買部門に、候補ベンダーの資料を提示して、事前レビューを受けます。問題があれば、正式な稟議書作成前に修正できます。</p>
+
+<h3>複数候補を同時並行で進める</h3>
+
+<p>1社に絞ってから稟議を始めると、途中で問題が発見された場合に白紙に戻ります。候補を2～3社並行で進めることで、リスクを分散できます。ただし、ベンダー側にも工数がかかるため、最終候補3社程度が現実的です。</p>
+
+<h3>年度末・四半期末は避ける</h3>
+
+<p>3月・9月・12月は、他の稟議案件と重なり、承認プロセスが遅れがちです。2月・5月・8月・11月あたりに開始すると、比較的スムーズに進みます。</p>
+
+<h2>kinplugの稟議対応</h2>
+
+<p>kinplugでは、以下の資料を全て公開済みです：</p>
+
+<ul>
+  <li>会社概要・特定商取引法に基づく表記</li>
+  <li>スタンダード¥9,800/月、エンタープライズ¥49,800/月の公開料金</li>
+  <li>セキュリティ概要ページ</li>
+  <li>プライバシーポリシー・利用規約</li>
+  <li>事業停止時のオープンソース化コミットメント（契約書にて明文化）</li>
+  <li>適格請求書発行事業者登録（2026年内完了予定）</li>
+</ul>
+
+<p>日本企業の稟議プロセスを通すための資料セットは、お問い合わせいただければ24時間以内にPDFでお送りします。企業固有のセキュリティシートへの回答も対応しています。</p>
+
+<h2>関連記事</h2>
+
+<ul>
+  <li><a href="/ja/blog/how-to-choose-kintone-plugin.html">Kintoneプラグインの選び方 — 5つの判断軸</a></li>
+  <li><a href="/ja/legal/security.html">セキュリティ概要</a></li>
+  <li><a href="/ja/contact/">お問い合わせ</a></li>
+</ul>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-deep">
+  <div class="wrap wrap-narrow">
+    <div style="background:#FFF; border-radius:8px; padding:40px; border:1px solid var(--rule); box-shadow: 0 6px 24px -12px rgba(15,20,25,0.08);">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--clay); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px;">次のステップ</div>
+      <h3 style="font-family:'Noto Serif JP',serif; font-size:1.5rem; color:var(--navy); margin-bottom:14px;">kinplug を14日間無料で試す</h3>
+      <p style="color:var(--ink-soft); margin-bottom:24px; line-height:1.7;">クレジットカード不要。GoogleかMicrosoftでサインインして、Kintoneサブドメインを入力。90秒で稼働開始します。</p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="/ja/signup/" class="btn btn-primary btn-lg">無料で始める<span class="arrow">→</span></a>
+        <a href="/ja/plugins/" class="btn btn-secondary btn-lg">プラグインを見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+</article>
+<div class="cta-wrap">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow eyebrow-center" style="color:var(--clay);">はじめる</div>
+    <h2 class="cta-title">14日間、全機能、<br>クレジットカード不要。</h2>
+    <p class="cta-desc">GoogleかMicrosoftでサインイン、Kintoneサブドメインを入力、プラグインをインストール。90秒で稼働開始。</p>
+    <div class="cta-actions">
+      <a href="/ja/signup/" class="btn btn-clay btn-lg">無料アカウント作成<span class="arrow">→</span></a>
+      <a href="/ja/contact/" class="btn btn-secondary btn-lg" style="border-color:rgba(247,245,240,0.3); color:var(--paper);">お問い合わせ</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="/ja/" class="logo logo-light">
+          <span class="logo-mark">
+            <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#F7F5F0" stroke-width="2"/>
+              <rect x="9" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <rect x="22" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+            </svg>
+          </span>
+          <span class="logo-word">kinplug</span>
+        </a>
+        <p class="footer-desc">Kintoneのためのネイティブプラグイン。運営: Edamame Inc.（マニラ・東京）。2019年よりKintone運用。Cybozu Partner of the Year受賞パートナー。</p>
+      </div>
+      <div class="footer-col"><h4>プラグイン</h4><ul>
+        <li><a href="/ja/plugins/mail/">Kinplug Mail</a></li>
+        <li><a href="/ja/plugins/pdf-pro/">PDF Pro</a></li>
+        <li><a href="/ja/plugins/smart-lookup/">Smart Lookup</a></li>
+        <li><a href="/ja/plugins/flow/">Flow</a></li>
+        <li><a href="/ja/plugins/">全タイトル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>リソース</h4><ul>
+        <li><a href="/ja/pricing.html">料金</a></li>
+        <li><a href="/ja/compare/">他社比較</a></li>
+        <li><a href="/ja/docs/">ドキュメント</a></li>
+        <li><a href="/ja/blog/">ジャーナル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>会社情報</h4><ul>
+        <li><a href="/ja/about/">会社概要</a></li>
+        <li><a href="/ja/contact/">お問い合わせ</a></li>
+        <li><a href="https://edamame.ph">Edamame Inc.</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>連絡先</h4><ul>
+        <li><a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
+        <li><a href="mailto:billing@kinplug.com">billing@kinplug.com</a></li>
+        <li><a href="mailto:legal@kinplug.com">legal@kinplug.com</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-grid">
+        <div><h5>特定商取引法に基づく表記</h5><p><strong>販売事業者</strong>: Edamame Inc. · <strong>代表責任者</strong>: Tom Arai · <strong>所在地</strong>: フィリピン・マニラBGC（東京オフィス連絡可）· <strong>連絡先</strong>: support@kinplug.com</p></div>
+        <div><h5>支払方法・返金について</h5><p>クレジットカード（全プラン）・銀行振込（スタンダード以上）対応。年払い契約は2ヶ月分無料、月払い契約はいつでも解約可能、解約月末までの請求。詳細は<a href="/ja/legal/terms.html" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.5);">利用規約</a>。</p></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 · Edamame Inc. · Since 2019</div>
+      <div class="footer-bottom-links">
+        <a href="/ja/legal/privacy.html">プライバシーポリシー</a>
+        <a href="/ja/legal/terms.html">利用規約</a>
+        <a href="/ja/legal/security.html">セキュリティ</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/app.js"></script>
+</body>
+</html>
