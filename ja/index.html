@@ -25,6 +25,184 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://kinplug.com/#organization",
+  "name": "kinplug",
+  "alternateName": [
+    "Kinplug",
+    "キンプラグ"
+  ],
+  "legalName": "Edamame Inc.",
+  "url": "https://kinplug.com",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://kinplug.com/favicon.svg",
+    "width": 512,
+    "height": 512
+  },
+  "image": "https://kinplug.com/assets/og-default.png",
+  "description": "Native Kintone plugins, configured inside Kintone. Operated by Edamame Inc. (Manila · Tokyo). Kintone work since 2019.",
+  "foundingDate": "2022",
+  "founder": {
+    "@type": "Person",
+    "name": "Tom Arai",
+    "jobTitle": "Founder & CEO",
+    "nationality": "JP"
+  },
+  "address": [
+    {
+      "@type": "PostalAddress",
+      "addressCountry": "PH",
+      "addressLocality": "Taguig",
+      "addressRegion": "BGC"
+    },
+    {
+      "@type": "PostalAddress",
+      "addressCountry": "JP",
+      "addressLocality": "Tokyo"
+    }
+  ],
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "email": "support@kinplug.com",
+      "contactType": "customer support",
+      "availableLanguage": [
+        "Japanese",
+        "English",
+        "Tagalog"
+      ],
+      "hoursAvailable": {
+        "@type": "OpeningHoursSpecification",
+        "opens": "09:00",
+        "closes": "18:00",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ]
+      }
+    },
+    {
+      "@type": "ContactPoint",
+      "email": "billing@kinplug.com",
+      "contactType": "billing support",
+      "availableLanguage": [
+        "Japanese",
+        "English"
+      ]
+    },
+    {
+      "@type": "ContactPoint",
+      "email": "legal@kinplug.com",
+      "contactType": "legal",
+      "availableLanguage": [
+        "Japanese",
+        "English"
+      ]
+    }
+  ],
+  "sameAs": [
+    "https://github.com/KinPlug"
+  ],
+  "knowsAbout": [
+    "Kintone",
+    "Cybozu",
+    "Kintone plugins",
+    "OAuth 2.0",
+    "Gmail API",
+    "Microsoft Graph API",
+    "Japanese enterprise SaaS"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://kinplug.com/#website",
+  "url": "https://kinplug.com",
+  "name": "kinplug",
+  "description": "Native Kintone plugins — configured inside Kintone.",
+  "publisher": {
+    "@id": "https://kinplug.com/#organization"
+  },
+  "inLanguage": [
+    "ja",
+    "en"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "本当に設定はKintone内だけで完結しますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい。プラグインの管理画面を開く、そのままその画面で設定が完結します。外部ポータルへのログインや、APIキーの発行・管理は必要ありません。Kinplug Mailの場合、OAuth認証だけはGoogle・Microsoftの認証画面で一度実行しますが、それ以降の設定はすべてKintone内で接続先をApp記号化保存され、サブドメイン単位でスコープされます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "cybozu.com（日本版Kintone）に対応していますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい。完全対応しています。同一月内の請求で対応可能です。全プラグインをkintone.com・cybozu.comの両方でテスト済みで、金融・保険グループ内のcybozu.com環境で43アプリに導入された事例もあります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Microsoft 365のOAuth移行で既存のメール送信が止まりました。移行できますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい。Kinplug MailへのOAuth移行を無料でサポートします。既存のメールテンプレート・送信者設定・宛先リストをそのまま保持したまま、OAuth 2.0の認証方式に切り替えます。14日間のトライアル中に実際の環境で検証可能です。緊急対応の場合はsupport@kinplug.comまで直接ご連絡ください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cybozu社の公式パートナーですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "独立系の事業者です。Edamame Inc.はKintoneカスタマイズ専門のコンサルティング会社として2019年から活動しており、Cybozu Partner of the Yearを受賞しています。ただし、プラグイン事業kinplugは公式パートナー経由で販売していません。独立しているため、特定のベンダーに偏らない中立的な製品判断ができる利点があると考えています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "貴社が事業を停止した場合、プラグインはどうなりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kinplug Mail以外の全プラグインは、当社サーバーに依存しません。完全にお客様のKintone内で動作するため、万一当社が運営停止しても永続的に使い続けられます。Kinplug MailについてはOAuthサーバーが必要なため唯一の例外ですが、運営停止時はAPIサービスをオープンソース化し、お客様のセルフホスト移行を全面支援することを、スタンダード・エンタープライズ契約書に明文化しています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "請求書払い・NET30日・稟議書対応はできますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "スタンダード以上のプランで、日本企業の購買手続きに対応しています。PDF見積書→発注書受領→請求書発行（NET30日）→銀行振込の流れで対応可能。年払い契約の場合は2ヶ月分無料、稟議書添付用の資料（会社概要・セキュリティ一式）もご提供します。適格請求書発行事業者登録は2026年内完了予定で、それまでは従来の請求書形式となります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "サポートは誰が対応しますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "プラグインを実際に作った開発者本人が対応します。小さなチームで運営することを意図的に選んでおり、一次対応スクリプトやチケット振り分けのサイロはありません。東京オフィスより日本語・英語・タガログ語で対応、平日JST営業時間内当日応答、スタンダード以上では4時間以内応答をお約束します。"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

@@ -25,6 +25,123 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://kinplug.com/#organization",
+  "name": "kinplug",
+  "alternateName": [
+    "Kinplug",
+    "キンプラグ"
+  ],
+  "legalName": "Edamame Inc.",
+  "url": "https://kinplug.com",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://kinplug.com/favicon.svg",
+    "width": 512,
+    "height": 512
+  },
+  "image": "https://kinplug.com/assets/og-default.png",
+  "description": "Native Kintone plugins, configured inside Kintone. Operated by Edamame Inc. (Manila · Tokyo). Kintone work since 2019.",
+  "foundingDate": "2022",
+  "founder": {
+    "@type": "Person",
+    "name": "Tom Arai",
+    "jobTitle": "Founder & CEO",
+    "nationality": "JP"
+  },
+  "address": [
+    {
+      "@type": "PostalAddress",
+      "addressCountry": "PH",
+      "addressLocality": "Taguig",
+      "addressRegion": "BGC"
+    },
+    {
+      "@type": "PostalAddress",
+      "addressCountry": "JP",
+      "addressLocality": "Tokyo"
+    }
+  ],
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "email": "support@kinplug.com",
+      "contactType": "customer support",
+      "availableLanguage": [
+        "Japanese",
+        "English",
+        "Tagalog"
+      ],
+      "hoursAvailable": {
+        "@type": "OpeningHoursSpecification",
+        "opens": "09:00",
+        "closes": "18:00",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ]
+      }
+    },
+    {
+      "@type": "ContactPoint",
+      "email": "billing@kinplug.com",
+      "contactType": "billing support",
+      "availableLanguage": [
+        "Japanese",
+        "English"
+      ]
+    },
+    {
+      "@type": "ContactPoint",
+      "email": "legal@kinplug.com",
+      "contactType": "legal",
+      "availableLanguage": [
+        "Japanese",
+        "English"
+      ]
+    }
+  ],
+  "sameAs": [
+    "https://github.com/KinPlug"
+  ],
+  "knowsAbout": [
+    "Kintone",
+    "Cybozu",
+    "Kintone plugins",
+    "OAuth 2.0",
+    "Gmail API",
+    "Microsoft Graph API",
+    "Japanese enterprise SaaS"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://kinplug.com/ja/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "ジャーナル",
+      "item": "https://kinplug.com/ja/blog/"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -90,28 +207,54 @@
     <p class="lede">コンテンツマーケティングを目的にはしていません。Kintone運用で発見したこと、製品のロードマップの節目、セキュリティ・認証の業界変化など、書く価値があると判断した時だけ書きます。</p>
   </div>
 </section>
+
 <section class="sec sec-deep">
   <div class="wrap wrap-narrow">
-    <div style="background:#FFF; padding:32px; border-radius:8px; border:1px solid var(--rule); text-align:center;">
-      <div style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-mute); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px;">Coming soon</div>
-      <div class="h3" style="margin-bottom:16px;">最初の記事を準備中です。</div>
-      <p style="color:var(--ink-soft); max-width:52ch; margin:0 auto; line-height:1.85;">最初に公開予定：「Microsoft 365基本認証停止への対応 — 2026年4月以降のKintoneメール送信」、「なぜ私たちは外部ポータルを作らなかったのか」、「Kintoneプラグインの実運用スケール検証方法」。</p>
-      <p style="margin-top:24px; font-size:0.875rem; color:var(--ink-mute);">製品アップデートの通知だけご希望の方は <a href="mailto:support@kinplug.com?subject=Journal%20updates" style="color:var(--navy); border-bottom:1px solid var(--navy);">support@kinplug.com</a> まで。</p>
+    <div style="display:flex; flex-direction:column; gap:28px;">
+
+      <a href="/ja/blog/microsoft-365-oauth-kintone-mail-2026.html" style="background:#FFF; padding:36px 40px; border-radius:8px; border:1px solid var(--rule); display:block;">
+        <div style="display:flex; gap:16px; font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-mute); letter-spacing:0.04em; margin-bottom:14px; flex-wrap:wrap;">
+          <span style="color:var(--clay);">● 緊急性：高</span>
+          <span>2026年4月15日</span>
+          <span>読了 約10分</span>
+        </div>
+        <h2 style="font-family:'Noto Serif JP',serif; font-size:1.75rem; color:var(--navy); font-weight:700; line-height:1.35; margin-bottom:14px; letter-spacing:-0.01em;">Microsoft 365 基本認証停止 — 2026年4月以降のKintoneメール送信</h2>
+        <p style="color:var(--ink-soft); line-height:1.85; margin-bottom:16px; font-size:1rem;">2026年4月1日、Microsoft 365がSMTP基本認証を完全停止します。多くのKintoneメール送信プラグインが影響を受け、送信不可になります。実際の症状、対応オプション、OAuth 2.0への移行手順を、現場視点で整理します。</p>
+        <div style="display:flex; align-items:center; gap:10px; color:var(--navy); font-weight:500; font-size:0.9375rem;">
+          <span>記事を読む</span><span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="/ja/blog/why-kintone-plugins-external-portals.html" style="background:#FFF; padding:36px 40px; border-radius:8px; border:1px solid var(--rule); display:block;">
+        <div style="display:flex; gap:16px; font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-mute); letter-spacing:0.04em; margin-bottom:14px; flex-wrap:wrap;">
+          <span>市場構造</span>
+          <span>2026年4月17日</span>
+          <span>読了 約13分</span>
+        </div>
+        <h2 style="font-family:'Noto Serif JP',serif; font-size:1.75rem; color:var(--navy); font-weight:700; line-height:1.35; margin-bottom:14px; letter-spacing:-0.01em;">なぜKintoneプラグインの多くは外部ポータル方式なのか</h2>
+        <p style="color:var(--ink-soft); line-height:1.85; margin-bottom:16px; font-size:1rem;">Kintoneプラグイン市場の多くは、実は「Kintoneと連携する外部SaaS」です。設定には専用ポータルへのログインが必要で、ユーザー・権限・運用が二重になります。これはベンダー側のビジネスモデルに起因する構造的な選択です。</p>
+        <div style="display:flex; align-items:center; gap:10px; color:var(--navy); font-weight:500; font-size:0.9375rem;">
+          <span>記事を読む</span><span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="/ja/blog/how-to-choose-kintone-plugin.html" style="background:#FFF; padding:36px 40px; border-radius:8px; border:1px solid var(--rule); display:block;">
+        <div style="display:flex; gap:16px; font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-mute); letter-spacing:0.04em; margin-bottom:14px; flex-wrap:wrap;">
+          <span>選定ガイド</span>
+          <span>2026年4月18日</span>
+          <span>読了 約12分</span>
+        </div>
+        <h2 style="font-family:'Noto Serif JP',serif; font-size:1.75rem; color:var(--navy); font-weight:700; line-height:1.35; margin-bottom:14px; letter-spacing:-0.01em;">Kintoneプラグインの選び方 — 5つの判断軸</h2>
+        <p style="color:var(--ink-soft); line-height:1.85; margin-bottom:16px; font-size:1rem;">Kintoneプラグインの選定基準は、機能の有無ではありません。アーキテクチャ、ベンダー継続性、コスト構造、セキュリティ、運用負担の5軸で判断すれば、機能比較表では見えない要素が明確になります。</p>
+        <div style="display:flex; align-items:center; gap:10px; color:var(--navy); font-weight:500; font-size:0.9375rem;">
+          <span>記事を読む</span><span class="arrow">→</span>
+        </div>
+      </a>
+
     </div>
+    <p style="text-align:center; margin-top:48px; font-size:0.875rem; color:var(--ink-mute);">新しい記事の通知をご希望の方は <a href="mailto:support@kinplug.com?subject=Journal%20updates" style="color:var(--navy); border-bottom:1px solid var(--navy);">support@kinplug.com</a> までメールでお知らせください。</p>
   </div>
 </section>
-<div class="cta-wrap">
-  <div class="wrap wrap-narrow">
-    <div class="eyebrow eyebrow-center" style="color:var(--clay);">はじめる</div>
-    <h2 class="cta-title">14日間、全機能、<br>クレジットカード不要。</h2>
-    <p class="cta-desc">GoogleかMicrosoftでサインイン、Kintoneサブドメインを入力、プラグインをインストール。90秒で稼働開始。</p>
-    <div class="cta-actions">
-      <a href="/ja/signup/" class="btn btn-clay btn-lg">無料アカウント作成<span class="arrow">→</span></a>
-      <a href="/ja/contact/" class="btn btn-secondary btn-lg" style="border-color:rgba(247,245,240,0.3); color:var(--paper);">お問い合わせ</a>
-    </div>
-  </div>
-</div>
-
 <footer class="footer">
   <div class="wrap">
     <div class="footer-grid">

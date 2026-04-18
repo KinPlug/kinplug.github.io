@@ -39,6 +39,56 @@
   <url><loc>https://kinplug.com/ja/docs/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://kinplug.com/blog/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://kinplug.com/ja/blog/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <!-- Articles -->
+  <url>
+    <loc>https://kinplug.com/blog/microsoft-365-oauth-kintone-mail-2026.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/blog/microsoft-365-oauth-kintone-mail-2026.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/microsoft-365-oauth-kintone-mail-2026.html"/>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kinplug.com/ja/blog/microsoft-365-oauth-kintone-mail-2026.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/microsoft-365-oauth-kintone-mail-2026.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/blog/microsoft-365-oauth-kintone-mail-2026.html"/>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kinplug.com/blog/why-kintone-plugins-external-portals.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/blog/why-kintone-plugins-external-portals.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/why-kintone-plugins-external-portals.html"/>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kinplug.com/ja/blog/why-kintone-plugins-external-portals.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/why-kintone-plugins-external-portals.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/blog/why-kintone-plugins-external-portals.html"/>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kinplug.com/blog/how-to-choose-kintone-plugin.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/blog/how-to-choose-kintone-plugin.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/how-to-choose-kintone-plugin.html"/>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kinplug.com/ja/blog/how-to-choose-kintone-plugin.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/how-to-choose-kintone-plugin.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kinplug.com/blog/how-to-choose-kintone-plugin.html"/>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url><loc>https://kinplug.com/legal/privacy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://kinplug.com/ja/legal/privacy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://kinplug.com/legal/terms.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>

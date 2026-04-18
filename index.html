@@ -25,6 +25,184 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://kinplug.com/#organization",
+  "name": "kinplug",
+  "alternateName": [
+    "Kinplug",
+    "キンプラグ"
+  ],
+  "legalName": "Edamame Inc.",
+  "url": "https://kinplug.com",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://kinplug.com/favicon.svg",
+    "width": 512,
+    "height": 512
+  },
+  "image": "https://kinplug.com/assets/og-default.png",
+  "description": "Native Kintone plugins, configured inside Kintone. Operated by Edamame Inc. (Manila · Tokyo). Kintone work since 2019.",
+  "foundingDate": "2022",
+  "founder": {
+    "@type": "Person",
+    "name": "Tom Arai",
+    "jobTitle": "Founder & CEO",
+    "nationality": "JP"
+  },
+  "address": [
+    {
+      "@type": "PostalAddress",
+      "addressCountry": "PH",
+      "addressLocality": "Taguig",
+      "addressRegion": "BGC"
+    },
+    {
+      "@type": "PostalAddress",
+      "addressCountry": "JP",
+      "addressLocality": "Tokyo"
+    }
+  ],
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "email": "support@kinplug.com",
+      "contactType": "customer support",
+      "availableLanguage": [
+        "Japanese",
+        "English",
+        "Tagalog"
+      ],
+      "hoursAvailable": {
+        "@type": "OpeningHoursSpecification",
+        "opens": "09:00",
+        "closes": "18:00",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ]
+      }
+    },
+    {
+      "@type": "ContactPoint",
+      "email": "billing@kinplug.com",
+      "contactType": "billing support",
+      "availableLanguage": [
+        "Japanese",
+        "English"
+      ]
+    },
+    {
+      "@type": "ContactPoint",
+      "email": "legal@kinplug.com",
+      "contactType": "legal",
+      "availableLanguage": [
+        "Japanese",
+        "English"
+      ]
+    }
+  ],
+  "sameAs": [
+    "https://github.com/KinPlug"
+  ],
+  "knowsAbout": [
+    "Kintone",
+    "Cybozu",
+    "Kintone plugins",
+    "OAuth 2.0",
+    "Gmail API",
+    "Microsoft Graph API",
+    "Japanese enterprise SaaS"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://kinplug.com/#website",
+  "url": "https://kinplug.com",
+  "name": "kinplug",
+  "description": "Native Kintone plugins — configured inside Kintone.",
+  "publisher": {
+    "@id": "https://kinplug.com/#organization"
+  },
+  "inLanguage": [
+    "ja",
+    "en"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is configuration really done entirely inside Kintone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You open the plugin configuration UI inside Kintone and that's where everything is configured. No external portal login, no API key management. For Kinplug Mail, OAuth authentication happens once on Google/Microsoft's own consent screen, but subsequent configuration lives entirely in Kintone — the connection is stored as an encrypted record in a Kintone app and scoped per subdomain."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you support cybozu.com (Japanese Kintone)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, fully. All plugins are tested on both kintone.com and cybozu.com domains. We have a reference deployment on a financial group's cybozu.com environment with 43 apps using our plugins."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I'm migrating to Microsoft 365 OAuth and our existing mail sending broke. Can you help?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We provide free migration support to Kinplug Mail's OAuth flow, preserving your existing mail templates, sender configurations, and recipient logic. The 14-day trial lets you verify in your actual environment. For urgent migrations, email support@kinplug.com directly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are you a Cybozu official partner?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We're an independent vendor. Edamame Inc. has operated as a Kintone specialist consultancy since 2019 and received Cybozu Partner of the Year recognition. However, our plugin business (kinplug) is not sold through official partner channels. Being independent gives us a vendor-neutral position on product recommendations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to the plugins if your company shuts down?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every plugin except Kinplug Mail works entirely inside your Kintone — no dependency on our servers. Those continue working permanently if we cease operations. Kinplug Mail is the one exception because it requires an OAuth server. For that, we've committed contractually (in Standard and Enterprise agreements) to open-source the API server and provide full self-hosting migration support if we ever shut down."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you handle invoice billing / NET30 / procurement approval (稟議)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, from Standard plan upward. We follow Japanese enterprise procurement: PDF quote → purchase order → invoice (NET30) → bank transfer. Annual contracts include 2 months free. We provide procurement attachment materials (company profile, security documentation). Qualified invoice issuer registration completing in 2026."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who handles support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The engineer who actually built the plugin responds. We've chosen to stay a small team deliberately — no first-line support scripts, no ticket routing silos. Tokyo office handles Japanese/English/Tagalog support, same-day response during JST business hours, 4-hour response SLA from Standard plan upward."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

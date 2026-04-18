@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>なぜKintoneプラグインの多くは外部ポータル方式なのか</title>
+<meta name="description" content="Kintoneプラグイン市場の多くは、実は「Kintoneと連携する外部SaaS」です。設定には専用ポータルへのログインが必要で、ユーザー・権限・運用が二重になります。これはベンダー側のビジネスモデルに起因する構造的な選択です。">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="なぜKintoneプラグインの多くは外部ポータル方式なのか">
+<meta property="og:description" content="Kintoneプラグイン市場の多くは、実は「Kintoneと連携する外部SaaS」です。設定には専用ポータルへのログインが必要で、ユーザー・権限・運用が二重になります。これはベンダー側のビジネスモデルに起因する構造的な選択です。">
+<meta property="og:image" content="https://kinplug.com/assets/og-default.png">
+<meta property="og:url" content="https://kinplug.com/ja/blog/why-kintone-plugins-external-portals.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="kinplug">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
+<link rel="canonical" href="https://kinplug.com/ja/blog/why-kintone-plugins-external-portals.html">
+<link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/why-kintone-plugins-external-portals.html">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/">
+<link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "なぜKintoneプラグインの多くは外部ポータル方式なのか",
+  "description": "Kintoneプラグイン市場の多くは、実は「Kintoneと連携する外部SaaS」です。設定には専用ポータルへのログインが必要で、ユーザー・権限・運用が二重になります。これはベンダー側のビジネスモデルに起因する構造的な選択です。",
+  "image": "https://kinplug.com/assets/og-default.png",
+  "datePublished": "2026-04-17",
+  "dateModified": "2026-04-17",
+  "author": {
+    "@type": "Person",
+    "name": "Tom Arai",
+    "url": "https://kinplug.com/about/"
+  },
+  "publisher": {
+    "@id": "https://kinplug.com/#organization"
+  },
+  "mainEntityOfPage": "https://kinplug.com/ja/blog/why-kintone-plugins-external-portals.html",
+  "inLanguage": "ja",
+  "wordCount": 3100,
+  "articleSection": "Kintone plugins",
+  "keywords": [
+    "Kintone",
+    "プラグイン",
+    "OAuth 2.0",
+    "enterprise SaaS"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://kinplug.com/ja/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "ジャーナル",
+      "item": "https://kinplug.com/ja/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "なぜKintoneプラグインの多くは外部ポータル方式なのか",
+      "item": "https://kinplug.com/ja/blog/why-kintone-plugins-external-portals.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>運営: Edamame Inc.</span>
+        <span class="topbar-dot">·</span>
+        <span>東京・マニラ</span>
+        <span class="topbar-dot">·</span>
+        <span>Kintone運用2019年より</span>
+      </div>
+      <div class="topbar-right">
+        <a href="/ja/about/">会社概要</a>
+        <span class="topbar-dot">·</span>
+        <a href="mailto:support@kinplug.com">平日JST 09:00–18:00 当日対応</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/ja/" class="logo" aria-label="kinplug">
+        <span class="logo-mark">
+          <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#1B2B5A" stroke-width="2"/>
+            <rect x="9" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <rect x="22" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+          </svg>
+        </span>
+        <span class="logo-word">kinplug</span>
+      </a>
+      <div class="nav-menu">
+        <a href="/ja/plugins/" >プラグイン</a>
+        <a href="/ja/pricing.html" >料金</a>
+        <a href="/ja/compare/" >他社比較</a>
+        <a href="/ja/about/" >会社情報</a>
+        <a href="/ja/docs/" >ドキュメント</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <a href="/" >EN</a>
+          <a href="/ja/" class="active">日本語</a>
+        </div>
+        <a href="/ja/login.html" class="btn btn-secondary btn-sm">サインイン</a>
+        <a href="/ja/signup/" class="btn btn-primary btn-sm">無料で始める</a>
+        <button class="nav-toggle" aria-label="メニュー">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3zm0 4h14v2H3zm0 4h14v2H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<article>
+<section class="sec hero-section">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow">ジャーナル</div>
+    <h1 class="h1" style="text-wrap: balance;">なぜKintoneプラグインの多くは外部ポータル方式なのか</h1>
+    <div style="margin-top:32px; padding-top:24px; border-top:1px solid var(--rule); font-family:'JetBrains Mono',monospace; font-size:0.8125rem; color:var(--ink-mute); display:flex; gap:20px; flex-wrap:wrap;">
+      <span>2026年4月17日</span>
+      <span>·</span>
+      <span>読了時間 約12分</span>
+      <span>·</span>
+      <span>Tom Arai · Edamame Inc. 代表</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-white">
+  <div class="wrap wrap-narrow">
+    <div class="content-prose article-prose">
+
+<p>Kintoneのプラグイン市場を見ると、奇妙なことに気付きます。「Kintoneプラグイン」と呼ばれる製品のほとんどが、実はKintoneの中では完結しません。設定のために、別のWebサイト（各ベンダー固有のドメイン）へログインが必要です。なぜでしょうか。</p>
+
+<p>これはベンダー側の「技術的な怠慢」ではありません。構造的な理由があります。この記事では、その理由と、逆にKintone内で完結させるアーキテクチャを選んだ場合に何が起きるかを整理します。</p>
+
+<div class="callout-box">
+<h4>この記事の要点</h4>
+<p>Kintoneプラグイン市場の多くは、実は「Kintoneと連携する外部SaaS」です。設定には専用ポータルへのログインが必要で、ユーザー・権限・運用が二重になります。これはベンダーのビジネスモデルに起因しており、彼らが「ネイティブ化」しないのは、できないからではなく、するとビジネスが成立しなくなるからです。</p>
+</div>
+
+<h2>実際に起きていること</h2>
+
+<p>まず事実確認から。Kintoneプラグインカテゴリで市場を広く見渡すと、以下のようなパターンで分かれます。</p>
+
+<h3>ネイティブプラグイン型</h3>
+
+<p>Kintoneの「プラグイン」機能を使って、Kintone内で完全に動作するタイプ。設定もKintoneの管理画面で完結します。代表的なのはCybozu Developer Networkで配布されている条件書式プラグインなど、機能が比較的シンプルなもの。独立系の個人開発者・小規模ベンダーが作ることが多く、スコープが限定的です。</p>
+
+<h3>外部ポータル型（連携サービス型）</h3>
+
+<p>Kintoneに薄いプラグインを入れますが、実際の処理・設定は外部Webサイトで行われます。ユーザーはKintoneと外部ポータルの両方にログインし、両方で設定を管理します。業界の主要な外部ポータル型サービスがこのパターンです。Kintoneプラグイン市場の売上シェアの大多数がこのタイプです。</p>
+
+<h3>JavaScript型（カスタム開発）</h3>
+
+<p>個別案件ごとにJavaScriptを書いてKintoneに注入するパターン。SIerやコンサルティング会社が提供することが多く、製品ではなく受託開発に近い形態です。</p>
+
+<p>市場の収益の中心は2番目の外部ポータル型です。そしてこのカテゴリの有名プラグインの多くは、Kintone内で完結する作りではありません。</p>
+
+<h2>なぜ外部ポータル型が多いのか</h2>
+
+<p>「Kintoneの中で完結させればいいのに、なぜベンダーはそうしないのか」という問いに対する答えは、技術ではなくビジネスモデルにあります。</p>
+
+<h3>理由1. SaaSビジネスとして成立させるため</h3>
+
+<p>外部ポータルを持つことで、ベンダーは以下を実現できます。</p>
+
+<ul>
+  <li><strong>ユーザー単位での課金が可能</strong>：Kintoneの契約とは別に、ベンダー側のユーザーアカウントを管理できる。ユーザー数に応じた課金、アクセス制御、機能ゲーティングが実装しやすい。</li>
+  <li><strong>使用量の可視化</strong>：誰が何回使ったか、どのAPIを叩いたか、どれだけデータ処理したか、を自社のダッシュボードで直接見られる。これがないとプランのグレード分けや従量課金が困難。</li>
+  <li><strong>リテンション指標の取得</strong>：DAU（日次アクティブユーザー）、MAU（月次アクティブユーザー）、機能別利用率、アップセル可能なシグナルの抽出。SaaS型ビジネスの健全性を計るためのデータが取れる。</li>
+  <li><strong>アップセル導線の設置</strong>：外部ポータルにログインさせることで、「上位プランに移行しませんか？」「新機能を試しませんか？」といった誘導が自然に可能。</li>
+</ul>
+
+<p>Kintone内で完結するアーキテクチャを取ると、これらが全部できません。ベンダーは、ユーザーが何を設定しているか、どれだけ使っているかを、全く知ることができなくなります。それは、SaaS型ビジネスとしての指標が取れないということです。</p>
+
+<h3>理由2. Kintone APIレート制限を避けるため</h3>
+
+<p>Kintoneには、サブドメイン単位でAPIレート制限があります。重い処理（大量データ処理、帳票生成、メール送信等）をすべてKintone APIから呼ぶと、他のアプリの動作にも影響します。外部ポータル型は、処理の大部分をベンダー側のサーバーで実行することで、この制限を回避できます。</p>
+
+<h3>理由3. 複雑なロジックの実装しやすさ</h3>
+
+<p>Kintoneプラグインで書けるJavaScriptには、実行環境の制約（CORS、CSP、実行時間等）があります。複雑なPDF生成、画像処理、外部API呼び出し、ロングランニングタスクは、Kintone内では難しい。サーバー側で処理すれば、これらの制約を避けられます。</p>
+
+<h2>外部ポータル型の代償</h2>
+
+<p>ベンダー側のビジネスモデル上の利点は理解できます。ただし、それを選んだ瞬間、ユーザー側には具体的な負担が発生します。</p>
+
+<h3>管理画面が二重化する</h3>
+
+<p>Kintoneの管理画面と、ベンダーの外部ポータルの、両方を覚える必要があります。ユーザー管理、権限管理、設定変更を、それぞれのシステムで行います。ユーザーが退職した場合、両方から削除する必要があります。これを忘れると、退職者がベンダー側のポータルから情報にアクセスし続けるリスクが残ります。</p>
+
+<h3>ユーザー認証が二重化する</h3>
+
+<p>多くの外部ポータル型プラグインは、ユーザーが外部ポータルに別途アカウントを作ることを要求します。Kintoneはサイボウズ製のSAML統合が使えるのに、外部ポータルは独自の認証を持つため、パスワード管理が複雑になり、SSOの一貫性が崩れます。</p>
+
+<h3>データの越境が発生する</h3>
+
+<p>Kintone上のデータの一部が、処理のためにベンダーのサーバーに送られます。これは多くの場合、利用規約では「必要な処理のため」と正当化されますが、金融・医療・公共機関のセキュリティ監査では、データの越境ルートとして明示する必要があります。結果として、稟議プロセスが重くなり、導入判断が遅れます。</p>
+
+<h3>ベンダー依存が発生する</h3>
+
+<p>外部ポータルが停止すると、プラグインが動かなくなります。たとえKintoneが正常に動作していても、ベンダー側のインフラ障害で、社内の業務が止まります。ベンダーの事業継続が、自社の業務継続と直結します。</p>
+
+<h3>IP制限環境で導入が困難になる</h3>
+
+<p>金融・保険・医療・公共機関では、Kintone環境自体がIP制限下にあることが多いです。外部ポータルとの通信を許可するには、ベンダー側のIPレンジをホワイトリスト化する必要があり、これがベンダー変更時（または DR時）に運用の複雑性を生みます。</p>
+
+<h2>それでも外部ポータルが選ばれる理由</h2>
+
+<p>上記の代償は、実はユーザーにとって大きな痛みです。ではなぜ、市場は外部ポータル型が支配的なのか。</p>
+
+<h3>代替がなかった</h3>
+
+<p>2015年～2020年頃、Kintoneプラグイン市場が形成された時期、主要ベンダーは全員SaaS型のビジネスを目指していました。ネイティブプラグイン型を真剣に追求したベンダーが少なかったため、ユーザーは「外部ポータル型しか選択肢がない」状況が長く続きました。</p>
+
+<h3>機能面で差がつきやすい</h3>
+
+<p>外部ポータル型は、サーバー側で自由にロジックが書けるため、複雑な機能を実装しやすい。結果として、機能比較表ではネイティブ型より見栄えが良くなります。ユーザーが最初に機能面で選ぶと、アーキテクチャ面の代償を見逃しがちです。</p>
+
+<h3>導入時には問題が顕在化しない</h3>
+
+<p>外部ポータルへのログイン、ユーザー管理の二重化、データ越境といった問題は、導入後しばらく経たないと実感しない種類の問題です。契約時点では「Kintoneをもっと便利にする機能」しか目に入らず、代償は見えません。</p>
+
+<h2>ネイティブプラグインを本気で追求するとどうなるか</h2>
+
+<p>kinplugが選んだアーキテクチャはネイティブプラグイン型です。これを選ぶと、ベンダー側に以下の制約が発生します。</p>
+
+<ul>
+  <li><strong>ユーザー単位課金ができない</strong> → サブドメイン単位のフラットレート課金になる</li>
+  <li><strong>使用量計測が直接できない</strong> → プランを「使い放題」で設計せざるを得ない</li>
+  <li><strong>アップセル導線が作れない</strong> → 営業による営業をあきらめる必要がある</li>
+  <li><strong>リテンション指標が取れない</strong> → 代わりに、契約更新率とサポートチケット内容で健全性を判断する</li>
+</ul>
+
+<p>これは事実上、一般的なSaaS企業のプレイブックを使わない、という選択です。収益構造が変わるので、会社としての成長の仕方も変わります。具体的には、「大量の顧客に少しずつ課金する」モデルになります。ユーザー数で料金を積み上げる従来型SaaSと違い、サブドメイン単位の定額制になるため、単価は大きく伸びません。代わりに、顧客の負担感は劇的に低いので、解約率と紹介率で勝負することになります。</p>
+
+<p>私たちが意図的にこの道を選んでいる理由は、Kintoneコンサルタントとしての現場経験から、外部ポータル型の代償がユーザーにとって大きすぎると判断したからです。これが、他社ができないのではなく、他社がビジネスモデル上選べない道だという認識です。</p>
+
+<h2>ユーザー側の判断基準</h2>
+
+<p>プラグインを選定する際、アーキテクチャ面で確認すべきポイント：</p>
+
+<ul>
+  <li><strong>設定は完全にKintone内で完結するか？</strong>（外部ポータルへのログインを一度も求められないか）</li>
+  <li><strong>ユーザー管理は Kintoneの権限体系だけで済むか？</strong>（ベンダー側で別途アカウント作成が必要ないか）</li>
+  <li><strong>データがベンダーのサーバーを経由するか？</strong>（経由する場合、その範囲と理由は明記されているか）</li>
+  <li><strong>ベンダーの事業停止時の影響は？</strong>（プラグインはその後も使えるか、ソースコードのオープン化等の約束があるか）</li>
+  <li><strong>IP制限環境への対応は？</strong>（ホワイトリストに追加すべきドメインは明記されているか）</li>
+</ul>
+
+<p>これらを最初に確認すると、アーキテクチャ面での選択が明確になります。機能比較表だけでは見えない部分が、後から運用負担として効いてきます。</p>
+
+<h2>結論</h2>
+
+<p>Kintoneプラグイン市場が「外部ポータル型」に傾いているのは、ベンダー側のビジネスモデルの都合です。ユーザー側にとっては、この構造は運用負担・セキュリティ監査・ベンダー依存といった代償を伴います。</p>
+
+<p>ネイティブプラグイン型を選ぶと、ベンダーの成長戦略は変わり、顧客単価の伸ばし方が変わります。これを意図的に選ぶ会社が出てきた、というのが、現在のKintoneプラグイン市場で起きている小さな構造変化です。</p>
+
+<p>kinplugについて詳しくは <a href="/ja/plugins/">プラグイン一覧</a> または <a href="/ja/compare/">他社比較</a> をご覧ください。</p>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-deep">
+  <div class="wrap wrap-narrow">
+    <div style="background:#FFF; border-radius:8px; padding:40px; border:1px solid var(--rule); box-shadow: 0 6px 24px -12px rgba(15,20,25,0.08);">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--clay); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px;">次のステップ</div>
+      <h3 style="font-family:'Noto Serif JP',serif; font-size:1.5rem; color:var(--navy); margin-bottom:14px;">kinplug を14日間無料で試す</h3>
+      <p style="color:var(--ink-soft); margin-bottom:24px; line-height:1.7;">クレジットカード不要。GoogleかMicrosoftでサインインして、Kintoneサブドメインを入力。90秒で稼働開始します。</p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="/ja/signup/" class="btn btn-primary btn-lg">無料で始める<span class="arrow">→</span></a>
+        <a href="/ja/plugins/" class="btn btn-secondary btn-lg">プラグインを見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+</article>
+<div class="cta-wrap">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow eyebrow-center" style="color:var(--clay);">はじめる</div>
+    <h2 class="cta-title">14日間、全機能、<br>クレジットカード不要。</h2>
+    <p class="cta-desc">GoogleかMicrosoftでサインイン、Kintoneサブドメインを入力、プラグインをインストール。90秒で稼働開始。</p>
+    <div class="cta-actions">
+      <a href="/ja/signup/" class="btn btn-clay btn-lg">無料アカウント作成<span class="arrow">→</span></a>
+      <a href="/ja/contact/" class="btn btn-secondary btn-lg" style="border-color:rgba(247,245,240,0.3); color:var(--paper);">お問い合わせ</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="/ja/" class="logo logo-light">
+          <span class="logo-mark">
+            <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#F7F5F0" stroke-width="2"/>
+              <rect x="9" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <rect x="22" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+            </svg>
+          </span>
+          <span class="logo-word">kinplug</span>
+        </a>
+        <p class="footer-desc">Kintoneのためのネイティブプラグイン。運営: Edamame Inc.（マニラ・東京）。2019年よりKintone運用。Cybozu Partner of the Year受賞パートナー。</p>
+      </div>
+      <div class="footer-col"><h4>プラグイン</h4><ul>
+        <li><a href="/ja/plugins/mail/">Kinplug Mail</a></li>
+        <li><a href="/ja/plugins/pdf-pro/">PDF Pro</a></li>
+        <li><a href="/ja/plugins/smart-lookup/">Smart Lookup</a></li>
+        <li><a href="/ja/plugins/flow/">Flow</a></li>
+        <li><a href="/ja/plugins/">全タイトル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>リソース</h4><ul>
+        <li><a href="/ja/pricing.html">料金</a></li>
+        <li><a href="/ja/compare/">他社比較</a></li>
+        <li><a href="/ja/docs/">ドキュメント</a></li>
+        <li><a href="/ja/blog/">ジャーナル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>会社情報</h4><ul>
+        <li><a href="/ja/about/">会社概要</a></li>
+        <li><a href="/ja/contact/">お問い合わせ</a></li>
+        <li><a href="https://edamame.ph">Edamame Inc.</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>連絡先</h4><ul>
+        <li><a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
+        <li><a href="mailto:billing@kinplug.com">billing@kinplug.com</a></li>
+        <li><a href="mailto:legal@kinplug.com">legal@kinplug.com</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-grid">
+        <div><h5>特定商取引法に基づく表記</h5><p><strong>販売事業者</strong>: Edamame Inc. · <strong>代表責任者</strong>: Tom Arai · <strong>所在地</strong>: フィリピン・マニラBGC（東京オフィス連絡可）· <strong>連絡先</strong>: support@kinplug.com</p></div>
+        <div><h5>支払方法・返金について</h5><p>クレジットカード（全プラン）・銀行振込（スタンダード以上）対応。年払い契約は2ヶ月分無料、月払い契約はいつでも解約可能、解約月末までの請求。詳細は<a href="/ja/legal/terms.html" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.5);">利用規約</a>。</p></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 · Edamame Inc. · Since 2019</div>
+      <div class="footer-bottom-links">
+        <a href="/ja/legal/privacy.html">プライバシーポリシー</a>
+        <a href="/ja/legal/terms.html">利用規約</a>
+        <a href="/ja/legal/security.html">セキュリティ</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/app.js"></script>
+</body>
+</html>

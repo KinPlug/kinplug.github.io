@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft 365 basic auth shutdown — Kintone mail after April 2026</title>
+<meta name="description" content="On April 1, 2026, Microsoft 365 shuts down SMTP basic authentication, breaking most Kintone mail plugins. Symptoms, migration options, and OAuth 2.0 transition steps from a Kintone consultancy that has worked with production environments since 2019.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Microsoft 365 basic auth shutdown — Kintone mail after April 2026">
+<meta property="og:description" content="On April 1, 2026, Microsoft 365 shuts down SMTP basic authentication, breaking most Kintone mail plugins. Symptoms, migration options, and OAuth 2.0 transition steps from a Kintone consultancy that has worked with production environments since 2019.">
+<meta property="og:image" content="https://kinplug.com/assets/og-default.png">
+<meta property="og:url" content="https://kinplug.com/blog/microsoft-365-oauth-kintone-mail-2026.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:site_name" content="kinplug">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
+<link rel="canonical" href="https://kinplug.com/blog/microsoft-365-oauth-kintone-mail-2026.html">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/blog/microsoft-365-oauth-kintone-mail-2026.html">
+<link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/">
+<link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Microsoft 365 basic auth shutdown — Kintone mail after April 2026",
+  "description": "On April 1, 2026, Microsoft 365 shuts down SMTP basic authentication, breaking most Kintone mail plugins. Symptoms, migration options, and OAuth 2.0 transition steps from a Kintone consultancy that has worked with production environments since 2019.",
+  "image": "https://kinplug.com/assets/og-default.png",
+  "datePublished": "2026-04-15",
+  "dateModified": "2026-04-15",
+  "author": {
+    "@type": "Person",
+    "name": "Tom Arai",
+    "url": "https://kinplug.com/about/"
+  },
+  "publisher": {
+    "@id": "https://kinplug.com/#organization"
+  },
+  "mainEntityOfPage": "https://kinplug.com/blog/microsoft-365-oauth-kintone-mail-2026.html",
+  "inLanguage": "en",
+  "wordCount": 2200,
+  "articleSection": "Kintone plugins",
+  "keywords": [
+    "Kintone",
+    "plugins",
+    "OAuth 2.0",
+    "enterprise SaaS"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://kinplug.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Journal",
+      "item": "https://kinplug.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Microsoft 365 basic auth shutdown — Kintone mail after April 2026",
+      "item": "https://kinplug.com/blog/microsoft-365-oauth-kintone-mail-2026.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>Operated by Edamame Inc.</span>
+        <span class="topbar-dot">·</span>
+        <span>Tokyo · Manila</span>
+        <span class="topbar-dot">·</span>
+        <span>Kintone work since 2019</span>
+      </div>
+      <div class="topbar-right">
+        <a href="/about/">Company</a>
+        <span class="topbar-dot">·</span>
+        <a href="mailto:support@kinplug.com">JST 09:00–18:00 · same-day response</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/" class="logo" aria-label="kinplug">
+        <span class="logo-mark">
+          <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#1B2B5A" stroke-width="2"/>
+            <rect x="9" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <rect x="22" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+          </svg>
+        </span>
+        <span class="logo-word">kinplug</span>
+      </a>
+      <div class="nav-menu">
+        <a href="/plugins/" >Plugins</a>
+        <a href="/pricing.html" >Pricing</a>
+        <a href="/compare/" >Compare</a>
+        <a href="/about/" >Company</a>
+        <a href="/docs/" >Docs</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <a href="/" class="active">EN</a>
+          <a href="/ja/" >日本語</a>
+        </div>
+        <a href="/login.html" class="btn btn-secondary btn-sm">Sign in</a>
+        <a href="/signup/" class="btn btn-primary btn-sm">Start free</a>
+        <button class="nav-toggle" aria-label="Menu">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3zm0 4h14v2H3zm0 4h14v2H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<article>
+<section class="sec hero-section">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow">Journal</div>
+    <h1 class="h1" style="text-wrap: balance;">Microsoft 365 basic auth shutdown — Kintone mail after April 2026</h1>
+    <div style="margin-top:32px; padding-top:24px; border-top:1px solid var(--rule); font-family:'JetBrains Mono',monospace; font-size:0.8125rem; color:var(--ink-mute); display:flex; gap:20px; flex-wrap:wrap;">
+      <span>2026-04-15</span>
+      <span>·</span>
+      <span>8 min read</span>
+      <span>·</span>
+      <span>Tom Arai · Founder, Edamame Inc.</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-white">
+  <div class="wrap wrap-narrow">
+    <div class="content-prose article-prose">
+
+<p>On April 1, 2026, Microsoft 365 completes its shutdown of basic SMTP authentication for Exchange Online. This affects most Kintone mail plugins on the market, which have historically relied on this authentication method. This post explains what actually breaks, what the observable symptoms are, and the real migration options — written from the perspective of a Kintone consultancy that has worked with production environments since 2019.</p>
+
+<div class="callout-box">
+<h4>The short version</h4>
+<p>Microsoft 365 shuts down basic authentication on April 1, 2026. Any Kintone plugin sending mail via SMTP credentials stops working on that day. The path forward is OAuth 2.0-native mail plugins. Kinplug Mail was designed on OAuth 2.0 from day one and provides free migration support from any SMTP-based plugin.</p>
+</div>
+
+<h2>What's actually shutting down</h2>
+
+<p>As part of a multi-year Exchange Online security hardening program, Microsoft is removing basic authentication entirely. The authentication methods going away:</p>
+
+<ul>
+  <li><strong>SMTP AUTH</strong> (basic-auth SMTP sending)</li>
+  <li><strong>IMAP and POP3 basic auth</strong> (mail receiving)</li>
+  <li><strong>Exchange ActiveSync basic auth</strong></li>
+  <li><strong>EWS basic auth</strong></li>
+  <li><strong>PowerShell basic auth</strong></li>
+</ul>
+
+<p>These all share the same pattern: a username/password pair Base64-encoded and sent to the server. Simple, but vulnerable — a leaked password creates a direct send-path for attackers. Microsoft began the phased shutdown in October 2022 and hits the final deadline in April 2026. For SMTP AUTH specifically, if your tenant admin has already opted out, you may have lost access earlier.</p>
+
+<p>Google did the equivalent for Gmail back in September 2024. The industry direction is clear.</p>
+
+<h2>Impact on Kintone mail sending</h2>
+
+<p>There are four common patterns for sending mail from Kintone. Each has different exposure:</p>
+
+<table>
+<thead>
+<tr><th>Sending method</th><th>After April 2026</th><th>What happens</th></tr>
+</thead>
+<tbody>
+<tr><td>SMTP basic-auth plugin</td><td>Broken</td><td>Password auth is rejected by server</td></tr>
+<tr><td>OAuth 2.0 plugin</td><td>Unaffected</td><td>Uses Microsoft Graph API, works normally</td></tr>
+<tr><td>Kintone native notifications</td><td>Unaffected</td><td>Inbound-only, no auth needed</td></tr>
+<tr><td>Custom JavaScript + SMTP</td><td>Needs rewrite</td><td>Must rebuild on OAuth</td></tr>
+</tbody>
+</table>
+
+<p>The two common cases are the SMTP basic-auth plugin and custom JavaScript implementations. Both fail the moment April 1 arrives.</p>
+
+<h2>Symptoms you might already be seeing</h2>
+
+<p>Microsoft has been progressively disabling SMTP AUTH at the tenant level in the months leading up to the full shutdown. Typical symptoms:</p>
+
+<ul>
+  <li>Mail sending fails for specific users but not others (tenant admin is mid-rollout of the opt-out)</li>
+  <li>Error logs show <code>5.7.30 ClientSubmitTime is required</code> or <code>SmtpClientAuthentication is disabled for the Tenant</code></li>
+  <li>Kintone process-management actions that send mail stop working, but other actions keep functioning</li>
+  <li>Send timeouts increase, with intermittent failures that look unstable but follow a pattern</li>
+</ul>
+
+<p>If you're seeing these symptoms, the shutdown is already partially in effect on your tenant.</p>
+
+<h2>Your migration options</h2>
+
+<h3>Option 1 — Re-enable basic auth temporarily (not recommended)</h3>
+
+<p>In the Microsoft 365 admin center, you can technically re-enable SMTP AUTH on a per-user basis. This is a stopgap, not a solution. On April 1, 2026, this option disappears. There's no reason to choose this path unless you need a few weeks or months to plan a real migration.</p>
+
+<p>Additionally, basic auth has poor security posture — a single phished password gives an attacker full send access. Security auditors flag it. In financial, healthcare, and public-sector Kintone environments, admins may refuse to re-enable it regardless of convenience.</p>
+
+<h3>Option 2 — Migrate to an OAuth 2.0 mail plugin (recommended)</h3>
+
+<p>The cleanest and fastest resolution. OAuth 2.0 plugins send through Microsoft Graph API. Instead of storing a password, they use token-based authorization: the user authenticates once on Microsoft's own consent screen, and the plugin holds a renewable token afterward.</p>
+
+<p>Concrete benefits:</p>
+
+<ul>
+  <li>Fully unaffected by the basic-auth shutdown</li>
+  <li>Send As support — send from shared mailboxes with proper delegation</li>
+  <li>SPF/DKIM/DMARC work correctly because sends originate from Microsoft's own infrastructure</li>
+  <li>Audit logs show exactly which user sent what</li>
+  <li>API rate limiting is managed by Microsoft, not your mail server</li>
+</ul>
+
+<h3>Option 3 — Stay inside Kintone native functions</h3>
+
+<p>Kintone has native notification functionality: process-management status notifications, app-permission change notifications, comment notifications. These send from Cybozu's own mail infrastructure and are unaffected by the Microsoft shutdown. They're fine for system-originating notifications.</p>
+
+<p>But they can't automate custom customer-facing mail — quote delivery, project updates, thank-you emails. For that, you need a plugin.</p>
+
+<h2>What a migration actually looks like</h2>
+
+<p>Migrating from an SMTP basic-auth plugin to an OAuth plugin generally follows this path:</p>
+
+<ol>
+  <li><strong>Install the OAuth plugin</strong> (don't remove the existing plugin yet)</li>
+  <li><strong>Authorize your sending account via OAuth</strong> — one time, on Google or Microsoft's consent screen</li>
+  <li><strong>Port your mail templates, recipient logic, and process-management actions</strong> to the new plugin</li>
+  <li><strong>Run test sends</strong> to verify correct behavior</li>
+  <li><strong>Disable the old plugin</strong> and switch traffic to the new one</li>
+  <li><strong>Run both in parallel for ~2 weeks</strong> to confirm no edge-case failures</li>
+  <li><strong>Remove the old plugin</strong></li>
+</ol>
+
+<p>Typical migration time in our experience is 3–8 hours of actual work, depending on template count and logic complexity. Environments with complex process-management integration take 1–2 days.</p>
+
+<h2>Things to watch during migration</h2>
+
+<h3>Send As requires Exchange admin delegation</h3>
+
+<p>If you send from a shared mailbox (e.g., <code>info@your-company.com</code>) using an individual user's OAuth token, the Microsoft 365 admin must explicitly grant Send As permission in Exchange Admin Center. This isn't something any plugin can configure — it's an admin-level setting. Plan for this before starting the migration.</p>
+
+<h3>Gmail "app passwords" don't exist anymore</h3>
+
+<p>The Gmail app password mechanism that used to work was retired in September 2024. If your old plugin relied on Google Workspace app passwords, you're already in migration territory — OAuth is the only path forward on Google side too.</p>
+
+<h3>Multi-subdomain environments need per-subdomain scoping</h3>
+
+<p>If your organization runs multiple Kintone subdomains (e.g., <code>sales.kintone.com</code> and <code>ops.kintone.com</code>), OAuth connections should be scoped per subdomain. Sharing connections between subdomains creates cross-domain misuse risk. Kinplug Mail stores OAuth connections in a Kintone app with the subdomain recorded, and enforces scoping at runtime.</p>
+
+<h2>Where Kinplug Mail fits</h2>
+
+<p>Kinplug Mail was designed on OAuth 2.0 from the beginning. We never supported SMTP basic auth, which means the Google and Microsoft auth-method changes don't affect our architecture.</p>
+
+<ul>
+  <li>Gmail and Microsoft 365 support</li>
+  <li>Shared mailbox Send As delegation</li>
+  <li>Per-subdomain OAuth connection scoping</li>
+  <li>Free migration support from any SMTP-based plugin</li>
+  <li>14-day trial lets you verify in your real environment</li>
+  <li>Configuration lives inside Kintone — no external portal login</li>
+</ul>
+
+<p>Demand for OAuth-native mail plugins spikes in the weeks approaching April 2026. If you're planning a migration, earlier is easier.</p>
+
+<h2>Related resources</h2>
+
+<ul>
+  <li><a href="/plugins/mail/">Kinplug Mail product page</a></li>
+  <li><a href="/docs/">Migration documentation</a></li>
+  <li><a href="/compare/">Comparison with other mail plugins</a></li>
+</ul>
+
+<p>For OAuth migration inquiries, contact <a href="mailto:support@kinplug.com?subject=OAuth%20migration">support@kinplug.com</a>. If it's urgent, please mention so — we respond same-day during JST business hours.</p>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-deep">
+  <div class="wrap wrap-narrow">
+    <div style="background:#FFF; border-radius:8px; padding:40px; border:1px solid var(--rule); box-shadow: 0 6px 24px -12px rgba(15,20,25,0.08);">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--clay); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px;">Next step</div>
+      <h3 style="font-family:'Noto Serif JP',serif; font-size:1.5rem; color:var(--navy); margin-bottom:14px;">Try kinplug free for 14 days</h3>
+      <p style="color:var(--ink-soft); margin-bottom:24px; line-height:1.7;">No credit card. Sign in with Google or Microsoft, enter your Kintone subdomain, and go live in 90 seconds.</p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="/signup/" class="btn btn-primary btn-lg">Start free<span class="arrow">→</span></a>
+        <a href="/plugins/" class="btn btn-secondary btn-lg">See plugins</a>
+      </div>
+    </div>
+  </div>
+</section>
+</article>
+<div class="cta-wrap">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow eyebrow-center" style="color:var(--clay);">Get started</div>
+    <h2 class="cta-title">14 days, every feature,<br>no credit card.</h2>
+    <p class="cta-desc">Sign in with Google or Microsoft, enter your Kintone subdomain, install the plugin. Live in 90 seconds.</p>
+    <div class="cta-actions">
+      <a href="/signup/" class="btn btn-clay btn-lg">Create free account<span class="arrow">→</span></a>
+      <a href="/contact/" class="btn btn-secondary btn-lg" style="border-color:rgba(247,245,240,0.3); color:var(--paper);">Contact us</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="logo logo-light">
+          <span class="logo-mark">
+            <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#F7F5F0" stroke-width="2"/>
+              <rect x="9" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <rect x="22" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+            </svg>
+          </span>
+          <span class="logo-word">kinplug</span>
+        </a>
+        <p class="footer-desc">Native Kintone plugins. Operated by Edamame Inc. (Manila · Tokyo). Kintone work since 2019. Cybozu Partner of the Year.</p>
+      </div>
+      <div class="footer-col"><h4>Plugins</h4><ul>
+        <li><a href="/plugins/mail/">Kinplug Mail</a></li>
+        <li><a href="/plugins/pdf-pro/">PDF Pro</a></li>
+        <li><a href="/plugins/smart-lookup/">Smart Lookup</a></li>
+        <li><a href="/plugins/flow/">Flow</a></li>
+        <li><a href="/plugins/">All titles</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/compare/">Compare</a></li>
+        <li><a href="/docs/">Documentation</a></li>
+        <li><a href="/blog/">Journal</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Company</h4><ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="https://edamame.ph">Edamame Inc.</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
+        <li><a href="mailto:billing@kinplug.com">billing@kinplug.com</a></li>
+        <li><a href="mailto:legal@kinplug.com">legal@kinplug.com</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-grid">
+        <div><h5>Legal disclosures</h5><p><strong>Seller</strong>: Edamame Inc. · <strong>Representative</strong>: Tom Arai · <strong>Address</strong>: Manila BGC, Philippines (Tokyo liaison available) · <strong>Contact</strong>: support@kinplug.com</p></div>
+        <div><h5>Billing & refunds</h5><p>Credit card (all plans), bank transfer (Standard+). Annual contracts include 2 free months. Monthly plans may cancel any time, billed through end of month. See <a href="/legal/terms.html" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.5);">Terms</a>.</p></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 · Edamame Inc. · Since 2019</div>
+      <div class="footer-bottom-links">
+        <a href="/legal/privacy.html">Privacy</a>
+        <a href="/legal/terms.html">Terms</a>
+        <a href="/legal/security.html">Security</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/app.js"></script>
+</body>
+</html>

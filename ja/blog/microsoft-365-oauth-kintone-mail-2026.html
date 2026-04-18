@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft 365 基本認証停止 — 2026年4月以降のKintoneメール送信</title>
+<meta name="description" content="2026年4月1日、Microsoft 365がSMTP基本認証を完全停止します。多くのKintoneメール送信プラグインが影響を受け、送信不可になります。実際の症状、対応オプション、OAuth 2.0への移行手順を、現場視点で整理します。">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Microsoft 365 基本認証停止 — 2026年4月以降のKintoneメール送信">
+<meta property="og:description" content="2026年4月1日、Microsoft 365がSMTP基本認証を完全停止します。多くのKintoneメール送信プラグインが影響を受け、送信不可になります。実際の症状、対応オプション、OAuth 2.0への移行手順を、現場視点で整理します。">
+<meta property="og:image" content="https://kinplug.com/assets/og-default.png">
+<meta property="og:url" content="https://kinplug.com/ja/blog/microsoft-365-oauth-kintone-mail-2026.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="kinplug">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
+<link rel="canonical" href="https://kinplug.com/ja/blog/microsoft-365-oauth-kintone-mail-2026.html">
+<link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/microsoft-365-oauth-kintone-mail-2026.html">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/">
+<link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Microsoft 365 基本認証停止 — 2026年4月以降のKintoneメール送信",
+  "description": "2026年4月1日、Microsoft 365がSMTP基本認証を完全停止します。多くのKintoneメール送信プラグインが影響を受け、送信不可になります。実際の症状、対応オプション、OAuth 2.0への移行手順を、現場視点で整理します。",
+  "image": "https://kinplug.com/assets/og-default.png",
+  "datePublished": "2026-04-15",
+  "dateModified": "2026-04-15",
+  "author": {
+    "@type": "Person",
+    "name": "Tom Arai",
+    "url": "https://kinplug.com/about/"
+  },
+  "publisher": {
+    "@id": "https://kinplug.com/#organization"
+  },
+  "mainEntityOfPage": "https://kinplug.com/ja/blog/microsoft-365-oauth-kintone-mail-2026.html",
+  "inLanguage": "ja",
+  "wordCount": 2400,
+  "articleSection": "Kintone plugins",
+  "keywords": [
+    "Kintone",
+    "プラグイン",
+    "OAuth 2.0",
+    "enterprise SaaS"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://kinplug.com/ja/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "ジャーナル",
+      "item": "https://kinplug.com/ja/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Microsoft 365 基本認証停止 — 2026年4月以降のKintoneメール送信",
+      "item": "https://kinplug.com/ja/blog/microsoft-365-oauth-kintone-mail-2026.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>運営: Edamame Inc.</span>
+        <span class="topbar-dot">·</span>
+        <span>東京・マニラ</span>
+        <span class="topbar-dot">·</span>
+        <span>Kintone運用2019年より</span>
+      </div>
+      <div class="topbar-right">
+        <a href="/ja/about/">会社概要</a>
+        <span class="topbar-dot">·</span>
+        <a href="mailto:support@kinplug.com">平日JST 09:00–18:00 当日対応</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/ja/" class="logo" aria-label="kinplug">
+        <span class="logo-mark">
+          <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#1B2B5A" stroke-width="2"/>
+            <rect x="9" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <rect x="22" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+          </svg>
+        </span>
+        <span class="logo-word">kinplug</span>
+      </a>
+      <div class="nav-menu">
+        <a href="/ja/plugins/" >プラグイン</a>
+        <a href="/ja/pricing.html" >料金</a>
+        <a href="/ja/compare/" >他社比較</a>
+        <a href="/ja/about/" >会社情報</a>
+        <a href="/ja/docs/" >ドキュメント</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <a href="/" >EN</a>
+          <a href="/ja/" class="active">日本語</a>
+        </div>
+        <a href="/ja/login.html" class="btn btn-secondary btn-sm">サインイン</a>
+        <a href="/ja/signup/" class="btn btn-primary btn-sm">無料で始める</a>
+        <button class="nav-toggle" aria-label="メニュー">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3zm0 4h14v2H3zm0 4h14v2H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<article>
+<section class="sec hero-section">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow">ジャーナル</div>
+    <h1 class="h1" style="text-wrap: balance;">Microsoft 365 基本認証停止 — 2026年4月以降のKintoneメール送信</h1>
+    <div style="margin-top:32px; padding-top:24px; border-top:1px solid var(--rule); font-family:'JetBrains Mono',monospace; font-size:0.8125rem; color:var(--ink-mute); display:flex; gap:20px; flex-wrap:wrap;">
+      <span>2026年4月15日</span>
+      <span>·</span>
+      <span>読了時間 約9分</span>
+      <span>·</span>
+      <span>Tom Arai · Edamame Inc. 代表</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-white">
+  <div class="wrap wrap-narrow">
+    <div class="content-prose article-prose">
+
+<p>2026年4月1日、Microsoft 365がExchange OnlineのSMTP基本認証を完全停止します。これは、多くのKintoneメール送信プラグインが依存していた認証方式です。この記事では、実際に影響を受けるプラグイン・現場の症状・対応オプションを、Kintoneコンサルタントとして2019年から現場に立ってきた視点で整理します。</p>
+
+<div class="callout-box">
+<h4>この記事の要点</h4>
+<p>Microsoft 365の基本認証停止は2026年4月1日が期限。SMTP経由でメールを送っているKintoneプラグインは、この日を境に送信不可になります。対応策はOAuth 2.0対応のメール送信プラグインへの切り替えです。Kinplug Mailは元々OAuth基盤で設計されており、既存プラグインからの移行を無料で支援しています。</p>
+</div>
+
+<h2>何が起きるのか</h2>
+
+<p>Microsoftは、Exchange Onlineのセキュリティ強化の一環として、長年使われてきた「基本認証（Basic Authentication）」を完全廃止します。具体的には、以下の認証方式が使えなくなります。</p>
+
+<ul>
+  <li><strong>SMTP AUTH</strong>（SMTP基本認証による送信）</li>
+  <li><strong>IMAP/POP3 基本認証</strong>（メール受信）</li>
+  <li><strong>Exchange ActiveSync 基本認証</strong></li>
+  <li><strong>EWS 基本認証</strong></li>
+  <li><strong>PowerShell 基本認証</strong></li>
+</ul>
+
+<p>これらはすべて、ユーザー名とパスワードをBase64でエンコードしてサーバーに送るという、シンプルだが脆弱な認証方式です。Microsoftは2022年10月から段階的に停止を開始し、2026年4月で最終期限を迎えます。SMTP AUTHについては、管理者がテナント全体でオプトアウトを選んでいる場合、それ以前から使えなくなっている可能性もあります。</p>
+
+<p>Googleはすでに2024年9月にGmailの同等機能を停止しており、この流れはメール業界全体の方向です。</p>
+
+<h2>Kintoneメール送信に与える影響</h2>
+
+<p>Kintoneからメールを送信する仕組みは、大きく以下の4パターンに分かれます。それぞれ影響の有無を確認します。</p>
+
+<table>
+<thead>
+<tr><th>送信方式</th><th>2026年4月以降</th><th>影響内容</th></tr>
+</thead>
+<tbody>
+<tr><td>SMTP基本認証プラグイン</td><td>送信不可</td><td>パスワード認証が拒否される</td></tr>
+<tr><td>OAuth 2.0対応プラグイン</td><td>影響なし</td><td>Microsoft Graph API経由で正常動作</td></tr>
+<tr><td>Kintone標準通知（受信側）</td><td>影響なし</td><td>受信専用のため認証不要</td></tr>
+<tr><td>自社実装のJavaScript + SMTP</td><td>要書き換え</td><td>OAuth実装に変更必要</td></tr>
+</tbody>
+</table>
+
+<p>現場で圧倒的に多いのは、1番目のSMTP基本認証プラグインと、4番目の自社実装です。両者とも、4月1日を過ぎた時点で突然メールが送れなくなります。</p>
+
+<h2>既に起きている現場の症状</h2>
+
+<p>2026年4月の数ヶ月前から、Microsoftは対象テナントに対してSMTP AUTHを段階的に無効化し始めています。症状の典型例：</p>
+
+<ul>
+  <li>特定のユーザーでだけメール送信が失敗する（テナント管理者がオプトアウトを進めている場合）</li>
+  <li>エラーログに <code>5.7.30 ClientSubmitTime is required</code> または <code>SmtpClientAuthentication is disabled for the Tenant</code> が頻発する</li>
+  <li>Kintoneのプロセス管理アクションでメールだけが止まり、他のアクションは正常</li>
+  <li>送信のタイムアウトが増え、一定の割合で失敗するが、原因が不安定に見える</li>
+</ul>
+
+<p>これらの症状が出ている場合、すでにMicrosoftから実質的な基本認証の停止が始まっていると考えてよいです。</p>
+
+<h2>対応オプション</h2>
+
+<h3>オプション1. 基本認証の再有効化（暫定、推奨しない）</h3>
+
+<p>Microsoft 365管理センターで、ユーザー単位でSMTP AUTHを再有効化することは技術的に可能です。ただし、これは完全な解決ではなく、時間稼ぎです。2026年4月1日には、このオプション自体が無くなります。それまでの数週間・数ヶ月を急場しのぎする目的以外で選択する理由は、基本的にありません。</p>
+
+<p>加えて、基本認証はフィッシングによるパスワード漏洩時の横展開リスクが高く、セキュリティ監査で指摘される可能性もあります。金融・医療・公共機関向けのKintone環境では、そもそも管理者が再有効化を許可しない場合もあります。</p>
+
+<h3>オプション2. OAuth 2.0対応プラグインへの切り替え（推奨）</h3>
+
+<p>最も確実で、最も早期に決着させられる方法です。OAuth 2.0対応のメール送信プラグインは、Microsoft Graph APIを経由してメールを送信します。基本認証は使わず、ユーザーが一度Microsoft画面で認証すれば、それ以降はトークンベースで送信できます。</p>
+
+<p>具体的な利点：</p>
+
+<ul>
+  <li>基本認証停止の影響を完全に受けない</li>
+  <li>Send As（委任送信）対応で、共有メールボックスからの送信も可能</li>
+  <li>送信元ドメインのSPF/DKIM/DMARCが正しく設定される</li>
+  <li>監査ログが充実し、誰が送信したかが明確になる</li>
+  <li>APIレート制限の管理がMicrosoft側で行われる</li>
+</ul>
+
+<h3>オプション3. Kintone標準機能のみで運用</h3>
+
+<p>Kintoneには受信側のメール通知機能がありますが、能動的にメールを送信する機能は限定的です。プロセス管理のステータス変更通知・アプリ権限変更通知など、「Kintoneから自動的に出ていく」メールはKintone標準機能でも送信できますが、これは送信元がCybozuのメールサーバーから出るため、基本認証停止の影響を受けません。</p>
+
+<p>ただし、顧客宛のカスタムメール（見積書送付・進捗連絡・お礼メール等）を自動化したい場合、Kintone標準機能だけでは不十分です。</p>
+
+<h2>移行の実際の流れ</h2>
+
+<p>既存のSMTP基本認証プラグインから、OAuth対応プラグインへの移行手順は、シンプルにまとめるとこうなります。</p>
+
+<ol>
+  <li><strong>OAuth対応プラグインをインストール</strong>（既存プラグインはまだ削除しない）</li>
+  <li><strong>送信元アカウントをOAuth認証</strong>（Google または Microsoftの画面で一度だけ）</li>
+  <li><strong>送信テンプレート・宛先ロジック・プロセス管理アクションを移植</strong></li>
+  <li><strong>テスト送信で正しく動くか確認</strong></li>
+  <li><strong>既存プラグインを無効化</strong>して、新プラグインに切り替え</li>
+  <li><strong>2週間ほど並行運用</strong>して、問題がないことを確認</li>
+  <li><strong>既存プラグインを削除</strong></li>
+</ol>
+
+<p>実際の移行作業時間は、テンプレート数と送信ロジックの複雑さに応じますが、私たちの経験では3～8時間が典型的です。プロセス管理連動が複雑な環境では1～2日かかります。</p>
+
+<h2>よくある移行時の注意点</h2>
+
+<h3>Send Asが必要な場合、Exchange側での委任設定が必須</h3>
+
+<p>共有メールボックス（例：<code>info@your-company.com</code>）から、個別の社員アカウントを使って送信する場合、Microsoft 365の管理者がExchange Admin Centerで「Send As」権限を明示的に委任する必要があります。これはプラグイン側では制御できない範囲で、必ず管理者に依頼が必要です。</p>
+
+<h3>Gmail側の「アプリパスワード」は使えない</h3>
+
+<p>Google Workspaceで以前使われていた「アプリパスワード」は、2024年9月以降はOAuth 2.0に統一されました。既存のアプリパスワード経由で送信していた場合も、同様にOAuth対応プラグインへの移行が必要です。</p>
+
+<h3>複数サブドメイン環境での注意</h3>
+
+<p>Kintoneを複数サブドメインで運用している場合（例：<code>sales.kintone.com</code>と<code>ops.kintone.com</code>）、OAuth接続はサブドメイン単位でスコープされるべきです。サブドメイン間で接続情報が共有されると、誤送信のリスクが出ます。Kinplug Mailでは、接続情報を保存するKintoneアプリ側でサブドメインを記録し、実行時にスコープを確認します。</p>
+
+<h2>Kinplug Mailの位置づけ</h2>
+
+<p>Kinplug Mailは、OAuth 2.0を前提に設計されたKintoneメール送信プラグインです。SMTP基本認証はそもそもサポート対象外として開発しており、Google・MicrosoftのAPI仕様変更の影響を受けないアーキテクチャです。</p>
+
+<ul>
+  <li>Gmail および Microsoft 365対応</li>
+  <li>共有メールボックスのSend As送信対応</li>
+  <li>サブドメイン単位でのOAuth接続スコープ</li>
+  <li>既存プラグインからの無料移行支援</li>
+  <li>14日間のトライアルで実環境検証が可能</li>
+  <li>設定はKintone内で完結。外部ポータルへのログイン不要</li>
+</ul>
+
+<p>2026年4月が近づくにつれて、この種のプラグインへの需要は急増しています。移行をお考えの場合、時間に余裕を持って取りかかることをお勧めします。</p>
+
+<h2>参考リンク</h2>
+
+<ul>
+  <li><a href="/ja/plugins/mail/">Kinplug Mail 製品ページ</a></li>
+  <li><a href="/ja/docs/">移行ドキュメント</a></li>
+  <li><a href="/ja/compare/">他社メール送信プラグインとの比較</a></li>
+</ul>
+
+<p>OAuth移行についてのご相談は <a href="mailto:support@kinplug.com?subject=OAuth移行相談">support@kinplug.com</a> までお気軽にご連絡ください。緊急対応の場合はその旨ご明記いただければ、当日対応します。</p>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-deep">
+  <div class="wrap wrap-narrow">
+    <div style="background:#FFF; border-radius:8px; padding:40px; border:1px solid var(--rule); box-shadow: 0 6px 24px -12px rgba(15,20,25,0.08);">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--clay); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px;">次のステップ</div>
+      <h3 style="font-family:'Noto Serif JP',serif; font-size:1.5rem; color:var(--navy); margin-bottom:14px;">kinplug を14日間無料で試す</h3>
+      <p style="color:var(--ink-soft); margin-bottom:24px; line-height:1.7;">クレジットカード不要。GoogleかMicrosoftでサインインして、Kintoneサブドメインを入力。90秒で稼働開始します。</p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="/ja/signup/" class="btn btn-primary btn-lg">無料で始める<span class="arrow">→</span></a>
+        <a href="/ja/plugins/" class="btn btn-secondary btn-lg">プラグインを見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+</article>
+<div class="cta-wrap">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow eyebrow-center" style="color:var(--clay);">はじめる</div>
+    <h2 class="cta-title">14日間、全機能、<br>クレジットカード不要。</h2>
+    <p class="cta-desc">GoogleかMicrosoftでサインイン、Kintoneサブドメインを入力、プラグインをインストール。90秒で稼働開始。</p>
+    <div class="cta-actions">
+      <a href="/ja/signup/" class="btn btn-clay btn-lg">無料アカウント作成<span class="arrow">→</span></a>
+      <a href="/ja/contact/" class="btn btn-secondary btn-lg" style="border-color:rgba(247,245,240,0.3); color:var(--paper);">お問い合わせ</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="/ja/" class="logo logo-light">
+          <span class="logo-mark">
+            <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#F7F5F0" stroke-width="2"/>
+              <rect x="9" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <rect x="22" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+            </svg>
+          </span>
+          <span class="logo-word">kinplug</span>
+        </a>
+        <p class="footer-desc">Kintoneのためのネイティブプラグイン。運営: Edamame Inc.（マニラ・東京）。2019年よりKintone運用。Cybozu Partner of the Year受賞パートナー。</p>
+      </div>
+      <div class="footer-col"><h4>プラグイン</h4><ul>
+        <li><a href="/ja/plugins/mail/">Kinplug Mail</a></li>
+        <li><a href="/ja/plugins/pdf-pro/">PDF Pro</a></li>
+        <li><a href="/ja/plugins/smart-lookup/">Smart Lookup</a></li>
+        <li><a href="/ja/plugins/flow/">Flow</a></li>
+        <li><a href="/ja/plugins/">全タイトル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>リソース</h4><ul>
+        <li><a href="/ja/pricing.html">料金</a></li>
+        <li><a href="/ja/compare/">他社比較</a></li>
+        <li><a href="/ja/docs/">ドキュメント</a></li>
+        <li><a href="/ja/blog/">ジャーナル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>会社情報</h4><ul>
+        <li><a href="/ja/about/">会社概要</a></li>
+        <li><a href="/ja/contact/">お問い合わせ</a></li>
+        <li><a href="https://edamame.ph">Edamame Inc.</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>連絡先</h4><ul>
+        <li><a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
+        <li><a href="mailto:billing@kinplug.com">billing@kinplug.com</a></li>
+        <li><a href="mailto:legal@kinplug.com">legal@kinplug.com</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-grid">
+        <div><h5>特定商取引法に基づく表記</h5><p><strong>販売事業者</strong>: Edamame Inc. · <strong>代表責任者</strong>: Tom Arai · <strong>所在地</strong>: フィリピン・マニラBGC（東京オフィス連絡可）· <strong>連絡先</strong>: support@kinplug.com</p></div>
+        <div><h5>支払方法・返金について</h5><p>クレジットカード（全プラン）・銀行振込（スタンダード以上）対応。年払い契約は2ヶ月分無料、月払い契約はいつでも解約可能、解約月末までの請求。詳細は<a href="/ja/legal/terms.html" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.5);">利用規約</a>。</p></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 · Edamame Inc. · Since 2019</div>
+      <div class="footer-bottom-links">
+        <a href="/ja/legal/privacy.html">プライバシーポリシー</a>
+        <a href="/ja/legal/terms.html">利用規約</a>
+        <a href="/ja/legal/security.html">セキュリティ</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/app.js"></script>
+</body>
+</html>
