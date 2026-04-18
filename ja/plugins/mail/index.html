@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kinplug Mail — OAuth 2.0対応Kintoneメール送信プラグイン</title>
+<meta name="description" content="Gmail・Microsoft 365のOAuth 2.0対応メール送信とビジュアル自動化ワークフロー。Send As、共有メールボックス送信、予約送信、一括送信、条件付き自動化。月額¥9,800で全プラグイン含む。">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Kinplug Mail — OAuth 2.0対応Kintoneメール送信プラグイン">
+<meta property="og:description" content="Gmail・Microsoft 365のOAuth 2.0対応メール送信とビジュアル自動化ワークフロー。Send As、共有メールボックス送信、予約送信、一括送信、条件付き自動化。月額¥9,800で全プラグイン含む。">
+<meta property="og:image" content="https://kinplug.com/assets/og-default.png">
+<meta property="og:url" content="https://kinplug.com/ja/plugins/mail/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="kinplug">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
+<link rel="canonical" href="https://kinplug.com/ja/plugins/mail/">
+<link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/mail/">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/">
+<link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>運営: Edamame Inc.</span>
+        <span class="topbar-dot">·</span>
+        <span>東京・マニラ</span>
+        <span class="topbar-dot">·</span>
+        <span>Kintone運用2019年より</span>
+      </div>
+      <div class="topbar-right">
+        <a href="/ja/about/">会社概要</a>
+        <span class="topbar-dot">·</span>
+        <a href="mailto:support@kinplug.com">平日JST 09:00–18:00 当日対応</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/ja/" class="logo" aria-label="kinplug">
+        <span class="logo-mark">
+          <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#1B2B5A" stroke-width="2"/>
+            <rect x="9" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <rect x="22" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+          </svg>
+        </span>
+        <span class="logo-word">kinplug</span>
+      </a>
+      <div class="nav-menu">
+        <a href="/ja/plugins/" class="active">プラグイン</a>
+        <a href="/ja/pricing.html" >料金</a>
+        <a href="/ja/compare/" >他社比較</a>
+        <a href="/ja/about/" >会社情報</a>
+        <a href="/ja/docs/" >ドキュメント</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <a href="/" >EN</a>
+          <a href="/ja/" class="active">日本語</a>
+        </div>
+        <a href="/ja/login.html" class="btn btn-secondary btn-sm">サインイン</a>
+        <a href="/ja/signup/" class="btn btn-primary btn-sm">無料で始める</a>
+        <button class="nav-toggle" aria-label="メニュー">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3zm0 4h14v2H3zm0 4h14v2H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="sec">
+  <div class="wrap">
+    <div style="display:grid; grid-template-columns: 5fr 6fr; gap:clamp(40px,5vw,72px); align-items:center;" class="hero-grid">
+      <div>
+        <div class="eyebrow">Kinplug Mail · v2.5 · 提供中</div>
+        <h1 class="h1">OAuth 2.0で<br><span class="h1-accent">生き残るKintoneメール。</span></h1>
+        <p class="lede">
+          Google・Microsoftが基本認証を廃止しても、Kinplug Mailは影響を受けません。OAuth 2.0を基盤に設計され、Gmail・Microsoft 365のシェアードメールボックス送信、Send Asの権限代行、送信予約、条件付き自動送信、添付ファイル選択をひとつのプラグインで提供します。設定はすべてKintone内で完結。
+        </p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:32px;">
+          <a href="/ja/signup/" class="btn btn-primary btn-lg">14日間無料で試す<span class="arrow">→</span></a>
+          <a href="/ja/docs/" class="btn btn-secondary btn-lg">ドキュメント</a>
+        </div>
+        <div style="margin-top:32px; padding:16px 20px; background:var(--clay-soft); border-radius:6px; font-size:0.875rem; line-height:1.7; color:var(--ink-soft);">
+          <strong style="color:var(--clay-deep); font-family:'Noto Serif JP',serif; display:block; margin-bottom:4px;">⚠ Microsoft 365 基本認証停止中</strong>
+          既存のSMTP方式プラグインから無料移行サポート。テンプレート・宛先ロジックを保持したままOAuth化します。
+        </div>
+      </div>
+      <div>
+        <div class="chrome">
+          <div class="chrome-bar">
+            <div class="chrome-dots"><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span></div>
+            <div class="chrome-url">Kinplug Mail · 送信設定</div>
+          </div>
+          <div style="padding:20px; background:#FFF;">
+            <div style="display:grid; grid-template-columns: 90px 1fr; gap:14px 16px; font-size:0.8125rem;">
+              <div style="color:var(--ink-mute); padding-top:8px;">送信者</div>
+              <div style="padding:8px 12px; background:var(--paper-deep); border-radius:4px; display:flex; align-items:center; gap:8px;">
+                <div style="width:20px; height:20px; background:#0078D4; border-radius:3px; flex-shrink:0;"></div>
+                <div><div>sales@acme.co.jp</div><div style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--ink-mute);">Microsoft 365 · Shared Mailbox</div></div>
+              </div>
+              <div style="color:var(--ink-mute); padding-top:8px;">代理送信</div>
+              <div style="padding:8px 12px; background:var(--paper-deep); border-radius:4px; font-size:0.8125rem;">
+                <span style="color:var(--ok); font-weight:600;">✓ Send As権限 確認済み</span>
+              </div>
+              <div style="color:var(--ink-mute); padding-top:8px;">宛先</div>
+              <div style="padding:8px 12px; background:var(--paper-deep); border-radius:4px;">
+                <span style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--navy);">{取引先担当者}</span>
+                <span style="color:var(--ink-mute); font-size:0.75rem;"> · CC: </span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--navy);">{自社担当}</span>
+              </div>
+              <div style="color:var(--ink-mute); padding-top:8px;">件名</div>
+              <div style="padding:8px 12px; background:var(--paper-deep); border-radius:4px;">【{案件番号}】{件名} - {日付:YYYY年MM月DD日}</div>
+              <div style="color:var(--ink-mute); padding-top:8px;">添付</div>
+              <div style="padding:8px 12px; background:var(--paper-deep); border-radius:4px; display:flex; flex-wrap:wrap; gap:6px;">
+                <span class="badge badge-plan">PDF Pro: 見積書</span>
+                <span class="badge badge-plan">フィールド: 仕様書</span>
+              </div>
+              <div style="color:var(--ink-mute); padding-top:8px;">送信</div>
+              <div style="padding:8px 12px; background:var(--navy-wash); color:var(--navy); border-radius:4px; font-weight:500;">
+                プロセスが「承認済み」になった時
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-deep">
+  <div class="wrap">
+    <div class="sec-head-center">
+      <div class="eyebrow eyebrow-center">機能</div>
+      <h2 class="h2">メール送信と自動化が、ひとつに。</h2>
+    </div>
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:20px; max-width:1160px; margin:0 auto;" class="feat-grid">
+      <div style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule);">
+        <div class="eyebrow" style="margin-bottom:12px;">認証</div>
+        <div class="h3" style="font-size:1.125rem; margin-bottom:12px;">OAuth 2.0完全対応</div>
+        <p style="font-size:0.875rem; line-height:1.7; color:var(--ink-soft);">Gmail（Workspace含む）およびMicrosoft 365（Exchange Online）のOAuth 2.0対応。SMTPパスワードを保存しないため、各社の認証変更の影響を受けません。トークン自動更新対応。</p>
+      </div>
+      <div style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule);">
+        <div class="eyebrow" style="margin-bottom:12px;">送信者</div>
+        <div class="h3" style="font-size:1.125rem; margin-bottom:12px;">Send Asと共有メールボックス</div>
+        <p style="font-size:0.875rem; line-height:1.7; color:var(--ink-soft);">Microsoft 365のExchange Admin権限委譲を使った正規のSend As送信。個人メールボックスからの代理送信、共有メールボックスからの送信、両方に対応。</p>
+      </div>
+      <div style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule);">
+        <div class="eyebrow" style="margin-bottom:12px;">自動化</div>
+        <div class="h3" style="font-size:1.125rem; margin-bottom:12px;">ビジュアルフロー</div>
+        <p style="font-size:0.875rem; line-height:1.7; color:var(--ink-soft);">「レコード追加時」「ステータス変更時」「日時指定」などのトリガー、条件分岐、複数アクション連鎖をGUIで設計。Zapier/Make相当の自動化がKintone内で完結します。</p>
+      </div>
+      <div style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule);">
+        <div class="eyebrow" style="margin-bottom:12px;">添付</div>
+        <div class="h3" style="font-size:1.125rem; margin-bottom:12px;">フィールド単位の添付選択</div>
+        <p style="font-size:0.875rem; line-height:1.7; color:var(--ink-soft);">添付ファイルをフィールド単位で指定可能。「見積書フィールドのPDFのみ添付、内部資料は除外」といった細かい制御ができます。PDF Proで動的生成したPDFの添付にも対応。</p>
+      </div>
+      <div style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule);">
+        <div class="eyebrow" style="margin-bottom:12px;">一括送信</div>
+        <div class="h3" style="font-size:1.125rem; margin-bottom:12px;">10,000件超の一括対応</div>
+        <p style="font-size:0.875rem; line-height:1.7; color:var(--ink-soft);">一覧画面から条件指定での一括送信に対応。Kintone APIの10,000件オフセット制限を回避する独自実装で、大規模一斉送信も1クリックで完了。送信ログはKintoneアプリに保存。</p>
+      </div>
+      <div style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule);">
+        <div class="eyebrow" style="margin-bottom:12px;">予約送信</div>
+        <div class="h3" style="font-size:1.125rem; margin-bottom:12px;">タイムゾーン対応スケジュール</div>
+        <p style="font-size:0.875rem; line-height:1.7; color:var(--ink-soft);">日時指定送信、ルール化予約（「毎月1日」「金曜17時」等）、重複実行防止ロック機構。タイムゾーン意識した設計で、JST環境・Global環境どちらでも正確に動作。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-white">
+  <div class="wrap">
+    <div class="sec-head-center">
+      <div class="eyebrow eyebrow-center">他社比較</div>
+      <h2 class="h2">なぜKinplug Mailを選ぶのか。</h2>
+    </div>
+    <div class="compare-wrap" style="max-width:1000px; margin:0 auto;">
+      <table class="compare">
+        <thead><tr><th>項目</th><th>Kinplug Mail</th><th>Toyokumo kMailer</th><th>自社JavaScript</th></tr></thead>
+        <tbody>
+          <tr><td>OAuth 2.0認証</td><td><span class="check">✓</span> Gmail + Microsoft 365</td><td><span class="cross">×</span> SMTP基本認証のみ</td><td><span class="partial">△</span> 個別実装必要</td></tr>
+          <tr><td>2026年4月以降の稼働</td><td><span class="check">✓</span> 影響なし</td><td><span class="cross">×</span> Microsoft 365送信停止</td><td><span class="cross">×</span> 再実装必要</td></tr>
+          <tr><td>共有メールボックス送信</td><td><span class="check">✓</span> Send As対応</td><td><span class="partial">△</span> 単一認証情報のみ</td><td><span class="cross">×</span></td></tr>
+          <tr><td>設定場所</td><td><span class="check">✓</span> Kintone内完結</td><td><span class="cross">×</span> kintoneapp.com外部</td><td><span class="check">✓</span> コード内</td></tr>
+          <tr><td>ビジュアルワークフロー</td><td><span class="check">✓</span> GUI</td><td><span class="cross">×</span> 無し</td><td><span class="cross">×</span> 無し</td></tr>
+          <tr><td>料金</td><td><span class="price-big">¥9,800</span> (全プラグイン)</td><td>¥6,000〜</td><td>開発コスト</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-deep">
+  <div class="wrap wrap-narrow">
+    <div class="sec-head-center">
+      <div class="eyebrow eyebrow-center">導入</div>
+      <h2 class="h2">既存プラグインからの移行も、90秒で。</h2>
+    </div>
+    <div class="prose" style="margin:0 auto; max-width:68ch;">
+      <p>Kinplug Mailのインストールは、Kintoneのプラグイン管理画面から.zipをアップロードして、OAuth認証を1回だけ行うだけです。既存のkMailerやその他のメールプラグインから移行する場合も、テンプレート・宛先ロジック・送信者設定を保持したまま切り替えられます。</p>
+      <p>14日間のトライアル中に、実際の環境でそのまま検証していただけます。稟議書や契約書類が必要な場合は、<a href="/ja/contact/">お問い合わせフォーム</a>から必要な書類をお知らせください。</p>
+    </div>
+  </div>
+</section>
+<div class="cta-wrap">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow eyebrow-center" style="color:var(--clay);">はじめる</div>
+    <h2 class="cta-title">14日間、全機能、<br>クレジットカード不要。</h2>
+    <p class="cta-desc">GoogleかMicrosoftでサインイン、Kintoneサブドメインを入力、プラグインをインストール。90秒で稼働開始。</p>
+    <div class="cta-actions">
+      <a href="/ja/signup/" class="btn btn-clay btn-lg">無料アカウント作成<span class="arrow">→</span></a>
+      <a href="/ja/contact/" class="btn btn-secondary btn-lg" style="border-color:rgba(247,245,240,0.3); color:var(--paper);">お問い合わせ</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="/ja/" class="logo logo-light">
+          <span class="logo-mark">
+            <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#F7F5F0" stroke-width="2"/>
+              <rect x="9" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <rect x="22" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+            </svg>
+          </span>
+          <span class="logo-word">kinplug</span>
+        </a>
+        <p class="footer-desc">Kintoneのためのネイティブプラグイン。運営: Edamame Inc.（マニラ・東京）。2019年よりKintone運用。Cybozu Partner of the Year受賞パートナー。</p>
+      </div>
+      <div class="footer-col"><h4>プラグイン</h4><ul>
+        <li><a href="/ja/plugins/mail/">Kinplug Mail</a></li>
+        <li><a href="/ja/plugins/pdf-pro/">PDF Pro</a></li>
+        <li><a href="/ja/plugins/smart-lookup/">Smart Lookup</a></li>
+        <li><a href="/ja/plugins/flow/">Flow</a></li>
+        <li><a href="/ja/plugins/">全タイトル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>リソース</h4><ul>
+        <li><a href="/ja/pricing.html">料金</a></li>
+        <li><a href="/ja/compare/">他社比較</a></li>
+        <li><a href="/ja/docs/">ドキュメント</a></li>
+        <li><a href="/ja/blog/">ジャーナル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>会社情報</h4><ul>
+        <li><a href="/ja/about/">会社概要</a></li>
+        <li><a href="/ja/contact/">お問い合わせ</a></li>
+        <li><a href="https://edamame.ph">Edamame Inc.</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>連絡先</h4><ul>
+        <li><a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
+        <li><a href="mailto:billing@kinplug.com">billing@kinplug.com</a></li>
+        <li><a href="mailto:legal@kinplug.com">legal@kinplug.com</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-grid">
+        <div><h5>特定商取引法に基づく表記</h5><p><strong>販売事業者</strong>: Edamame Inc. · <strong>代表責任者</strong>: Tom Arai · <strong>所在地</strong>: フィリピン・マニラBGC（東京オフィス連絡可）· <strong>連絡先</strong>: support@kinplug.com</p></div>
+        <div><h5>支払方法・返金について</h5><p>クレジットカード（全プラン）・銀行振込（スタンダード以上）対応。年払い契約は2ヶ月分無料、月払い契約はいつでも解約可能、解約月末までの請求。詳細は<a href="/ja/legal/terms.html" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.5);">利用規約</a>。</p></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 · Edamame Inc. · Since 2019</div>
+      <div class="footer-bottom-links">
+        <a href="/ja/legal/privacy.html">プライバシーポリシー</a>
+        <a href="/ja/legal/terms.html">利用規約</a>
+        <a href="/ja/legal/security.html">セキュリティ</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/app.js"></script>
+</body>
+</html>

@@ -1,175 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard — KinPlug</title>
-  <meta name="description" content="Your KinPlug licenses and active trials.">
-  <link rel="canonical" href="https://kinplug.com/dashboard.html">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-
-  <meta property="og:title" content="Dashboard — KinPlug">
-  <meta property="og:description" content="Your KinPlug licenses and active trials.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://kinplug.com/dashboard.html">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:image" content="https://kinplug.com/assets/og-default.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..600,0..100,0..1&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <script async crossorigin="anonymous"
-    data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk"
-    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
-    onload="window.Clerk && window.Clerk.load()"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — kinplug</title>
+<meta name="description" content="kinplug account dashboard. License management, plugin downloads, billing.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Dashboard — kinplug">
+<meta property="og:description" content="kinplug account dashboard. License management, plugin downloads, billing.">
+<meta property="og:image" content="https://kinplug.com/assets/og-default.png">
+<meta property="og:url" content="https://kinplug.com/dashboard.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:site_name" content="kinplug">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
+<link rel="canonical" href="https://kinplug.com/dashboard.html">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/dashboard.html">
+<link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/">
+<link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>Operated by Edamame Inc.</span>
+        <span class="topbar-dot">·</span>
+        <span>Tokyo · Manila</span>
+        <span class="topbar-dot">·</span>
+        <span>Kintone work since 2019</span>
+      </div>
+      <div class="topbar-right">
+        <a href="/about/">Company</a>
+        <span class="topbar-dot">·</span>
+        <a href="mailto:support@kinplug.com">JST 09:00–18:00 · same-day response</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <nav class="nav">
   <div class="wrap">
     <div class="nav-inner">
-      <a href="/" class="brand"><span>Kin<em>·</em>Plug</span><span class="brand-sub">Archive · Vol. I</span></a>
+      <a href="/" class="logo" aria-label="kinplug">
+        <span class="logo-mark">
+          <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#1B2B5A" stroke-width="2"/>
+            <rect x="9" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <rect x="22" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+          </svg>
+        </span>
+        <span class="logo-word">kinplug</span>
+      </a>
       <div class="nav-menu">
-        <a href="/plugins/">Catalog</a>
-        <a href="/pricing.html">Pricing</a>
-        <a href="/docs/">Documentation</a>
-        <a href="/blog/">Journal</a>
+        <a href="/plugins/" >Plugins</a>
+        <a href="/pricing.html" >Pricing</a>
+        <a href="/compare/" >Compare</a>
+        <a href="/about/" >Company</a>
+        <a href="/docs/" >Docs</a>
       </div>
       <div class="nav-right">
-        <div class="lang">
-          <a href="/dashboard.html" class="active">EN</a>
-          <a href="/ja/dashboard.html" class="">JA</a>
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <a href="/" class="active">EN</a>
+          <a href="/ja/" >日本語</a>
         </div>
-        <div class="nav-auth">
-          <div id="auth-nav">
-            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">Sign in</button>
-            <button class="btn btn-ink btn-sm" onclick="KinPlug.signUp()">Start free</button>
-          </div>
-          <div id="user-nav" class="hidden flex gap-2 items-center">
-            <a href="/dashboard.html" class="btn btn-ghost btn-sm">Dashboard</a>
-            <div class="user-info" onclick="KinPlug.openProfile()">
-              <div id="user-avatar" class="user-avatar">?</div>
-              <span id="user-name">User</span>
-            </div>
-          </div>
-        </div>
+        <a href="/login.html" class="btn btn-secondary btn-sm">Sign in</a>
+        <a href="/signup/" class="btn btn-primary btn-sm">Start free</a>
+        <button class="nav-toggle" aria-label="Menu">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3zm0 4h14v2H3zm0 4h14v2H3z"/></svg>
+        </button>
       </div>
     </div>
   </div>
 </nav>
-<section class="dash-layout">
+
+<section class="sec">
   <div class="wrap">
-    <div class="dash-head">
-      <div>
-        <span class="label label-seal">Your account</span>
-        <h1 class="dash-title" style="margin-top: 10px;">Dashboard</h1>
-      </div>
-      <div style="display:flex; gap:12px;">
-        <a href="/plugins/" class="btn btn-ghost">Browse catalog</a>
-        <button class="btn btn-ink" onclick="KinPlug.signUp()">Start new trial</button>
-      </div>
-    </div>
-
-    <div class="stat-grid">
-      <div class="stat">
-        <div class="stat-label">Active licenses</div>
-        <div class="stat-value" id="stat-active">—</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Trials running</div>
-        <div class="stat-value" id="stat-trial">—</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Expired</div>
-        <div class="stat-value" id="stat-expired">—</div>
-      </div>
-    </div>
-
-    <header class="sec-head">
-      <span class="sec-num">01</span>
-      <h2 class="sec-title">Your licenses</h2>
-      <span class="sec-note">Click a key to copy</span>
-    </header>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Plugin</th>
-          <th>License key</th>
-          <th>Type</th>
-          <th>Status</th>
-          <th>Expires</th>
-        </tr>
-      </thead>
-      <tbody id="licenses-table">
-        <tr><td colspan="5"><div class="loading"><div class="spinner"></div></div></td></tr>
-      </tbody>
-    </table>
-
-    <header class="sec-head" style="margin-top: 72px;">
-      <span class="sec-num">02</span>
-      <h2 class="sec-title">Next steps</h2>
-      <span class="sec-note">If you're new</span>
-    </header>
-
-    <div class="feat-grid">
-      <div class="feat-cell">
-        <span class="feat-cell-num">01 · Install</span>
-        <h3 class="feat-cell-title">Upload to Kintone</h3>
-        <p>Download the .zip for each trial, then upload via <em>System administration → Plugins → New</em>. Add to any app.</p>
-      </div>
-      <div class="feat-cell">
-        <span class="feat-cell-num">02 · License</span>
-        <h3 class="feat-cell-title">Paste the key</h3>
-        <p>In the plugin settings, paste your license key. The plugin verifies with our API on Cloud Run (Tokyo).</p>
-      </div>
-      <div class="feat-cell">
-        <span class="feat-cell-num">03 · Ship</span>
-        <h3 class="feat-cell-title">That's it.</h3>
-        <p>Every feature activates immediately. The plugin runs for 14 days. Buy a license any time before — or after — expiry.</p>
-      </div>
-    </div>
-
-    <div style="text-align:center; margin-top: 72px; padding-top: 48px; border-top: 1px solid var(--rule);">
-      <button class="btn btn-link" onclick="KinPlug.signOut()">Sign out</button>
+    <div class="eyebrow">Dashboard</div>
+    <h1 class="h2" style="font-size:2rem;">Account dashboard</h1>
+    <div style="background:#FFF; padding:32px; border-radius:8px; border:1px solid var(--rule); margin-top:32px;">
+      <p style="color:var(--ink-soft); line-height:1.6;">Please <a href="/signup/" style="color:var(--navy); border-bottom:1px solid var(--navy);">create a free account</a> or <a href="/login.html" style="color:var(--navy); border-bottom:1px solid var(--navy);">sign in</a>. The dashboard shows your licenses, plugin downloads, and billing.</p>
     </div>
   </div>
 </section>
+<div class="cta-wrap">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow eyebrow-center" style="color:var(--clay);">Get started</div>
+    <h2 class="cta-title">14 days, every feature,<br>no credit card.</h2>
+    <p class="cta-desc">Sign in with Google or Microsoft, enter your Kintone subdomain, install the plugin. Live in 90 seconds.</p>
+    <div class="cta-actions">
+      <a href="/signup/" class="btn btn-clay btn-lg">Create free account<span class="arrow">→</span></a>
+      <a href="/contact/" class="btn btn-secondary btn-lg" style="border-color:rgba(247,245,240,0.3); color:var(--paper);">Contact us</a>
+    </div>
+  </div>
+</div>
 
 <footer class="footer">
   <div class="wrap">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="/" class="brand"><span style="color:var(--paper-light);">Kin<em>·</em>Plug</span><span class="brand-sub">Archive · Vol. I</span></a>
-        <p>Premium plugins for Kintone. Built by Edamame Inc.</p>
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="logo logo-light">
+          <span class="logo-mark">
+            <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#F7F5F0" stroke-width="2"/>
+              <rect x="9" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <rect x="22" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+            </svg>
+          </span>
+          <span class="logo-word">kinplug</span>
+        </a>
+        <p class="footer-desc">Native Kintone plugins. Operated by Edamame Inc. (Manila · Tokyo). Kintone work since 2019. Cybozu Partner of the Year.</p>
       </div>
-      <div class="footer-col"><h4>Catalog</h4><ul>
+      <div class="footer-col"><h4>Plugins</h4><ul>
+        <li><a href="/plugins/mail/">Kinplug Mail</a></li>
+        <li><a href="/plugins/pdf-pro/">PDF Pro</a></li>
+        <li><a href="/plugins/smart-lookup/">Smart Lookup</a></li>
         <li><a href="/plugins/flow/">Flow</a></li>
-        <li><a href="/plugins/pdf-designer/">PDF Pro</a></li>
-        <li><a href="/plugins/enhanced-lookup/">Smart Lookup</a></li>
         <li><a href="/plugins/">All titles</a></li>
       </ul></div>
       <div class="footer-col"><h4>Resources</h4><ul>
-        <li><a href="/docs/">Documentation</a></li>
         <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/compare/">Compare</a></li>
+        <li><a href="/docs/">Documentation</a></li>
         <li><a href="/blog/">Journal</a></li>
-        <li><a href="mailto:support@kinplug.com">Support</a></li>
       </ul></div>
       <div class="footer-col"><h4>Company</h4><ul>
-        <li><a href="https://edamame.ph" target="_blank" rel="noopener">Edamame Inc.</a></li>
-        <li><a href="/legal/privacy.html">Privacy</a></li>
-        <li><a href="/legal/terms.html">Terms</a></li>
-        <li><a href="mailto:billing@kinplug.com">Billing</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="https://edamame.ph">Edamame Inc.</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
+        <li><a href="mailto:billing@kinplug.com">billing@kinplug.com</a></li>
+        <li><a href="mailto:legal@kinplug.com">legal@kinplug.com</a></li>
       </ul></div>
     </div>
+    <div class="footer-legal">
+      <div class="footer-legal-grid">
+        <div><h5>Legal disclosures</h5><p><strong>Seller</strong>: Edamame Inc. · <strong>Representative</strong>: Tom Arai · <strong>Address</strong>: Manila BGC, Philippines (Tokyo liaison available) · <strong>Contact</strong>: support@kinplug.com</p></div>
+        <div><h5>Billing & refunds</h5><p>Credit card (all plans), bank transfer (Standard+). Annual contracts include 2 free months. Monthly plans may cancel any time, billed through end of month. See <a href="/legal/terms.html" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.5);">Terms</a>.</p></div>
+      </div>
+    </div>
     <div class="footer-bottom">
-      <span>© MMXXVI · Edamame Inc.</span>
-      <span>Built with Kintone · Composed in Manila</span>
-      <span>v3.0 · ISSN 0000-0000</span>
+      <div>© 2026 · Edamame Inc. · Since 2019</div>
+      <div class="footer-bottom-links">
+        <a href="/legal/privacy.html">Privacy</a>
+        <a href="/legal/terms.html">Terms</a>
+        <a href="/legal/security.html">Security</a>
+      </div>
     </div>
   </div>
 </footer>

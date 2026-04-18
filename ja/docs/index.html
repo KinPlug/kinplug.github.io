@@ -1,118 +1,198 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ドキュメント — KinPlug</title>
-  <meta name="description" content="KinPlugプラグインのインストールガイド、APIリファレンス、トラブルシューティング。">
-  <link rel="canonical" href="https://kinplug.com/ja/docs/">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-
-  <meta property="og:title" content="ドキュメント — KinPlug">
-  <meta property="og:description" content="KinPlugプラグインのインストールガイド、APIリファレンス、トラブルシューティング。">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://kinplug.com/ja/docs/">
-  <meta property="og:locale" content="ja_JP">
-  <meta property="og:image" content="https://kinplug.com/assets/og-default.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..600,0..100,0..1&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <script async crossorigin="anonymous"
-    data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk"
-    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
-    onload="window.Clerk && window.Clerk.load()"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ドキュメント — kinplug</title>
+<meta name="description" content="Kintoneプラグインのインストール・OAuth認証・API連携・トラブルシューティング。現場運用に基づいた実践的ドキュメント。">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="ドキュメント — kinplug">
+<meta property="og:description" content="Kintoneプラグインのインストール・OAuth認証・API連携・トラブルシューティング。現場運用に基づいた実践的ドキュメント。">
+<meta property="og:image" content="https://kinplug.com/assets/og-default.png">
+<meta property="og:url" content="https://kinplug.com/ja/docs/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="kinplug">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
+<link rel="canonical" href="https://kinplug.com/ja/docs/">
+<link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/docs/">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/">
+<link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-<nav class="nav">
+
+<div class="topbar">
   <div class="wrap">
-    <div class="nav-inner">
-      <a href="/ja/" class="brand"><span>Kin<em>·</em>Plug</span><span class="brand-sub">アーカイブ・第一巻</span></a>
-      <div class="nav-menu">
-        <a href="/ja/plugins/">カタログ</a>
-        <a href="/ja/pricing.html">料金</a>
-        <a href="/ja/docs/" style="color:var(--ink);">ドキュメント</a>
-        <a href="/ja/blog/">ジャーナル</a>
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>運営: Edamame Inc.</span>
+        <span class="topbar-dot">·</span>
+        <span>東京・マニラ</span>
+        <span class="topbar-dot">·</span>
+        <span>Kintone運用2019年より</span>
       </div>
-      <div class="nav-right">
-        <div class="lang">
-          <a href="/docs/" class="">EN</a>
-          <a href="/ja/docs/" class="active">JA</a>
-        </div>
-        <div class="nav-auth">
-          <div id="auth-nav">
-            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">サインイン</button>
-            <button class="btn btn-ink btn-sm" onclick="KinPlug.signUp()">無料で始める</button>
-          </div>
-          <div id="user-nav" class="hidden flex gap-2 items-center">
-            <a href="/ja/dashboard.html" class="btn btn-ghost btn-sm">ダッシュボード</a>
-            <div class="user-info" onclick="KinPlug.openProfile()">
-              <div id="user-avatar" class="user-avatar">?</div>
-              <span id="user-name">User</span>
-            </div>
-          </div>
-        </div>
+      <div class="topbar-right">
+        <a href="/ja/about/">会社概要</a>
+        <span class="topbar-dot">·</span>
+        <a href="mailto:support@kinplug.com">平日JST 09:00–18:00 当日対応</a>
       </div>
     </div>
   </div>
-</nav><section class="prod-masthead"><div class="wrap">
-        <div class="prod-meta"><span class="label label-seal">第五章</span><span class="label">ドキュメント · MMXXVI</span></div>
-        <div class="grid"><div class="col-wide"><h1 class="prod-title">ドキュメント。</h1>
-        <p class="hero-lede">インストールガイド、APIリファレンス、トラブルシューティング。プラグイン別に整理。</p></div></div>
-        </div></section>
-        <section class="sec" style="padding-top:0;"><div class="wrap">
-          <header class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">ご利用開始</h2><span class="sec-note">5分で · ゼロから</span></header>
-          <div class="grid"><div class="col-center-8 prose">
-          <p><strong style="color:var(--ink);">1. kinplug.comでサインアップ。</strong>Google / Microsoft SSO、またはメール。カード不要。</p>
-          <p><strong style="color:var(--ink);">2. トライアル開始。</strong>ダッシュボードからKintoneサブドメイン（<code class="mono" style="background:var(--paper-deep);padding:2px 6px;border-radius:2px;font-size:0.85em;">.kintone.com</code>の前の部分）を入力。</p>
-          <p><strong style="color:var(--ink);">3. ライセンスキーをコピー。</strong><code class="mono" style="background:var(--paper-deep);padding:2px 6px;border-radius:2px;font-size:0.85em;">KP-XXXX-XXXX-XXXX</code>形式。</p>
-          <p><strong style="color:var(--ink);">4. プラグインをアップロード。</strong>Kintoneの<em>システム管理 → プラグイン → 新規</em>から最新zipをアップロード。</p>
-          <p><strong style="color:var(--ink);">5. アプリに追加。</strong><em>アプリ設定 → プラグイン → プラグインの追加</em>からライセンスキーを設定。</p>
-          </div></div></div></section>
-        <section class="sec sec-alt"><div class="wrap">
-          <header class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">サポート</h2><span class="sec-note">当日対応 · 平日</span></header>
-          <div class="grid"><div class="col-left"><h3 class="display-3 serif">自分宛のメールは自分で返す。</h3>
-          <p class="prose" style="margin-top: 20px;">サポートはコードを書いた開発者に直接届きます。チケットシステムもなし。マニラ・東京の営業時間内なら通常当日中に返信。</p></div>
-          <div class="col-right"><div class="feat-grid" style="grid-template-columns: 1fr;">
-          <div class="feat-cell"><span class="feat-cell-num">メール</span><h3 class="feat-cell-title"><a href="mailto:support@kinplug.com" style="border-bottom:1px solid var(--ink);">support@kinplug.com</a></h3><p>英語・日本語・タガログ語。サブドメインとライセンスキーを併記で最速対応。</p></div>
-          <div class="feat-cell"><span class="feat-cell-num">請求</span><h3 class="feat-cell-title"><a href="mailto:billing@kinplug.com" style="border-bottom:1px solid var(--ink);">billing@kinplug.com</a></h3><p>請求書、返金、JPY請求、年額プラン、エンタープライズ契約。</p></div>
-          </div></div></div>
-        </div></section>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/ja/" class="logo" aria-label="kinplug">
+        <span class="logo-mark">
+          <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#1B2B5A" stroke-width="2"/>
+            <rect x="9" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <rect x="22" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+          </svg>
+        </span>
+        <span class="logo-word">kinplug</span>
+      </a>
+      <div class="nav-menu">
+        <a href="/ja/plugins/" >プラグイン</a>
+        <a href="/ja/pricing.html" >料金</a>
+        <a href="/ja/compare/" >他社比較</a>
+        <a href="/ja/about/" >会社情報</a>
+        <a href="/ja/docs/" class="active">ドキュメント</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <a href="/" >EN</a>
+          <a href="/ja/" class="active">日本語</a>
+        </div>
+        <a href="/ja/login.html" class="btn btn-secondary btn-sm">サインイン</a>
+        <a href="/ja/signup/" class="btn btn-primary btn-sm">無料で始める</a>
+        <button class="nav-toggle" aria-label="メニュー">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3zm0 4h14v2H3zm0 4h14v2H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="sec">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow">ドキュメント</div>
+    <h1 class="h1">インストールから<br>運用まで。</h1>
+    <p class="lede">Kintoneプラグインのインストール手順、OAuth認証設定、トラブルシューティング、API連携まで。現場の運用経験に基づいた実践的なドキュメントを順次公開しています。</p>
+  </div>
+</section>
+<section class="sec sec-deep">
+  <div class="wrap">
+    <div style="display:grid; grid-template-columns: repeat(2,1fr); gap:20px; max-width:1000px; margin:0 auto;" class="docs-grid">
+      <a href="#" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); display:block;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--clay); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">はじめに</div>
+        <div class="h3" style="font-size:1.125rem; margin-bottom:10px;">kinplugクイックスタート</div>
+        <p style="font-size:0.875rem; color:var(--ink-soft); line-height:1.6;">アカウント作成、サブドメイン設定、最初のプラグインインストールまで90秒で完了するガイド。</p>
+      </a>
+      <a href="#" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); display:block;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--clay); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Kinplug Mail</div>
+        <div class="h3" style="font-size:1.125rem; margin-bottom:10px;">OAuth認証セットアップ</div>
+        <p style="font-size:0.875rem; color:var(--ink-soft); line-height:1.6;">Gmail・Microsoft 365のOAuth接続手順、Send As権限設定、複数アカウントの管理方法。</p>
+      </a>
+      <a href="#" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); display:block;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--clay); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">PDF Pro</div>
+        <div class="h3" style="font-size:1.125rem; margin-bottom:10px;">テンプレート式リファレンス</div>
+        <p style="font-size:0.875rem; color:var(--ink-soft); line-height:1.6;">計算式、条件分岐、通貨フォーマット、日付処理、ループ処理の完全リファレンス。</p>
+      </a>
+      <a href="#" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); display:block;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--clay); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">エンタープライズ</div>
+        <div class="h3" style="font-size:1.125rem; margin-bottom:10px;">IP制限環境での導入</div>
+        <p style="font-size:0.875rem; color:var(--ink-soft); line-height:1.6;">ホワイトリスト設定、プロキシ経由接続、オンプレミス導入オプション。</p>
+      </a>
+      <a href="#" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); display:block;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--clay); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">移行</div>
+        <div class="h3" style="font-size:1.125rem; margin-bottom:10px;">kMailerからの移行</div>
+        <p style="font-size:0.875rem; color:var(--ink-soft); line-height:1.6;">Toyokumo kMailerからKinplug Mailへの無料移行手順。テンプレート・宛先ロジックの保持方法。</p>
+      </a>
+      <a href="#" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); display:block;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--clay); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">API</div>
+        <div class="h3" style="font-size:1.125rem; margin-bottom:10px;">ライセンス検証API</div>
+        <p style="font-size:0.875rem; color:var(--ink-soft); line-height:1.6;">プラグインライセンスの検証、サブドメイン変更、トライアル管理のREST API仕様。</p>
+      </a>
+    </div>
+    <p style="text-align:center; margin-top:40px; font-size:0.875rem; color:var(--ink-mute);">※ ドキュメント全編は順次公開中です。緊急の質問は<a href="mailto:support@kinplug.com" style="color:var(--navy); border-bottom:1px solid var(--navy);">support@kinplug.com</a>まで。平日JST 09:00–18:00当日対応。</p>
+  </div>
+</section>
+<div class="cta-wrap">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow eyebrow-center" style="color:var(--clay);">はじめる</div>
+    <h2 class="cta-title">14日間、全機能、<br>クレジットカード不要。</h2>
+    <p class="cta-desc">GoogleかMicrosoftでサインイン、Kintoneサブドメインを入力、プラグインをインストール。90秒で稼働開始。</p>
+    <div class="cta-actions">
+      <a href="/ja/signup/" class="btn btn-clay btn-lg">無料アカウント作成<span class="arrow">→</span></a>
+      <a href="/ja/contact/" class="btn btn-secondary btn-lg" style="border-color:rgba(247,245,240,0.3); color:var(--paper);">お問い合わせ</a>
+    </div>
+  </div>
+</div>
+
 <footer class="footer">
   <div class="wrap">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="/ja/" class="brand"><span style="color:var(--paper-light);">Kin<em>·</em>Plug</span><span class="brand-sub">アーカイブ・第一巻</span></a>
-        <p>Kintone用プレミアムプラグイン集。Edamame Inc. 制作。</p>
+    <div class="footer-grid">
+      <div>
+        <a href="/ja/" class="logo logo-light">
+          <span class="logo-mark">
+            <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#F7F5F0" stroke-width="2"/>
+              <rect x="9" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <rect x="22" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+            </svg>
+          </span>
+          <span class="logo-word">kinplug</span>
+        </a>
+        <p class="footer-desc">Kintoneのためのネイティブプラグイン。運営: Edamame Inc.（マニラ・東京）。2019年よりKintone運用。Cybozu Partner of the Year受賞パートナー。</p>
       </div>
-      <div class="footer-col"><h4>カタログ</h4><ul>
+      <div class="footer-col"><h4>プラグイン</h4><ul>
+        <li><a href="/ja/plugins/mail/">Kinplug Mail</a></li>
+        <li><a href="/ja/plugins/pdf-pro/">PDF Pro</a></li>
+        <li><a href="/ja/plugins/smart-lookup/">Smart Lookup</a></li>
         <li><a href="/ja/plugins/flow/">Flow</a></li>
-        <li><a href="/ja/plugins/pdf-designer/">PDF Pro</a></li>
-        <li><a href="/ja/plugins/enhanced-lookup/">Smart Lookup</a></li>
         <li><a href="/ja/plugins/">全タイトル</a></li>
       </ul></div>
       <div class="footer-col"><h4>リソース</h4><ul>
-        <li><a href="/ja/docs/">ドキュメント</a></li>
         <li><a href="/ja/pricing.html">料金</a></li>
+        <li><a href="/ja/compare/">他社比較</a></li>
+        <li><a href="/ja/docs/">ドキュメント</a></li>
         <li><a href="/ja/blog/">ジャーナル</a></li>
-        <li><a href="mailto:support@kinplug.com">サポート</a></li>
       </ul></div>
       <div class="footer-col"><h4>会社情報</h4><ul>
-        <li><a href="https://edamame.ph" target="_blank" rel="noopener">Edamame Inc.</a></li>
-        <li><a href="/ja/legal/privacy.html">プライバシー</a></li>
-        <li><a href="/ja/legal/terms.html">利用規約</a></li>
-        <li><a href="mailto:billing@kinplug.com">請求</a></li>
+        <li><a href="/ja/about/">会社概要</a></li>
+        <li><a href="/ja/contact/">お問い合わせ</a></li>
+        <li><a href="https://edamame.ph">Edamame Inc.</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>連絡先</h4><ul>
+        <li><a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
+        <li><a href="mailto:billing@kinplug.com">billing@kinplug.com</a></li>
+        <li><a href="mailto:legal@kinplug.com">legal@kinplug.com</a></li>
       </ul></div>
     </div>
+    <div class="footer-legal">
+      <div class="footer-legal-grid">
+        <div><h5>特定商取引法に基づく表記</h5><p><strong>販売事業者</strong>: Edamame Inc. · <strong>代表責任者</strong>: Tom Arai · <strong>所在地</strong>: フィリピン・マニラBGC（東京オフィス連絡可）· <strong>連絡先</strong>: support@kinplug.com</p></div>
+        <div><h5>支払方法・返金について</h5><p>クレジットカード（全プラン）・銀行振込（スタンダード以上）対応。年払い契約は2ヶ月分無料、月払い契約はいつでも解約可能、解約月末までの請求。詳細は<a href="/ja/legal/terms.html" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.5);">利用規約</a>。</p></div>
+      </div>
+    </div>
     <div class="footer-bottom">
-      <span>© MMXXVI · Edamame Inc.</span>
-      <span>Kintone上で構築 · 於マニラ</span>
-      <span>v3.0 · ISSN 0000-0000</span>
+      <div>© 2026 · Edamame Inc. · Since 2019</div>
+      <div class="footer-bottom-links">
+        <a href="/ja/legal/privacy.html">プライバシーポリシー</a>
+        <a href="/ja/legal/terms.html">利用規約</a>
+        <a href="/ja/legal/security.html">セキュリティ</a>
+      </div>
     </div>
   </div>
 </footer>

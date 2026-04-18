@@ -1,300 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catalog — KinPlug</title>
-  <meta name="description" content="The complete KinPlug catalog. Fifteen premium plugins for Kintone, organized by category.">
-  <link rel="canonical" href="https://kinplug.com/plugins/">
-  <link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/">
-  <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <meta property="og:image" content="https://kinplug.com/assets/og-default.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..600,0..100,0..1&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <script async crossorigin="anonymous"
-    data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk"
-    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
-    onload="window.Clerk && window.Clerk.load()"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plugin catalog — kinplug</title>
+<meta name="description" content="All 15 Kintone plugins: Mail, PDF Pro, Smart Lookup, Flow, Analytics and more. Included in every plan at ¥9,800/mo.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Plugin catalog — kinplug">
+<meta property="og:description" content="All 15 Kintone plugins: Mail, PDF Pro, Smart Lookup, Flow, Analytics and more. Included in every plan at ¥9,800/mo.">
+<meta property="og:image" content="https://kinplug.com/assets/og-default.png">
+<meta property="og:url" content="https://kinplug.com/plugins/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:site_name" content="kinplug">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
+<link rel="canonical" href="https://kinplug.com/plugins/">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/">
+<link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/">
+<link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>Operated by Edamame Inc.</span>
+        <span class="topbar-dot">·</span>
+        <span>Tokyo · Manila</span>
+        <span class="topbar-dot">·</span>
+        <span>Kintone work since 2019</span>
+      </div>
+      <div class="topbar-right">
+        <a href="/about/">Company</a>
+        <span class="topbar-dot">·</span>
+        <a href="mailto:support@kinplug.com">JST 09:00–18:00 · same-day response</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <nav class="nav">
   <div class="wrap">
     <div class="nav-inner">
-      <a href="/" class="brand"><span>Kin<em>·</em>Plug</span><span class="brand-sub">Archive · Vol. I</span></a>
+      <a href="/" class="logo" aria-label="kinplug">
+        <span class="logo-mark">
+          <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#1B2B5A" stroke-width="2"/>
+            <rect x="9" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <rect x="22" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+          </svg>
+        </span>
+        <span class="logo-word">kinplug</span>
+      </a>
       <div class="nav-menu">
-        <a href="/plugins/" style="color:var(--ink);">Catalog</a>
-        <a href="/pricing.html">Pricing</a>
-        <a href="/docs/">Documentation</a>
-        <a href="/blog/">Journal</a>
+        <a href="/plugins/" class="active">Plugins</a>
+        <a href="/pricing.html" >Pricing</a>
+        <a href="/compare/" >Compare</a>
+        <a href="/about/" >Company</a>
+        <a href="/docs/" >Docs</a>
       </div>
       <div class="nav-right">
-        <div class="lang"><a href="/plugins/" class="active">EN</a><a href="/ja/plugins/">JA</a></div>
-        <div class="nav-auth">
-          <div id="auth-nav">
-            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">Sign in</button>
-            <button class="btn btn-ink btn-sm" onclick="KinPlug.signUp()">Start free</button>
-          </div>
-          <div id="user-nav" class="hidden flex gap-2 items-center">
-            <a href="/dashboard.html" class="btn btn-ghost btn-sm">Dashboard</a>
-            <div class="user-info" onclick="KinPlug.openProfile()">
-              <div id="user-avatar" class="user-avatar">?</div>
-              <span id="user-name">User</span>
-            </div>
-          </div>
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <a href="/" class="active">EN</a>
+          <a href="/ja/" >日本語</a>
         </div>
+        <a href="/login.html" class="btn btn-secondary btn-sm">Sign in</a>
+        <a href="/signup/" class="btn btn-primary btn-sm">Start free</a>
+        <button class="nav-toggle" aria-label="Menu">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3zm0 4h14v2H3zm0 4h14v2H3z"/></svg>
+        </button>
       </div>
     </div>
   </div>
 </nav>
 
-<section class="prod-masthead">
-  <div class="wrap">
-    <div class="prod-meta">
-      <span class="label label-seal">Section II</span>
-      <span class="label">Fifteen titles · MMXXVI</span>
-    </div>
-    <div class="grid">
-      <div class="col-wide">
-        <h1 class="prod-title">The<br/><em class="italic" style="color:var(--seal);">Catalog.</em></h1>
-        <p class="hero-lede">
-          Every title we've shipped or committed to ship, organized by where it lives in
-          your Kintone workflow. Individually priced, or all of them under the Studio bundle.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PLATFORM -->
-<section class="sec" style="padding-top:0;">
-  <div class="wrap">
-    <header class="sec-head">
-      <span class="sec-num">I.</span>
-      <h2 class="sec-title">Platform</h2>
-      <span class="sec-note">Flagship titles · Two</span>
-    </header>
-
-    <div class="catalog">
-      <a href="/plugins/flow/" class="cat-item">
-        <span class="cat-num">№ 01</span>
-        <div><div class="cat-name">Flow</div></div>
-        <div class="cat-desc">Visual workflow automation with OAuth 2.0 email (Gmail + Microsoft 365), conditional triggers, AI actions.</div>
-        <div class="cat-price">$49–399 / mo</div>
-        <span class="cat-status cat-status-dev">In development</span>
-        <span class="cat-arrow">→</span>
-      </a>
-      <div class="cat-item">
-        <span class="cat-num">№ 02</span>
-        <div><div class="cat-name">Connect</div></div>
-        <div class="cat-desc">App-to-app relationship explorer. Diagrams your entire Kintone workspace.</div>
-        <div class="cat-price">$29 / mo</div>
-        <span class="cat-status cat-status-soon">Planned</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DOCUMENTS -->
-<section class="sec sec-alt">
-  <div class="wrap">
-    <header class="sec-head">
-      <span class="sec-num">II.</span>
-      <h2 class="sec-title">Documents</h2>
-      <span class="sec-note">Output titles · Two</span>
-    </header>
-
-    <div class="catalog">
-      <a href="/plugins/pdf-designer/" class="cat-item">
-        <span class="cat-num">№ 03</span>
-        <div><div class="cat-name">PDF Pro</div></div>
-        <div class="cat-desc">WYSIWYG PDF template designer. Expression engine, inline charts, multi-page, subtables. Japanese fonts included.</div>
-        <div class="cat-price">$29 / mo</div>
-        <span class="cat-status cat-status-live">Live · v3.2+</span>
-        <span class="cat-arrow">→</span>
-      </a>
-      <div class="cat-item">
-        <span class="cat-num">№ 04</span>
-        <div><div class="cat-name">Print</div></div>
-        <div class="cat-desc">Label and thermal printer support — direct from record view. DYMO, Brother, Zebra.</div>
-        <div class="cat-price">$19 / mo</div>
-        <span class="cat-status cat-status-soon">Planned</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- UX -->
 <section class="sec">
   <div class="wrap">
-    <header class="sec-head">
-      <span class="sec-num">III.</span>
-      <h2 class="sec-title">Experience</h2>
-      <span class="sec-note">Form &amp; field titles · Three</span>
-    </header>
-
-    <div class="catalog">
-      <div class="cat-item">
-        <span class="cat-num">№ 05</span>
-        <div><div class="cat-name">Fields</div></div>
-        <div class="cat-desc">Conditional visibility, required, and editability rules. No JavaScript. Rules travel with the app.</div>
-        <div class="cat-price">$29 / mo</div>
-        <span class="cat-status cat-status-dev">In development</span>
-      </div>
-      <a href="/plugins/enhanced-lookup/" class="cat-item">
-        <span class="cat-num">№ 06</span>
-        <div><div class="cat-name">Smart Lookup</div></div>
-        <div class="cat-desc">Enhanced lookup modal with full-text search, progressive loading, mobile parity, sub-table support.</div>
-        <div class="cat-price">$29 / mo</div>
-        <span class="cat-status cat-status-live">Live · v3.0</span>
-        <span class="cat-arrow">→</span>
+    <div class="sec-head-center"><div class="eyebrow eyebrow-center">Plugin catalog</div><h2 class="h1">15 plugins,<br>one price.</h2>
+    <p class="lede" style="margin:24px auto 0;">Every plugin below is included in Standard and Enterprise. Free forever for Kintone environments with 10 users or fewer.</p></div>
+  </div>
+</section>
+<section class="sec sec-deep">
+  <div class="wrap">
+    <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:20px;" class="catalog-grid">
+      <a href="/plugins/mail/" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); transition:border-color 280ms, transform 280ms; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;"><span class="badge badge-live">Live</span><span style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--ink-mute);">v2.5</span></div>
+        <div class="h3" style="font-size:1.25rem; margin-bottom:10px;">Kinplug Mail</div>
+        <p style="font-size:0.9375rem; line-height:1.6; color:var(--ink-soft);">OAuth 2.0 mail + visual automation. Gmail, Microsoft 365, Send As, shared mailboxes, scheduled send, bulk campaigns.</p>
+      </a><a href="/plugins/pdf-pro/" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); transition:border-color 280ms, transform 280ms; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;"><span class="badge badge-live">Live</span><span style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--ink-mute);">v3.2</span></div>
+        <div class="h3" style="font-size:1.25rem; margin-bottom:10px;">PDF Pro</div>
+        <p style="font-size:0.9375rem; line-height:1.6; color:var(--ink-soft);">Computable PDF templates. WYSIWYG designer, expression engine, multi-page, inline charts, Japanese fonts bundled.</p>
+      </a><a href="/plugins/smart-lookup/" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); transition:border-color 280ms, transform 280ms; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;"><span class="badge badge-live">Live</span><span style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--ink-mute);">v3.0</span></div>
+        <div class="h3" style="font-size:1.25rem; margin-bottom:10px;">Smart Lookup</div>
+        <p style="font-size:0.9375rem; line-height:1.6; color:var(--ink-soft);">Enhanced lookup with full-text search across every field, 50k-record tested, full mobile parity.</p>
+      </a><a href="/plugins/flow/" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); transition:border-color 280ms, transform 280ms; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;"><span class="badge badge-beta">Beta</span><span style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--ink-mute);">v4.9</span></div>
+        <div class="h3" style="font-size:1.25rem; margin-bottom:10px;">Flow</div>
+        <p style="font-size:0.9375rem; line-height:1.6; color:var(--ink-soft);">Non-mail automation. Field updates, cross-app record creation, computation, webhooks.</p>
+      </a><a href="#" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); transition:border-color 280ms, transform 280ms; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;"><span class="badge badge-beta">Beta</span><span style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--ink-mute);">v1.2</span></div>
+        <div class="h3" style="font-size:1.25rem; margin-bottom:10px;">Field Control</div>
+        <p style="font-size:0.9375rem; line-height:1.6; color:var(--ink-soft);">Dynamically control field required/visible/editable state based on process status or conditions.</p>
+      </a><a href="#" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); transition:border-color 280ms, transform 280ms; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;"><span class="badge badge-beta">Beta</span><span style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--ink-mute);">v0.9</span></div>
+        <div class="h3" style="font-size:1.25rem; margin-bottom:10px;">Analytics</div>
+        <p style="font-size:0.9375rem; line-height:1.6; color:var(--ink-soft);">Dashboard, KPI, pivot table, and chart widgets for Kintone data.</p>
+      </a><a href="#" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); transition:border-color 280ms, transform 280ms; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;"><span class="badge badge-plan">Planned</span><span style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--ink-mute);">2026 H2</span></div>
+        <div class="h3" style="font-size:1.25rem; margin-bottom:10px;">Prompt</div>
+        <p style="font-size:0.9375rem; line-height:1.6; color:var(--ink-soft);">Modal dialog field capture during process management transitions.</p>
+      </a><a href="#" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); transition:border-color 280ms, transform 280ms; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;"><span class="badge badge-plan">Planned</span><span style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--ink-mute);">2026 H2</span></div>
+        <div class="h3" style="font-size:1.25rem; margin-bottom:10px;">Cross-App Sync</div>
+        <p style="font-size:0.9375rem; line-height:1.6; color:var(--ink-soft);">Bidirectional process status and field value sync across Kintone apps.</p>
+      </a><a href="#" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); transition:border-color 280ms, transform 280ms; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;"><span class="badge badge-plan">Planned</span><span style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--ink-mute);">2027 H1</span></div>
+        <div class="h3" style="font-size:1.25rem; margin-bottom:10px;">Calendar</div>
+        <p style="font-size:0.9375rem; line-height:1.6; color:var(--ink-soft);">Kintone record calendar view with drag-and-drop date editing.</p>
+      </a><a href="#" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); transition:border-color 280ms, transform 280ms; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;"><span class="badge badge-plan">Planned</span><span style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--ink-mute);">2027 H1</span></div>
+        <div class="h3" style="font-size:1.25rem; margin-bottom:10px;">Board</div>
+        <p style="font-size:0.9375rem; line-height:1.6; color:var(--ink-soft);">Kanban board view, drag-and-drop status changes.</p>
+      </a><a href="#" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); transition:border-color 280ms, transform 280ms; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;"><span class="badge badge-plan">Planned</span><span style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--ink-mute);">2027 H1</span></div>
+        <div class="h3" style="font-size:1.25rem; margin-bottom:10px;">Import Pro</div>
+        <p style="font-size:0.9375rem; line-height:1.6; color:var(--ink-soft);">Bulk CSV import with error handling, diff updates, validation.</p>
+      </a><a href="#" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); transition:border-color 280ms, transform 280ms; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;"><span class="badge badge-plan">Planned</span><span style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--ink-mute);">2027 H1</span></div>
+        <div class="h3" style="font-size:1.25rem; margin-bottom:10px;">Numbers</div>
+        <p style="font-size:0.9375rem; line-height:1.6; color:var(--ink-soft);">Calculated field extensions, complex conditional math, formula testing.</p>
+      </a><a href="#" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); transition:border-color 280ms, transform 280ms; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;"><span class="badge badge-plan">Planned</span><span style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--ink-mute);">2027 H2</span></div>
+        <div class="h3" style="font-size:1.25rem; margin-bottom:10px;">Scan</div>
+        <p style="font-size:0.9375rem; line-height:1.6; color:var(--ink-soft);">Mobile barcode, QR code, and business card scanning.</p>
+      </a><a href="#" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); transition:border-color 280ms, transform 280ms; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;"><span class="badge badge-plan">Planned</span><span style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--ink-mute);">2027 H2</span></div>
+        <div class="h3" style="font-size:1.25rem; margin-bottom:10px;">Connect</div>
+        <p style="font-size:0.9375rem; line-height:1.6; color:var(--ink-soft);">External API bidirectional sync, webhook extensions.</p>
+      </a><a href="#" style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule); transition:border-color 280ms, transform 280ms; display:block;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;"><span class="badge badge-plan">Planned</span><span style="font-family:'JetBrains Mono',monospace; font-size:0.6875rem; color:var(--ink-mute);">2027 H2</span></div>
+        <div class="h3" style="font-size:1.25rem; margin-bottom:10px;">Grid</div>
+        <p style="font-size:0.9375rem; line-height:1.6; color:var(--ink-soft);">List view extensions: frozen columns, inline edit, advanced sorting.</p>
       </a>
-      <div class="cat-item">
-        <span class="cat-num">№ 07</span>
-        <div><div class="cat-name">Grid</div></div>
-        <div class="cat-desc">Excel-like bulk editing. Keyboard nav, paste ranges, formulas, undo/redo.</div>
-        <div class="cat-price">$39 / mo</div>
-        <span class="cat-status cat-status-soon">Planned</span>
-      </div>
     </div>
+    <p style="text-align:center; margin-top:48px; font-size:0.875rem; color:var(--ink-mute);">Roadmap subject to change. Release order adjusts based on customer feedback.</p>
   </div>
 </section>
-
-<!-- VIEWS -->
-<section class="sec sec-alt">
-  <div class="wrap">
-    <header class="sec-head">
-      <span class="sec-num">IV.</span>
-      <h2 class="sec-title">Views</h2>
-      <span class="sec-note">Visualization titles · Three</span>
-    </header>
-
-    <div class="catalog">
-      <div class="cat-item">
-        <span class="cat-num">№ 08</span>
-        <div><div class="cat-name">Calendar</div></div>
-        <div class="cat-desc">Full calendar view with two-way Google Calendar sync. Drag-to-reschedule.</div>
-        <div class="cat-price">$39 / mo</div>
-        <span class="cat-status cat-status-soon">Planned</span>
-      </div>
-      <div class="cat-item">
-        <span class="cat-num">№ 09</span>
-        <div><div class="cat-name">Board</div></div>
-        <div class="cat-desc">Kanban and Gantt combined. Drag cards between columns; see timeline below.</div>
-        <div class="cat-price">$39 / mo</div>
-        <span class="cat-status cat-status-soon">Planned</span>
-      </div>
-      <div class="cat-item">
-        <span class="cat-num">№ 10</span>
-        <div><div class="cat-name">Dashboard</div></div>
-        <div class="cat-desc">Custom analytics widgets — KPI tiles, pivot tables, charts, cross-app aggregation.</div>
-        <div class="cat-price">$49 / mo</div>
-        <span class="cat-status cat-status-soon">Planned</span>
-      </div>
+<div class="cta-wrap">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow eyebrow-center" style="color:var(--clay);">Get started</div>
+    <h2 class="cta-title">14 days, every feature,<br>no credit card.</h2>
+    <p class="cta-desc">Sign in with Google or Microsoft, enter your Kintone subdomain, install the plugin. Live in 90 seconds.</p>
+    <div class="cta-actions">
+      <a href="/signup/" class="btn btn-clay btn-lg">Create free account<span class="arrow">→</span></a>
+      <a href="/contact/" class="btn btn-secondary btn-lg" style="border-color:rgba(247,245,240,0.3); color:var(--paper);">Contact us</a>
     </div>
   </div>
-</section>
-
-<!-- DATA -->
-<section class="sec">
-  <div class="wrap">
-    <header class="sec-head">
-      <span class="sec-num">V.</span>
-      <h2 class="sec-title">Data</h2>
-      <span class="sec-note">Storage titles · Three</span>
-    </header>
-
-    <div class="catalog">
-      <div class="cat-item">
-        <span class="cat-num">№ 11</span>
-        <div><div class="cat-name">Import</div></div>
-        <div class="cat-desc">Smart CSV/Excel import with column mapping, deduplication, and row-level transformation.</div>
-        <div class="cat-price">$39 / mo</div>
-        <span class="cat-status cat-status-soon">Planned</span>
-      </div>
-      <div class="cat-item">
-        <span class="cat-num">№ 12</span>
-        <div><div class="cat-name">Backup</div></div>
-        <div class="cat-desc">Scheduled automated backups — S3, Google Drive, Dropbox. Versioned. Encrypted at rest.</div>
-        <div class="cat-price">$39 / mo</div>
-        <span class="cat-status cat-status-soon">Planned</span>
-      </div>
-      <div class="cat-item">
-        <span class="cat-num">№ 13</span>
-        <div><div class="cat-name">Numbers</div></div>
-        <div class="cat-desc">Automatic record numbering with custom patterns, sequences, and collision resolution.</div>
-        <div class="cat-price">$19 / mo</div>
-        <span class="cat-status cat-status-soon">Planned</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MOBILE / INTEGRATION -->
-<section class="sec sec-alt">
-  <div class="wrap">
-    <header class="sec-head">
-      <span class="sec-num">VI.</span>
-      <h2 class="sec-title">Mobile &amp; Integration</h2>
-      <span class="sec-note">External titles · Two</span>
-    </header>
-
-    <div class="catalog">
-      <div class="cat-item">
-        <span class="cat-num">№ 14</span>
-        <div><div class="cat-name">Scan</div></div>
-        <div class="cat-desc">Barcode, QR, and OCR from mobile camera — straight into record fields.</div>
-        <div class="cat-price">$29 / mo</div>
-        <span class="cat-status cat-status-soon">Planned</span>
-      </div>
-      <div class="cat-item">
-        <span class="cat-num">№ 15</span>
-        <div><div class="cat-name">Portal</div></div>
-        <div class="cat-desc">Limited-scope external user access. Perfect for vendor portals, customer submissions, supplier forms.</div>
-        <div class="cat-price">$79 / mo</div>
-        <span class="cat-status cat-status-soon">Planned</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="sec sec-dark">
-  <div class="wrap" style="text-align:center;">
-    <span class="label" style="color:var(--seal);">Next</span>
-    <h2 class="display-2 serif" style="color:var(--paper-light); margin-top: 14px;">
-      Start with one. <em class="italic" style="color:var(--seal);">Or start with all of them.</em>
-    </h2>
-    <div style="display:flex; justify-content:center; gap:14px; margin-top: 36px; flex-wrap:wrap;">
-      <button class="btn btn-seal btn-lg" onclick="KinPlug.signUp()">Start free trial <span class="arrow">→</span></button>
-      <a href="/pricing.html" class="btn btn-ghost btn-lg" style="border-color:var(--paper-warm); color:var(--paper-light);">See pricing</a>
-    </div>
-  </div>
-</section>
+</div>
 
 <footer class="footer">
   <div class="wrap">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="/" class="brand"><span style="color:var(--paper-light);">Kin<em>·</em>Plug</span><span class="brand-sub">Archive · Vol. I</span></a>
-        <p>Premium plugins for Kintone. Built by Edamame Inc.</p>
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="logo logo-light">
+          <span class="logo-mark">
+            <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#F7F5F0" stroke-width="2"/>
+              <rect x="9" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <rect x="22" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+            </svg>
+          </span>
+          <span class="logo-word">kinplug</span>
+        </a>
+        <p class="footer-desc">Native Kintone plugins. Operated by Edamame Inc. (Manila · Tokyo). Kintone work since 2019. Cybozu Partner of the Year.</p>
       </div>
-      <div class="footer-col"><h4>Catalog</h4><ul><li><a href="/plugins/flow/">Flow</a></li><li><a href="/plugins/pdf-designer/">PDF Pro</a></li><li><a href="/plugins/enhanced-lookup/">Smart Lookup</a></li><li><a href="/plugins/">All titles</a></li></ul></div>
-      <div class="footer-col"><h4>Resources</h4><ul><li><a href="/docs/">Documentation</a></li><li><a href="/pricing.html">Pricing</a></li><li><a href="/blog/">Journal</a></li><li><a href="mailto:support@kinplug.com">Support</a></li></ul></div>
-      <div class="footer-col"><h4>Company</h4><ul><li><a href="https://edamame.ph" target="_blank" rel="noopener">Edamame Inc.</a></li><li><a href="/legal/privacy.html">Privacy</a></li><li><a href="/legal/terms.html">Terms</a></li><li><a href="mailto:billing@kinplug.com">Billing</a></li></ul></div>
+      <div class="footer-col"><h4>Plugins</h4><ul>
+        <li><a href="/plugins/mail/">Kinplug Mail</a></li>
+        <li><a href="/plugins/pdf-pro/">PDF Pro</a></li>
+        <li><a href="/plugins/smart-lookup/">Smart Lookup</a></li>
+        <li><a href="/plugins/flow/">Flow</a></li>
+        <li><a href="/plugins/">All titles</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/compare/">Compare</a></li>
+        <li><a href="/docs/">Documentation</a></li>
+        <li><a href="/blog/">Journal</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Company</h4><ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="https://edamame.ph">Edamame Inc.</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
+        <li><a href="mailto:billing@kinplug.com">billing@kinplug.com</a></li>
+        <li><a href="mailto:legal@kinplug.com">legal@kinplug.com</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-grid">
+        <div><h5>Legal disclosures</h5><p><strong>Seller</strong>: Edamame Inc. · <strong>Representative</strong>: Tom Arai · <strong>Address</strong>: Manila BGC, Philippines (Tokyo liaison available) · <strong>Contact</strong>: support@kinplug.com</p></div>
+        <div><h5>Billing & refunds</h5><p>Credit card (all plans), bank transfer (Standard+). Annual contracts include 2 free months. Monthly plans may cancel any time, billed through end of month. See <a href="/legal/terms.html" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.5);">Terms</a>.</p></div>
+      </div>
     </div>
     <div class="footer-bottom">
-      <span>© MMXXVI · Edamame Inc.</span>
-      <span>Built with Kintone · Composed in Manila</span>
-      <span>v3.0 · ISSN 0000-0000</span>
+      <div>© 2026 · Edamame Inc. · Since 2019</div>
+      <div class="footer-bottom-links">
+        <a href="/legal/privacy.html">Privacy</a>
+        <a href="/legal/terms.html">Terms</a>
+        <a href="/legal/security.html">Security</a>
+      </div>
     </div>
   </div>
 </footer>

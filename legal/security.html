@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>404 — Page not found — kinplug</title>
-<meta name="description" content="The page you are looking for does not exist. Return to kinplug homepage.">
+<title>Security — kinplug</title>
+<meta name="description" content="kinplug security: infrastructure, authentication, encryption, IP-restricted environments, incident response, compliance.">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="404 — Page not found — kinplug">
-<meta property="og:description" content="The page you are looking for does not exist. Return to kinplug homepage.">
+<meta property="og:title" content="Security — kinplug">
+<meta property="og:description" content="kinplug security: infrastructure, authentication, encryption, IP-restricted environments, incident response, compliance.">
 <meta property="og:image" content="https://kinplug.com/assets/og-default.png">
-<meta property="og:url" content="https://kinplug.com/404.html">
+<meta property="og:url" content="https://kinplug.com/legal/security.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ja_JP">
 <meta property="og:site_name" content="kinplug">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
-<link rel="canonical" href="https://kinplug.com/404.html">
-<link rel="alternate" hreflang="en" href="https://kinplug.com/404.html">
+<link rel="canonical" href="https://kinplug.com/legal/security.html">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/legal/security.html">
 <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/">
 <link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -83,14 +83,39 @@
   </div>
 </nav>
 
-<section class="sec sec-lg" style="min-height:70vh; display:flex; align-items:center;">
-  <div class="wrap wrap-narrow text-center">
-    <div style="font-family:'JetBrains Mono',monospace; font-size:0.875rem; color:var(--clay); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:24px;">Error 404</div>
-    <h1 class="h1" style="margin-bottom:24px;">This page doesn't exist.</h1>
-    <p class="lede" style="margin:0 auto;">The page you're looking for may have moved or been removed. Head back to <a href="/" style="color:var(--navy); border-bottom:1px solid var(--navy);">the homepage</a>, <a href="/plugins/" style="color:var(--navy); border-bottom:1px solid var(--navy);">browse plugins</a>, or <a href="mailto:support@kinplug.com" style="color:var(--navy); border-bottom:1px solid var(--navy);">email us</a>.</p>
-    <p style="margin-top:32px; font-size:0.875rem; color:var(--ink-mute);">日本語ページへは <a href="/ja/" style="color:var(--navy); border-bottom:1px solid var(--navy);">こちら</a>。</p>
-    <div style="margin-top:48px;">
-      <a href="/" class="btn btn-primary btn-lg">Back to homepage<span class="arrow">→</span></a>
+<section class="sec">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow">Security</div>
+    <h1 class="h1">Security</h1>
+    <p class="lede" style="margin-top:24px;">Security is architecture, not patchwork. Every kinplug plugin was designed from the start for production use in Japanese financial, insurance, and healthcare groups.</p>
+  </div>
+</section>
+<section class="sec sec-deep">
+  <div class="wrap wrap-narrow">
+    <div class="content-prose">
+      <h2>Infrastructure</h2>
+      <p>All services run on Google Cloud Platform's Tokyo region (asia-northeast1). Data stays in Japan by default. Cloud Run, Secret Manager, and IAM are configured with strict least-privilege principles.</p>
+
+      <h2>Authentication</h2>
+      <p>OAuth tokens are stored AES-256 encrypted in a Kintone app (App 1434), scoped per subdomain. Subdomain scoping means a connection made on edamame.kintone.com cannot be read from orix-metro.kintone.com — cross-tenant isolation is enforced at the data layer.</p>
+
+      <h2>Transport</h2>
+      <p>All traffic is TLS 1.2+. API authentication is handled by Clerk (Google, Microsoft, email OAuth). API rate limiting, CORS restrictions, and CSP headers are applied.</p>
+
+      <h2>IP-restricted environments</h2>
+      <p>Enterprise plans include a proxy configuration for whitelist-restricted environments, or an on-premise deployment option. <a href="/contact/">Contact us</a> to discuss your specific constraints.</p>
+
+      <h2>Backups</h2>
+      <p>Plugin artifacts (ZIP + PPK signing keys) are double-backed up in Kintone App 1415 and triple-backed up in a private GitHub repository. OAuth connection data lives in your Kintone and follows your existing Kintone backup policy.</p>
+
+      <h2>Incident response</h2>
+      <p>We notify customers of security incidents within 24 hours. Vulnerability reports: <a href="mailto:security@kinplug.com">security@kinplug.com</a>. We acknowledge responsible disclosure and consider bounties where appropriate.</p>
+
+      <h2>Compliance</h2>
+      <p>Enterprise plans include: DPA (Data Processing Agreement) execution, security questionnaire completion, SOC2-style written responses, and company/security documentation for procurement approval packs. Formal SOC2 certification is targeted for H2 2026.</p>
+
+      <h2>Our commitment</h2>
+      <p>If we ever cease operations, we commit in contract to open-source the Kinplug Mail API server and actively support every customer's self-hosted migration. Plugins other than Kinplug Mail are fully self-contained inside your Kintone — they do not depend on our infrastructure.</p>
     </div>
   </div>
 </section>

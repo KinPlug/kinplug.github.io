@@ -1,6 +1,6 @@
-# KinPlug robots.txt
 User-agent: *
 Allow: /
+Disallow: /dashboard.html
+Disallow: /ja/dashboard.html
 
-# Sitemap location
 Sitemap: https://kinplug.com/sitemap.xml

@@ -1,241 +1,504 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KinPlug — Kintoneプラグインアーカイブ</title>
-  <meta name="description" content="Kintone向けプレミアムプラグインのカタログ。ビジュアル自動化、OAuthメール、PDF生成、強化ルックアップ — Kintoneを毎日使う開発者による制作。">
-  <link rel="canonical" href="https://kinplug.com/ja/">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-
-  <meta property="og:title" content="KinPlug — Kintoneプラグインアーカイブ">
-  <meta property="og:description" content="Kintone向けプレミアムプラグインのカタログ。ビジュアル自動化、OAuthメール、PDF生成、強化ルックアップ — Kintoneを毎日使う開発者による制作。">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://kinplug.com/ja/">
-  <meta property="og:locale" content="ja_JP">
-  <meta property="og:image" content="https://kinplug.com/assets/og-default.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..600,0..100,0..1&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <script async crossorigin="anonymous"
-    data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk"
-    src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
-    onload="window.Clerk && window.Clerk.load()"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>kinplug — Kintoneプラグイン、定額で全部。2019年より運用。</title>
+<meta name="description" content="Kintoneを毎日使うコンサルタントが作る、プレミアムプラグイン。全プラグイン月額¥9,800、10ユーザー以下は永年無料。設定はすべてKintone内で完結。Cybozu Partner of the Year受賞。運営: Edamame Inc.（東京・マニラ）。">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="kinplug — Kintoneプラグイン、定額で全部。">
+<meta property="og:description" content="設定はすべてKintone内で完結。全プラグイン月額¥9,800・10名以下は永年無料。2019年より運用、Cybozu Partner of the Year受賞。">
+<meta property="og:image" content="https://kinplug.com/assets/og-default.png">
+<meta property="og:url" content="https://kinplug.com/ja/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="kinplug">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
+<link rel="canonical" href="https://kinplug.com/ja/">
+<link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/">
+<link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>運営: Edamame Inc.</span>
+        <span class="topbar-dot">·</span>
+        <span>東京・マニラ</span>
+        <span class="topbar-dot">·</span>
+        <span>Kintone運用2019年より</span>
+      </div>
+      <div class="topbar-right">
+        <a href="/ja/about/">会社概要</a>
+        <span class="topbar-dot">·</span>
+        <a href="mailto:support@kinplug.com">平日JST 09:00–18:00 当日対応</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <nav class="nav">
   <div class="wrap">
     <div class="nav-inner">
-      <a href="/ja/" class="brand"><span>Kin<em>·</em>Plug</span><span class="brand-sub">アーカイブ・第一巻</span></a>
+      <a href="/ja/" class="logo" aria-label="kinplug">
+        <span class="logo-mark">
+          <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#1B2B5A" stroke-width="2"/>
+            <rect x="9" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <rect x="22" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+          </svg>
+        </span>
+        <span class="logo-word">kinplug</span>
+      </a>
       <div class="nav-menu">
-        <a href="/ja/plugins/">カタログ</a>
+        <a href="/ja/plugins/">プラグイン</a>
         <a href="/ja/pricing.html">料金</a>
+        <a href="/ja/compare/">他社比較</a>
+        <a href="/ja/about/">会社情報</a>
         <a href="/ja/docs/">ドキュメント</a>
-        <a href="/ja/blog/">ジャーナル</a>
       </div>
       <div class="nav-right">
-        <div class="lang">
-          <a href="/" class="">EN</a>
-          <a href="/ja/" class="active">JA</a>
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <a href="/">EN</a>
+          <a href="/ja/" class="active">日本語</a>
         </div>
-        <div class="nav-auth">
-          <div id="auth-nav">
-            <button class="btn btn-ghost btn-sm" onclick="KinPlug.signIn()">サインイン</button>
-            <button class="btn btn-ink btn-sm" onclick="KinPlug.signUp()">無料で始める</button>
+        <a href="/ja/login.html" class="btn btn-secondary btn-sm">サインイン</a>
+        <a href="/ja/signup/" class="btn btn-primary btn-sm">無料で始める</a>
+        <button class="nav-toggle" aria-label="Menu">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3zm0 4h14v2H3zm0 4h14v2H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="sec">
+  <div class="wrap">
+    <div style="display:grid; grid-template-columns: 5fr 6fr; gap:clamp(40px,5vw,72px); align-items:center;" class="hero-grid">
+      <div>
+        <div class="eyebrow">Kintoneのためのプラグイン</div>
+        <h1 class="h1">
+          設定はすべて<br>
+          <span class="h1-accent">Kintone内で完結。</span><br>
+          外部ポータル不要。
+        </h1>
+        <p class="lede">
+          他社プラグインは専用ポータルにログインして設定が必要です。kinplugの設定はKintone内で完結。余計なSaaSを増やさず、普段お使いの画面のまま導入できます。Kintoneコンサルタントとして2019年から現場で使い続けてきた私たちが作りました。
+        </p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:32px;">
+          <a href="/ja/signup/" class="btn btn-primary btn-lg">14日間無料で試す<span class="arrow">→</span></a>
+          <a href="/ja/plugins/mail/" class="btn btn-secondary btn-lg">Kinplug Mailを見る</a>
+        </div>
+        <div style="margin-top:40px; padding-top:28px; border-top:1px solid var(--rule); display:grid; grid-template-columns: repeat(3,auto);">
+          <div style="padding-right:28px; border-right:1px solid var(--rule);">
+            <div style="font-family:'Noto Serif JP',serif; font-size:1.75rem; font-weight:700; color:var(--navy); line-height:1;">2019<small style="font-size:0.5em; color:var(--ink-mute); font-weight:400;">年より</small></div>
+            <div style="font-size:0.75rem; color:var(--ink-mute); margin-top:8px;">Kintone運用開始</div>
           </div>
-          <div id="user-nav" class="hidden flex gap-2 items-center">
-            <a href="/ja/dashboard.html" class="btn btn-ghost btn-sm">ダッシュボード</a>
-            <div class="user-info" onclick="KinPlug.openProfile()">
-              <div id="user-avatar" class="user-avatar">?</div>
-              <span id="user-name">User</span>
+          <div style="padding:0 28px; border-right:1px solid var(--rule);">
+            <div style="font-family:'Noto Serif JP',serif; font-size:1.75rem; font-weight:700; color:var(--navy); line-height:1;">8<small style="font-size:0.5em; color:var(--ink-mute); font-weight:400;">社</small></div>
+            <div style="font-size:0.75rem; color:var(--ink-mute); margin-top:8px;">本番導入サブドメイン</div>
+          </div>
+          <div style="padding-left:28px;">
+            <div style="font-family:'Noto Serif JP',serif; font-size:1.75rem; font-weight:700; color:var(--navy); line-height:1;">200<small style="font-size:0.5em; color:var(--ink-mute); font-weight:400;">+アプリ</small></div>
+            <div style="font-size:0.75rem; color:var(--ink-mute); margin-top:8px;">稼働中Kintoneアプリ</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:relative; padding:30px 40px;" class="hero-mockup">
+        <div class="callout callout-clay callout-r" style="top:22%; left:3%;">Kinplug Mail 稼働中</div>
+        <div class="callout callout-l" style="bottom:24%; right:3%;">実行ログ · リアルタイム</div>
+        <div class="chrome">
+          <div class="chrome-bar">
+            <div class="chrome-dots"><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span></div>
+            <div class="chrome-url">your-company.kintone.com · 発注管理 · #4821</div>
+          </div>
+          <div class="kt-appbar">
+            <div class="kt-appname">発注管理</div>
+            <div class="kt-breadcrumb">› レコード #4821</div>
+            <div class="kt-tabs"><div class="kt-tab active">詳細</div><div class="kt-tab">コメント</div></div>
+          </div>
+          <div class="kt-record">
+            <div class="kt-record-head">
+              <div>
+                <div class="kt-record-title">PO-2026-0421 · サンプル商事株式会社</div>
+                <div class="kt-record-sub">作成 2026-04-17 · 合計 ¥2,480,000</div>
+              </div>
+              <div class="kt-actions">
+                <div class="kt-action">編集</div>
+                <div class="kt-action kt-action-plug">Mail · 3件</div>
+                <div class="kt-action kt-action-primary">プロセス</div>
+              </div>
+            </div>
+            <div class="kt-field"><div class="kt-field-label">ステータス</div><div class="kt-field-val"><span class="kt-badge approved">承認済み</span></div></div>
+            <div class="kt-field"><div class="kt-field-label">仕入先</div><div class="kt-field-val">サンプル商事株式会社</div></div>
+            <div class="kt-field"><div class="kt-field-label">担当</div><div class="kt-field-val">procurement@example.jp</div></div>
+            <div class="kt-plug-panel">
+              <div class="kt-plug-head">
+                <div class="kt-plug-title">Kinplug Mail · 自動実行ログ</div>
+                <div class="kt-plug-count">3/3 · 2.4s</div>
+              </div>
+              <div class="kt-plug-row"><div class="kt-plug-icon">✓</div><div class="kt-plug-text"><strong>メール送信完了</strong> · Microsoft 365 OAuth</div><div class="kt-plug-time">00:01</div></div>
+              <div class="kt-plug-row"><div class="kt-plug-icon">✓</div><div class="kt-plug-text"><strong>PDF添付完了</strong> · PO-2026-0421.pdf · 248KB</div><div class="kt-plug-time">00:02</div></div>
+              <div class="kt-plug-row"><div class="kt-plug-icon">✓</div><div class="kt-plug-text"><strong>フィールド更新</strong> · 送信済み = true</div><div class="kt-plug-time">00:02</div></div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</nav>
-<section class="hero">
-  <div class="wrap">
-    <div class="hero-meta">
-      <div class="hero-meta-left">
-        <span>MMXXVI</span>
-        <span>15タイトル</span>
-        <span>一つの体系</span>
-      </div>
-      <div class="hero-meta-right">
-        <span>Manila · Tokyo 制作</span>
-      </div>
-    </div>
-    <div class="grid">
-      <div class="col-wide">
-        <h1 class="hero-display">
-          <span class="break">Kintone、</span>
-          <span class="break"><em>完成す。</em></span>
-        </h1>
-        <p class="hero-lede">
-          Kintoneを使い倒してきたチームが、もう一歩先へ進むために開発された
-          プレミアムプラグインのアーカイブ。毎日Kintoneを使う開発者が、自らのために書いた。
-        </p>
-        <div class="hero-actions">
-          <button class="btn btn-ink btn-lg" onclick="KinPlug.signUp()">
-            無料で始める <span class="arrow">→</span>
-          </button>
-          <a href="/ja/plugins/" class="btn btn-ghost btn-lg">カタログを見る</a>
-        </div>
-        <p class="hero-note">クレジットカード不要 · 14日間トライアル · いつでも解約可能</p>
-      </div>
-    </div>
-    <div class="hero-seal">
-      <div class="seal-mark" title="朱印 · KinPlug">K</div>
-    </div>
-  </div>
 </section>
 
-<section class="sec">
-  <div class="wrap">
-    <header class="sec-head">
-      <span class="sec-num">01</span>
-      <h2 class="sec-title">カタログ</h2>
-      <span class="sec-note">全15タイトル · MMXXVI 更新</span>
-    </header>
-    <div class="catalog">
-      <a href="/ja/plugins/flow/" class="cat-item">
-        <span class="cat-num">№ 01</span><div><div class="cat-name">Flow</div></div>
-        <div class="cat-desc">OAuth対応メール、AIアクション、条件分岐トリガー搭載のビジュアル自動化。</div>
-        <div class="cat-price">$49 — 399 / 月</div>
-        <span class="cat-status cat-status-dev">開発中</span>
-        <span class="cat-arrow">→</span>
-      </a>
-      <a href="/ja/plugins/pdf-designer/" class="cat-item">
-        <span class="cat-num">№ 02</span><div><div class="cat-name">PDF Pro</div></div>
-        <div class="cat-desc">WYSIWYGテンプレート設計、計算式、チャート、複数ページ対応。日本語フォント標準搭載。</div>
-        <div class="cat-price">$29 / 月</div>
-        <span class="cat-status cat-status-live">提供中</span>
-        <span class="cat-arrow">→</span>
-      </a>
-      <a href="/ja/plugins/enhanced-lookup/" class="cat-item">
-        <span class="cat-num">№ 03</span><div><div class="cat-name">Smart Lookup</div></div>
-        <div class="cat-desc">段階的読込、モバイル完全対応、サブテーブル対応の強化ルックアップモーダル。</div>
-        <div class="cat-price">$29 / 月</div>
-        <span class="cat-status cat-status-live">提供中</span>
-        <span class="cat-arrow">→</span>
-      </a>
-      <div class="cat-item"><span class="cat-num">№ 04</span><div><div class="cat-name">Fields</div></div><div class="cat-desc">フィールドの表示・必須・編集制御をノーコードで。</div><div class="cat-price">$29 / 月</div><span class="cat-status cat-status-dev">開発中</span></div>
-      <div class="cat-item"><span class="cat-num">№ 05</span><div><div class="cat-name">Connect</div></div><div class="cat-desc">アプリ間のリレーション可視化ツール。</div><div class="cat-price">$29 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
-      <div class="cat-item"><span class="cat-num">№ 06</span><div><div class="cat-name">Print</div></div><div class="cat-desc">ラベル・サーマルプリンタ直接印刷。</div><div class="cat-price">$19 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
-      <div class="cat-item"><span class="cat-num">№ 07</span><div><div class="cat-name">Grid</div></div><div class="cat-desc">Excel風の一括編集ビュー。</div><div class="cat-price">$39 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
-      <div class="cat-item"><span class="cat-num">№ 08</span><div><div class="cat-name">Calendar</div></div><div class="cat-desc">Googleカレンダー双方向同期。</div><div class="cat-price">$39 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
-      <div class="cat-item"><span class="cat-num">№ 09</span><div><div class="cat-name">Board</div></div><div class="cat-desc">カンバン + ガントチャート統合。</div><div class="cat-price">$39 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
-      <div class="cat-item"><span class="cat-num">№ 10</span><div><div class="cat-name">Dashboard</div></div><div class="cat-desc">KPIタイル、ピボット、クロスアプリ集計。</div><div class="cat-price">$49 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
-      <div class="cat-item"><span class="cat-num">№ 11</span><div><div class="cat-name">Import</div></div><div class="cat-desc">スマートインポート、重複排除、変換機能。</div><div class="cat-price">$39 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
-      <div class="cat-item"><span class="cat-num">№ 12</span><div><div class="cat-name">Backup</div></div><div class="cat-desc">S3/Google Drive/Dropboxへの自動バックアップ。</div><div class="cat-price">$39 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
-      <div class="cat-item"><span class="cat-num">№ 13</span><div><div class="cat-name">Numbers</div></div><div class="cat-desc">レコード番号自動採番、任意パターン対応。</div><div class="cat-price">$19 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
-      <div class="cat-item"><span class="cat-num">№ 14</span><div><div class="cat-name">Scan</div></div><div class="cat-desc">バーコード・QR・OCRスキャン。モバイル対応。</div><div class="cat-price">$29 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
-      <div class="cat-item"><span class="cat-num">№ 15</span><div><div class="cat-name">Portal</div></div><div class="cat-desc">外部ユーザー用の制限付きアクセス。</div><div class="cat-price">$79 / 月</div><span class="cat-status cat-status-soon">予定</span></div>
-    </div>
-  </div>
-</section>
+<style>
+@media (max-width: 1000px) {
+  .hero-grid { grid-template-columns: 1fr !important; }
+  .hero-mockup { padding: 0 !important; }
+}
+</style>
 
-<section class="sec sec-alt">
+<section class="credibility">
   <div class="wrap">
-    <div class="grid">
-      <div class="col-left"><span class="label">編集者より</span></div>
-      <div class="col-right">
-        <blockquote class="pullquote">
-          Flowを作った理由は、お客様がKintoneからGmailを送るためだけに
-          年間24,000円をZapierに支払っていたから。
-          それは製品じゃなく、不便の税金だ。
-          <cite class="pullquote-cite">— トム・アライ、創業者</cite>
-        </blockquote>
+    <div class="credibility-grid">
+      <div class="credibility-label">実績 ·<br>2019年より</div>
+      <div class="credibility-items">
+        <div class="credibility-item"><div><strong>Cybozu Partner of the Year</strong></div><div style="font-size:0.8125rem; color:var(--ink-mute);">受賞パートナー</div></div>
+        <div class="credibility-item"><span class="num">8社</span> の本番環境で稼働<br><span style="font-size:0.8125rem; color:var(--ink-mute);">日本・東南アジア</span></div>
+        <div class="credibility-item"><span class="num">数千名</span> のエンドユーザーが毎日利用<br><span style="font-size:0.8125rem; color:var(--ink-mute);">金融・製造・NPO・物流</span></div>
+        <div class="credibility-item"><span class="num">50,000</span>件スケール検証済み<br><span style="font-size:0.8125rem; color:var(--ink-mute);">Smart Lookup · レコード数</span></div>
+        <div class="credibility-item"><strong>小さなチーム</strong>で運営<br><span style="font-size:0.8125rem; color:var(--ink-mute);">開発者本人がサポート対応</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sec sec-dark">
+<section class="sec sec-deep">
   <div class="wrap">
-    <header class="sec-head">
-      <span class="sec-num" style="color:var(--seal)">02</span>
-      <h2 class="sec-title" style="color:var(--paper-light)">三つの約束</h2>
-      <span class="sec-note">House rules</span>
-    </header>
-  </div>
-  <div class="principles" style="background:rgba(244,239,230,0.15); border-color:rgba(244,239,230,0.15);">
-    <div class="principle" style="background:var(--ink); color:var(--paper-light);">
-      <span class="principle-num">01 · 使用</span>
-      <h3 class="principle-title" style="color:var(--paper-light)">自分で使っているものだけ売る。</h3>
-      <p style="color:var(--paper-warm); opacity:0.85;">全てのプラグインは、公開前に我々のコンサルティング案件で本番稼働する。我々が壊れるものは、あなたには届かない。</p>
+    <div class="sec-head-center">
+      <div class="eyebrow eyebrow-center">設計思想</div>
+      <h2 class="h2">他社は「連携サービス」、<br>kinplugは「ネイティブプラグイン」。</h2>
+      <p class="lede" style="margin:24px auto 0;">Kintoneプラグイン市場の多くは、実は「外部SaaSサービス」です。設定には専用ポータルへのログインが必要で、ユーザー・権限・運用が二重になります。kinplugは違います。</p>
     </div>
-    <div class="principle" style="background:var(--ink); color:var(--paper-light);">
-      <span class="principle-num">02 · 出荷</span>
-      <h3 class="principle-title" style="color:var(--paper-light)">完成したものだけ出す。</h3>
-      <p style="color:var(--paper-warm); opacity:0.85;">デモ用機能なし。料金階層に隠された「近日公開」もなし。「提供中」と書いてあるなら、今日、全プランで、全言語で動く。</p>
-    </div>
-    <div class="principle" style="background:var(--ink); color:var(--paper-light);">
-      <span class="principle-num">03 · 応答</span>
-      <h3 class="principle-title" style="color:var(--paper-light)">自分宛のメールは自分で返す。</h3>
-      <p style="color:var(--paper-warm); opacity:0.85;">サポートはコードを書いた開発者に直接届く。チケットシステムなし。英語・日本語・タガログ語、通常は当日中に返信。</p>
-    </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="grid">
-      <div class="col-center-8" style="text-align:center;">
-        <span class="label label-seal">はじめる</span>
-        <h2 class="display-2 serif" style="margin-top: 14px;">
-          14日間、カードなし、<em class="italic" style="color:var(--seal);">仕掛けなし。</em>
-        </h2>
-        <p class="hero-lede" style="margin: 24px auto 36px; max-width: 52ch;">
-          GoogleかMicrosoftでサインイン。Kintoneのサブドメインを入力。プラグインをインストール。ツールと戦うのをやめる。
-        </p>
-        <div style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap;">
-          <button class="btn btn-ink btn-lg" onclick="KinPlug.signUp()">アカウント作成 <span class="arrow">→</span></button>
-          <a href="/ja/pricing.html" class="btn btn-ghost btn-lg">料金を見る</a>
+    <div class="native-compare">
+      <div class="native-col native-col-bad" data-vendor="他社">
+        <div class="h3" style="font-size:1.125rem; margin-top:8px;">連携サービス方式の導入フロー</div>
+        <ol class="native-steps">
+          <li>ベンダーの外部ポータル（例: kintoneapp.com）にアカウント作成</li>
+          <li>Kintoneから離脱して外部ポータルにログイン</li>
+          <li>外部ポータル上で設定を作成</li>
+          <li>Kintoneに戻り、連携設定でAPIキーを紐付け</li>
+          <li>変更のたびに再び外部ポータルに移動</li>
+        </ol>
+        <div class="native-summary">
+          <span>管理画面: <strong>2つ</strong></span>
+          <span>ログイン: <strong>2つ</strong></span>
+          <span>権限: <strong>分離</strong></span>
         </div>
       </div>
+      <div class="native-col native-col-good">
+        <div class="h3" style="font-size:1.125rem; margin-top:8px;">kinplugの導入フロー</div>
+        <ol class="native-steps">
+          <li>Kintoneのプラグイン設定画面を開く</li>
+          <li>設定する</li>
+          <li>保存する</li>
+        </ol>
+        <div class="native-summary">
+          <span>管理画面: <strong>1つ（Kintoneのみ）</strong></span>
+          <span>ログイン: <strong>1つ</strong></span>
+          <span>権限: <strong>Kintoneと一元化</strong></span>
+        </div>
+        <p style="font-size:0.875rem; color:var(--ink-soft); line-height:1.75; margin-top:16px;">
+          普段のKintone管理画面で設定が完結します。外部サービスとの権限同期、APIキー管理、ユーザー管理の二重化は発生しません。IT管理者が把握している範囲が増えません。
+        </p>
+      </div>
+    </div>
+    <p style="font-size:0.875rem; color:var(--ink-mute); text-align:center; margin-top:40px; font-family:'JetBrains Mono',monospace;">
+      ※ Toyokumo、gusuku Customine、Crena等の主要プラグインは外部ポータル方式です（2026年4月時点、公開情報）。
+    </p>
+  </div>
+</section>
+
+<section class="urgency-banner">
+  <div class="wrap">
+    <div class="urgency-inner">
+      <div class="urgency-pulse" aria-hidden="true"></div>
+      <div class="urgency-text">
+        <strong>2026年4月：Microsoft 365の基本認証が完全停止。</strong><br>
+        保存済みSMTPパスワード方式のKintoneメール送信プラグインは、この4月で順次稼働を停止しています。Kinplug MailはOAuth 2.0を基盤に設計されているため、Google・Microsoftの認証変更の影響を受けません。
+      </div>
+      <a href="/ja/plugins/mail/" class="btn btn-clay btn-sm">Kinplug Mailの詳細<span class="arrow">→</span></a>
     </div>
   </div>
 </section>
+
+<section class="sec sec-white">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">プラグインカタログ</div>
+        <h2 class="h2">現場が求めた15のプラグイン。</h2>
+      </div>
+      <div class="mono">提供中 3 · 開発中 3 · 計画中 9</div>
+    </div>
+    <div class="plug-grid plug-grid-hero">
+
+      <a href="/ja/plugins/mail/" class="plug-card plug-card-hero">
+        <div class="plug-screen">
+          <div class="chrome">
+            <div class="chrome-bar">
+              <div class="chrome-dots"><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span></div>
+              <div class="chrome-url">Kinplug Mail · プラグイン設定</div>
+            </div>
+            <div class="kt-record">
+              <div style="background:#FFF; border:1px solid var(--rule); border-radius:4px; padding:8px 10px; font-size:0.6875rem; margin-bottom:5px; display:flex; align-items:center; gap:6px;">
+                <span style="padding:2px 6px; background:var(--clay-soft); color:var(--clay-deep); font-family:'JetBrains Mono',monospace; font-size:0.5625rem; border-radius:2px; font-weight:500;">トリガー</span>
+                <span style="color:var(--ink-soft);">ステータスが「承認済み」の時</span>
+              </div>
+              <div style="background:#FFF; border:1px solid var(--navy); border-radius:4px; padding:8px 10px; font-size:0.6875rem; margin-bottom:5px; display:flex; align-items:center; gap:6px;">
+                <span style="padding:2px 6px; background:var(--navy-wash); color:var(--navy); font-family:'JetBrains Mono',monospace; font-size:0.5625rem; border-radius:2px; font-weight:500;">アクション</span>
+                <span style="color:var(--ink-soft);"><strong>Microsoft 365</strong>でメール送信</span>
+              </div>
+              <div style="background:#FFF; border:1px solid var(--navy); border-radius:4px; padding:8px 10px; font-size:0.6875rem; display:flex; align-items:center; gap:6px;">
+                <span style="padding:2px 6px; background:var(--navy-wash); color:var(--navy); font-family:'JetBrains Mono',monospace; font-size:0.5625rem; border-radius:2px; font-weight:500;">アクション</span>
+                <span style="color:var(--ink-soft);">フィールド更新 · 送信済み</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="plug-info">
+          <div class="plug-head">
+            <div class="plug-name">Kinplug Mail</div>
+            <span class="badge badge-live">提供中 · v2.5</span>
+          </div>
+          <p class="plug-desc">OAuth 2.0対応メール送信（Gmail・Microsoft 365）と、ビジュアル自動化ワークフローをひとつに。サブドメイン単位のOAuth接続、トークン自動更新、添付選択、送信予約、テンプレート、条件分岐。Google・Microsoftの認証変更後も稼働を続けるためにゼロから設計されました。</p>
+          <div class="plug-meta"><span class="plug-price">全プランに含まれる</span><span>詳細を見る →</span></div>
+        </div>
+      </a>
+
+      <a href="/ja/plugins/pdf-pro/" class="plug-card">
+        <div class="plug-screen">
+          <div class="chrome">
+            <div class="chrome-bar"><div class="chrome-dots"><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span></div><div class="chrome-url">PDF Pro · preview</div></div>
+            <div class="kt-record" style="padding:10px 14px;">
+              <div style="background:#FFF; border:1px solid var(--rule); border-radius:3px; padding:10px 12px; font-size:0.5625rem;">
+                <div style="display:flex; justify-content:space-between; padding-bottom:6px; border-bottom:1px solid var(--rule); margin-bottom:6px;">
+                  <div><div style="font-weight:600; font-size:0.75rem; font-family:'Noto Serif JP',serif;">請求書</div><div style="font-family:'JetBrains Mono',monospace; color:var(--ink-mute);">INV-2026-0421</div></div>
+                  <div style="font-family:'JetBrains Mono',monospace; color:var(--ink-mute);">¥2,480,000</div>
+                </div>
+                <div style="display:grid; grid-template-columns:2fr 1fr 1fr; gap:6px; padding:2px 0; color:var(--ink-soft);"><span>コンサルティング費</span><span>80時間</span><span>¥1,800,000</span></div>
+                <div style="display:grid; grid-template-columns:2fr 1fr 1fr; gap:6px; padding:2px 0; color:var(--ink-soft);"><span>開発費</span><span>1</span><span>¥580,000</span></div>
+                <div style="display:flex; justify-content:space-between; padding-top:4px; margin-top:4px; border-top:1px solid var(--rule); font-weight:600; font-size:0.625rem;"><span>合計（税込）</span><span>¥2,728,000</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="plug-info">
+          <div class="plug-head"><div class="plug-name">PDF Pro</div><span class="badge badge-live">提供中 · v3.2</span></div>
+          <p class="plug-desc">WYSIWYG PDFテンプレート設計。計算式エンジン、複数ページ、インラインチャート、日本語フォント標準搭載。</p>
+          <div class="plug-meta"><span class="plug-price">全プラン含む</span><span>→</span></div>
+        </div>
+      </a>
+
+      <a href="/ja/plugins/smart-lookup/" class="plug-card">
+        <div class="plug-screen">
+          <div class="chrome">
+            <div class="chrome-bar"><div class="chrome-dots"><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span></div><div class="chrome-url">Smart Lookup · search</div></div>
+            <div class="kt-record" style="background:linear-gradient(180deg, rgba(15,20,25,0.03), rgba(15,20,25,0.06));">
+              <div style="background:#FFF; border-radius:4px; padding:10px 12px; box-shadow:0 8px 24px -8px rgba(15,20,25,0.2);">
+                <div style="background:var(--paper-deep); border-radius:3px; padding:6px 8px; font-size:0.625rem; color:var(--ink-soft); margin-bottom:6px;">🔍 田中</div>
+                <div style="display:grid; grid-template-columns:1fr auto; padding:4px 8px; font-size:0.625rem; background:var(--navy-wash); color:var(--navy); border-radius:2px; font-weight:500; gap:8px;"><span>田中貿易株式会社</span><span>TT-0042</span></div>
+                <div style="display:grid; grid-template-columns:1fr auto; padding:4px 8px; font-size:0.625rem; color:var(--ink-soft); gap:8px;"><span>田中建設</span><span>TC-0019</span></div>
+                <div style="font-family:'JetBrains Mono',monospace; font-size:0.5625rem; color:var(--ink-mute); text-align:right; padding-top:4px; border-top:1px solid var(--rule); margin-top:4px;">2件 / 12,847件 · 38ms</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="plug-info">
+          <div class="plug-head"><div class="plug-name">Smart Lookup</div><span class="badge badge-live">提供中 · v3.0</span></div>
+          <p class="plug-desc">全フィールド横断の全文検索を搭載した強化ルックアップ。50,000件検証済み、モバイル完全対応。</p>
+          <div class="plug-meta"><span class="plug-price">全プラン含む</span><span>→</span></div>
+        </div>
+      </a>
+
+    </div>
+    <div style="text-align:center; margin-top:48px;">
+      <a href="/ja/plugins/" class="btn btn-secondary btn-lg">全15プラグインを見る<span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-deep" id="pricing">
+  <div class="wrap">
+    <div class="sec-head-center">
+      <div class="eyebrow eyebrow-center">料金 · 3プランのみ</div>
+      <h2 class="h2">1つの価格で、全プラグイン。</h2>
+      <p class="lede" style="margin:24px auto 0;">プラグインごとに契約しない。ユーザー数で課金しない。営業電話しない。見積書の駆け引きしない。公開・定額・追加料金ゼロ。</p>
+    </div>
+    <div class="tiers">
+      <div class="tier">
+        <div><div class="tier-num">プラン 01</div><div class="tier-name">フリー</div><p class="tier-desc">スモールチームとスタートアップ向け。永年無料。</p></div>
+        <div class="tier-price-block">
+          <div class="tier-prices"><div class="tier-price-jpy">¥0<small>/月</small></div><div class="tier-price-usd">$0 / mo</div></div>
+          <div class="tier-tax">永年無料 · カード不要</div>
+        </div>
+        <ul class="tier-features">
+          <li class="tier-feature"><strong>全プラグイン使い放題</strong>（15+）</li>
+          <li class="tier-feature">Kintoneユーザー <strong>10名まで</strong></li>
+          <li class="tier-feature">1サブドメイン</li>
+          <li class="tier-feature">メールサポート（平日）</li>
+          <li class="tier-feature">機能制限・広告なし</li>
+        </ul>
+        <a href="/ja/signup/" class="btn btn-secondary">無料で始める</a>
+      </div>
+
+      <div class="tier tier-featured">
+        <div class="tier-ribbon">推奨プラン</div>
+        <div><div class="tier-num">プラン 02</div><div class="tier-name">スタンダード</div><p class="tier-desc">11名以上のチームから。全プラグイン、追加料金なし。</p></div>
+        <div class="tier-price-block">
+          <div class="tier-prices"><div class="tier-price-jpy">¥9,800<small>/月</small></div><div class="tier-price-usd">$69 / mo</div></div>
+          <div class="tier-tax">税抜</div>
+          <div class="tier-annual">★ 年額 ¥98,000 · 2ヶ月分無料</div>
+        </div>
+        <ul class="tier-features">
+          <li class="tier-feature"><strong>全プラグイン</strong>（現行+今後全て）</li>
+          <li class="tier-feature">Kintoneユーザー <strong>数無制限</strong></li>
+          <li class="tier-feature">1サブドメイン</li>
+          <li class="tier-feature"><strong>請求書払い対応</strong>（NET30日）</li>
+          <li class="tier-feature">優先サポート（4時間以内応答）</li>
+          <li class="tier-feature">導入オンボーディング付き</li>
+        </ul>
+        <a href="/ja/signup/" class="btn btn-primary">14日間無料で試す<span class="arrow">→</span></a>
+      </div>
+
+      <div class="tier">
+        <div><div class="tier-num">プラン 03</div><div class="tier-name">エンタープライズ</div><p class="tier-desc">複数サブドメイン・金融・医療・公共機関向け。公開価格制。</p></div>
+        <div class="tier-price-block">
+          <div class="tier-prices"><div class="tier-price-jpy">¥49,800<small>/月</small></div><div class="tier-price-usd">$349 / mo</div></div>
+          <div class="tier-tax">税抜 · 営業電話なし</div>
+          <div class="tier-annual">★ 年額 ¥498,000 · 2ヶ月分無料</div>
+        </div>
+        <ul class="tier-features">
+          <li class="tier-feature"><strong>最大5サブドメイン</strong> · 全プラグイン</li>
+          <li class="tier-feature">IP制限対応プロキシ構成</li>
+          <li class="tier-feature">DPA · セキュリティレビュー対応</li>
+          <li class="tier-feature">4時間SLA · 専任エンジニア窓口</li>
+          <li class="tier-feature">四半期レビューセッション</li>
+          <li class="tier-feature">オンプレミス導入オプション有り</li>
+        </ul>
+        <a href="/ja/signup/?plan=enterprise" class="btn btn-secondary">14日間無料で試す</a>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:32px; font-size:0.8125rem; color:var(--ink-mute); font-family:'JetBrains Mono',monospace;">
+      ※ 全プラン自動課金なし。Enterpriseはご希望によりセキュリティレビュー・契約書類ご相談も可（<a href="/ja/contact/" style="color:var(--navy); border-bottom:1px solid var(--navy);">お問い合わせフォーム</a>）。
+    </p>
+  </div>
+</section>
+
+<section class="sec sec-white" id="compare">
+  <div class="wrap">
+    <div class="sec-head-center"><div class="eyebrow eyebrow-center">他社料金比較</div><h2 class="h2">1製品の値段で、全プラグイン。</h2></div>
+    <div class="compare-wrap" style="max-width:1000px; margin:0 auto;">
+      <table class="compare">
+        <thead><tr><th>ベンダー</th><th>代表製品</th><th>月額（最上位）</th><th>プラグイン数</th><th>無料プラン</th></tr></thead>
+        <tbody>
+          <tr class="kinplug-row">
+            <td><div class="vendor">kinplug</div><div class="vendor-sub">定額・全部入り</div></td>
+            <td>全プラグイン</td>
+            <td><span class="price price-big">¥9,800</span></td>
+            <td><strong>15+</strong></td>
+            <td><span class="check">✓</span> 10名以下 永年無料</td>
+          </tr>
+          <tr><td><div class="vendor">Toyokumo</div><div class="vendor-sub">東証上場・業界最大手</div></td><td>FormBridge</td><td><span class="price">¥14,000</span></td><td>1</td><td><span class="cross">×</span> 30日間のみ</td></tr>
+          <tr><td><div class="vendor">Toyokumo</div></td><td>PrintCreator</td><td><span class="price">¥14,000</span></td><td>1</td><td><span class="cross">×</span></td></tr>
+          <tr><td><div class="vendor">Toyokumo</div></td><td>kViewer</td><td><span class="price">¥15,000</span></td><td>1</td><td><span class="cross">×</span></td></tr>
+          <tr><td><div class="vendor">gusuku Customine</div><div class="vendor-sub">R3 Institute</div></td><td>10アプリスロット</td><td><span class="price">¥54,000</span></td><td>-</td><td><span class="partial">△</span> 1アプリのみ</td></tr>
+          <tr><td><div class="vendor">Crena</div><div class="vendor-sub">28プラグインセット</div></td><td>プロフェッショナル</td><td><span class="price">¥20,000</span></td><td><strong>28</strong></td><td><span class="cross">×</span></td></tr>
+          <tr><td><div class="vendor">JOYZO</div></td><td>プラグインパック使い放題</td><td><span class="price">¥15,000</span></td><td>10+</td><td><span class="cross">×</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="text-align:center; margin-top:24px; font-size:0.8125rem; color:var(--ink-mute); font-family:'JetBrains Mono',monospace;">※ 各社公開情報ベース（2026年4月時点）。税抜表示。コースや機能範囲により異なります。</p>
+  </div>
+</section>
+
+<section class="sec sec-deep">
+  <div class="wrap">
+    <div class="faq-grid">
+      <div>
+        <div class="eyebrow">よくある質問</div>
+        <h2 class="h2">導入前によく聞かれること。</h2>
+        <p class="lede" style="margin-top:24px;">この他のご質問は <a href="mailto:support@kinplug.com" style="color:var(--navy); border-bottom:1px solid currentColor;">support@kinplug.com</a> までお気軽にどうぞ。日本語で当日対応いたします。</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q01</span><span>本当に設定はKintone内だけで完結しますか？</span></div><div class="faq-a">はい。プラグインの管理画面を開くと、そのまま全ての設定が完結します。外部ポータルへのログインや、APIキーの発行・管理は発生しません。Kinplug Mailの場合、OAuth認証だけはGoogle・Microsoftの認証画面で一度実施しますが、それ以降の設定はすべてKintone内です。接続情報はAppに暗号化保存され、サブドメイン単位でスコープされます。</div></div>
+        <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q02</span><span>cybozu.com（日本版Kintone）に対応していますか？</span></div><div class="faq-a">はい、完全対応しています。同価格、日本円での請求も可能です。全プラグインをkintone.com・cybozu.comの両方でテスト済みです。金融・保険グループ様のcybozu.com環境で43アプリに導入されている事例もあります。</div></div>
+        <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q03</span><span>Microsoft 365のOAuth移行で既存のメール送信が止まりました。移行できますか？</span></div><div class="faq-a">はい、Kinplug MailへのOAuth移行を無料でサポートします。既存のメールテンプレート・送信者設定・宛先リストを引き継ぎながら、OAuth 2.0認証に切り替えます。14日間のトライアルで実際の環境で検証いただけます。緊急対応の場合は <a href="mailto:support@kinplug.com" style="color:var(--navy);">support@kinplug.com</a> まで直接ご連絡ください。</div></div>
+        <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q04</span><span>Cybozu社の公式パートナーですか？</span></div><div class="faq-a">独立系の事業者です。Edamame Inc.はKintoneカスタマイズ専門のコンサルティング会社として2019年から活動しており、Cybozu Partner of the Yearを受賞しています。ただし、プラグイン事業kinplugは公式パートナー経由で販売していません。独立しているため、特定のベンダーに偏らず中立的な製品判断ができる利点があると考えています。</div></div>
+        <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q05</span><span>貴社が事業を停止した場合、プラグインはどうなりますか？</span></div><div class="faq-a">Kinplug Mail以外の全プラグインは、当社サーバーに依存しません。完全にお客様のKintone内で動作するため、万一当社が運営停止しても永続的に使い続けられます。Kinplug MailについてはOAuthサーバーが必要なため唯一の例外ですが、運営停止時はAPIサービスをオープンソース化し、お客様のセルフホスト移行を全面支援することを、スタンダード・エンタープライズ契約書に明文化しています。</div></div>
+        <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q06</span><span>請求書払い・NET30日・稟議書対応はできますか？</span></div><div class="faq-a">スタンダード以上のプランで、日本企業の購買手続きに対応しています。PDF見積書 → 発注書受領 → 請求書発行（NET30日）→ 銀行振込の流れで対応可能。年払い契約時は2ヶ月分無料。稟議書添付用の資料（会社概要・セキュリティ一式）もご提供します。適格請求書発行事業者登録は2026年内完了予定で、それまでは従来の請求書形式となります。</div></div>
+        <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q07</span><span>サポートは誰が対応しますか？</span></div><div class="faq-a">プラグインを実際に作った開発者本人が対応します。小さなチームで運営することを意図的に選んでおり、一次対応スクリプトやチケット振り分けのサイロはありません。東京オフィスより日本語・英語・タガログ語で対応、平日JST営業時間内当日応答、スタンダード以上では4時間以内応答をお約束します。</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-wrap">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow eyebrow-center" style="color:var(--clay);">はじめる</div>
+    <h2 class="cta-title">14日間、全機能、<br>クレジットカード不要。</h2>
+    <p class="cta-desc">GoogleかMicrosoftでサインイン、Kintoneサブドメインを入力、プラグインをインストール。90秒で稼働開始。</p>
+    <div class="cta-actions">
+      <a href="/ja/signup/" class="btn btn-clay btn-lg">無料アカウント作成<span class="arrow">→</span></a>
+      <a href="/ja/contact/" class="btn btn-secondary btn-lg" style="border-color:rgba(247,245,240,0.3); color:var(--paper);">お問い合わせ</a>
+    </div>
+  </div>
+</div>
 
 <footer class="footer">
   <div class="wrap">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="/ja/" class="brand"><span style="color:var(--paper-light);">Kin<em>·</em>Plug</span><span class="brand-sub">アーカイブ・第一巻</span></a>
-        <p>Kintone用プレミアムプラグイン集。Edamame Inc. 制作。</p>
+    <div class="footer-grid">
+      <div>
+        <a href="/ja/" class="logo logo-light">
+          <span class="logo-mark">
+            <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#F7F5F0" stroke-width="2"/>
+              <rect x="9" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <rect x="22" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+            </svg>
+          </span>
+          <span class="logo-word">kinplug</span>
+        </a>
+        <p class="footer-desc">Kintoneのためのネイティブプラグイン。運営: Edamame Inc.（マニラ・東京）。2019年よりKintone運用。Cybozu Partner of the Year受賞パートナー。</p>
       </div>
-      <div class="footer-col"><h4>カタログ</h4><ul>
-        <li><a href="/ja/plugins/flow/">Flow</a></li>
-        <li><a href="/ja/plugins/pdf-designer/">PDF Pro</a></li>
-        <li><a href="/ja/plugins/enhanced-lookup/">Smart Lookup</a></li>
-        <li><a href="/ja/plugins/">全タイトル</a></li>
-      </ul></div>
-      <div class="footer-col"><h4>リソース</h4><ul>
-        <li><a href="/ja/docs/">ドキュメント</a></li>
-        <li><a href="/ja/pricing.html">料金</a></li>
-        <li><a href="/ja/blog/">ジャーナル</a></li>
-        <li><a href="mailto:support@kinplug.com">サポート</a></li>
-      </ul></div>
-      <div class="footer-col"><h4>会社情報</h4><ul>
-        <li><a href="https://edamame.ph" target="_blank" rel="noopener">Edamame Inc.</a></li>
-        <li><a href="/ja/legal/privacy.html">プライバシー</a></li>
-        <li><a href="/ja/legal/terms.html">利用規約</a></li>
-        <li><a href="mailto:billing@kinplug.com">請求</a></li>
-      </ul></div>
+      <div class="footer-col"><h4>プラグイン</h4><ul><li><a href="/ja/plugins/mail/">Kinplug Mail</a></li><li><a href="/ja/plugins/pdf-pro/">PDF Pro</a></li><li><a href="/ja/plugins/smart-lookup/">Smart Lookup</a></li><li><a href="/ja/plugins/flow/">Flow</a></li><li><a href="/ja/plugins/">全タイトル</a></li></ul></div>
+      <div class="footer-col"><h4>リソース</h4><ul><li><a href="/ja/pricing.html">料金</a></li><li><a href="/ja/compare/">他社比較</a></li><li><a href="/ja/docs/">ドキュメント</a></li><li><a href="/ja/blog/">ジャーナル</a></li></ul></div>
+      <div class="footer-col"><h4>会社情報</h4><ul><li><a href="/ja/about/">会社概要</a></li><li><a href="/ja/contact/">お問い合わせ</a></li><li><a href="https://edamame.ph">Edamame Inc.</a></li></ul></div>
+      <div class="footer-col"><h4>連絡先</h4><ul><li><a href="mailto:support@kinplug.com">support@kinplug.com</a></li><li><a href="mailto:billing@kinplug.com">billing@kinplug.com</a></li><li><a href="mailto:legal@kinplug.com">legal@kinplug.com</a></li></ul></div>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-grid">
+        <div><h5>特定商取引法に基づく表記</h5><p><strong>販売事業者</strong>: Edamame Inc. · <strong>代表責任者</strong>: Tom Arai · <strong>所在地</strong>: フィリピン・マニラBGC（東京オフィス連絡可）· <strong>連絡先</strong>: support@kinplug.com</p></div>
+        <div><h5>支払方法・返金について</h5><p>クレジットカード（全プラン）・銀行振込（スタンダード以上）対応。年払い契約は2ヶ月分無料、月払い契約はいつでも解約可能、解約月末までの請求。詳細は<a href="/ja/legal/terms.html" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.5);">利用規約</a>。</p></div>
+      </div>
     </div>
     <div class="footer-bottom">
-      <span>© MMXXVI · Edamame Inc.</span>
-      <span>Kintone上で構築 · 於マニラ</span>
-      <span>v3.0 · ISSN 0000-0000</span>
+      <div>© 2026 · Edamame Inc. · Since 2019</div>
+      <div class="footer-bottom-links">
+        <a href="/ja/legal/privacy.html">プライバシーポリシー</a>
+        <a href="/ja/legal/terms.html">利用規約</a>
+        <a href="/ja/legal/security.html">セキュリティ</a>
+      </div>
     </div>
   </div>
 </footer>

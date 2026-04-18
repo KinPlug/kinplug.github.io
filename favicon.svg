@@ -1,19 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <filter id="roughen" x="-20%" y="-20%" width="140%" height="140%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3"/>
-      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
-    </filter>
-    <radialGradient id="sealGrad" cx="50%" cy="45%">
-      <stop offset="0%" stop-color="#C85A3B"/>
-      <stop offset="80%" stop-color="#B23A2B"/>
-      <stop offset="100%" stop-color="#8B2A1E"/>
-    </radialGradient>
-  </defs>
-  <circle cx="32" cy="32" r="28" fill="url(#sealGrad)" filter="url(#roughen)"/>
-  <circle cx="32" cy="32" r="26" fill="none" stroke="#F4EFE6" stroke-width="0.8" opacity="0.35"/>
-  <text x="32" y="42" text-anchor="middle"
-        font-family="'Fraunces', 'Shippori Mincho', serif"
-        font-weight="500" font-size="30"
-        fill="#F4EFE6" letter-spacing="0">K</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34" width="34" height="34">
+  <rect width="34" height="34" fill="#F7F5F0" rx="6"/>
+  <g transform="translate(0 5)">
+    <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#1B2B5A" stroke-width="2.5"/>
+    <rect x="9" y="6" width="3" height="12" fill="#1B2B5A"/>
+    <rect x="22" y="6" width="3" height="12" fill="#1B2B5A"/>
+    <circle cx="17" cy="12" r="2" fill="#C47A42"/>
+  </g>
 </svg>

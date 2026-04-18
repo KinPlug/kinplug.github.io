@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compare — kinplug | vs Toyokumo, gusuku, Crena, and others</title>
+<meta name="description" content="Head-to-head with Toyokumo (FormBridge, PrintCreator, kViewer), gusuku Customine, Crena, JOYZO, TIS. Pricing, architecture, OAuth status. Public info only, April 2026.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Compare — kinplug | vs Toyokumo, gusuku, Crena, and others">
+<meta property="og:description" content="Head-to-head with Toyokumo (FormBridge, PrintCreator, kViewer), gusuku Customine, Crena, JOYZO, TIS. Pricing, architecture, OAuth status. Public info only, April 2026.">
+<meta property="og:image" content="https://kinplug.com/assets/og-default.png">
+<meta property="og:url" content="https://kinplug.com/compare/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:site_name" content="kinplug">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
+<link rel="canonical" href="https://kinplug.com/compare/">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/compare/">
+<link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/">
+<link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>Operated by Edamame Inc.</span>
+        <span class="topbar-dot">·</span>
+        <span>Tokyo · Manila</span>
+        <span class="topbar-dot">·</span>
+        <span>Kintone work since 2019</span>
+      </div>
+      <div class="topbar-right">
+        <a href="/about/">Company</a>
+        <span class="topbar-dot">·</span>
+        <a href="mailto:support@kinplug.com">JST 09:00–18:00 · same-day response</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/" class="logo" aria-label="kinplug">
+        <span class="logo-mark">
+          <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#1B2B5A" stroke-width="2"/>
+            <rect x="9" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <rect x="22" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+          </svg>
+        </span>
+        <span class="logo-word">kinplug</span>
+      </a>
+      <div class="nav-menu">
+        <a href="/plugins/" >Plugins</a>
+        <a href="/pricing.html" >Pricing</a>
+        <a href="/compare/" class="active">Compare</a>
+        <a href="/about/" >Company</a>
+        <a href="/docs/" >Docs</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <a href="/" class="active">EN</a>
+          <a href="/ja/" >日本語</a>
+        </div>
+        <a href="/login.html" class="btn btn-secondary btn-sm">Sign in</a>
+        <a href="/signup/" class="btn btn-primary btn-sm">Start free</a>
+        <button class="nav-toggle" aria-label="Menu">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3zm0 4h14v2H3zm0 4h14v2H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head-center">
+      <div class="eyebrow eyebrow-center">Compare</div>
+      <h1 class="h1">Facts, not claims.</h1>
+      <p class="lede" style="margin:24px auto 0;">Objective comparison based only on published information as of April 2026. Every figure here is sourced from the vendor's own public documentation. No sneering, no spin.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-white">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="eyebrow">Pricing</div><h2 class="h2">Monthly cost.</h2></div><div class="mono">April 2026 · ex-tax</div></div>
+    <div class="compare-wrap">
+      <table class="compare">
+        <thead><tr><th>Vendor</th><th>Product</th><th>Monthly (top tier)</th><th>Plugins</th><th>Free tier</th><th>Config location</th></tr></thead>
+        <tbody>
+          <tr class="kinplug-row">
+            <td><div class="vendor">kinplug</div><div class="vendor-sub">Flat-rate, all-in</div></td>
+            <td>All plugins</td>
+            <td><span class="price price-big">¥9,800</span></td>
+            <td><strong>15+</strong></td>
+            <td><span class="check">✓</span> ≤10 users, forever</td>
+            <td><span class="check">✓</span> Inside Kintone</td>
+          </tr>
+          <tr><td><div class="vendor">Toyokumo</div><div class="vendor-sub">TSE Growth (4058)</div></td><td>FormBridge</td><td><span class="price">¥14,000</span></td><td>1</td><td><span class="cross">×</span> 30 days</td><td><span class="cross">×</span> kintoneapp.com</td></tr>
+          <tr><td><div class="vendor">Toyokumo</div></td><td>PrintCreator</td><td><span class="price">¥14,000</span></td><td>1</td><td><span class="cross">×</span></td><td><span class="cross">×</span> kintoneapp.com</td></tr>
+          <tr><td><div class="vendor">Toyokumo</div></td><td>kViewer</td><td><span class="price">¥15,000</span></td><td>1</td><td><span class="cross">×</span></td><td><span class="cross">×</span> kintoneapp.com</td></tr>
+          <tr><td><div class="vendor">gusuku Customine</div><div class="vendor-sub">R3 Institute</div></td><td>10 app-slots</td><td><span class="price">¥54,000</span></td><td>-</td><td><span class="partial">△</span> 1 app</td><td><span class="cross">×</span> customine.gusuku.io</td></tr>
+          <tr><td><div class="vendor">Crena</div><div class="vendor-sub">28-plugin bundle</div></td><td>Professional</td><td><span class="price">¥20,000</span></td><td><strong>28</strong></td><td><span class="cross">×</span></td><td><span class="cross">×</span> Crena Portal</td></tr>
+          <tr><td><div class="vendor">JOYZO</div></td><td>All-access pack</td><td><span class="price">¥15,000</span></td><td>10+</td><td><span class="cross">×</span></td><td><span class="partial">△</span> Partial</td></tr>
+          <tr><td><div class="vendor">TIS</div><div class="vendor-sub">Enterprise-targeted</div></td><td>ViewFrame</td><td><span class="price">Contact for quote</span></td><td>Multiple</td><td><span class="cross">×</span></td><td><span class="cross">×</span> External</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-deep">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="eyebrow">Architecture</div><h2 class="h2">Where the configuration lives.</h2></div></div>
+    <div class="prose" style="max-width:68ch; margin:0 auto;">
+      <p>Most of the "Kintone plugin" market is actually external SaaS that integrates with Kintone. Configuration requires logging into a vendor portal (kintoneapp.com, customine.gusuku.io), and you end up managing users and permissions in two systems instead of one.</p>
+      <p>This is driven by vendor economics. SaaS retention metrics, per-user metering, upsell funnels — these only work when users must log into the vendor's portal regularly. It's not that these vendors don't want to move configuration inside Kintone; it's that doing so would break their revenue architecture.</p>
+      <p>kinplug was designed outside that model. Configuration happens inside Kintone's native plugin UI. This isn't a feature — it's the category kinplug is trying to define.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-white">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="eyebrow">OAuth status</div><h2 class="h2">Will your mail plugin work in 2026+?</h2></div></div>
+    <div class="compare-wrap">
+      <table class="compare">
+        <thead><tr><th>Plugin</th><th>OAuth 2.0</th><th>Gmail</th><th>Microsoft 365</th><th>After April 2026</th></tr></thead>
+        <tbody>
+          <tr class="kinplug-row"><td><div class="vendor">Kinplug Mail</div></td><td><span class="check">✓</span> Full</td><td><span class="check">✓</span></td><td><span class="check">✓</span> Send As supported</td><td><span class="check">✓</span> Unaffected</td></tr>
+          <tr><td><div class="vendor">Toyokumo kMailer</div></td><td><span class="cross">×</span> SMTP basic auth</td><td><span class="cross">×</span> Killed Sept 2024</td><td><span class="cross">×</span> Killed April 2026</td><td><span class="cross">×</span> Cannot send</td></tr>
+          <tr><td><div class="vendor">Kintone native notifications</div></td><td><span class="partial">△</span> Inbound only</td><td>-</td><td>-</td><td><span class="partial">△</span> Outbound needs separate plugin</td></tr>
+          <tr><td><div class="vendor">Custom JS + SMTP</div></td><td><span class="cross">×</span></td><td><span class="cross">×</span></td><td><span class="cross">×</span></td><td><span class="cross">×</span> Requires rewrite</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:24px; font-size:0.875rem; color:var(--ink-mute); text-align:center;">Google Workspace admins can technically re-enable basic auth on a per-user basis, but it's not recommended for security reasons.</p>
+  </div>
+</section>
+
+<section class="sec sec-deep">
+  <div class="wrap wrap-narrow">
+    <div class="sec-head-center"><div class="eyebrow eyebrow-center">Migration</div><h2 class="h2">Migration doesn't have to be all-or-nothing.</h2></div>
+    <div class="prose">
+      <p>If you're using competitor plugins today, there's no need to rip everything out at once. Most of our customers start kinplug in the area that hurts most — usually mail, PDF, or lookup — while keeping other plugins in place. Parallel operation is fine.</p>
+      <p>The 14-day trial lets you verify compatibility in your actual environment. Enterprise plans include migration support. <a href="/contact/">Contact us</a> for a free migration consultation.</p>
+    </div>
+  </div>
+</section>
+<div class="cta-wrap">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow eyebrow-center" style="color:var(--clay);">Get started</div>
+    <h2 class="cta-title">14 days, every feature,<br>no credit card.</h2>
+    <p class="cta-desc">Sign in with Google or Microsoft, enter your Kintone subdomain, install the plugin. Live in 90 seconds.</p>
+    <div class="cta-actions">
+      <a href="/signup/" class="btn btn-clay btn-lg">Create free account<span class="arrow">→</span></a>
+      <a href="/contact/" class="btn btn-secondary btn-lg" style="border-color:rgba(247,245,240,0.3); color:var(--paper);">Contact us</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="logo logo-light">
+          <span class="logo-mark">
+            <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#F7F5F0" stroke-width="2"/>
+              <rect x="9" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <rect x="22" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+            </svg>
+          </span>
+          <span class="logo-word">kinplug</span>
+        </a>
+        <p class="footer-desc">Native Kintone plugins. Operated by Edamame Inc. (Manila · Tokyo). Kintone work since 2019. Cybozu Partner of the Year.</p>
+      </div>
+      <div class="footer-col"><h4>Plugins</h4><ul>
+        <li><a href="/plugins/mail/">Kinplug Mail</a></li>
+        <li><a href="/plugins/pdf-pro/">PDF Pro</a></li>
+        <li><a href="/plugins/smart-lookup/">Smart Lookup</a></li>
+        <li><a href="/plugins/flow/">Flow</a></li>
+        <li><a href="/plugins/">All titles</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/compare/">Compare</a></li>
+        <li><a href="/docs/">Documentation</a></li>
+        <li><a href="/blog/">Journal</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Company</h4><ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="https://edamame.ph">Edamame Inc.</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
+        <li><a href="mailto:billing@kinplug.com">billing@kinplug.com</a></li>
+        <li><a href="mailto:legal@kinplug.com">legal@kinplug.com</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-grid">
+        <div><h5>Legal disclosures</h5><p><strong>Seller</strong>: Edamame Inc. · <strong>Representative</strong>: Tom Arai · <strong>Address</strong>: Manila BGC, Philippines (Tokyo liaison available) · <strong>Contact</strong>: support@kinplug.com</p></div>
+        <div><h5>Billing & refunds</h5><p>Credit card (all plans), bank transfer (Standard+). Annual contracts include 2 free months. Monthly plans may cancel any time, billed through end of month. See <a href="/legal/terms.html" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.5);">Terms</a>.</p></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 · Edamame Inc. · Since 2019</div>
+      <div class="footer-bottom-links">
+        <a href="/legal/privacy.html">Privacy</a>
+        <a href="/legal/terms.html">Terms</a>
+        <a href="/legal/security.html">Security</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/app.js"></script>
+</body>
+</html>

@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>404 — Page not found — kinplug</title>
-<meta name="description" content="The page you are looking for does not exist. Return to kinplug homepage.">
+<title>Smart Lookup — 50k-record Kintone lookup enhancement</title>
+<meta name="description" content="Full-text search across every field, mobile parity, tested at 50,000 records. Solves Kintone native lookup limitations. Included every plan at ¥9,800/mo.">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="404 — Page not found — kinplug">
-<meta property="og:description" content="The page you are looking for does not exist. Return to kinplug homepage.">
+<meta property="og:title" content="Smart Lookup — 50k-record Kintone lookup enhancement">
+<meta property="og:description" content="Full-text search across every field, mobile parity, tested at 50,000 records. Solves Kintone native lookup limitations. Included every plan at ¥9,800/mo.">
 <meta property="og:image" content="https://kinplug.com/assets/og-default.png">
-<meta property="og:url" content="https://kinplug.com/404.html">
+<meta property="og:url" content="https://kinplug.com/plugins/smart-lookup/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ja_JP">
 <meta property="og:site_name" content="kinplug">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
-<link rel="canonical" href="https://kinplug.com/404.html">
-<link rel="alternate" hreflang="en" href="https://kinplug.com/404.html">
+<link rel="canonical" href="https://kinplug.com/plugins/smart-lookup/">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/smart-lookup/">
 <link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/">
 <link rel="alternate" hreflang="x-default" href="https://kinplug.com/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -62,7 +62,7 @@
         <span class="logo-word">kinplug</span>
       </a>
       <div class="nav-menu">
-        <a href="/plugins/" >Plugins</a>
+        <a href="/plugins/" class="active">Plugins</a>
         <a href="/pricing.html" >Pricing</a>
         <a href="/compare/" >Compare</a>
         <a href="/about/" >Company</a>
@@ -83,14 +83,44 @@
   </div>
 </nav>
 
-<section class="sec sec-lg" style="min-height:70vh; display:flex; align-items:center;">
-  <div class="wrap wrap-narrow text-center">
-    <div style="font-family:'JetBrains Mono',monospace; font-size:0.875rem; color:var(--clay); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:24px;">Error 404</div>
-    <h1 class="h1" style="margin-bottom:24px;">This page doesn't exist.</h1>
-    <p class="lede" style="margin:0 auto;">The page you're looking for may have moved or been removed. Head back to <a href="/" style="color:var(--navy); border-bottom:1px solid var(--navy);">the homepage</a>, <a href="/plugins/" style="color:var(--navy); border-bottom:1px solid var(--navy);">browse plugins</a>, or <a href="mailto:support@kinplug.com" style="color:var(--navy); border-bottom:1px solid var(--navy);">email us</a>.</p>
-    <p style="margin-top:32px; font-size:0.875rem; color:var(--ink-mute);">日本語ページへは <a href="/ja/" style="color:var(--navy); border-bottom:1px solid var(--navy);">こちら</a>。</p>
-    <div style="margin-top:48px;">
-      <a href="/" class="btn btn-primary btn-lg">Back to homepage<span class="arrow">→</span></a>
+<section class="sec">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow">Smart Lookup · v3.0 · live</div>
+    <h1 class="h1">Fast at 50,000 records.<br><span class="h1-accent">Works on mobile.</span></h1>
+    <p class="lede">Kintone's native lookup is slow, can't search across fields, and gives up on mobile. Smart Lookup fixes all three. Full-text search across every field, tested at 50,000 records, full mobile parity, and auto-config from field definitions.</p>
+    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:32px;">
+      <a href="/signup/" class="btn btn-primary btn-lg">Start 14-day trial<span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+<section class="sec sec-deep">
+  <div class="wrap">
+    <div class="sec-head-center"><div class="eyebrow eyebrow-center">Capabilities</div><h2 class="h2">Search forged in production.</h2></div>
+    <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:20px; max-width:1160px; margin:0 auto;" class="feat-grid">
+      <div style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule);">
+        <div class="h3" style="font-size:1.125rem;">Search every field</div>
+        <p style="font-size:0.875rem; line-height:1.6; color:var(--ink-soft); margin-top:12px;">No pre-configured "searchable field" list. Every field searchable by default. Customer name, phone number, notes — if it's there, you'll find it.</p>
+      </div>
+      <div style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule);">
+        <div class="h3" style="font-size:1.125rem;">50,000-record stress tested</div>
+        <p style="font-size:0.875rem; line-height:1.6; color:var(--ink-soft); margin-top:12px;">Tested at 50k records in real environments. Progressive loading shows the first 20 results while the rest stream in — usable immediately at any scale.</p>
+      </div>
+      <div style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule);">
+        <div class="h3" style="font-size:1.125rem;">Full mobile parity</div>
+        <p style="font-size:0.875rem; line-height:1.6; color:var(--ink-soft); margin-top:12px;">Verified on /k/m/ (mobile) URLs. We handle both desktop (button.input-lookup-gaia) and mobile (button.forms-lookup-lookup-gaia) selectors because we actually test on mobile.</p>
+      </div>
+      <div style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule);">
+        <div class="h3" style="font-size:1.125rem;">Auto-config from field definitions</div>
+        <p style="font-size:0.875rem; line-height:1.6; color:var(--ink-soft); margin-top:12px;">Reads lookupPickerFields, filterCond, sort, and relatedKeyField directly from Kintone's field definitions. No duplicate configuration in the plugin UI.</p>
+      </div>
+      <div style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule);">
+        <div class="h3" style="font-size:1.125rem;">Subtable support</div>
+        <p style="font-size:0.875rem; line-height:1.6; color:var(--ink-soft); margin-top:12px;">Maps DOM subtable render order via Form Layout API. Multiple lookups in multiple subtables don't get confused with each other.</p>
+      </div>
+      <div style="background:#FFF; padding:28px; border-radius:8px; border:1px solid var(--rule);">
+        <div class="h3" style="font-size:1.125rem;">Proven at scale</div>
+        <p style="font-size:0.875rem; line-height:1.6; color:var(--ink-soft); margin-top:12px;">Running across 43 apps at a Japanese financial group, plus manufacturing, NGO, and logistics clients. Over 100 apps in production total.</p>
+      </div>
     </div>
   </div>
 </section>

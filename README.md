@@ -1,56 +1,49 @@
-# KinPlug · kinplug.com
+# kinplug.com
 
-The static site for **KinPlug**, a curated catalog of premium plugins for Kintone.
-Built and operated by **Edamame Inc.** (Manila · Tokyo).
+Native Kintone plugins · operated by Edamame Inc. (Manila · Tokyo) · since 2019.
 
-## Design · "KinPlug Archive" v3.0
+This is the public website. Static HTML, no build step. Served by GitHub Pages from the `master` branch with CNAME → `kinplug.com`.
 
-An editorial technical journal aesthetic. Rejects the generic SaaS look in favor of:
+## Source of truth
 
-- **Typography** — Fraunces (display serif, variable axes), Geist (body sans), JetBrains Mono (technical labels), Shippori Mincho + Noto Sans JP (Japanese).
-- **Palette** — warm cream paper, deep warm ink, single vermillion accent (朱 · seal).
-- **Structure** — numbered magazine sections, asymmetric 12-col grid, hairline rules.
-- **Voice** — the catalog is a table of contents, not a feature grid.
-
-## Stack
-
-- Plain HTML + CSS + vanilla JS.
-- Deployed via **GitHub Pages** → `kinplug.com` via CNAME.
-- Auth by **Clerk** (Google, Microsoft, email).
-- License API on **Google Cloud Run** (asia-northeast1, Tokyo) with Railway fallback.
+All strategic, brand, and pricing decisions live in the private `KinPlug/kinplug-vision` repo. When this site and that repo disagree, the vision doc wins and the site gets corrected.
 
 ## Structure
 
 ```
-/                           English root
-/plugins/                   Catalog + plugin detail pages
-/plugins/flow/              Flagship product (v4.9, in development)
-/plugins/pdf-designer/      PDF Pro (v3.2+, live)
-/plugins/enhanced-lookup/   Smart Lookup (v3.0, live)
-/pricing.html               Tiers & comparison
-/docs/                      Documentation landing
-/blog/                      Journal
-/dashboard.html             User account (Clerk-gated)
-/login.html                 Auth entry
-/legal/{privacy,terms}.html Legal
-/ja/*                       Japanese mirror of every page
-
-/assets/css/style.css       Design system
-/assets/js/app.js           Clerk + API integration
-/favicon.svg                Vermillion seal-mark
+/                      English homepage (first-class)
+/ja/                   Japanese homepage (primary audience)
+/plugins/              Catalog + per-plugin detail pages
+  /mail/               Hero product — full detail page
+  /pdf-pro/
+  /smart-lookup/
+  /flow/
+/pricing.html          Standalone pricing
+/compare/              Head-to-head vs competitors
+/about/                Company / 会社概要
+/contact/              Contact form + 4 case routes
+/docs/                 Documentation landing
+/blog/                 Journal — publish rarely
+/legal/                privacy, terms, security
+/signup/               Free trial signup
+/login.html            Sign in
+/dashboard.html        Account dashboard (authenticated)
+/404.html              Not found
 ```
 
-## Deploy
+Every top-level path has a `/ja/` mirror.
 
-Merge to `main` — GitHub Pages builds automatically.
-Custom domain is set via `/CNAME` = `kinplug.com`.
-DNS A records point at GitHub Pages IPs.
+## Brand tokens (locked)
 
-## Contact
+- Navy `#1B2B5A` primary · Clay `#C47A42` accent · Paper `#F7F5F0` bg
+- Noto Sans JP + Noto Serif JP + JetBrains Mono
+- Logo: plug-in-bracket monogram, lowercase wordmark, clay spark
+- Voice: Craftsman with sharp edges. 2030-proof test on every sentence.
 
-- Product · <support@kinplug.com>
-- Billing · <billing@kinplug.com>
-- Privacy · <privacy@kinplug.com>
-- Operator · [Edamame Inc.](https://edamame.ph)
+## Editing
 
-© MMXXVI · Edamame Inc.
+Pages are regenerated via Python builders at `/home/claude/builder.py`, `build_plugins.py`, `build_support.py`, `build_rest.py`. To update a shared element (nav, footer, CTA), edit `builder.py` and re-run all builders. To update one page's copy only, edit the HTML directly.
+
+## Deploying
+
+Push to `master`. GitHub Pages picks it up. CNAME → kinplug.com. No build step, no GitHub Actions.
