@@ -83,42 +83,41 @@
   </div>
 </nav>
 
-<section class="sec">
+<section class="sec hero-section">
   <div class="wrap">
-    <div style="display:grid; grid-template-columns: 5fr 6fr; gap:clamp(40px,5vw,72px); align-items:center;" class="hero-grid">
+    <div class="hero-grid-v2">
       <div>
         <div class="eyebrow">Kintoneのためのプラグイン</div>
         <h1 class="h1">
-          設定はすべて<br>
-          <span class="h1-accent">Kintone内で完結。</span><br>
-          外部ポータル不要。
+          Kintoneの中で、<br>
+          <span class="h1-accent">すべて完結する。</span>
         </h1>
         <p class="lede">
-          他社プラグインは専用ポータルにログインして設定が必要です。kinplugの設定はKintone内で完結。余計なSaaSを増やさず、普段お使いの画面のまま導入できます。Kintoneコンサルタントとして2019年から現場で使い続けてきた私たちが作りました。
+          他社プラグインの設定は、別ポータルへのログインが必要です。kinplugの設定はKintone内で完結する。2019年から現場に立つ、小さなチームの仕事です。
         </p>
-        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:32px;">
+        <div class="hero-cta-row">
           <a href="/ja/signup/" class="btn btn-primary btn-lg">14日間無料で試す<span class="arrow">→</span></a>
           <a href="/ja/plugins/mail/" class="btn btn-secondary btn-lg">Kinplug Mailを見る</a>
         </div>
-        <div style="margin-top:40px; padding-top:28px; border-top:1px solid var(--rule); display:grid; grid-template-columns: repeat(3,auto);">
-          <div style="padding-right:28px; border-right:1px solid var(--rule);">
-            <div style="font-family:'Noto Serif JP',serif; font-size:1.75rem; font-weight:700; color:var(--navy); line-height:1;">2019<small style="font-size:0.5em; color:var(--ink-mute); font-weight:400;">年より</small></div>
-            <div style="font-size:0.75rem; color:var(--ink-mute); margin-top:8px;">Kintone運用開始</div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">2019<small>年</small></div>
+            <div class="hero-stat-label">Kintone運用開始</div>
           </div>
-          <div style="padding:0 28px; border-right:1px solid var(--rule);">
-            <div style="font-family:'Noto Serif JP',serif; font-size:1.75rem; font-weight:700; color:var(--navy); line-height:1;">8<small style="font-size:0.5em; color:var(--ink-mute); font-weight:400;">社</small></div>
-            <div style="font-size:0.75rem; color:var(--ink-mute); margin-top:8px;">本番導入サブドメイン</div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">8<small>社</small></div>
+            <div class="hero-stat-label">本番導入サブドメイン</div>
           </div>
-          <div style="padding-left:28px;">
-            <div style="font-family:'Noto Serif JP',serif; font-size:1.75rem; font-weight:700; color:var(--navy); line-height:1;">200<small style="font-size:0.5em; color:var(--ink-mute); font-weight:400;">+アプリ</small></div>
-            <div style="font-size:0.75rem; color:var(--ink-mute); margin-top:8px;">稼働中Kintoneアプリ</div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">200<small>+</small></div>
+            <div class="hero-stat-label">稼働中Kintoneアプリ</div>
           </div>
         </div>
       </div>
 
-      <div style="position:relative; padding:30px 40px;" class="hero-mockup">
-        <div class="callout callout-clay callout-r" style="top:22%; left:3%;">Kinplug Mail 稼働中</div>
-        <div class="callout callout-l" style="bottom:24%; right:3%;">実行ログ · リアルタイム</div>
+      <div class="hero-mockup-v2">
+        <div class="callout callout-clay callout-r" style="top:18%; left:-6%;">Kinplug Mail 稼働中</div>
+        <div class="callout callout-l" style="bottom:22%; right:-6%;">実行ログ · リアルタイム</div>
         <div class="chrome">
           <div class="chrome-bar">
             <div class="chrome-dots"><span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span></div>
@@ -160,12 +159,6 @@
   </div>
 </section>
 
-<style>
-@media (max-width: 1000px) {
-  .hero-grid { grid-template-columns: 1fr !important; }
-  .hero-mockup { padding: 0 !important; }
-}
-</style>
 
 <section class="credibility">
   <div class="wrap">
@@ -186,14 +179,14 @@
   <div class="wrap">
     <div class="sec-head-center">
       <div class="eyebrow eyebrow-center">設計思想</div>
-      <h2 class="h2">他社は「連携サービス」、<br>kinplugは「ネイティブプラグイン」。</h2>
+      <h2 class="h2">連携サービス方式と、<br>ネイティブプラグイン方式。</h2>
       <p class="lede" style="margin:24px auto 0;">Kintoneプラグイン市場の多くは、実は「外部SaaSサービス」です。設定には専用ポータルへのログインが必要で、ユーザー・権限・運用が二重になります。kinplugは違います。</p>
     </div>
     <div class="native-compare">
       <div class="native-col native-col-bad" data-vendor="他社">
         <div class="h3" style="font-size:1.125rem; margin-top:8px;">連携サービス方式の導入フロー</div>
         <ol class="native-steps">
-          <li>ベンダーの外部ポータル（例: kintoneapp.com）にアカウント作成</li>
+          <li>ベンダーの外部ポータルにアカウント作成</li>
           <li>Kintoneから離脱して外部ポータルにログイン</li>
           <li>外部ポータル上で設定を作成</li>
           <li>Kintoneに戻り、連携設定でAPIキーを紐付け</li>
@@ -223,7 +216,7 @@
       </div>
     </div>
     <p style="font-size:0.875rem; color:var(--ink-mute); text-align:center; margin-top:40px; font-family:'JetBrains Mono',monospace;">
-      ※ Toyokumo、gusuku Customine、Crena等の主要プラグインは外部ポータル方式です（2026年4月時点、公開情報）。
+      ※ 主要なKintoneプラグインの多くが外部ポータル方式（設定を別サイトで管理する方式）を採用しています。（2026年4月時点、各社公開情報）
     </p>
   </div>
 </section>
@@ -418,16 +411,16 @@
             <td><strong>15+</strong></td>
             <td><span class="check">✓</span> 10名以下 永年無料</td>
           </tr>
-          <tr><td><div class="vendor">Toyokumo</div><div class="vendor-sub">東証上場・業界最大手</div></td><td>FormBridge</td><td><span class="price">¥14,000</span></td><td>1</td><td><span class="cross">×</span> 30日間のみ</td></tr>
-          <tr><td><div class="vendor">Toyokumo</div></td><td>PrintCreator</td><td><span class="price">¥14,000</span></td><td>1</td><td><span class="cross">×</span></td></tr>
-          <tr><td><div class="vendor">Toyokumo</div></td><td>kViewer</td><td><span class="price">¥15,000</span></td><td>1</td><td><span class="cross">×</span></td></tr>
-          <tr><td><div class="vendor">gusuku Customine</div><div class="vendor-sub">R3 Institute</div></td><td>10アプリスロット</td><td><span class="price">¥54,000</span></td><td>-</td><td><span class="partial">△</span> 1アプリのみ</td></tr>
-          <tr><td><div class="vendor">Crena</div><div class="vendor-sub">28プラグインセット</div></td><td>プロフェッショナル</td><td><span class="price">¥20,000</span></td><td><strong>28</strong></td><td><span class="cross">×</span></td></tr>
-          <tr><td><div class="vendor">JOYZO</div></td><td>プラグインパック使い放題</td><td><span class="price">¥15,000</span></td><td>10+</td><td><span class="cross">×</span></td></tr>
+          <tr><td><div class="vendor">A社</div><div class="vendor-sub">東証上場・業界最大手</div></td><td>フォーム系プラグイン</td><td><span class="price">¥14,000</span></td><td>1</td><td><span class="cross">×</span> 30日間のみ</td></tr>
+          <tr><td><div class="vendor">A社</div></td><td>PDF生成系プラグイン</td><td><span class="price">¥14,000</span></td><td>1</td><td><span class="cross">×</span></td></tr>
+          <tr><td><div class="vendor">A社</div></td><td>外部公開ビュー系プラグイン</td><td><span class="price">¥15,000</span></td><td>1</td><td><span class="cross">×</span></td></tr>
+          <tr><td><div class="vendor">B社</div><div class="vendor-sub">アプリスロット型カスタマイズ</div></td><td>10アプリスロット</td><td><span class="price">¥54,000</span></td><td>-</td><td><span class="partial">△</span> 1アプリのみ</td></tr>
+          <tr><td><div class="vendor">C社</div><div class="vendor-sub">28プラグインバンドル</div></td><td>プロフェッショナルプラン</td><td><span class="price">¥20,000</span></td><td><strong>28</strong></td><td><span class="cross">×</span></td></tr>
+          <tr><td><div class="vendor">D社</div><div class="vendor-sub">使い放題パック型</div></td><td>全プラグイン使い放題</td><td><span class="price">¥15,000</span></td><td>10+</td><td><span class="cross">×</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p style="text-align:center; margin-top:24px; font-size:0.8125rem; color:var(--ink-mute); font-family:'JetBrains Mono',monospace;">※ 各社公開情報ベース（2026年4月時点）。税抜表示。コースや機能範囲により異なります。</p>
+    <p style="text-align:center; margin-top:24px; font-size:0.8125rem; color:var(--ink-mute); font-family:'JetBrains Mono',monospace;">※ 公開情報ベース（2026年4月時点、各社公式サイト）。税抜表示。コースや機能範囲により異なります。</p>
   </div>
 </section>
 
