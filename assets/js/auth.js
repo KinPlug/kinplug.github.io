@@ -8,7 +8,8 @@
    CORS: backend reflects Allow-Origin only for https://kinplug.com (apex).
 
    POST {base}/trial
-     req : { email, subdomain, product? }          product defaults to "pdf-designer"
+     req : { email, subdomain, product }            funnel slugs (verified accepted):
+                                                     mail | pdf-pro | smart-lookup | flow
      200 : { success:true, license_key, subdomain, product, type:"trial",
              expiresAt, id }                        expiresAt ~ +14 days
      400 : { error:"Invalid email" }
