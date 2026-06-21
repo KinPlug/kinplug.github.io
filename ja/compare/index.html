@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>他社比較 — kinplug ・Kintoneプラグイン各社との機能・料金比較</title>
-<meta name="description" content="Kintoneプラグイン主要ベンダー各社との機能・料金・アーキテクチャ比較。公開情報ベース、2026年4月時点。">
+<meta name="description" content="Kintoneプラグイン各社との機能・料金・アーキテクチャ比較。公開情報ベース、2026年4月時点。">
 <meta name="robots" content="index,follow">
 <meta property="og:title" content="他社比較 — kinplug ・Kintoneプラグイン各社との機能・料金比較">
-<meta property="og:description" content="Kintoneプラグイン主要ベンダー各社との機能・料金・アーキテクチャ比較。公開情報ベース、2026年4月時点。">
+<meta property="og:description" content="Kintoneプラグイン各社との機能・料金・アーキテクチャ比較。公開情報ベース、2026年4月時点。">
 <meta property="og:image" content="https://kinplug.com/assets/og-default.png">
 <meta property="og:url" content="https://kinplug.com/ja/compare/">
 <meta property="og:type" content="website">
@@ -236,25 +236,34 @@
 <section class="sec sec-white">
   <div class="wrap">
     <div class="sec-head"><div><div class="eyebrow">料金比較</div><h2 class="h2">月額の支払い額。</h2></div><div class="mono">2026年4月現在 · 税抜</div></div>
+    <div class="compare-wrap" style="max-width:840px; margin:0 auto 24px;">
+      <table class="compare">
+        <thead><tr><th>評価軸</th><th>kinplug</th><th>他社の一般例</th></tr></thead>
+        <tbody>
+          <tr><td>料金</td><td><span class="check">✓</span> 定額一本・全プラグイン</td><td>プラグイン単位／席単位</td></tr>
+          <tr><td>設定</td><td><span class="check">✓</span> Kintone内</td><td>別ポータル</td></tr>
+          <tr><td>OAuthメール</td><td><span class="check">✓</span> 標準で含む</td><td>アドオン／別iPaaS</td></tr>
+        </tbody>
+      </table>
+    </div>
     <div class="compare-wrap">
       <table class="compare">
-        <thead><tr><th>ベンダー</th><th>代表製品</th><th>月額（最上位）</th><th>プラグイン数</th><th>無料プラン</th><th>設定場所</th></tr></thead>
+        <thead><tr><th>ベンダー</th><th>代表製品</th><th>月額（最上位）</th><th>無料プラン</th><th>設定場所</th></tr></thead>
         <tbody>
           <tr class="kinplug-row">
             <td><div class="vendor">kinplug</div><div class="vendor-sub">定額・全部入り</div></td>
             <td>全プラグイン</td>
             <td><span class="price price-big">¥9,800</span></td>
-            <td><strong>15+</strong></td>
             <td><span class="check">✓</span> 10名以下 永年</td>
             <td><span class="check">✓</span> Kintone内</td>
           </tr>
-          <tr><td><div class="vendor">A社</div><div class="vendor-sub">東証上場・業界最大手</div></td><td>フォーム系プラグイン</td><td><span class="price">¥14,000</span></td><td>1</td><td><span class="cross">×</span> 30日間のみ</td><td><span class="cross">×</span> 外部ポータル方式</td></tr>
-          <tr><td><div class="vendor">A社</div></td><td>PDF生成系プラグイン</td><td><span class="price">¥14,000</span></td><td>1</td><td><span class="cross">×</span></td><td><span class="cross">×</span> 外部ポータル方式</td></tr>
-          <tr><td><div class="vendor">A社</div></td><td>外部公開ビュー系プラグイン</td><td><span class="price">¥15,000</span></td><td>1</td><td><span class="cross">×</span></td><td><span class="cross">×</span> 外部ポータル方式</td></tr>
-          <tr><td><div class="vendor">B社</div><div class="vendor-sub">アプリスロット型カスタマイズ</div></td><td>10アプリスロット</td><td><span class="price">¥54,000</span></td><td>-</td><td><span class="partial">△</span> 1アプリ</td><td><span class="cross">×</span> 外部ポータル方式</td></tr>
-          <tr><td><div class="vendor">C社</div><div class="vendor-sub">28プラグインバンドル</div></td><td>プロフェッショナルプラン</td><td><span class="price">¥20,000</span></td><td><strong>28</strong></td><td><span class="cross">×</span></td><td><span class="cross">×</span> 外部ポータル方式</td></tr>
-          <tr><td><div class="vendor">D社</div><div class="vendor-sub">使い放題パック型</div></td><td>プラグインパック</td><td><span class="price">¥15,000</span></td><td>10+</td><td><span class="cross">×</span></td><td><span class="partial">△</span> 一部Kintone内</td></tr>
-          <tr><td><div class="vendor">E社</div><div class="vendor-sub">大手SIer系</div></td><td>エンタープライズ向けパック</td><td><span class="price">要問合せ</span></td><td>複数</td><td><span class="cross">×</span></td><td><span class="cross">×</span> 外部ポータル方式</td></tr>
+          <tr><td><div class="vendor">A社</div><div class="vendor-sub">東証上場ベンダー</div></td><td>フォーム系プラグイン</td><td><span class="price">¥14,000</span></td><td><span class="cross">×</span> 30日間のみ</td><td><span class="cross">×</span> 外部ポータル方式</td></tr>
+          <tr><td><div class="vendor">A社</div></td><td>PDF生成系プラグイン</td><td><span class="price">¥14,000</span></td><td><span class="cross">×</span></td><td><span class="cross">×</span> 外部ポータル方式</td></tr>
+          <tr><td><div class="vendor">A社</div></td><td>外部公開ビュー系プラグイン</td><td><span class="price">¥15,000</span></td><td><span class="cross">×</span></td><td><span class="cross">×</span> 外部ポータル方式</td></tr>
+          <tr><td><div class="vendor">B社</div><div class="vendor-sub">アプリスロット型カスタマイズ</div></td><td>10アプリスロット</td><td><span class="price">¥54,000</span></td><td><span class="partial">△</span> 1アプリ</td><td><span class="cross">×</span> 外部ポータル方式</td></tr>
+          <tr><td><div class="vendor">C社</div><div class="vendor-sub">プラグインバンドル</div></td><td>プロフェッショナルプラン</td><td><span class="price">¥20,000</span></td><td><span class="cross">×</span></td><td><span class="cross">×</span> 外部ポータル方式</td></tr>
+          <tr><td><div class="vendor">D社</div><div class="vendor-sub">パック型プラン</div></td><td>プラグインパック</td><td><span class="price">¥15,000</span></td><td><span class="cross">×</span></td><td><span class="partial">△</span> 一部Kintone内</td></tr>
+          <tr><td><div class="vendor">E社</div><div class="vendor-sub">エンタープライズSIer系</div></td><td>エンタープライズ向けパック</td><td><span class="price">要問合せ</span></td><td><span class="cross">×</span></td><td><span class="cross">×</span> 外部ポータル方式</td></tr>
         </tbody>
       </table>
     </div>
@@ -280,13 +289,14 @@
         <thead><tr><th>プラグイン</th><th>OAuth 2.0</th><th>Gmail</th><th>Microsoft 365</th><th>2026年4月以降</th></tr></thead>
         <tbody>
           <tr class="kinplug-row"><td><div class="vendor">Kinplug Mail</div></td><td><span class="check">✓</span> 完全対応</td><td><span class="check">✓</span></td><td><span class="check">✓</span> Send As対応</td><td><span class="check">✓</span> 影響なし</td></tr>
-          <tr><td><div class="vendor">主要SMTP方式メールプラグイン</div></td><td><span class="cross">×</span> SMTP基本認証</td><td><span class="cross">×</span> 2024年9月停止</td><td><span class="cross">×</span> 2026年4月停止</td><td><span class="cross">×</span> 送信不可</td></tr>
+          <tr><td><div class="vendor">SMTP方式メールプラグイン</div></td><td><span class="cross">×</span> SMTP基本認証</td><td><span class="cross">×</span> 2024年9月停止</td><td><span class="cross">×</span> 2026年4月停止</td><td><span class="cross">×</span> 送信不可</td></tr>
           <tr><td><div class="vendor">Kintone標準メール通知</div></td><td><span class="partial">△</span> 受信専用</td><td>-</td><td>-</td><td><span class="partial">△</span> 送信は別プラグイン必要</td></tr>
           <tr><td><div class="vendor">自社JavaScript SMTP</div></td><td><span class="cross">×</span></td><td><span class="cross">×</span></td><td><span class="cross">×</span></td><td><span class="cross">×</span> 再実装必要</td></tr>
         </tbody>
       </table>
     </div>
     <p style="margin-top:24px; font-size:0.875rem; color:var(--ink-mute); text-align:center;">※ Google Workspace管理者による基本認証再有効化が可能な場合もありますが、セキュリティ上推奨されません。</p>
+    <p style="margin:16px auto 0; max-width:72ch; font-size:0.875rem; color:var(--ink-soft); line-height:1.85; text-align:center;">KinPlugなら、OAuthメールと自動化が標準で含まれます。Gmail・Microsoft 365を、Kintone内でネイティブに設定でき、料金は定額一本。ZapierやPower Automateのような別契約も、タスク従量課金も、外部ポータルも不要です。OAuthメールは他のツールでも送れますが、違いは「最初から組み込まれ、チームがいつも使うKintoneの中で動く」ことです。</p>
   </div>
 </section>
 
@@ -355,7 +365,7 @@
     <div class="footer-legal">
       <div class="footer-legal-grid">
         <div><h5>特定商取引法に基づく表記</h5><p><strong>販売事業者</strong>: Edamame Inc. · <strong>代表責任者</strong>: Tom Arai · <strong>所在地</strong>: フィリピン・マニラBGC（東京オフィス連絡可）· <strong>連絡先</strong>: support@kinplug.com</p></div>
-        <div><h5>支払方法・返金について</h5><p>クレジットカード（全プラン）・銀行振込（スタンダード以上）対応。年払い契約は2ヶ月分無料、月払い契約はいつでも解約可能、解約月末までの請求。詳細は<a href="/ja/legal/terms.html" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.5);">利用規約</a>。</p></div>
+        <div><h5>支払方法・返金について</h5><p>無料で開始 · クレジットカード不要 · 有料プランはご依頼に応じて有効化。年払い契約は2ヶ月分無料。詳細は<a href="/ja/legal/terms.html" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.5);">利用規約</a>。</p></div>
       </div>
     </div>
     <div class="footer-bottom">
