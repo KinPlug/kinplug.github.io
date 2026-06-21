@@ -85,10 +85,17 @@
 
 <section class="sec">
   <div class="wrap">
-    <div class="eyebrow">Dashboard</div>
-    <h1 class="h2" style="font-size:2rem;">Account dashboard</h1>
-    <div style="background:#FFF; padding:32px; border-radius:8px; border:1px solid var(--rule); margin-top:32px;">
-      <p style="color:var(--ink-soft); line-height:1.6;">Please <a href="/signup/" style="color:var(--navy); border-bottom:1px solid var(--navy);">create a free account</a> or <a href="/login.html" style="color:var(--navy); border-bottom:1px solid var(--navy);">sign in</a>. The dashboard shows your licenses, plugin downloads, and billing.</p>
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;">
+      <div>
+        <div class="eyebrow">Dashboard</div>
+        <h1 class="h2" style="font-size:2rem;">Account dashboard</h1>
+      </div>
+      <div id="kp-userbar"></div>
+    </div>
+    <div id="kp-dashboard" style="margin-top:32px;">
+      <div style="background:#FFF; padding:32px; border-radius:8px; border:1px solid var(--rule);">
+        <p style="color:var(--ink-soft); line-height:1.6;">Sign in to view your licenses. <a href="/signup/" style="color:var(--navy); border-bottom:1px solid var(--navy);">Start a free trial</a> or <a href="/login.html" style="color:var(--navy); border-bottom:1px solid var(--navy);">sign in</a>.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -163,5 +170,6 @@
 </footer>
 
 <script src="/assets/js/app.js"></script>
+<script src="/assets/js/auth.js"></script>
 </body>
 </html>
