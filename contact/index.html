@@ -256,7 +256,7 @@
     </div>
 
     <h2 class="h2" style="font-size:1.75rem;">Contact form</h2>
-    <form method="POST" action="mailto:support@kinplug.com" enctype="text/plain" style="background:#FFF; padding:32px; border-radius:8px; border:1px solid var(--rule); display:grid; gap:16px; margin-top:24px;">
+    <form id="kp-contact-form" novalidate style="background:#FFF; padding:32px; border-radius:8px; border:1px solid var(--rule); display:grid; gap:16px; margin-top:24px;">
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;" class="form-row">
         <div>
           <label style="display:block; font-size:0.8125rem; font-weight:500; margin-bottom:6px; color:var(--ink);">Name <span style="color:var(--err);">*</span></label>
@@ -288,8 +288,9 @@
       </div>
       <button type="submit" class="btn btn-primary btn-lg" style="justify-self:start;">Send<span class="arrow">→</span></button>
     </form>
+    <div id="kp-contact-result" role="status" aria-live="polite" style="display:none;"></div>
 
-    <p style="font-size:0.8125rem; color:var(--ink-mute); margin-top:24px;">Submitting opens your email client. Prefer to write directly? <a href="mailto:support@kinplug.com" style="color:var(--navy); border-bottom:1px solid var(--navy);">support@kinplug.com</a>. Same-day response during JST 09:00–18:00.</p>
+    <p style="font-size:0.8125rem; color:var(--ink-mute); margin-top:24px;">We reply within one business day (JST 09:00–18:00). Prefer to write directly? <a href="mailto:support@kinplug.com" style="color:var(--navy); border-bottom:1px solid var(--navy);">support@kinplug.com</a>.</p>
   </div>
 </section>
 <div class="cta-wrap">
@@ -363,5 +364,6 @@
 </footer>
 
 <script src="/assets/js/app.js"></script>
+<script src="/assets/js/auth.js"></script>
 </body>
 </html>

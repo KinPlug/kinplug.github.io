@@ -85,10 +85,17 @@
 
 <section class="sec">
   <div class="wrap">
-    <div class="eyebrow">ダッシュボード</div>
-    <h1 class="h2" style="font-size:2rem;">アカウントダッシュボード</h1>
-    <div style="background:#FFF; padding:32px; border-radius:8px; border:1px solid var(--rule); margin-top:32px;">
-      <p style="color:var(--ink-soft); line-height:1.85;">まず<a href="/ja/signup/" style="color:var(--navy); border-bottom:1px solid var(--navy);">無料アカウントを作成</a>するか<a href="/ja/login.html" style="color:var(--navy); border-bottom:1px solid var(--navy);">サインイン</a>してください。ダッシュボードではライセンス管理、プラグインダウンロード、請求情報を確認できます。</p>
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;">
+      <div>
+        <div class="eyebrow">ダッシュボード</div>
+        <h1 class="h2" style="font-size:2rem;">アカウントダッシュボード</h1>
+      </div>
+      <div id="kp-userbar"></div>
+    </div>
+    <div id="kp-dashboard" style="margin-top:32px;">
+      <div style="background:#FFF; padding:32px; border-radius:8px; border:1px solid var(--rule);">
+        <p style="color:var(--ink-soft); line-height:1.85;">サインインするとライセンスを確認できます。<a href="/ja/signup/" style="color:var(--navy); border-bottom:1px solid var(--navy);">無料トライアルを開始</a>するか<a href="/ja/login.html" style="color:var(--navy); border-bottom:1px solid var(--navy);">サインイン</a>してください。</p>
+      </div>
     </div>
   </div>
 </section>
@@ -163,5 +170,6 @@
 </footer>
 
 <script src="/assets/js/app.js"></script>
+<script src="/assets/js/auth.js"></script>
 </body>
 </html>
