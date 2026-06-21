@@ -212,7 +212,7 @@
       "name": "Can you handle invoice billing / NET30 / procurement approval (稟議)?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, from Standard plan upward. We follow Japanese enterprise procurement: PDF quote → purchase order → invoice (NET30) → bank transfer. Annual contracts include 2 months free. We provide procurement attachment materials (company profile, security documentation). Qualified invoice issuer registration completing in 2026."
+        "text": "Yes, from Standard plan upward. We follow Japanese enterprise procurement: PDF quote → purchase order → invoice (NET30) → bank transfer. Annual contracts include 2 months free. We provide procurement attachment materials (company profile, security documentation). For qualified invoice details, contact us to confirm current invoicing options."
       }
     },
     {
@@ -441,6 +441,7 @@
       <div>
         <div class="eyebrow">Plugin catalog</div>
         <h2 class="h2">Three plugins live. More shipping regularly.</h2>
+        <p style="margin-top:8px; font-size:0.875rem; color:var(--ink-soft);">Need one we haven't built? <a href="/contact/" style="color:var(--navy); border-bottom:1px solid currentColor;">Request it</a>.</p>
       </div>
       <div class="mono">Live 3 · In development 3 · Planned 9</div>
     </div>
@@ -597,23 +598,32 @@
 <section class="sec sec-white" id="compare">
   <div class="wrap">
     <div class="sec-head-center"><div class="eyebrow eyebrow-center">Head-to-head</div><h2 class="h2">One product's price for every plugin we ship.</h2></div>
+    <div class="compare-wrap" style="max-width:840px; margin:0 auto 24px;">
+      <table class="compare">
+        <thead><tr><th>What matters</th><th>kinplug</th><th>Typical alternative</th></tr></thead>
+        <tbody>
+          <tr><td>Pricing</td><td><span class="check">✓</span> One flat price, all plugins</td><td>Per-plugin or per-seat</td></tr>
+          <tr><td>Configuration</td><td><span class="check">✓</span> Inside Kintone</td><td>Separate vendor portal</td></tr>
+          <tr><td>OAuth email</td><td><span class="check">✓</span> Included</td><td>Add-on or separate iPaaS</td></tr>
+        </tbody>
+      </table>
+    </div>
     <div class="compare-wrap" style="max-width:1000px; margin:0 auto;">
       <table class="compare">
-        <thead><tr><th>Vendor</th><th>Product</th><th>Monthly (top tier)</th><th>Plugins</th><th>Free tier</th></tr></thead>
+        <thead><tr><th>Vendor</th><th>Product</th><th>Monthly (top tier)</th><th>Free tier</th></tr></thead>
         <tbody>
           <tr class="kinplug-row">
             <td><div class="vendor">kinplug</div><div class="vendor-sub">Flat-rate · all-in</div></td>
             <td>All plugins</td>
             <td><span class="price price-big">¥9,800</span></td>
-            <td><strong>3 live</strong><br><span style="font-size:0.75rem; color:var(--ink-mute);">+ roadmap · all incl.</span></td>
             <td><span class="check">✓</span> ≤10 users, forever</td>
           </tr>
-          <tr><td><div class="vendor">Vendor A</div><div class="vendor-sub">TSE-listed · category leader</div></td><td>Forms product</td><td><span class="price">¥14,000</span></td><td>1</td><td><span class="cross">×</span> 30-day trial only</td></tr>
-          <tr><td><div class="vendor">Vendor A</div></td><td>PDF product</td><td><span class="price">¥14,000</span></td><td>1</td><td><span class="cross">×</span></td></tr>
-          <tr><td><div class="vendor">Vendor A</div></td><td>External-view product</td><td><span class="price">¥15,000</span></td><td>1</td><td><span class="cross">×</span></td></tr>
-          <tr><td><div class="vendor">Vendor B</div><div class="vendor-sub">App-slot customization model</div></td><td>10 app-slots</td><td><span class="price">¥54,000</span></td><td>-</td><td><span class="partial">△</span> 1 app only</td></tr>
-          <tr><td><div class="vendor">Vendor C</div><div class="vendor-sub">28-plugin bundle</div></td><td>Professional plan</td><td><span class="price">¥20,000</span></td><td><strong>28</strong></td><td><span class="cross">×</span></td></tr>
-          <tr><td><div class="vendor">Vendor D</div><div class="vendor-sub">All-access pack model</div></td><td>All plugins</td><td><span class="price">¥15,000</span></td><td>10+</td><td><span class="cross">×</span></td></tr>
+          <tr><td><div class="vendor">Vendor A</div><div class="vendor-sub">TSE-listed · category leader</div></td><td>Forms product</td><td><span class="price">¥14,000</span></td><td><span class="cross">×</span> 30-day trial only</td></tr>
+          <tr><td><div class="vendor">Vendor A</div></td><td>PDF product</td><td><span class="price">¥14,000</span></td><td><span class="cross">×</span></td></tr>
+          <tr><td><div class="vendor">Vendor A</div></td><td>External-view product</td><td><span class="price">¥15,000</span></td><td><span class="cross">×</span></td></tr>
+          <tr><td><div class="vendor">Vendor B</div><div class="vendor-sub">App-slot customization model</div></td><td>10 app-slots</td><td><span class="price">¥54,000</span></td><td><span class="partial">△</span> 1 app only</td></tr>
+          <tr><td><div class="vendor">Vendor C</div><div class="vendor-sub">28-plugin bundle</div></td><td>Professional plan</td><td><span class="price">¥20,000</span></td><td><span class="cross">×</span></td></tr>
+          <tr><td><div class="vendor">Vendor D</div><div class="vendor-sub">All-access pack model</div></td><td>All plugins</td><td><span class="price">¥15,000</span></td><td><span class="cross">×</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -635,7 +645,7 @@
         <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q03</span><span>Our Microsoft 365 mail plugin just broke. Can you migrate us?</span></div><div class="faq-a">Yes, free migration support to Kinplug Mail. We preserve your existing templates, sender configurations, and recipient logic while switching the transport to OAuth 2.0. The 14-day trial lets you verify in your actual environment before committing. For urgent cases write <a href="mailto:support@kinplug.com" style="color:var(--navy);">support@kinplug.com</a> directly.</div></div>
         <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q04</span><span>Are you a Cybozu Official Partner?</span></div><div class="faq-a">No. Edamame Inc. has been a Cybozu-recognized Partner of the Year since our consulting work began in 2019 — but we chose to keep the plugin business kinplug independent of the Official Partner channel. Independence means no partner-channel markup, no vendor-influenced product decisions, and neutral comparison when clients ask us what to use.</div></div>
         <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q05</span><span>What happens to my plugins if you shut down?</span></div><div class="faq-a">Every plugin except Kinplug Mail runs entirely inside your Kintone. They don't depend on our servers and will keep working forever. Kinplug Mail requires our OAuth infrastructure — that's the single exception. Our Standard and Enterprise contracts written commitment: if we ever cease operations, we open-source the API and help every customer migrate to self-hosted.</div></div>
-        <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q06</span><span>Invoice billing, NET30, Japanese procurement docs?</span></div><div class="faq-a">Standard and Enterprise support Japanese procurement flow: PDF quote → PO received → invoice issued (NET30) → bank transfer. Annual contracts get 2 months free. We supply the documents your procurement team needs (company profile, security pack) for 稟議 approval. Japanese qualified invoice (適格請求書) registration is in progress for H1 2026.</div></div>
+        <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q06</span><span>Invoice billing, NET30, Japanese procurement docs?</span></div><div class="faq-a">Standard and Enterprise support Japanese procurement flow: PDF quote → PO received → invoice issued (NET30) → bank transfer. Annual contracts get 2 months free. We supply the documents your procurement team needs (company profile, security pack) for 稟議 approval. For qualified invoice (適格請求書) details, contact us — we'll confirm current invoicing options for your purchase.</div></div>
         <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q07</span><span>Who handles support?</span></div><div class="faq-a">The engineer who wrote the code. We chose to stay a small team deliberately — no tier-1 scripts, no ticket handoffs. Support runs from our Tokyo office, answered in English, Japanese, or Tagalog, same-day during JST business hours. Standard and Enterprise guarantee 4-hour response.</div></div>
       </div>
     </div>
