@@ -211,11 +211,11 @@
       <p style="color:var(--ink-soft); line-height:1.7; margin-bottom:32px;">Sign in with Google, Microsoft, or email.</p>
 
       <div style="display:flex; flex-direction:column; gap:12px;">
-        <button class="btn btn-secondary btn-lg" style="justify-content:flex-start; padding-left:20px; gap:12px; width:100%;">
+        <button class="btn btn-secondary btn-lg" style="justify-content:flex-start; padding-left:20px; gap:12px; width:100%;" id="clerk-google">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 12.1c0-.7-.1-1.4-.2-2H12v4h5.5c-.2 1.3-1 2.3-2 3.1v2.5h3.2c1.9-1.7 3-4.3 3-7.6z" fill="#4285F4"/><path d="M12 22c2.7 0 5-1 6.7-2.4l-3.2-2.5c-1 .6-2.1 1-3.5 1-2.7 0-4.9-1.8-5.8-4.3H3v2.6C4.7 19.6 8.1 22 12 22z" fill="#34A853"/><path d="M6.2 13.7c-.2-.6-.4-1.2-.4-1.9s.1-1.3.4-1.9V7.3H3C2.4 8.7 2 10.3 2 12s.4 3.3 1 4.7l3.2-3z" fill="#FBBC05"/><path d="M12 5.8c1.5 0 2.9.5 3.9 1.5l2.9-2.9C17 2.7 14.7 1.8 12 1.8 8.1 1.8 4.7 4.2 3 7.3l3.2 2.6c.9-2.5 3.1-4.1 5.8-4.1z" fill="#EA4335"/></svg>
           Continue with Google
         </button>
-        <button class="btn btn-secondary btn-lg" style="justify-content:flex-start; padding-left:20px; gap:12px; width:100%;">
+        <button class="btn btn-secondary btn-lg" style="justify-content:flex-start; padding-left:20px; gap:12px; width:100%;" id="clerk-microsoft">
           <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="9.5" height="9.5" fill="#F25022"/><rect x="12.5" y="2" width="9.5" height="9.5" fill="#7FBA00"/><rect x="2" y="12.5" width="9.5" height="9.5" fill="#00A4EF"/><rect x="12.5" y="12.5" width="9.5" height="9.5" fill="#FFB900"/></svg>
           Continue with Microsoft
         </button>
@@ -227,13 +227,14 @@
         <div style="flex:1; height:1px; background:var(--rule);"></div>
       </div>
 
-      <form style="display:grid; gap:14px;">
+      <form id="clerk-email-form" style="display:grid; gap:14px;">
         <div>
           <label style="display:block; font-size:0.8125rem; font-weight:500; margin-bottom:6px;">Email</label>
-          <input type="email" style="width:100%; padding:12px 14px; border:1px solid var(--rule-mid); border-radius:4px; font:inherit;" placeholder="you@example.com">
+          <input id="clerk-email" type="email" style="width:100%; padding:12px 14px; border:1px solid var(--rule-mid); border-radius:4px; font:inherit;" placeholder="you@example.com">
         </div>
         
         <button type="submit" class="btn btn-primary btn-lg" style="width:100%; margin-top:8px;">Sign in<span class="arrow">→</span></button>
+      <div id="clerk-msg" style="display:none; margin-top:14px; padding:10px 12px; border-radius:4px; font-size:0.85rem; background:#eef4f8; color:var(--navy);"></div>
       </form>
 
       <p style="font-size:0.8125rem; color:var(--ink-mute); text-align:center; margin-top:28px;">
@@ -321,5 +322,23 @@
 </footer>
 
 <script src="/assets/js/app.js"></script>
+<script>
+(function(){
+  window.__clerkReady=function(){
+    var C=window.Clerk; if(!C){return;}
+    C.load().then(function(){
+      if(C.user){window.location.replace('/dashboard');return;}
+      var msg=function(t,ok){var m=document.getElementById('clerk-msg');if(m){m.textContent=t;m.style.display='block';if(ok===false){m.style.background='#fdecec';m.style.color='#a12';}}};
+      var g=document.getElementById('clerk-google');
+      if(g)g.addEventListener('click',function(){C.client.signIn.authenticateWithRedirect({strategy:'oauth_google',redirectUrl:'/login.html',redirectUrlComplete:'/dashboard'});});
+      var mi=document.getElementById('clerk-microsoft');
+      if(mi)mi.addEventListener('click',function(){try{C.client.signIn.authenticateWithRedirect({strategy:'oauth_microsoft',redirectUrl:'/login.html',redirectUrlComplete:'/dashboard'});}catch(e){msg('Microsoft sign-in is being set up \u2014 please use Google or email for now.',false);}});
+      var f=document.getElementById('clerk-email-form');
+      if(f)f.addEventListener('submit',function(ev){ev.preventDefault();try{C.redirectToSignIn({afterSignInUrl:'/dashboard',afterSignUpUrl:'/dashboard'});}catch(e){msg('Could not start email sign-in. Please use Google.',false);}});
+    }).catch(function(e){console.error('Clerk load failed',e);});
+  };
+})();
+</script>
+<script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://proven-piglet-71.clerk.accounts.dev/npm/@clerk/clerk-js@5/dist/clerk.browser.js" onload="window.__clerkReady()"></script>
 </body>
 </html>
