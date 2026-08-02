@@ -215,6 +215,46 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "kMailer の代替になりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "重なる部分はありますが、目的が異なります。kMailer は HTML メール作成・開封率計測・A/B テストを備えたメール配信サービスです。Kinplug Mail は OAuth 2.0 で自社の Gmail / Microsoft 365 メールボックスから送信するため、業務メールが第三者の配信サービスではなく自社のアドレスから届きます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "なぜ今 OAuth 2.0 が必要なのですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gmail は 2024年に基本認証を終了し、Microsoft も Exchange Online で順次廃止しています。パスワードを保存して送信する kintone カスタマイズは動作しなくなります。OAuth 2.0 が正式な移行先です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "共有メールボックスから送信できますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "できます。Send As と共有メールボックスに対応しているため、個人アカウントではなく sales@ や support@ などのアドレスから通知を送れます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "受信者に kintone のライセンスは必要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不要です。任意のメールアドレス宛に送信でき、受信者に kintone アカウントは必要ありません。"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -406,6 +446,22 @@
       <p>Kinplug Mailのインストールは、Kintoneのプラグイン管理画面から.zipをアップロードして、OAuth認証を1回だけ行うだけです。既存のメールプラグインから移行する場合も、テンプレート・宛先ロジック・送信者設定を保持したまま切り替えられます。</p>
       <p>30日間のトライアル中に、実際の環境でそのまま検証していただけます。稟議書や契約書類が必要な場合は、<a href="/ja/contact/">お問い合わせフォーム</a>から必要な書類をお知らせください。</p>
     </div>
+  </div>
+</section>
+<section class="sec sec-deep">
+  <div class="wrap wrap-tight">
+    <h2 class="h2">kMailer との比較</h2>
+    <p style="color:var(--ink-soft); line-height:1.8; margin-top:20px;">
+      トヨクモ社の kMailer は kintone 連携メールの定番製品で、HTML メール作成・開封率分析・A/B テストなど配信施策に強い製品です。メールマーケティングが主目的であれば有力な選択肢です。業務メールでは、構造上の違いが効いてきます。
+    </p>
+    <ul style="color:var(--ink-soft); line-height:2; margin-top:16px; padding-left:20px;">
+      <li><strong>どこから送信されるか</strong> — Kinplug Mail は OAuth 2.0 で認証し、自社の Gmail / Microsoft 365 メールボックスから送信します（Send As・共有メールボックス対応）。返信は同じメールボックスに届き、送信済みトレイにも残ります。</li>
+      <li><strong>料金</strong> — kMailer はスタンダード月額 ¥15,000、プレミアム月額 ¥24,000 と公開されています。Kinplug Mail は単体課金ではなく、Kinplug のサブスクリプションに全プラグインが含まれます。</li>
+      <li><strong>認証方式の期限</strong> — Gmail は2024年に基本認証を終了、Microsoft も Exchange Online で廃止を進めています。パスワード方式の kintone メールカスタマイズは動作しなくなり、OAuth 2.0 が正式な移行先です。</li>
+    </ul>
+    <p style="color:var(--ink-mute); font-size:0.8125rem; margin-top:16px;">
+      上記の他社価格は執筆時点でトヨクモ社が公開している情報です。最新の金額は同社サイトをご確認ください。
+    </p>
   </div>
 </section>
 <div class="cta-wrap">

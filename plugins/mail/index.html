@@ -215,6 +215,46 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Kinplug Mail an alternative to kMailer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They solve overlapping but different problems. kMailer is a mail delivery service with HTML campaign editing, open tracking and A/B testing. Kinplug Mail sends through your own Gmail or Microsoft 365 mailbox over OAuth 2.0, so business mail leaves from your real corporate address rather than a third-party sending service."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does OAuth 2.0 matter now?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Google ended basic authentication for Gmail in 2024 and Microsoft is retiring it for Exchange Online. Kintone customisations that send mail with a stored password stop working. OAuth 2.0 is the supported path."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can it send from a shared mailbox?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Send As and shared mailboxes are supported, so notifications can come from an address such as sales@ or support@ rather than an individual's account."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do recipients need a Kintone licence?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Mail is sent to any email address; recipients do not need Kintone accounts."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -406,6 +446,22 @@
       <p>Kinplug Mail installs from Kintone's plugin management UI by uploading a .zip — then you authorize OAuth with Google or Microsoft once. That's the setup. If you're migrating from another mail plugin, we preserve your templates, recipient logic, and sender configurations.</p>
       <p>The 30-day trial runs in your actual environment with full feature access. If your procurement team needs specific documents for approval, tell us what you need via the <a href="/contact/">contact form</a>.</p>
     </div>
+  </div>
+</section>
+<section class="sec sec-deep">
+  <div class="wrap wrap-tight">
+    <h2 class="h2">Compared with kMailer</h2>
+    <p style="color:var(--ink-soft); line-height:1.8; margin-top:20px;">
+      kMailer, from Toyokumo, is the established mail product in the Kintone ecosystem and genuinely strong at campaign mail — HTML editing, open-rate analytics and A/B testing. If marketing email is your primary need, it is a serious option. The architectural difference matters most for business mail:
+    </p>
+    <ul style="color:var(--ink-soft); line-height:2; margin-top:16px; padding-left:20px;">
+      <li><strong>Where mail is sent from</strong> — Kinplug Mail authenticates with OAuth 2.0 and sends through your own Gmail or Microsoft 365 mailbox, including Send As and shared mailboxes. Replies land in that mailbox, and the message sits in your own Sent folder.</li>
+      <li><strong>Pricing</strong> — Toyokumo publishes kMailer at ¥15,000/month Standard and ¥24,000/month Premium. Kinplug Mail is not priced separately: one subscription covers every Kinplug plugin.</li>
+      <li><strong>Authentication deadline</strong> — Google ended Gmail basic auth in 2024 and Microsoft is retiring it for Exchange Online. Password-based Kintone mail customisations stop working; OAuth 2.0 is the supported path.</li>
+    </ul>
+    <p style="color:var(--ink-mute); font-size:0.8125rem; margin-top:16px;">
+      Competitor pricing above is as published by Toyokumo at the time of writing; check their site for current figures.
+    </p>
   </div>
 </section>
 <div class="cta-wrap">
