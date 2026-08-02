@@ -183,6 +183,46 @@
 "description":"30-day free trial, every feature"},
 "inLanguage":["en","ja"]}
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "krewDashboard の代替になりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい。どちらも複数の kintone アプリからダッシュボードを作成します。Kinplug Dashboard は集計をすべてブラウザ内で、閲覧ユーザー自身の kintone 権限で実行するため、レコードを保持する外部サーバーがありません。また単体製品ではなく Kinplug のサブスクリプションに含まれます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "関連レコードで繋がっていないアプリ同士も集計できますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "できます。共通キーで対応付け、各アプリを個別に集計してから突き合わせるため、アプリの構造を変更せずに比較できます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "年度（4月開始）に対応していますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "対応しています。既定は4月開始で変更可能です。日付フィールドを年度・四半期・月に変換し、「FY2025」「Q1」などのドロップダウンと自動で対応付けます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "導入にアプリの改修は必要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不要です。アプリの構造は変更しません。ダッシュボードは kintone のレコードとして保存されるため、共有は既存の権限設定に従います。"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -276,6 +316,22 @@
       <li>ダッシュボードは kintone のレコードとして保存 — 共有は権限設定そのまま</li>
       <li>ページ（タブ）で1つのダッシュボードに複数画面</li>
     </ul>
+  </div>
+</section>
+<section class="sec sec-deep">
+  <div class="wrap wrap-tight">
+    <h2 class="h2">krewDashboard との比較</h2>
+    <p style="color:var(--ink-soft); line-height:1.8; margin-top:20px;">
+      メシウス社の krewDashboard は、この分野で実績のある優れた製品です。どちらも kintone スタンダードコース以上が必要で、30日間の無料試用があります。公開情報で異なる点は次のとおりです。
+    </p>
+    <ul style="color:var(--ink-soft); line-height:2; margin-top:16px; padding-left:20px;">
+      <li><strong>料金体系</strong> — krewDashboard シンプルエディションは月額 ¥12,000／ドメイン（年額 ¥120,000）と公開されています。Kinplug Dashboard は単体課金ではなく、Kinplug のサブスクリプションにすべてのプラグインが含まれます。</li>
+      <li><strong>データの処理場所</strong> — 集計はブラウザ内で閲覧ユーザーの kintone セッションで実行されるため、誰に何が見えるかは kintone のアクセス権がそのまま決めます。</li>
+      <li><strong>期間の対応付け</strong> — 日付フィールドと「FY2025」「Q1」のドロップダウンを自動で突き合わせます（既定は4月開始の年度）。</li>
+    </ul>
+    <p style="color:var(--ink-mute); font-size:0.8125rem; margin-top:16px;">
+      上記の他社価格は執筆時点でメシウス社・サイボウズ社が公開している情報です。最新の金額は各社サイトをご確認ください。
+    </p>
   </div>
 </section>
 <div class="cta-wrap">

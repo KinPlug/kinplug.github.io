@@ -183,6 +183,46 @@
 "description":"30-day free trial, every feature"},
 "inLanguage":["en","ja"]}
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Kinplug Dashboard an alternative to krewDashboard?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Both build dashboards from multiple Kintone apps. Kinplug Dashboard differs in that every calculation runs in the browser under the viewing user's own Kintone session, so no external server holds your records, and it is included in the single Kinplug subscription rather than priced as a separate product."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can it combine data from apps that are not related?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Apps are matched on a shared key you confirm, and each app is aggregated independently before the results are aligned, so unrelated apps can be compared without changing how they are built."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it handle Japanese fiscal years?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Fiscal year starts in April by default and is configurable. A date field is derived to year, quarter or month so it lines up with dropdowns holding values such as FY2025 or Q1."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do we need to change our Kintone apps to use it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. There are no schema changes. Dashboards are stored as Kintone records, so sharing follows the permissions you already have."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -276,6 +316,22 @@
       <li>Dashboards are stored as Kintone records, so sharing follows your existing permissions</li>
       <li>Pages (tabs) let one dashboard hold several screens</li>
     </ul>
+  </div>
+</section>
+<section class="sec sec-deep">
+  <div class="wrap wrap-tight">
+    <h2 class="h2">Compared with krewDashboard</h2>
+    <p style="color:var(--ink-soft); line-height:1.8; margin-top:20px;">
+      krewDashboard, from Mescius, is the established dashboard plugin in this category and a genuinely capable product. Both require Kintone Standard or above, and both offer a 30-day trial. The published difference worth knowing:
+    </p>
+    <ul style="color:var(--ink-soft); line-height:2; margin-top:16px; padding-left:20px;">
+      <li><strong>Pricing model</strong> — Mescius lists krewDashboard Simple edition at ¥12,000/month per domain (¥120,000/year). Kinplug Dashboard is not priced separately: one subscription covers every Kinplug plugin.</li>
+      <li><strong>Where data is processed</strong> — Kinplug Dashboard runs entirely in the browser under the viewing user's Kintone session, so Kintone's own access permissions decide what each person sees.</li>
+      <li><strong>Fiscal period matching</strong> — a real date field and a dropdown holding "FY2025" or "Q1" are aligned automatically, fiscal-April by default.</li>
+    </ul>
+    <p style="color:var(--ink-mute); font-size:0.8125rem; margin-top:16px;">
+      Competitor pricing above is as published by Mescius and Cybozu at the time of writing; check their site for current figures.
+    </p>
   </div>
 </section>
 <div class="cta-wrap">
