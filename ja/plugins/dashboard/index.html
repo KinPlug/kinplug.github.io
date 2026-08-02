@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Start free — kinplug | 30-day trial</title>
-<meta name="description" content="Start your kinplug 30-day trial. No credit card. Sign in with Google or Microsoft and go live in 90 seconds.">
+<title>Kinplug Dashboard — kintone アプリ間集計・ダッシュボードプラグイン</title>
+<meta name="description" content="複数の kintone アプリを共通キーで比較し、まとめて集計。年度（4月開始）対応、日付とドロップダウンの期間自動マッチ、42種類のグラフ。外部サーバー不要、kintone の権限そのままで動作します。">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="Start free — kinplug | 30-day trial">
-<meta property="og:description" content="Start your kinplug 30-day trial. No credit card. Sign in with Google or Microsoft and go live in 90 seconds.">
+<meta property="og:title" content="Kinplug Dashboard — kintone アプリ間集計・ダッシュボードプラグイン">
+<meta property="og:description" content="複数の kintone アプリを共通キーで比較し、まとめて集計。年度（4月開始）対応、日付とドロップダウンの期間自動マッチ、42種類のグラフ。外部サーバー不要、kintone の権限そのままで動作します。">
 <meta property="og:image" content="https://kinplug.com/assets/og-default.png">
-<meta property="og:url" content="https://kinplug.com/signup/">
+<meta property="og:url" content="https://kinplug.com/ja/plugins/dashboard/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ja_JP">
 <meta property="og:site_name" content="kinplug">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://kinplug.com/assets/og-default.png">
-<link rel="canonical" href="https://kinplug.com/signup/">
-<link rel="alternate" hreflang="en" href="https://kinplug.com/signup/">
-<link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/signup/">
-<link rel="alternate" hreflang="x-default" href="https://kinplug.com/signup/">
+<link rel="canonical" href="https://kinplug.com/ja/plugins/dashboard/">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/plugins/dashboard/">
+<link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/plugins/dashboard/">
+<link rel="alternate" hreflang="x-default" href="https://kinplug.com/plugins/dashboard/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -145,6 +145,44 @@
   ]
 }
 </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://kinplug.com/ja/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Plugins",
+      "item": "https://kinplug.com/ja/plugins/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Kinplug Dashboard",
+      "item": "https://kinplug.com/ja/plugins/dashboard/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Kinplug Dashboard",
+"applicationCategory":"BusinessApplication","applicationSubCategory":"Kintone plugin",
+"operatingSystem":"Web browser","url":"https://kinplug.com/ja/plugins/dashboard/",
+"description":"複数の kintone アプリを共通キーで比較し、まとめて集計。年度（4月開始）対応、日付とドロップダウンの期間自動マッチ、42種類のグラフ。外部サーバー不要、kintone の権限そのままで動作します。",
+"softwareRequirements":"Kintone (Cybozu)",
+"publisher":{"@type":"Organization","name":"Edamame Inc.","url":"https://kinplug.com"},
+"offers":{"@type":"Offer","priceCurrency":"USD","category":"free trial",
+"description":"30-day free trial, every feature"},
+"inLanguage":["en","ja"]}
+</script>
 </head>
 <body>
 
@@ -182,7 +220,7 @@
         <span class="logo-word">kinplug</span>
       </a>
       <div class="nav-menu">
-        <a href="/plugins/" >Plugins</a>
+        <a href="/plugins/" class="active">Plugins</a>
         <a href="/pricing.html" >Pricing</a>
         <a href="/compare/" >Compare</a>
         <a href="/about/" >Company</a>
@@ -204,44 +242,40 @@
 </nav>
 
 <section class="sec">
-  <div class="wrap wrap-tight" style="min-height:60vh; display:flex; flex-direction:column; justify-content:center; padding-top:48px; padding-bottom:48px;">
-    <div style="background:#FFF; padding:48px; border-radius:8px; border:1px solid var(--rule); box-shadow:0 20px 60px -20px rgba(15,20,25,0.12);">
-      <div class="eyebrow" style="margin-bottom:20px;">Get started</div>
-      <h1 class="h2" style="font-size:1.75rem; margin-bottom:16px;">Start your 30-day trial</h1>
-      <p style="color:var(--ink-soft); line-height:1.7; margin-bottom:32px;">No credit card. Enter your email and Kintone subdomain — your 30-day trial of every plugin starts instantly.</p>
-
-      <form id="trialForm" style="display:grid; gap:14px;" novalidate>
-        <div>
-          <label for="su-email" style="display:block; font-size:0.8125rem; font-weight:500; margin-bottom:6px;">Email</label>
-          <input id="su-email" name="email" type="email" autocomplete="email" required style="width:100%; padding:12px 14px; border:1px solid var(--rule-mid); border-radius:4px; font:inherit;" placeholder="you@example.com">
-        </div>
-        <div>
-          <label for="su-subdomain" style="display:block; font-size:0.8125rem; font-weight:500; margin-bottom:6px;">Kintone subdomain</label>
-          <div style="display:flex; border:1px solid var(--rule-mid); border-radius:4px; overflow:hidden;"><input id="su-subdomain" name="subdomain" type="text" required autocapitalize="off" autocorrect="off" spellcheck="false" style="flex:1; padding:12px 14px; border:0; font:inherit;" placeholder="your-company"><span style="padding:12px 14px; background:var(--paper-deep); color:var(--ink-mute); font-family:'JetBrains Mono', monospace; font-size:0.8125rem;">.kintone.com</span></div>
-        </div>
-        <div id="su-msg" role="alert" style="display:none; font-size:0.8125rem; line-height:1.6; padding:12px 14px; border-radius:4px;"></div>
-        <button id="su-submit" type="submit" class="btn btn-primary btn-lg" style="width:100%; margin-top:8px;">Start free<span class="arrow">→</span></button>
-      </form>
-      <div id="su-success" style="display:none;">
-        <div style="width:44px; height:44px; border-radius:50%; background:#E7F6EC; color:#1E7C42; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:22px;">✓</div>
-        <h2 class="h2" style="font-size:1.375rem; text-align:center; margin-bottom:12px;">Trial active</h2>
-        <p id="su-success-body" style="color:var(--ink-soft); line-height:1.7; text-align:center; margin-bottom:24px;"></p>
-        <a href="/plugins/" class="btn btn-primary btn-lg" style="width:100%;">Browse plugins to install<span class="arrow">→</span></a>
-        <p style="font-size:0.8125rem; color:var(--ink-mute); text-align:center; margin-top:16px;">Open any plugin's settings inside Kintone to activate it — no license key to enter.</p>
-      </div>
-
-      <p style="font-size:0.8125rem; color:var(--ink-mute); text-align:center; margin-top:28px;">
-        Already have an account?
-        <a href="/login.html" style="color:var(--navy); border-bottom:1px solid var(--navy); margin-left:6px;">Sign in</a>
-      </p>
-      <p style="font-size:0.75rem; color:var(--ink-mute); text-align:center; margin-top:16px;">
-        By continuing you agree to our
-        <a href="/legal/terms.html" style="color:var(--navy);">Terms</a>
-        and
-        <a href="/legal/privacy.html" style="color:var(--navy);">Privacy Policy</a>
-        .
-      </p>
+  <div class="wrap wrap-tight" style="padding-top:64px;">
+    <div class="eyebrow" style="margin-bottom:20px;">Kinplug Dashboard</div>
+    <h1 class="h1">アプリをまたいで、ひとつのダッシュボードに。</h1>
+    <p style="color:var(--ink-soft); line-height:1.8; margin:24px 0 32px; font-size:1.05rem;">
+      kintone の集計は、ひとつのアプリの中で完結してしまいます。売上アプリと目標アプリ、実績と予算 — 別々のアプリにあるだけで、比較するには CSV に落とすしかない。Kinplug Dashboard は<strong>共通キーでアプリ同士を並べて比較</strong>し、<strong>複数アプリの行をまとめて集計</strong>します。アプリの構造は変更しません。
+    </p>
+    <div class="cta-actions">
+      <a href="/ja/signup/" class="btn btn-primary btn-lg">30日間無料で試す<span class="arrow">→</span></a>
+      <a href="/ja/pricing.html" class="btn btn-secondary btn-lg">料金を見る</a>
     </div>
+  </div>
+</section>
+
+<section class="sec sec-deep">
+  <div class="wrap wrap-tight">
+    <h2 class="h2">日付とドロップダウンが、そのまま噛み合う</h2>
+    <p style="color:var(--ink-soft); line-height:1.8; margin-top:20px;">
+      売上アプリの受注日は<strong>日付フィールド</strong>、目標アプリは「FY2025」「Q1」の<strong>ドロップダウン</strong> — 本来なら揃わない組み合わせです。Kinplug Dashboard は日付を年度・四半期・月に変換して自動で対応付けます。<strong>年度は4月開始が既定</strong>（変更可）なので、2025-05-02 は Q1・FY2025 として扱われます。予実管理がデータ移行なしで成立します。
+    </p>
+  </div>
+</section>
+
+<section class="sec sec-white">
+  <div class="wrap wrap-tight">
+    <h2 class="h2">外部サーバーに、データを出しません</h2>
+    <p style="color:var(--ink-soft); line-height:1.8; margin-top:20px;">
+      集計はすべてブラウザ内で、<strong>閲覧しているユーザー自身の kintone 権限</strong>で実行されます。データを預かる外部サーバーはありません。見えないはずのレコードは、ダッシュボードでも見えません — kintone のアクセス権がそのまま効きます。稟議・情報システム部門の確認が通りやすい構成です。
+    </p>
+    <ul style="color:var(--ink-soft); line-height:2; margin-top:20px; padding-left:20px;">
+      <li>42種類のグラフ（棒・折れ線・複合・ヒートマップ・ガント・カレンダー・ピボットほか）</li>
+      <li>万・億の単位表示、日本語UI（翻訳ではなく日本語で設計）</li>
+      <li>ダッシュボードは kintone のレコードとして保存 — 共有は権限設定そのまま</li>
+      <li>ページ（タブ）で1つのダッシュボードに複数画面</li>
+    </ul>
   </div>
 </section>
 <div class="cta-wrap">
@@ -274,7 +308,7 @@
         <p class="footer-desc">Native Kintone plugins. Operated by <a href="https://edamame-jp.com" target="_blank" rel="noopener" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.3);">Edamame Inc.</a> (Manila · Tokyo) — Kintone Global Partner of the Year 2024. Kintone work since 2019.</p>
       </div>
       <div class="footer-col"><h4>Plugins</h4><ul>
-        <li><a href="/plugins/dashboard/">Kinplug Dashboard</a></li><li><a href="/plugins/mail/">Kinplug Mail</a></li>
+        <li><a href="/plugins/mail/">Kinplug Mail</a></li>
         <li><a href="/plugins/pdf-pro/">PDF Pro</a></li>
         <li><a href="/plugins/smart-lookup/">Smart Lookup</a></li>
         <li><a href="/plugins/flow/">Flow</a></li>
@@ -315,6 +349,5 @@
 </footer>
 
 <script src="/assets/js/app.js"></script>
-<script src="/assets/js/signup.js"></script>
 </body>
 </html>
