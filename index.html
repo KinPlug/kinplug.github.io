@@ -223,7 +223,7 @@
       "name": "What happens to the plugins if your company shuts down?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Every plugin except Kinplug Mail works entirely inside your Kintone — no dependency on our servers. Those continue working permanently if we cease operations. Kinplug Mail is the one exception because it requires an OAuth server. For that, we've committed contractually (in Standard and Enterprise agreements) to open-source the API server and provide full self-hosting migration support if we ever shut down."
+        "text": "Every plugin except Kinplug Mail works entirely inside your Kintone — no dependency on our servers. Those continue working permanently if we cease operations. Kinplug Mail is the one exception because it requires an OAuth server. For that, we've committed contractually (in our customer agreements) to open-source the API server and provide full self-hosting migration support if we ever shut down."
       }
     },
     {
@@ -556,7 +556,7 @@
     <div class="tiers">
       <div class="tier tier-featured">
         <div class="tier-ribbon">Most chosen</div>
-        <div><div class="tier-num">Plan 02</div><div class="tier-name">Standard</div><p class="tier-desc">Teams of 11+. All plugins. Zero add-ons, ever.</p></div>
+        <div><div class="tier-num">Plan 02</div><div class="tier-name">All plugins</div><p class="tier-desc">Teams of 11+. All plugins. Zero add-ons, ever.</p></div>
         <div class="tier-price-block">
           <div class="tier-prices"><div class="tier-price-jpy">¥9,800<small>/mo</small></div><div class="tier-price-usd">$69 / mo</div></div>
           <div class="tier-tax">Ex-tax</div>
@@ -573,26 +573,9 @@
         <a href="/signup/" class="btn btn-primary">Start 30-day trial<span class="arrow">→</span></a>
       </div>
 
-      <div class="tier">
-        <div><div class="tier-num">Plan 03</div><div class="tier-name">Enterprise</div><p class="tier-desc">Multi-subdomain, finance, healthcare, public sector. Published pricing.</p></div>
-        <div class="tier-price-block">
-          <div class="tier-prices"><div class="tier-price-jpy">¥49,800<small>/mo</small></div><div class="tier-price-usd">$349 / mo</div></div>
-          <div class="tier-tax">Ex-tax · no sales call</div>
-          <div class="tier-annual">★ Annual ¥498,000 · 2 months free</div>
-        </div>
-        <ul class="tier-features">
-          <li class="tier-feature"><strong>Up to 5 subdomains</strong> · all plugins</li>
-          <li class="tier-feature">IP-restricted proxy</li>
-          <li class="tier-feature">DPA · security review pack</li>
-          <li class="tier-feature">4h SLA · named engineer</li>
-          <li class="tier-feature">Quarterly review sessions</li>
-          <li class="tier-feature">On-premise option available</li>
-        </ul>
-        <a href="/signup/?plan=enterprise" class="btn btn-secondary">Start 30-day trial</a>
-      </div>
-    </div>
+      
     <p style="text-align:center; margin-top:32px; font-size:0.8125rem; color:var(--ink-mute); font-family:'JetBrains Mono',monospace;">
-      Self-serve at every tier. Enterprise buyers who need security/procurement review may <a href="/contact/" style="color:var(--navy); border-bottom:1px solid var(--navy);">contact us</a>.
+      Self-serve. Buyers who need security or procurement review may <a href="/contact/" style="color:var(--navy); border-bottom:1px solid var(--navy);">contact us</a>.
     </p>
   </div>
 </section>
@@ -637,9 +620,9 @@
         <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q02</span><span>Does it support cybozu.com (Japan Kintone)?</span></div><div class="faq-a">Fully. Same price, JPY billing available. Every plugin is tested on both kintone.com and cybozu.com domains. One of our active deployments runs across 43 apps on a Japanese financial group's cybozu.com environment.</div></div>
         <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q03</span><span>Our Microsoft 365 mail plugin just broke. Can you migrate us?</span></div><div class="faq-a">Yes, free migration support to Kinplug Mail. We preserve your existing templates, sender configurations, and recipient logic while switching the transport to OAuth 2.0. The 30-day trial lets you verify in your actual environment before committing. For urgent cases write <a href="mailto:support@kinplug.com" style="color:var(--navy);">support@kinplug.com</a> directly.</div></div>
         <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q04</span><span>Are you a Cybozu Official Partner?</span></div><div class="faq-a">No. Edamame Inc. has been a Cybozu-recognized Partner of the Year since our consulting work began in 2019 — but we chose to keep the plugin business kinplug independent of the Official Partner channel. Independence means no partner-channel markup, no vendor-influenced product decisions, and neutral comparison when clients ask us what to use.</div></div>
-        <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q05</span><span>What happens to my plugins if you shut down?</span></div><div class="faq-a">Every plugin except Kinplug Mail runs entirely inside your Kintone. They don't depend on our servers and will keep working forever. Kinplug Mail requires our OAuth infrastructure — that's the single exception. Our Standard and Enterprise contracts written commitment: if we ever cease operations, we open-source the API and help every customer migrate to self-hosted.</div></div>
-        <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q06</span><span>Invoice billing, NET30, Japanese procurement docs?</span></div><div class="faq-a">Standard and Enterprise support Japanese procurement flow: PDF quote → PO received → invoice issued (NET30) → bank transfer. Annual contracts get 2 months free. We supply the documents your procurement team needs (company profile, security pack) for 稟議 approval. Japanese qualified invoice (適格請求書) registration is in progress for H1 2026.</div></div>
-        <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q07</span><span>Who handles support?</span></div><div class="faq-a">The engineer who wrote the code. We chose to stay a small team deliberately — no tier-1 scripts, no ticket handoffs. Support runs from our Tokyo office, answered in English, Japanese, or Tagalog, same-day during JST business hours. Standard and Enterprise guarantee 4-hour response.</div></div>
+        <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q05</span><span>What happens to my plugins if you shut down?</span></div><div class="faq-a">Every plugin except Kinplug Mail runs entirely inside your Kintone. They don't depend on our servers and will keep working forever. Kinplug Mail requires our OAuth infrastructure — that's the single exception. Our Our customer contracts carry a written commitment: if we ever cease operations, we open-source the API and help every customer migrate to self-hosted.</div></div>
+        <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q06</span><span>Invoice billing, NET30, Japanese procurement docs?</span></div><div class="faq-a">We support the Japanese procurement flow: PDF quote → PO received → invoice issued (NET30) → bank transfer. Annual contracts get 2 months free. We supply the documents your procurement team needs (company profile, security pack) for 稟議 approval. Japanese qualified invoice (適格請求書) registration is in progress for H1 2026.</div></div>
+        <div class="faq-item"><div class="faq-q"><span class="faq-q-num">Q07</span><span>Who handles support?</span></div><div class="faq-a">The engineer who wrote the code. We chose to stay a small team deliberately — no tier-1 scripts, no ticket handoffs. Support runs from our Tokyo office, answered in English, Japanese, or Tagalog, same-day during JST business hours. We guarantee a 4-hour response.</div></div>
       </div>
     </div>
   </div>
