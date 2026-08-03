@@ -173,31 +173,65 @@
 <script src="/assets/js/app.js"></script>
 <script>
 (function(){
+  var API='https://kinplug-api-165259092767.asia-northeast1.run.app';
+  function esc(s){var d=document.createElement('div');d.textContent=s==null?'':String(s);return d.innerHTML;}
+  function fmt(d){ if(!d) return '—'; try{ return new Date(d).toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});}catch(e){return d;} }
+  function daysLeft(d){ if(!d) return null; var ms=new Date(d).getTime()-Date.now(); return Math.ceil(ms/86400000); }
+
+  function renderSignedOut(box){
+    box.innerHTML='<div style="background:#FFF; border:1px solid var(--rule); border-radius:8px; padding:28px; text-align:center;">'
+      +'<p style="margin:0 0 16px; color:var(--ink-soft);">Sign in to see your trials and licences.</p>'
+      +'<a href="/login" class="btn btn-primary">Sign in<span class="arrow">&rarr;</span></a></div>';
+    box.style.display='block';
+  }
+
+  function renderLicences(box, email, name, rows){
+    var head='<div style="background:#FFF; border:1px solid var(--rule); border-radius:8px; padding:24px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:18px;">'
+      +'<div><div style="font-size:0.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-mute);">Signed in</div>'
+      +'<div style="font-weight:600; margin-top:4px;">'+esc(name)+'</div>'
+      +'<div style="color:var(--ink-soft); font-size:0.9rem;">'+esc(email)+'</div></div>'
+      +'<button id="kp-signout" class="btn btn-secondary">Sign out</button></div>';
+    var body;
+    if(!rows || !rows.length){
+      body='<div style="background:#FFF; border:1px solid var(--rule); border-radius:8px; padding:28px; text-align:center;">'
+        +'<p style="margin:0 0 16px; color:var(--ink-soft);">No trials or licences on this email yet.</p>'
+        +'<a href="/signup/" class="btn btn-primary">Start a 30-day trial<span class="arrow">&rarr;</span></a></div>';
+    } else {
+      var items=rows.map(function(r){
+        var dl=daysLeft(r.expiresAt);
+        var isTrial=(r.type||'').toLowerCase()==='trial';
+        var expired=dl!==null&&dl<0;
+        var tone=expired?'#a12':(isTrial?'var(--ink-soft)':'#1a7f37');
+        var label=expired?'Expired':(isTrial?(dl+' days left'):'Licensed');
+        return '<div style="background:#FFF; border:1px solid var(--rule); border-radius:8px; padding:20px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:center;">'
+          +'<div><div style="font-weight:600;">'+esc(r.product||'—')+'</div>'
+          +'<div style="color:var(--ink-soft); font-size:0.875rem; font-family:\'JetBrains Mono\',monospace;">'+esc(r.subdomain||'')+'</div></div>'
+          +'<div style="text-align:right;"><div style="color:'+tone+'; font-weight:600; font-size:0.9rem;">'+esc(label)+'</div>'
+          +'<div style="color:var(--ink-mute); font-size:0.8rem;">'+(r.expiresAt?('until '+esc(fmt(r.expiresAt))):'')+'</div></div></div>';
+      }).join('<div style="height:12px;"></div>');
+      body=items;
+    }
+    box.innerHTML=head+body;
+    box.style.display='block';
+    var so=document.getElementById('kp-signout');
+    if(so) so.addEventListener('click',function(){ window.Clerk.signOut().then(function(){window.location.href='/';}); });
+  }
+
   window.__clerkReady=function(){
     var C=window.Clerk; if(!C) return;
     C.load().then(function(){
       var box=document.getElementById('kp-account-state');
-      if(!C.user){
-        if(box){
-          box.innerHTML='<div style="background:#FFF; border:1px solid var(--rule); border-radius:8px; padding:24px; text-align:center;">'
-            +'<p style="margin:0 0 16px; color:var(--ink-soft);">Sign in to see your trials and licences.</p>'
-            +'<a href="/login" class="btn btn-primary">Sign in<span class="arrow">&rarr;</span></a></div>';
-          box.style.display='block';
-        }
-        return;
-      }
+      if(!box) return;
+      if(!C.user){ renderSignedOut(box); return; }
       var em=(C.user.primaryEmailAddress&&C.user.primaryEmailAddress.emailAddress)||'';
       var nm=C.user.firstName||em.split('@')[0]||'there';
-      if(box){
-        box.innerHTML='<div style="background:#FFF; border:1px solid var(--rule); border-radius:8px; padding:24px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;">'
-          +'<div><div style="font-size:0.75rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-mute);">Signed in</div>'
-          +'<div style="font-weight:600; margin-top:4px;">'+nm+'</div>'
-          +'<div style="color:var(--ink-soft); font-size:0.9rem;">'+em+'</div></div>'
-          +'<button id="kp-signout" class="btn btn-secondary">Sign out</button></div>';
-        box.style.display='block';
-        var so=document.getElementById('kp-signout');
-        if(so) so.addEventListener('click',function(){ C.signOut().then(function(){ window.location.href='/'; }); });
-      }
+      box.innerHTML='<div style="color:var(--ink-mute); padding:20px;">Loading your licences…</div>';
+      box.style.display='block';
+      C.session.getToken({template:'kinplug'}).then(function(tok){
+        return fetch(API+'/licenses',{headers:{'Authorization':'Bearer '+tok}});
+      }).then(function(r){ return r.ok? r.json() : {licenses:[]}; })
+        .then(function(d){ renderLicences(box, em, nm, d.licenses||[]); })
+        .catch(function(e){ console.error(e); renderLicences(box, em, nm, []); });
     }).catch(function(e){console.error('Clerk load failed',e);});
   };
 })();
