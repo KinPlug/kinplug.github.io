@@ -94,6 +94,7 @@
   <div class="wrap">
     <div class="eyebrow">Dashboard</div>
     <h1 class="h2" style="font-size:2rem;">Account dashboard</h1>
+<div id="kp-account-state" style="display:none; margin:24px 0;"></div>
     <div style="background:#FFF; padding:32px; border-radius:8px; border:1px solid var(--rule); margin-top:32px;">
       <p style="color:var(--ink-soft); line-height:1.6;">Please <a href="/signup/" style="color:var(--navy); border-bottom:1px solid var(--navy);">create a free account</a> or <a href="/login.html" style="color:var(--navy); border-bottom:1px solid var(--navy);">sign in</a>. The dashboard shows your licenses, plugin downloads, and billing.</p>
     </div>
@@ -170,5 +171,37 @@
 </footer>
 
 <script src="/assets/js/app.js"></script>
+<script>
+(function(){
+  window.__clerkReady=function(){
+    var C=window.Clerk; if(!C) return;
+    C.load().then(function(){
+      var box=document.getElementById('kp-account-state');
+      if(!C.user){
+        if(box){
+          box.innerHTML='<div style="background:#FFF; border:1px solid var(--rule); border-radius:8px; padding:24px; text-align:center;">'
+            +'<p style="margin:0 0 16px; color:var(--ink-soft);">Sign in to see your trials and licences.</p>'
+            +'<a href="/login" class="btn btn-primary">Sign in<span class="arrow">&rarr;</span></a></div>';
+          box.style.display='block';
+        }
+        return;
+      }
+      var em=(C.user.primaryEmailAddress&&C.user.primaryEmailAddress.emailAddress)||'';
+      var nm=C.user.firstName||em.split('@')[0]||'there';
+      if(box){
+        box.innerHTML='<div style="background:#FFF; border:1px solid var(--rule); border-radius:8px; padding:24px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;">'
+          +'<div><div style="font-size:0.75rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-mute);">Signed in</div>'
+          +'<div style="font-weight:600; margin-top:4px;">'+nm+'</div>'
+          +'<div style="color:var(--ink-soft); font-size:0.9rem;">'+em+'</div></div>'
+          +'<button id="kp-signout" class="btn btn-secondary">Sign out</button></div>';
+        box.style.display='block';
+        var so=document.getElementById('kp-signout');
+        if(so) so.addEventListener('click',function(){ C.signOut().then(function(){ window.location.href='/'; }); });
+      }
+    }).catch(function(e){console.error('Clerk load failed',e);});
+  };
+})();
+</script>
+<script async crossorigin="anonymous" data-clerk-publishable-key="pk_test_cHJvdmVuLXBpZ2xldC03MS5jbGVyay5hY2NvdW50cy5kZXYk" src="https://proven-piglet-71.clerk.accounts.dev/npm/@clerk/clerk-js@5/dist/clerk.browser.js" onload="window.__clerkReady()"></script>
 </body>
 </html>

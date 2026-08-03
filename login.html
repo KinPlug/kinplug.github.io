@@ -349,9 +349,9 @@
       if(C.user){window.location.replace('/dashboard');return;}
       var msg=function(t,ok){var m=document.getElementById('clerk-msg');if(m){m.textContent=t;m.style.display='block';if(ok===false){m.style.background='#fdecec';m.style.color='#a12';}}};
       var g=document.getElementById('clerk-google');
-      if(g)g.addEventListener('click',function(){C.client.signIn.authenticateWithRedirect({strategy:'oauth_google',redirectUrl:'/login.html',redirectUrlComplete:'/dashboard'});});
+      if(g)g.addEventListener('click',function(){C.client.signIn.authenticateWithRedirect({strategy:'oauth_google',redirectUrl:'/login',redirectUrlComplete:'/dashboard'});});
       var mi=document.getElementById('clerk-microsoft');
-      if(mi)mi.addEventListener('click',function(){try{C.client.signIn.authenticateWithRedirect({strategy:'oauth_microsoft',redirectUrl:'/login.html',redirectUrlComplete:'/dashboard'});}catch(e){msg('Microsoft sign-in is being set up \u2014 please use Google or email for now.',false);}});
+      if(mi)mi.addEventListener('click',function(){try{C.client.signIn.authenticateWithRedirect({strategy:'oauth_microsoft',redirectUrl:'/login',redirectUrlComplete:'/dashboard'});}catch(e){msg('Microsoft sign-in is being set up \u2014 please use Google or email for now.',false);}});
       var f=document.getElementById('clerk-email-form');
       if(f)f.addEventListener('submit',function(ev){ev.preventDefault();try{C.redirectToSignIn({afterSignInUrl:'/dashboard',afterSignUpUrl:'/dashboard'});}catch(e){msg('Could not start email sign-in. Please use Google.',false);}});
     }).catch(function(e){console.error('Clerk load failed',e);});
