@@ -99,7 +99,7 @@ export async function onRequestPost({ request, env }) {
     });
     text = await res.text();
   } catch (e) {
-    return json({ ok: false, error: 'kintone_unreachable' }, 502);
+    return json({ ok: false, error: 'kintone_unreachable' }, 429);
   }
 
   if (res.ok) {
@@ -109,9 +109,12 @@ export async function onRequestPost({ request, env }) {
   }
 
   // Already stored on an earlier attempt — treat as done so the queue stops retrying.
-  if (/GAIA_UQ01|duplicate|重複/i.test(text)) {
+  // Kintone reports a unique-field clash as CB_VA01 "This value already exists in another record."
+  if (/already exists|GAIA_UQ01|重複/i.test(text)) {
     return json({ ok: true, duplicate: true, lead_id: leadId });
   }
 
-  return json({ ok: false, error: 'kintone_rejected', status: res.status, detail: text.slice(0, 300) }, 502);
+  // 429, never 5xx: Cloudflare replaces a 502 from a Function with its own error page,
+  // which would hide the reason and leave the client guessing.
+  return json({ ok: false, error: 'kintone_rejected', status: res.status, detail: text.slice(0, 300) }, 429);
 }
