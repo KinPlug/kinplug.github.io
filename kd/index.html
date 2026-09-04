@@ -292,10 +292,11 @@ button.save:disabled{opacity:.55}
   function queue(){try{return JSON.parse(localStorage.getItem(Q)||'[]')}catch(e){return []}}
   function setQueue(q){localStorage.setItem(Q,JSON.stringify(q));paint()}
   function paint(){
-    var q=queue(), pend=q.filter(function(r){return !r._sent}).length, sent=q.length-pend;
+    var q=queue(), pend=q.filter(function(r){return !r._sent && !r._failed}).length,
+        fail=q.filter(function(r){return r._failed}).length, sent=q.length-pend-fail;
     var el=$('qz');
     el.className='qz'+(pend?' pending':'');
-    el.innerHTML='<b>'+pend+'</b>'+(pend===1?'to sync':'to sync')+(sent?' · '+sent+' sent':'');
+    el.innerHTML='<b>'+pend+'</b>to sync'+(sent?' · '+sent+' sent':'')+(fail?' · '+fail+' stuck':'');
   }
 
   // --- selection controls ---
@@ -381,7 +382,7 @@ button.save:disabled{opacity:.55}
   var busy=false;
   function flush(){
     if(busy||!navigator.onLine) return;
-    var q=queue(), pending=q.filter(function(r){return !r._sent});
+    var q=queue(), pending=q.filter(function(r){return !r._sent && !r._failed});
     if(!pending.length) return;
     busy=true;
     var next=pending[0];
@@ -393,7 +394,12 @@ button.save:disabled{opacity:.55}
         all.forEach(function(r){ if(r.id===next.id) r._sent=Date.now() });
         setQueue(all); busy=false; flush();
       })
-      .catch(function(){ busy=false; });
+      .catch(function(){
+        var all=queue();
+        all.forEach(function(r){ if(r.id===next.id){ r._tries=(r._tries||0)+1;
+          if(r._tries>=5) r._failed=Date.now(); } });
+        setQueue(all); busy=false;
+      });
   }
   window.addEventListener('online',flush);
   setInterval(flush,20000);
