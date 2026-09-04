@@ -342,7 +342,8 @@ button.save:disabled{opacity:.55}
       consent:$('consent').checked,
       website:$('website').value,
       event_name:settings.event, captured_by:settings.staff||'',
-      source:'booth-form', captured_at:new Date().toISOString(),
+      source:(new URLSearchParams(location.search).get('utm_medium')||'booth-form'),
+      captured_at:new Date().toISOString(),
       tz_offset:new Date().getTimezoneOffset(), ua:navigator.userAgent.slice(0,180)
     };
   }
