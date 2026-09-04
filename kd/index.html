@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1B2B5A">
+<title>kinplug — start your 30-day trial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1B2B5A; --navy-deep:#0F1A3D; --navy-soft:#E8EBF4;
+  --clay:#C47A42; --clay-deep:#9E5E2E; --clay-soft:#F7EAD9;
+  --paper:#F7F5F0; --paper-deep:#EFEBE2;
+  --ink:#0F1419; --ink-soft:#3A4049; --ink-mute:#6B7280;
+  --rule:rgba(15,20,25,.14); --ok:#2F7D4F; --err:#A13636;
+  --sans:'Noto Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);
+  line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:560px;margin:0 auto;padding:0 20px 140px}
+
+/* ---------- header ---------- */
+header{background:var(--navy);color:var(--paper);padding:18px 0 22px;
+  border-bottom:4px solid var(--clay)}
+.hrow{max-width:560px;margin:0 auto;padding:0 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:8px;font-size:19px;font-weight:600;letter-spacing:-.025em}
+.logo svg{height:19px;width:auto;display:block}
+.ev{font-family:var(--mono);font-size:11px;letter-spacing:.05em;
+  color:rgba(247,245,240,.72);text-align:right;line-height:1.35}
+h1{font-size:27px;font-weight:800;letter-spacing:-.032em;line-height:1.1;
+  margin:22px auto 0;max-width:560px;padding:0 20px;color:var(--paper)}
+.sub{max-width:560px;margin:9px auto 0;padding:0 20px;font-size:14px;
+  color:rgba(247,245,240,.82)}
+
+/* ---------- fields ---------- */
+form{margin-top:26px}
+.f{margin-bottom:17px}
+label{display:block;font-size:13px;font-weight:700;letter-spacing:-.005em;margin-bottom:6px}
+label .opt{font-weight:400;color:var(--ink-mute)}
+input[type=text],input[type=email],input[type=tel],select,textarea{
+  width:100%;font:inherit;font-size:16px;padding:13px 14px;background:#fff;
+  border:1.5px solid var(--rule);border-radius:3px;color:var(--ink);appearance:none}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);
+  box-shadow:0 0 0 3px rgba(27,43,90,.13)}
+input::placeholder,textarea::placeholder{color:#9CA3AF}
+textarea{min-height:74px;resize:vertical;line-height:1.45}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%236B7280' stroke-width='1.8'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;background-size:12px;padding-right:38px}
+.row{display:flex;gap:11px}
+.row>*{flex:1;min-width:0}
+
+/* segmented + chips */
+.seg{display:flex;gap:8px}
+.seg button{flex:1;font:inherit;font-size:13.5px;font-weight:600;padding:12px 6px;
+  background:#fff;border:1.5px solid var(--rule);border-radius:3px;color:var(--ink-soft);
+  cursor:pointer;line-height:1.25}
+.seg button[aria-pressed=true]{background:var(--navy);border-color:var(--navy);color:var(--paper)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{font:inherit;font-size:13.5px;font-weight:600;padding:10px 14px;
+  background:#fff;border:1.5px solid var(--rule);border-radius:999px;color:var(--ink-soft);cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--clay-soft);border-color:var(--clay);color:var(--clay-deep)}
+
+.sd{display:none;margin-top:11px}
+.sd.on{display:block}
+.sdrow{display:flex;align-items:stretch}
+.sdrow input{border-right:0;border-radius:3px 0 0 3px}
+.sdrow span{display:flex;align-items:center;padding:0 12px;font-family:var(--mono);
+  font-size:14px;color:var(--ink-mute);background:var(--paper-deep);
+  border:1.5px solid var(--rule);border-left:0;border-radius:0 3px 3px 0;white-space:nowrap}
+
+.consent{display:flex;gap:11px;align-items:flex-start;background:#fff;
+  border:1.5px solid var(--rule);border-radius:3px;padding:13px 14px;cursor:pointer}
+.consent input{width:20px;height:20px;margin-top:1px;flex:0 0 auto;accent-color:var(--navy)}
+.consent span{font-size:13px;line-height:1.42;color:var(--ink-soft)}
+
+hr.sep{border:0;height:1px;background:var(--rule);margin:24px 0 20px}
+.staffhd{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--clay);margin-bottom:13px}
+.err{color:var(--err);font-size:12.5px;font-weight:600;margin-top:6px;display:none}
+.err.on{display:block}
+input.bad,select.bad{border-color:var(--err)}
+
+/* ---------- submit bar ---------- */
+.bar{position:fixed;left:0;right:0;bottom:0;background:rgba(247,245,240,.97);
+  border-top:1px solid var(--rule);padding:12px 20px calc(12px + env(safe-area-inset-bottom));
+  backdrop-filter:blur(8px)}
+.barin{max-width:560px;margin:0 auto;display:flex;align-items:center;gap:12px}
+button.save{flex:1;font:inherit;font-size:16px;font-weight:700;letter-spacing:-.01em;
+  padding:16px;background:var(--clay);color:#fff;border:0;border-radius:3px;cursor:pointer}
+button.save:active{background:var(--clay-deep)}
+button.save:disabled{opacity:.55}
+.qz{font-family:var(--mono);font-size:11px;line-height:1.4;color:var(--ink-mute);
+  text-align:right;white-space:nowrap}
+.qz b{display:block;color:var(--ink);font-size:13px}
+.qz.pending b{color:var(--clay-deep)}
+
+/* ---------- confirmation ---------- */
+.done{position:fixed;inset:0;background:var(--navy);color:var(--paper);z-index:50;
+  display:none;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center}
+.done.on{display:flex}
+.done .tick{width:76px;height:76px;border:4px solid var(--clay);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:38px;color:var(--clay);margin-bottom:22px}
+.done h2{font-size:25px;font-weight:800;letter-spacing:-.03em}
+.done p{margin-top:11px;font-size:14.5px;color:rgba(247,245,240,.82);max-width:340px}
+.done .nx{margin-top:26px;font:inherit;font-size:15px;font-weight:700;padding:14px 30px;
+  background:var(--paper);color:var(--navy);border:0;border-radius:3px;cursor:pointer}
+
+/* ---------- settings ---------- */
+.gear{background:none;border:0;color:rgba(247,245,240,.72);font-size:11px;
+  font-family:var(--mono);cursor:pointer;padding:4px 0;text-decoration:underline}
+.panel{display:none;background:var(--navy-deep);color:var(--paper);padding:16px 0 20px}
+.panel.on{display:block}
+.panel .pin{max-width:560px;margin:0 auto;padding:0 20px}
+.panel label{color:rgba(247,245,240,.8);font-size:12px}
+.panel input{font-size:15px;padding:10px 12px}
+.panel .acts{display:flex;gap:9px;margin-top:13px;flex-wrap:wrap}
+.panel .acts button{font:inherit;font-size:13px;font-weight:600;padding:10px 14px;
+  background:transparent;border:1.5px solid rgba(247,245,240,.34);color:var(--paper);
+  border-radius:3px;cursor:pointer}
+.panel .note{font-size:11.5px;color:rgba(247,245,240,.6);margin-top:11px;line-height:1.45}
+.foot{text-align:center;font-size:11.5px;color:var(--ink-mute);margin-top:26px}
+.foot a{color:var(--clay-deep);font-weight:600}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hrow">
+    <span class="logo">
+      <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#F7F5F0" stroke-width="2"/>
+        <rect x="9" y="6" width="3" height="12" fill="#F7F5F0"/>
+        <rect x="22" y="6" width="3" height="12" fill="#F7F5F0"/>
+        <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+      </svg>kinplug</span>
+    <div class="ev">
+      <span id="evLabel">Kintone Day Kuala Lumpur</span><br>
+      <button class="gear" id="gear" type="button">settings</button>
+    </div>
+  </div>
+  <h1>Start your 30-day trial.</h1>
+  <p class="sub">Every plugin, every feature, no credit card. Leave your details and we set
+     it up with you — or scan and self-serve at kinplug.com.</p>
+</header>
+
+<div class="panel" id="panel">
+  <div class="pin">
+    <div class="f"><label for="staff">Captured by (booth staff)</label>
+      <input type="text" id="staff" placeholder="Tom"></div>
+    <div class="f"><label for="evname">Event name</label>
+      <input type="text" id="evname" value="Kintone Day Kuala Lumpur 2026"></div>
+    <div class="acts">
+      <button type="button" id="syncNow">Sync queue now</button>
+      <button type="button" id="dlCsv">Download CSV backup</button>
+      <button type="button" id="clearQ">Clear synced</button>
+    </div>
+    <p class="note">Everything is saved on this device first, then pushed to Kintone.
+       Nothing is lost if the venue wi-fi drops. Download the CSV at the end of the day
+       as a second copy.</p>
+  </div>
+</div>
+
+<div class="wrap">
+<form id="form" novalidate>
+  <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+
+  <div class="f">
+    <label for="name">Name</label>
+    <input type="text" id="name" autocomplete="name" placeholder="Full name">
+    <div class="err" id="e_name">Please add a name.</div>
+  </div>
+
+  <div class="f">
+    <label for="company">Company</label>
+    <input type="text" id="company" autocomplete="organization" placeholder="Company name">
+    <div class="err" id="e_company">Please add a company.</div>
+  </div>
+
+  <div class="f">
+    <label for="email">Work email</label>
+    <input type="email" id="email" autocomplete="email" inputmode="email"
+           autocapitalize="off" spellcheck="false" placeholder="name@company.com">
+    <div class="err" id="e_email">That email doesn't look right.</div>
+  </div>
+
+  <div class="row">
+    <div class="f"><label for="role">Role <span class="opt">optional</span></label>
+      <input type="text" id="role" placeholder="IT Manager"></div>
+    <div class="f"><label for="country">Country</label>
+      <select id="country">
+        <option>Malaysia</option><option>Singapore</option><option>Thailand</option>
+        <option>Indonesia</option><option>Vietnam</option><option>Philippines</option>
+        <option>Japan</option><option>Other</option>
+      </select></div>
+  </div>
+
+  <div class="f">
+    <label>Do you use Kintone today?</label>
+    <div class="seg" id="segKt">
+      <button type="button" data-v="Using today" aria-pressed="false">Using now</button>
+      <button type="button" data-v="Evaluating" aria-pressed="false">Evaluating</button>
+      <button type="button" data-v="Not yet" aria-pressed="false">Not yet</button>
+    </div>
+    <div class="err" id="e_kt">Pick one.</div>
+    <div class="sd" id="sdWrap">
+      <label for="subdomain" style="margin-top:11px">Kintone subdomain <span class="opt">so we can activate the trial</span></label>
+      <div class="sdrow">
+        <input type="text" id="subdomain" autocapitalize="off" spellcheck="false" placeholder="your-company">
+        <span>.kintone.com</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="f">
+    <label>Interested in <span class="opt">tap all that apply</span></label>
+    <div class="chips" id="chips">
+      <button type="button" data-v="Dashboard" aria-pressed="false">Dashboard</button>
+      <button type="button" data-v="Mail" aria-pressed="false">Mail</button>
+      <button type="button" data-v="PDF Pro" aria-pressed="false">PDF Pro</button>
+      <button type="button" data-v="The whole suite" aria-pressed="false">The whole suite</button>
+      <button type="button" data-v="Kintone consulting" aria-pressed="false">Kintone consulting</button>
+    </div>
+  </div>
+
+  <div class="f">
+    <label class="consent">
+      <input type="checkbox" id="consent">
+      <span>Send me my trial details and follow up about kinplug. We will not pass your
+        details to anyone else.</span>
+    </label>
+    <div class="err" id="e_consent">We need your consent before we can email you.</div>
+  </div>
+
+  <hr class="sep">
+  <div class="staffhd">Booth notes — not shown to the visitor</div>
+  <div class="f">
+    <label for="notes">What did we talk about?</label>
+    <textarea id="notes" placeholder="Uses krewDashboard, 40 apps, wants cross-app targets vs actuals. Follow up Tue."></textarea>
+  </div>
+  <div class="row">
+    <div class="f"><label for="phone">Phone / WhatsApp <span class="opt">optional</span></label>
+      <input type="tel" id="phone" inputmode="tel" placeholder="+60 12 345 6789"></div>
+    <div class="f"><label for="prio">Priority</label>
+      <select id="prio"><option>Warm</option><option>Hot</option><option>Cold</option></select></div>
+  </div>
+
+  <p class="foot">Full product detail at <a href="https://kinplug.com">kinplug.com</a> ·
+     Edamame Inc. · Manila · Tokyo</p>
+</form>
+</div>
+
+<div class="bar">
+  <div class="barin">
+    <button class="save" id="save" type="button">Save lead</button>
+    <div class="qz" id="qz"><b>0</b>queued</div>
+  </div>
+</div>
+
+<div class="done" id="done">
+  <div class="tick">✓</div>
+  <h2 id="doneName">Saved.</h2>
+  <p id="doneMsg">We'll email the trial details today. Thanks for stopping by.</p>
+  <button class="nx" id="next" type="button">Next visitor</button>
+</div>
+
+<script>
+(function(){
+  var Q='kp_lead_queue', S='kp_lead_settings';
+  var $=function(id){return document.getElementById(id)};
+  var settings=JSON.parse(localStorage.getItem(S)||'{}');
+  settings.endpoint='/api/lead';   // fixed: served from kinplug.com
+  if(!settings.event) settings.event='Kintone Day Kuala Lumpur 2026';
+  $('staff').value=settings.staff||''; $('evname').value=settings.event;
+   $('evLabel').textContent=settings.event;
+
+  function saveSettings(){
+    settings.staff=$('staff').value.trim();
+    settings.event=$('evname').value.trim()||'Kintone Day';
+    
+    $('evLabel').textContent=settings.event;
+    localStorage.setItem(S,JSON.stringify(settings));
+  }
+  ['staff','evname'].forEach(function(id){$(id).addEventListener('change',saveSettings)});
+  $('gear').addEventListener('click',function(){$('panel').classList.toggle('on')});
+
+  function queue(){try{return JSON.parse(localStorage.getItem(Q)||'[]')}catch(e){return []}}
+  function setQueue(q){localStorage.setItem(Q,JSON.stringify(q));paint()}
+  function paint(){
+    var q=queue(), pend=q.filter(function(r){return !r._sent}).length, sent=q.length-pend;
+    var el=$('qz');
+    el.className='qz'+(pend?' pending':'');
+    el.innerHTML='<b>'+pend+'</b>'+(pend===1?'to sync':'to sync')+(sent?' · '+sent+' sent':'');
+  }
+
+  // --- selection controls ---
+  var kt='';
+  $('segKt').addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    [].forEach.call(this.querySelectorAll('button'),function(x){x.setAttribute('aria-pressed','false')});
+    b.setAttribute('aria-pressed','true'); kt=b.dataset.v;
+    $('sdWrap').classList.toggle('on', kt==='Using today');
+    $('e_kt').classList.remove('on');
+  });
+  $('chips').addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    b.setAttribute('aria-pressed', b.getAttribute('aria-pressed')==='true'?'false':'true');
+  });
+  function chosen(){return [].filter.call($('chips').querySelectorAll('button'),
+      function(b){return b.getAttribute('aria-pressed')==='true'}).map(function(b){return b.dataset.v})}
+
+  function bad(id,on){$(id).classList.toggle('bad',on); var e=$('e_'+id); if(e)e.classList.toggle('on',on)}
+
+  function validate(){
+    var ok=true;
+    var n=$('name').value.trim(), c=$('company').value.trim(), m=$('email').value.trim();
+    bad('name',!n); if(!n)ok=false;
+    bad('company',!c); if(!c)ok=false;
+    var em=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m);
+    bad('email',!em); if(!em)ok=false;
+    $('e_kt').classList.toggle('on',!kt); if(!kt)ok=false;
+    $('e_consent').classList.toggle('on',!$('consent').checked); if(!$('consent').checked)ok=false;
+    return ok;
+  }
+
+  function collect(){
+    return {
+      id:'kd-'+Date.now()+'-'+Math.random().toString(36).slice(2,7),
+      name:$('name').value.trim(), company:$('company').value.trim(),
+      email:$('email').value.trim().toLowerCase(), job_title:$('role').value.trim(),
+      country:$('country').value, phone:$('phone').value.trim(),
+      kintone_status:kt,
+      kintone_subdomain:(kt==='Using today'?$('subdomain').value.trim().toLowerCase()
+        .replace(/\.kintone\.com$/,'').replace(/^https?:\/\//,''):''),
+      interest:chosen(), notes:$('notes').value.trim(), priority:$('prio').value,
+      consent:$('consent').checked,
+      website:$('website').value,
+      event_name:settings.event, captured_by:settings.staff||'',
+      source:'booth-form', captured_at:new Date().toISOString(),
+      tz_offset:new Date().getTimezoneOffset(), ua:navigator.userAgent.slice(0,180)
+    };
+  }
+
+  function reset(){
+    ['name','company','email','role','subdomain','phone','notes'].forEach(function(i){$(i).value=''});
+    $('consent').checked=false; $('country').value='Malaysia'; $('prio').value='Warm';
+    kt=''; $('sdWrap').classList.remove('on');
+    [].forEach.call($('segKt').querySelectorAll('button'),function(b){b.setAttribute('aria-pressed','false')});
+    [].forEach.call($('chips').querySelectorAll('button'),function(b){b.setAttribute('aria-pressed','false')});
+    ['name','company','email'].forEach(function(i){bad(i,false)});
+    $('e_kt').classList.remove('on'); $('e_consent').classList.remove('on');
+    window.scrollTo(0,0); $('name').focus();
+  }
+
+  $('save').addEventListener('click',function(){
+    if(!validate()){
+      var f=document.querySelector('.bad,.err.on');
+      if(f) f.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    saveSettings();
+    var rec=collect(), q=queue();
+    if(q.some(function(r){return r.email===rec.email})){
+      if(!confirm(rec.email+' is already captured today. Save again?')) return;
+    }
+    q.push(rec); setQueue(q);
+    $('doneName').textContent='Saved — thanks, '+rec.name.split(' ')[0]+'.';
+    $('doneMsg').textContent = rec.kintone_subdomain
+      ? 'We will activate the trial on '+rec.kintone_subdomain+'.kintone.com and email you today.'
+      : 'We will email your trial details today.';
+    $('done').classList.add('on');
+    flush();
+  });
+  $('next').addEventListener('click',function(){$('done').classList.remove('on');reset()});
+
+  var busy=false;
+  function flush(){
+    if(busy||!navigator.onLine) return;
+    var q=queue(), pending=q.filter(function(r){return !r._sent});
+    if(!pending.length) return;
+    busy=true;
+    var next=pending[0];
+    fetch(settings.endpoint,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(next)})
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json().catch(function(){return{}}) })
+      .then(function(){
+        var all=queue();
+        all.forEach(function(r){ if(r.id===next.id) r._sent=Date.now() });
+        setQueue(all); busy=false; flush();
+      })
+      .catch(function(){ busy=false; });
+  }
+  window.addEventListener('online',flush);
+  setInterval(flush,20000);
+  $('syncNow').addEventListener('click',function(){busy=false;flush();
+    setTimeout(function(){alert(queue().filter(function(r){return !r._sent}).length+' still queued.')},1200)});
+  $('clearQ').addEventListener('click',function(){
+    if(!confirm('Remove records already sent to Kintone from this device?')) return;
+    setQueue(queue().filter(function(r){return !r._sent}));
+  });
+  $('dlCsv').addEventListener('click',function(){
+    var q=queue(); if(!q.length) return alert('Nothing captured yet.');
+    var cols=['captured_at','name','company','job_title','email','phone','country',
+      'kintone_status','kintone_subdomain','interest','priority','notes','consent',
+      'event_name','captured_by','_sent'];
+    var esc=function(v){v=Array.isArray(v)?v.join('; '):(v==null?'':String(v));
+      return '"'+v.replace(/"/g,'""')+'"'};
+    var csv=cols.join(',')+'\n'+q.map(function(r){return cols.map(function(c){return esc(r[c])}).join(',')}).join('\n');
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));
+    a.download='kinplug-leads-'+new Date().toISOString().slice(0,10)+'.csv'; a.click();
+  });
+
+  paint(); flush();
+})();
+</script>
+</body>
+</html>
